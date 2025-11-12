@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_snapmirrornetworkinterface.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorNetworkInterface 
+summary: 'snapMirrorNetworkInterface 객체에는 클러스터 간 논리 인터페이스(LIF)에 대한 정보가 포함되어 있습니다.' 
+---
+= 스냅미러네트워크인터페이스
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorNetworkInterface 객체에는 클러스터 간 논리 인터페이스(LIF)에 대한 정보가 포함되어 있습니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+관리 상태
+ a| 
+논리 인터페이스(LIF)가 관리상 활성화되어 있는지 비활성화되어 있는지 여부입니다. 가능한 값:
+
+* 위로
+* 아래에
+
+ a| 
+끈
+
+
+
+ a| 
+스냅미러엔드포인트ID
+ a| 
+대상 ONTAP 시스템의 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+인터페이스 이름
+ a| 
+LIF 이름.
+ a| 
+끈
+
+
+
+ a| 
+네트워크 주소
+ a| 
+LIF의 IP 주소.
+ a| 
+끈
+
+
+
+ a| 
+네트워크 마스크
+ a| 
+LIF의 네트워크 마스크.
+ a| 
+끈
+
+
+
+ a| 
+인터페이스 역할
+ a| 
+LIF의 역할. 가능한 값:
+
+* 정의되지 않음
+* 무리
+* 데이터
+* 노드_관리
+* 클러스터 간
+* 클러스터 관리
+
+ a| 
+끈
+
+
+
+ a| 
+운영 상태
+ a| 
+LIF의 작동 상태(성공적인 연결을 형성했는지 여부).  인터페이스가 작동하지 못하게 하는 네트워크 문제가 있는 경우, 이 상태는 관리 상태와 다를 수 있습니다. 가능한 값:
+
+* 위로
+* 아래에
+
+ a| 
+끈
+
+
+
+ a| 
+vserverName
+ a| 
+Vserver의 이름입니다.
+ a| 
+끈
+
+|===

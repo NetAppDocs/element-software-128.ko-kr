@@ -1,0 +1,73 @@
+---
+permalink: api/reference_element_api_quiescesnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: snapmirror,relationship,relationships,quiesce,quiescing,quiescescnapmirrorrelationship 
+summary: 'Element 소프트웨어 웹 UI는 QuiesceSnapMirrorRelationship 메서드를 사용하여 SnapMirror 관계에 대한 향후 데이터 전송을 비활성화합니다.  전송이 진행 중이면 전송이 완료될 때까지 관계 상태가 "중단"으로 전환됩니다.  현재 전송이 중단되면 다시 시작되지 않습니다.  ResumeSnapMirrorRelationship API 메서드를 사용하여 관계에 대한 데이터 전송을 다시 활성화할 수 있습니다.' 
+---
+= QuiesceSnapMirror관계
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 소프트웨어 웹 UI는 다음을 사용합니다. `QuiesceSnapMirrorRelationship` SnapMirror 관계에 대한 향후 데이터 전송을 비활성화하는 방법입니다.  전송이 진행 중이면 전송이 완료될 때까지 관계 상태가 "중단"으로 전환됩니다.  현재 전송이 중단되면 다시 시작되지 않습니다.  관계에 대한 데이터 전송을 다시 활성화하려면 다음을 사용하십시오. `ResumeSnapMirrorRelationship` API 방식.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+스냅미러엔드포인트ID
+ a| 
+Element 스토리지 클러스터와 통신하는 원격 ONTAP 스토리지 시스템의 엔드포인트 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+목적지볼륨
+ a| 
+SnapMirror 관계의 대상 볼륨입니다.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[스냅미러볼륨정보]
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+스냅미러관계
+ a| 
+정지된 SnapMirror 관계에 대한 정보를 담고 있는 객체입니다.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[스냅미러관계]
+
+|===
+
+
+== 버전 이후 새로운
+
+10.1

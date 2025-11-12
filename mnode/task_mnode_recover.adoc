@@ -1,0 +1,263 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_recover.html 
+summary: NetApp Element 소프트웨어를 실행하는 클러스터의 관리 노드를 복구하고 재배포할 수 있습니다.  구성에 따라 관리 노드에 대한 인증을 다시 구성해야 할 수도 있습니다. 
+keywords: netapp, element, management node, mnode, disaster recovery, redeploy, VM 
+---
+= 관리 노드 복구
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+이전 관리 노드에서 영구 볼륨을 사용한 경우 NetApp Element 소프트웨어를 실행하는 클러스터의 관리 노드를 수동으로 복구하고 다시 배포할 수 있습니다.
+
+새로운 OVA를 배포하고 재배포 스크립트를 실행하여 버전 11.3 이상을 실행하는 이전에 설치된 관리 노드에서 구성 데이터를 가져올 수 있습니다.
+
+.필요한 것
+* 이전 관리 노드는 NetApp Element 소프트웨어 버전 11.3 이상을 실행하고 있었습니다.link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["영구 볼륨"] 기능이 활성화되었습니다.
+* 영구 볼륨이 포함된 클러스터의 MVIP와 SVIP를 알고 있습니다.
+* 귀하의 클러스터 버전은 NetApp Element 소프트웨어 11.3 이상을 실행하고 있습니다.
+* 귀하의 설치는 IPv4를 사용합니다.  관리 노드 11.3은 IPv6를 지원하지 않습니다.
+* NetApp 지원 사이트에서 소프트웨어를 다운로드할 수 있는 권한이 있습니다.
+* 플랫폼에 맞는 관리 노드 이미지 유형을 식별했습니다.
++
+[cols="30,30"]
+|===
+| 플랫폼 | 설치 이미지 유형 
+
+
+| 마이크로소프트 하이퍼-V | .iso 
+
+
+| 케이비엠 | .iso 
+
+
+| VMware vSphere | .iso, .ova 
+
+
+| 시트릭스 젠서버 | .iso 
+
+
+| 오픈스택 | .iso 
+|===
+
+
+.단계
+. <<ISO 또는 OVA를 다운로드하고 VM을 배포합니다.>>
+. <<네트워크 구성>>
+. <<시간 동기화 구성>>
+. <<관리 노드 구성>>
+
+
+
+
+== ISO 또는 OVA를 다운로드하고 VM을 배포합니다.
+
+. 설치에 필요한 OVA 또는 ISO를 다운로드하세요. https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["엘리먼트 소프트웨어"^] NetApp 지원 사이트의 페이지입니다.
++
+.. *최신 릴리스 다운로드*를 선택하고 EULA에 동의하세요.
+.. 다운로드할 관리 노드 이미지를 선택하세요.
+
+
+. OVA를 다운로드한 경우 다음 단계를 따르세요.
++
+.. OVA를 배포합니다.
+.. 스토리지 클러스터가 관리 노드(eth0)와 별도의 서브넷에 있고 영구 볼륨을 사용하려는 경우 스토리지 서브넷(예: eth1)의 VM에 두 번째 네트워크 인터페이스 컨트롤러(NIC)를 추가하거나 관리 네트워크가 스토리지 네트워크로 라우팅될 수 있는지 확인하세요.
+
+
+. ISO를 다운로드한 경우 다음 단계를 따르세요.
++
+.. 다음 구성을 사용하여 하이퍼바이저에서 새로운 64비트 가상 머신을 만듭니다.
++
+*** 6개의 가상 CPU
+*** 24GB 램
+*** 400GB 가상 디스크, 씬 프로비저닝
+*** 인터넷 접속과 스토리지 MVIP 접속이 가능한 하나의 가상 네트워크 인터페이스.
+*** ( SolidFire 올플래시 스토리지의 경우 선택 사항) 스토리지 클러스터에 대한 관리 네트워크 액세스를 제공하는 하나의 가상 네트워크 인터페이스입니다.  스토리지 클러스터가 관리 노드(eth0)와 별도의 서브넷에 있고 영구 볼륨을 사용하려는 경우 스토리지 서브넷(eth1)의 VM에 두 번째 네트워크 인터페이스 컨트롤러(NIC)를 추가하거나 관리 네트워크가 스토리지 네트워크로 라우팅될 수 있는지 확인하세요.
++
+
+IMPORTANT: 이 절차의 뒷부분에서 언급된 단계 이전에는 가상 머신의 전원을 켜지 마십시오.
+
+
+
+.. ISO를 가상 머신에 연결하고 .iso 설치 이미지로 부팅합니다.
++
+
+NOTE: 이미지를 사용하여 관리 노드를 설치하면 시작 화면이 나타나기 전에 30초의 지연이 발생할 수 있습니다.
+
+
+
+. 설치가 완료되면 관리 노드의 가상 머신의 전원을 켭니다.
+
+
+
+
+== 네트워크 구성
+
+. 터미널 사용자 인터페이스(TUI)를 사용하여 관리 노드 관리자 사용자를 만듭니다.
++
+
+TIP: 메뉴 옵션 사이를 이동하려면 위쪽 또는 아래쪽 화살표 키를 누르세요.  버튼 사이를 이동하려면 Tab 키를 누르세요.  버튼에서 필드로 이동하려면 Tab 키를 누르세요.  필드 사이를 이동하려면 위쪽 또는 아래쪽 화살표 키를 누르세요.
+
+. 관리 노드 네트워크(eth0)를 구성합니다.
++
+
+NOTE: 스토리지 트래픽을 분리하기 위해 추가 NIC가 필요한 경우 다른 NIC 구성에 대한 지침을 참조하세요.link:task_mnode_install_add_storage_NIC.html["스토리지 네트워크 인터페이스 컨트롤러(NIC) 구성"] .
+
+
+
+
+
+== 시간 동기화 구성
+
+. NTP를 사용하여 관리 노드와 스토리지 클러스터 간의 시간이 동기화되었는지 확인하세요.
+
+
+
+NOTE: 요소 12.3.1부터 하위 단계 (a)부터 (e)까지는 자동으로 수행됩니다.  관리 노드 12.3.1 이상의 경우 다음으로 진행하세요.<<substep_f_recover_config_time_sync,하위 단계 (f)>> 시간 동기화 구성을 완료합니다.
+
+. SSH나 하이퍼바이저가 제공하는 콘솔을 사용하여 관리 노드에 로그인합니다.
+. NTPD 중지:
++
+[listing]
+----
+sudo service ntpd stop
+----
+. NTP 구성 파일 편집 `/etc/ntp.conf` :
++
+.. 기본 서버를 주석 처리합니다.(`server 0.gentoo.pool.ntp.org` )을 추가하여 `#` 각각의 앞에.
+.. 추가하려는 각 기본 시간 서버에 대해 새 줄을 추가합니다. 기본 시간 서버는 스토리지 클러스터에서 사용되는 NTP 서버와 동일해야 합니다. link:task_mnode_recover.html#configure-the-management-node["나중 단계"].
++
+[listing]
+----
+vi /etc/ntp.conf
+
+#server 0.gentoo.pool.ntp.org
+#server 1.gentoo.pool.ntp.org
+#server 2.gentoo.pool.ntp.org
+#server 3.gentoo.pool.ntp.org
+server <insert the hostname or IP address of the default time server>
+----
+.. 완료되면 구성 파일을 저장합니다.
+
+
+. 새로 추가된 서버와 NTP 동기화를 강제로 실행합니다.
++
+[listing]
+----
+sudo ntpd -gq
+----
+. NTPD를 다시 시작합니다.
++
+[listing]
+----
+sudo service ntpd start
+----
+. [[substep_f_recover_config_time_sync]]하이퍼바이저를 통해 호스트와의 시간 동기화를 비활성화합니다(다음은 VMware 예시입니다).
++
+
+NOTE: 예를 들어 Openstack 환경의 .iso 이미지에서와 같이 VMware가 아닌 다른 하이퍼바이저 환경에 mNode를 배포하는 경우 해당 명령에 대한 하이퍼바이저 설명서를 참조하세요.
+
++
+.. 주기적 시간 동기화 비활성화:
++
+[listing]
+----
+vmware-toolbox-cmd timesync disable
+----
+.. 서비스의 현재 상태를 표시하고 확인합니다.
++
+[listing]
+----
+vmware-toolbox-cmd timesync status
+----
+.. vSphere에서 다음을 확인하십시오. `Synchronize guest time with host` VM 옵션에서 상자가 선택 취소되어 있습니다.
++
+
+NOTE: 나중에 VM을 변경하는 경우 이 옵션을 활성화하지 마세요.
+
+
+
+
+
+
+NOTE: 시간 동기화 구성을 완료한 후에는 NTP를 편집하지 마십시오. 편집하면 NTP가 실행될 때 영향을 받습니다. <<step_6_recover_mnode_redeploy,재배포 명령>> 관리 노드에서.
+
+
+
+== 관리 노드 구성
+
+. 관리 서비스 번들 콘텐츠에 대한 임시 대상 디렉토리를 만듭니다.
++
+[listing]
+----
+mkdir -p /sf/etc/mnode/mnode-archive
+----
+. 기존 관리 노드에 이전에 설치된 관리 서비스 번들(버전 2.15.28 이상)을 다운로드하여 저장합니다. `/sf/etc/mnode/` 예배 규칙서.
+. 다음 명령을 사용하여 다운로드한 번들을 추출하고 [ ] 괄호(괄호 포함) 안의 값을 번들 파일의 이름으로 바꿉니다.
++
+[listing]
+----
+tar -C /sf/etc/mnode -xvf /sf/etc/mnode/[management services bundle file]
+----
+. 결과 파일을 추출합니다. `/sf/etc/mnode-archive` 예배 규칙서:
++
+[listing]
+----
+tar -C /sf/etc/mnode/mnode-archive -xvf /sf/etc/mnode/services_deploy_bundle.tar.gz
+----
+. 계정 및 볼륨에 대한 구성 파일을 만듭니다.
++
+[listing]
+----
+echo '{"trident": true, "mvip": "[mvip IP address]", "account_name": "[persistent volume account name]"}' | sudo tee /sf/etc/mnode/mnode-archive/management-services-metadata.json
+----
++
+.. 다음 필수 매개변수 각각에 대해 [ ] 괄호(괄호 포함) 안의 값을 바꾸세요.
++
+*** *[mvip IP 주소]*: 스토리지 클러스터의 관리 가상 IP 주소입니다. 이전에 사용했던 것과 동일한 스토리지 클러스터로 관리 노드를 구성합니다. link:task_mnode_recover.html#configure-time-sync["NTP 서버 구성"].
+*** *[영구 볼륨 계정 이름]*: 이 스토리지 클러스터의 모든 영구 볼륨과 연결된 계정의 이름입니다.
+
+
+
+
+
+
+[[step_6_recover_mnode_redeploy]]
+. 클러스터에 호스팅된 영구 볼륨에 연결하고 이전 관리 노드 구성 데이터로 서비스를 시작하려면 관리 노드 재배포 명령을 구성하고 실행하세요.
++
+
+NOTE: 보안 프롬프트에서 비밀번호를 입력하라는 메시지가 표시됩니다.  클러스터가 프록시 서버 뒤에 있는 경우 공용 네트워크에 접속할 수 있도록 프록시 설정을 구성해야 합니다.
+
++
+[listing]
+----
+sudo /sf/packages/mnode/redeploy-mnode --mnode_admin_user [username]
+----
++
+.. [ ] 괄호(괄호 포함) 안의 값을 관리 노드 관리자 계정의 사용자 이름으로 바꾸세요.  이는 관리 노드에 로그인하는 데 사용한 사용자 계정의 사용자 이름일 가능성이 높습니다.
++
+
+NOTE: 사용자 이름을 추가하거나 스크립트에서 정보를 입력하라는 메시지를 표시하도록 할 수 있습니다.
+
+.. 실행하다 `redeploy-mnode` 명령.  재배포가 완료되면 스크립트는 성공 메시지를 표시합니다.
+.. 시스템의 FQDN(정규화된 도메인 이름)을 사용하여 Element 웹 인터페이스(관리 노드 또는 NetApp Hybrid Cloud Control 등)에 액세스하는 경우link:../upgrade/task_hcc_upgrade_management_node.html#reconfigure-authentication-using-the-management-node-rest-api["관리 노드에 대한 인증을 재구성합니다."] .
+
+
+
+
+
+IMPORTANT: 제공하는 SSH 기능link:task_mnode_enable_remote_support_connections.html["NetApp 지원 원격 지원 터널(RST) 세션 액세스"] 관리 서비스 2.18 이상을 실행하는 관리 노드에서는 기본적으로 비활성화됩니다.  이전에 관리 노드에서 SSH 기능을 활성화한 경우 다음이 필요할 수 있습니다.link:task_mnode_ssh_management.html["SSH를 다시 비활성화하세요"] 복구된 관리 노드에서.
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* link:../concepts/concept_solidfire_concepts_volumes.html#persistent-volumes["영구 볼륨"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+

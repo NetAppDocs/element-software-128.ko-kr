@@ -1,0 +1,24 @@
+---
+permalink: storage/task_monitor_fibre_channel_sessions.html 
+sidebar: sidebar 
+keywords: fibre channel sessions, fc, FC, sessions 
+summary: '클러스터에 연결된 파이버 채널 \(FC\) 세션을 볼 수 있습니다.  창에 표시하려는 연결만 포함하도록 정보를 필터링할 수 있습니다.' 
+---
+= 파이버 채널 세션 보기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+클러스터에 연결된 파이버 채널(FC) 세션을 볼 수 있습니다.  창에 표시하려는 연결만 포함하도록 정보를 필터링할 수 있습니다.
+
+. Element UI에서 *보고* > *FC 세션*을 선택합니다.
+. 필터 기준 필드를 보려면 *필터*를 클릭하세요.
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_monitor_fibre_channel_session_details.adoc[파이버 채널 세션 세부 정보]

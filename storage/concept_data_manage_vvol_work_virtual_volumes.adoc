@@ -1,0 +1,41 @@
+---
+permalink: storage/concept_data_manage_vvol_work_virtual_volumes.html 
+sidebar: sidebar 
+keywords: virtual volume, configure vvols, use UI to manage 
+summary: Element UI를 사용하면 가상 볼륨과 관련 스토리지 컨테이너, 프로토콜 엔드포인트, 바인딩 및 호스트에 대한 정보를 보고 작업을 수행할 수 있습니다. 
+---
+= 가상 볼륨 작업
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element UI를 사용하면 가상 볼륨과 관련 스토리지 컨테이너, 프로토콜 엔드포인트, 바인딩 및 호스트에 대한 정보를 보고 작업을 수행할 수 있습니다.
+
+NetApp Element 소프트웨어 스토리지 시스템은 가상 볼륨(VVols) 기능이 비활성화된 상태로 제공됩니다.  Element UI를 통해 vSphere VVol 기능을 수동으로 활성화하는 일회성 작업을 수행해야 합니다.
+
+VVol 기능을 활성화하면 사용자 인터페이스에 VVols 탭이 나타나 VVols 관련 모니터링과 제한된 관리 옵션을 제공합니다.  또한 VASA Provider라는 스토리지 측 소프트웨어 구성 요소는 vSphere에 대한 스토리지 인식 서비스 역할을 합니다.  VVol 생성, 복제, 편집과 같은 대부분의 VVol 명령은 vCenter Server 또는 ESXi 호스트에서 시작되고 VASA 공급자에서 Element 소프트웨어 스토리지 시스템용 Element API로 변환됩니다.  Element UI를 사용하여 스토리지 컨테이너를 생성, 삭제, 관리하고 가상 볼륨을 삭제하는 명령을 시작할 수 있습니다.
+
+Element 소프트웨어 스토리지 시스템에서 가상 볼륨 기능을 사용하는 데 필요한 대부분의 구성은 vSphere에서 이루어집니다.  vCenter에 VASA 공급자를 등록하고, VVol 데이터 저장소를 생성 및 관리하고, 정책에 따라 스토리지를 관리하려면 SolidFire 스토리지 구성 가이드를 위한 VMware vSphere Virtual Volumes_를 참조하세요.
+
+
+NOTE: Element 12.5 및 이전 버전의 경우 단일 vCenter 인스턴스에 두 개 이상의 NetApp Element VASA 공급자를 등록하지 마세요.  두 번째 NetApp Element VASA 공급자가 추가되면 모든 VVOL 데이터 저장소에 액세스할 수 없게 됩니다.
+
+
+NOTE: vCenter에 VASA 공급자를 이미 등록한 경우 업그레이드 패치로 여러 vCenter에 대한 VASA 지원을 사용할 수 있습니다.  설치하려면 VASA39 .tar.gz 파일을 다운로드하세요. https://mysupport.netapp.com/products/element_software/VASA39/index.html["NetApp 소프트웨어 다운로드"] 사이트에 접속하여 매니페스트의 지시를 따르세요.  NetApp Element VASA 공급자는 NetApp 인증서를 사용합니다.  이 패치를 사용하면 인증서가 vCenter에서 수정되지 않고 사용되어 VASA 및 VVols 사용을 위한 여러 vCenter를 지원합니다.  인증서를 수정하지 마세요.  VASA에서는 사용자 정의 SSL 인증서를 지원하지 않습니다.
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* xref:task_data_manage_vvol_enable_virtual_volumes.adoc[가상 볼륨 활성화]
+* xref:task_data_manage_vvol_view_virtual_volume_details.adoc[가상 볼륨 세부 정보 보기]
+* xref:task_data_manage_vvol_delete_a_virtual_volume.adoc[가상 볼륨 삭제]
+* xref:concept_data_manage_vvol_manage_storage_containers.adoc[저장 용기를 만드세요]
+* xref:concept_data_manage_vvol_manage_storage_containers.adoc[저장 컨테이너 편집]
+* xref:concept_data_manage_vvol_manage_storage_containers.adoc[저장 컨테이너 삭제]
+* xref:concept_data_manage_vvol_protocol_endpoints.adoc[프로토콜 엔드포인트]
+* xref:concept_data_manage_vvol_bindings.adoc[바인딩]
+* xref:reference_data_manage_vvol_host_details.adoc[호스트 세부 정보]
+

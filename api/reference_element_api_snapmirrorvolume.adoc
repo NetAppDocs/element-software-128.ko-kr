@@ -1,0 +1,107 @@
+---
+permalink: api/reference_element_api_snapmirrorvolume.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVolume 
+summary: snapMirrorVolume 개체에는 ONTAP 볼륨에 대한 정보가 포함되어 있습니다. 
+---
+= 스냅미러볼륨
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorVolume 개체에는 ONTAP 볼륨에 대한 정보가 포함되어 있습니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+스냅미러엔드포인트ID
+ a| 
+대상 ONTAP 시스템의 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+이름
+ a| 
+볼륨의 이름입니다.
+ a| 
+끈
+
+
+
+ a| 
+유형
+ a| 
+볼륨의 유형. 가능한 값:
+
+* rw: 읽기-쓰기 볼륨
+* ls: 부하 공유 볼륨
+* dp: 데이터 보호 볼륨
+
+ a| 
+끈
+
+
+
+ a| 
+v서버
+ a| 
+이 볼륨을 소유한 Vserver의 이름입니다.
+ a| 
+끈
+
+
+
+ a| 
+aggrName
+ a| 
+포함된 집계 이름입니다.
+ a| 
+끈
+
+
+
+ a| 
+상태
+ a| 
+볼륨의 상태. 가능한 값:
+
+* 온라인
+* 제한된
+* 오프라인
+* 혼합
+
+ a| 
+끈
+
+
+
+ a| 
+크기
+ a| 
+볼륨의 전체 파일 시스템 크기(바이트)입니다.
+ a| 
+끈
+
+
+
+ a| 
+사용 가능 크기
+ a| 
+볼륨에서 사용 가능한 공간의 크기(바이트)입니다.
+ a| 
+끈
+
+|===

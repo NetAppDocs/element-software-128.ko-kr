@@ -1,0 +1,38 @@
+---
+permalink: setup/concept_setup_fc_configure_a_fibre_channel_node.html 
+sidebar: sidebar 
+keywords:  
+summary: '파이버 채널 노드를 사용하면 클러스터를 파이버 채널 네트워크 패브릭에 연결할 수 있습니다.  파이버 채널 노드는 쌍으로 추가되며 활성-활성 모드로 작동합니다. (모든 노드가 클러스터의 트래픽을 적극적으로 처리합니다.)  Element 소프트웨어 버전 9.0 이상을 실행하는 클러스터는 최대 4개의 노드를 지원하고, 이전 버전을 실행하는 클러스터는 최대 2개의 노드를 지원합니다.' 
+---
+= 파이버 채널 노드 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+파이버 채널 노드를 사용하면 클러스터를 파이버 채널 네트워크 패브릭에 연결할 수 있습니다.  파이버 채널 노드는 쌍으로 추가되며 활성-활성 모드(모든 노드가 클러스터의 트래픽을 적극적으로 처리)로 작동합니다.  Element 소프트웨어 버전 9.0 이상을 실행하는 클러스터는 최대 4개의 노드를 지원하고, 이전 버전을 실행하는 클러스터는 최대 2개의 노드를 지원합니다.
+
+파이버 채널 노드를 구성하기 전에 다음 조건이 충족되는지 확인해야 합니다.
+
+* 최소 두 개의 파이버 채널 노드가 파이버 채널 스위치에 연결되어 있습니다.
+* 모든 SolidFire 파이버 채널 포트는 파이버 채널 패브릭에 연결되어야 합니다.  4개의 SolidFire Bond10G 네트워크 연결은 스위치 수준에서 하나의 LACP 본드 그룹에 연결되어야 합니다.  이를 통해 파이버 채널 시스템에서 최상의 전반적인 성능을 얻을 수 있습니다.
+* 이 NetApp 기술 자료 문서에 포함된 파이버 채널 클러스터에 대한 모든 모범 사례를 검토하고 검증합니다.
++
+https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/SolidFire_FC_cluster_best_practice["SolidFire FC 클러스터 모범 사례"]
+
+
+
+네트워크 및 클러스터 구성 단계는 파이버 채널 노드와 스토리지 노드에서 동일합니다.
+
+Fibre Channel 노드와 SolidFire 스토리지 노드가 있는 새 클러스터를 만들면 노드의 WWPN(Worldwide Port Name) 주소를 Element UI에서 사용할 수 있습니다.  WWPN 주소를 사용하여 파이버 채널 스위치를 구역화할 수 있습니다.
+
+WWPN은 노드가 있는 새 클러스터를 만들 때 시스템에 등록됩니다.  Element UI에서 FC 포트 탭의 WWPN 열에서 WWPN 주소를 찾을 수 있습니다. 이 탭은 클러스터 탭에서 액세스할 수 있습니다.
+
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:task_setup_fc_add_fibre_channel_nodes_to_a_cluster.adoc[클러스터에 파이버 채널 노드 추가]
+
+xref:task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.adoc[파이버 채널 노드가 있는 새 클러스터를 만듭니다.]

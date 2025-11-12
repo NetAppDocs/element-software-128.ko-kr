@@ -1,0 +1,60 @@
+---
+section: mnode
+title: 관리 노드로 작업
+entries:
+- title: 관리 노드 개요
+  url: "/mnode/task_mnode_work_overview.html"
+- title: 관리 노드 설치 또는 복구
+  entries:
+  - title: 관리 노드 설치
+    url: "/mnode/task_mnode_install.html"
+  - title: vCenter에서 NetApp HCC 역할 생성
+    url: "/mnode/task_mnode_create_netapp_hcc_role_vcenter.html"
+  - title: 스토리지 네트워크 인터페이스 컨트롤러(NIC) 구성
+    url: "/mnode/task_mnode_install_add_storage_NIC.html"
+  - title: 관리 노드 복구
+    url: "/mnode/task_mnode_recover.html"
+- title: 관리 노드에 접근
+  url: "/mnode/task_mnode_access_ui.html"
+- title: 관리 노드 기본 SSL 인증서 변경
+  url: "/mnode/reference_change_mnode_default_ssl_certificate.html"
+- title: 관리 노드 UI 작업
+  entries:
+  - title: 관리 노드 UI 개요
+    url: "/mnode/task_mnode_work_overview_UI.html"
+  - title: 알림 모니터링 구성
+    url: "/mnode/task_mnode_enable_alerts.html"
+  - title: 관리 노드 네트워크, 클러스터 및 시스템 설정을 수정하고 테스트합니다.
+    url: "/mnode/task_mnode_settings.html"
+  - title: 관리 노드에서 시스템 유틸리티 실행
+    url: "/mnode/task_mnode_run_system_utilities.html"
+- title: 관리 노드 REST API로 작업
+  entries:
+  - title: 관리 노드 REST API UI 개요
+    url: "/mnode/task_mnode_work_overview_API.html"
+  - title: REST API 사용 권한 얻기
+    url: "/mnode/task_mnode_api_get_authorizationtouse.html"
+  - title: Active IQ 및 NetApp 모니터링 활성화
+    url: "/mnode/task_mnode_enable_activeIQ.html"
+  - title: 여러 vCenter에 대한 NetApp Hybrid Cloud Control 구성
+    url: "/mnode/task_mnode_multi_vcenter_config.html"
+  - title: 관리 노드에 컨트롤러 자산 추가
+    url: "/mnode/task_mnode_add_assets.html"
+  - title: 스토리지 클러스터 자산 생성 및 관리
+    url: "/mnode/task_mnode_manage_storage_cluster_assets.html"
+  - title: 기존 컨트롤러 자산 보기 또는 편집
+    url: "/mnode/task_mnode_edit_vcenter_assets.html"
+  - title: 프록시 서버 구성
+    url: "/mnode/task_mnode_configure_proxy_server.html"
+  - title: 관리 노드 OS 및 서비스 버전 확인
+    url: "/mnode/task_mnode_api_find_mgmt_svcs_version.html"
+  - title: 관리 서비스에서 로그 가져오기
+    url: "/mnode/task_mnode_logs.html"
+- title: 지원 연결 관리
+  entries:
+  - title: 기본 문제 해결을 위해 SSH를 사용하여 스토리지 노드에 액세스
+    url: "/mnode/task_mnode_enable_node_troubleshooting_sessions.html"
+  - title: 원격 NetApp 지원 세션 시작
+    url: "/mnode/task_mnode_enable_remote_support_connections.html"
+  - title: 관리 노드에서 SSH 기능 관리
+    url: "/mnode/task_mnode_ssh_management.html"

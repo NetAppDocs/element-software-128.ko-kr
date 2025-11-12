@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_snapmirrorpolicyrule.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorPolicyRule 
+summary: snapMirrorPolicyRule 개체에는 SnapMirror 정책의 규칙에 대한 정보가 포함되어 있습니다. 
+---
+= 스냅미러정책규칙
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorPolicyRule 개체에는 SnapMirror 정책의 규칙에 대한 정보가 포함되어 있습니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+스냅미러라벨
+ a| 
+확장된 데이터 보호 관계에서 스냅샷 복사 선택에 사용되는 스냅샷 복사 레이블입니다.
+ a| 
+끈
+
+
+
+ a| 
+keepCount
+ a| 
+규칙에 대한 SnapMirror 대상 볼륨에 보관되는 스냅샷 복사본의 최대 수를 지정합니다.
+ a| 
+정수
+
+|===

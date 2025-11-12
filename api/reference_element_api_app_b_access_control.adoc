@@ -1,0 +1,1115 @@
+---
+permalink: api/reference_element_api_app_b_access_control.html 
+sidebar: sidebar 
+keywords: access,control,type 
+summary: 사용 가능한 Element API 메서드는 설정한 액세스 유형에 따라 달라집니다. 
+---
+= 접근 제어
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+사용 가능한 Element API 메서드는 설정한 액세스 유형에 따라 달라집니다.
+
+
+NOTE: Element UI에서는 사용할 수 없는 API를 통해 사용 가능한 액세스 유형이 있습니다.
+
+
+
+== 계정
+
+계정 액세스 유형에는 다음 방법을 사용할 수 있습니다.
+
+|===
+
+
+ a| 
+계정 추가
+
+
+
+ a| 
+ID로 계정 가져오기
+
+
+
+ a| 
+계정 수정
+
+
+
+ a| 
+이름으로 계정 가져오기
+
+
+
+ a| 
+계정 목록
+
+
+
+ a| 
+계정 효율성 얻기
+
+
+
+ a| 
+계정 삭제
+
+|===
+
+
+== 관리자
+
+모든 방법은 관리자 액세스 유형에서 사용 가능합니다.
+
+
+
+== 클러스터 관리자
+
+클러스터 관리자 액세스 유형에는 다음 방법을 사용할 수 있습니다.
+
+|===
+
+
+ a| 
+클러스터 관리자 추가
+
+
+
+ a| 
+백업 대상 목록
+
+
+
+ a| 
+AddInitiatorsToVolumeAccessGroup
+
+
+
+ a| 
+ListBulkVolumeJobs
+
+
+
+ a| 
+AddLdapClusterAdmin
+
+
+
+ a| 
+클러스터 관리자 목록
+
+
+
+ a| 
+가상 네트워크 추가
+
+
+
+ a| 
+클러스터 쌍 목록
+
+
+
+ a| 
+가상 네트워크 추가
+
+
+
+ a| 
+ListNodeFibreChannelPortInfo
+
+
+
+ a| 
+볼륨액세스그룹에 볼륨 추가
+
+
+
+ a| 
+백업 대상 목록
+
+
+
+ a| 
+여러 볼륨 복제
+
+
+
+ a| 
+ListDriveHardware
+
+
+
+ a| 
+클러스터 페어링 완료
+
+
+
+ a| 
+ListFibreChannelSessions
+
+
+
+ a| 
+CompleteVolumePairing
+
+
+
+ a| 
+ListFibreChannelPortInfo
+
+
+
+ a| 
+백업 대상 생성
+
+
+
+ a| 
+ListGroupSnapshots
+
+
+
+ a| 
+일정 만들기
+
+
+
+ a| 
+ListActivePairedVolumes
+
+
+
+ a| 
+스냅샷 만들기
+
+
+
+ a| 
+백업 대상 수정
+
+
+
+ a| 
+CreateSupportBundle
+
+
+
+ a| 
+클러스터 관리자 수정
+
+
+
+ a| 
+클러스터 지원 번들 생성
+
+
+
+ a| 
+그룹 스냅샷 수정
+
+
+
+ a| 
+그룹 스냅샷 만들기
+
+
+
+ a| 
+클러스터 전체 임계값 수정
+
+
+
+ a| 
+볼륨 액세스 그룹 생성
+
+
+
+ a| 
+볼륨 액세스 그룹 수정
+
+
+
+ a| 
+모든 지원 번들 삭제
+
+
+
+ a| 
+볼륨 액세스 그룹 LUN 할당 수정
+
+
+
+ a| 
+스냅샷 삭제
+
+
+
+ a| 
+볼륨 쌍 수정
+
+
+
+ a| 
+그룹 스냅샷 삭제
+
+
+
+ a| 
+가상 네트워크 수정
+
+
+
+ a| 
+볼륨 액세스 그룹 삭제
+
+
+
+ a| 
+클러스터 관리자 제거
+
+
+
+ a| 
+휴지상태에서 암호화 비활성화
+
+
+
+ a| 
+볼륨 쌍 제거
+
+
+
+ a| 
+DisableLdapAuthentication
+
+
+
+ a| 
+가상 네트워크 제거
+
+
+
+ a| 
+DisableSnmp
+
+
+
+ a| 
+볼륨 액세스 그룹에서 볼륨 제거
+
+
+
+ a| 
+휴지상태에서 암호화 활성화
+
+
+
+ a| 
+볼륨 액세스 그룹에서 이니시에이터 제거
+
+
+
+ a| 
+LDAP 인증 활성화
+
+
+
+ a| 
+스냅샷으로 롤백
+
+
+
+ a| 
+EnableSnmp
+
+
+
+ a| 
+그룹 스냅샷으로 롤백
+
+
+
+ a| 
+백업 대상 가져오기
+
+
+
+ a| 
+로그인 세션 정보 설정
+
+
+
+ a| 
+GetClusterFullThreshold
+
+
+
+ a| 
+SetNtpInfo
+
+
+
+ a| 
+클러스터마스터노드ID 가져오기
+
+
+
+ a| 
+SetSnmpACL
+
+
+
+ a| 
+하드웨어 구성 가져오기
+
+
+
+ a| 
+SetSnmpInfo
+
+
+
+ a| 
+GetLdapConfiguration
+
+
+
+ a| 
+SetSnmpTrapInfo
+
+
+
+ a| 
+로그인 세션 정보 가져오기
+
+
+
+ a| 
+원격로깅호스트 설정
+
+
+
+ a| 
+GetNtpInfo
+
+
+
+ a| 
+일시 휴업
+
+
+
+ a| 
+GetNvramInfo
+
+
+
+ a| 
+대량 볼륨 읽기 시작
+
+
+
+ a| 
+GetRawStats
+
+
+
+ a| 
+시작대량볼륨쓰기
+
+
+
+ a| 
+GetSnmpACL
+
+
+
+ a| 
+클러스터 페어링 시작
+
+
+
+ a| 
+볼륨 액세스 그룹 효율성 가져오기
+
+
+
+ a| 
+볼륨 페어링 시작
+
+
+
+ a| 
+볼륨 액세스 LUN 할당 가져오기
+
+
+
+ a| 
+TestLdap 인증
+
+
+
+ a| 
+가상네트워크 가져오기
+
+
+
+ a| 
+
+|===
+
+
+== 드라이브
+
+드라이브 액세스 유형에는 다음 방법을 사용할 수 있습니다.
+
+|===
+
+
+ a| 
+드라이브 목록
+
+
+
+ a| 
+드라이브 제거
+
+
+
+ a| 
+드라이브 추가
+
+
+
+ a| 
+보안 삭제 드라이브
+
+|===
+
+
+== 노드
+
+노드 접근 유형에는 다음 방법을 사용할 수 있습니다.
+
+|===
+
+
+ a| 
+노드 추가
+
+
+
+ a| 
+ListPendingNodes
+
+
+
+ a| 
+ListActiveNodes
+
+
+
+ a| 
+노드 제거
+
+|===
+
+
+== 읽다
+
+읽기 액세스 유형에는 다음 메서드를 사용할 수 있습니다.
+
+|===
+
+
+ a| 
+ID로 계정 가져오기
+
+
+
+ a| 
+ListCloneJobs
+
+
+
+ a| 
+이름으로 계정 가져오기
+
+
+
+ a| 
+삭제된 볼륨 목록
+
+
+
+ a| 
+비동기 결과 가져오기
+
+
+
+ a| 
+ListDriveHardware
+
+
+
+ a| 
+클러스터 용량 가져오기
+
+
+
+ a| 
+드라이브 목록
+
+
+
+ a| 
+기본 QoS 가져오기
+
+
+
+ a| 
+이벤트 목록
+
+
+
+ a| 
+드라이브 통계 가져오기
+
+
+
+ a| 
+ListISCSISessions
+
+
+
+ a| 
+소프트웨어 업그레이드 받기
+
+
+
+ a| 
+ListPendingNodes
+
+
+
+ a| 
+볼륨 통계 가져오기
+
+
+
+ a| 
+ListSyncJobs
+
+
+
+ a| 
+계정 목록
+
+
+
+ a| 
+볼륨 액세스 그룹 목록
+
+
+
+ a| 
+ListActiveNodes
+
+
+
+ a| 
+계정별 볼륨 통계 목록
+
+
+
+ a| 
+ListActiveNodes
+
+
+
+ a| 
+볼륨별 통계 목록
+
+
+
+ a| 
+ListActiveVolumes
+
+
+
+ a| 
+목록볼륨통계별볼륨액세스그룹
+
+
+
+ a| 
+모든 노드 나열
+
+
+
+ a| 
+계정 볼륨 목록
+
+
+
+ a| 
+백업 대상 목록
+
+|===
+
+
+== 보고
+
+보고 액세스 유형에는 다음 방법을 사용할 수 있습니다.
+
+|===
+
+
+ a| 
+클리어클러스터폴트
+
+
+
+ a| 
+볼륨 효율성 얻기
+
+
+
+ a| 
+계정 효율성 얻기
+
+
+
+ a| 
+볼륨 통계 가져오기
+
+
+
+ a| 
+클러스터 용량 가져오기
+
+
+
+ a| 
+ListCloneJobs
+
+
+
+ a| 
+GetClusterHardwareInfo
+
+
+
+ a| 
+ListClusterFaults
+
+
+
+ a| 
+클러스터 정보 가져오기
+
+
+
+ a| 
+클러스터 쌍 목록
+
+
+
+ a| 
+클러스터마스터노드ID 가져오기
+
+
+
+ a| 
+ListDriveHardware
+
+
+
+ a| 
+클러스터 통계 가져오기
+
+
+
+ a| 
+이벤트 목록
+
+
+
+ a| 
+드라이브 하드웨어 정보 가져오기
+
+
+
+ a| 
+ListISCSISessions
+
+
+
+ a| 
+드라이브 통계 가져오기
+
+
+
+ a| 
+목록 일정
+
+
+
+ a| 
+GetNetworkConfig
+
+
+
+ a| 
+리스트서비스
+
+
+
+ a| 
+노드 하드웨어 정보 가져오기
+
+
+
+ a| 
+ListSyncJobs
+
+
+
+ a| 
+노드 통계 가져오기
+
+
+
+ a| 
+가상 네트워크 목록
+
+
+
+ a| 
+GetSnmpInfo
+
+
+
+ a| 
+계정별 볼륨 통계 목록
+
+
+
+ a| 
+GetSnmpTrapInfo
+
+
+
+ a| 
+볼륨별 통계 목록
+
+
+
+ a| 
+볼륨 액세스 그룹 효율성 가져오기
+
+
+
+ a| 
+목록볼륨통계별볼륨액세스그룹
+
+|===
+
+
+== 저장소
+
+ListAllNodes 메서드는 저장소 액세스 유형에서 사용할 수 있습니다.
+
+
+
+== 볼륨
+
+볼륨 액세스 유형에는 다음 방법을 사용할 수 있습니다.
+
+|===
+
+
+ a| 
+볼륨 생성
+
+
+
+ a| 
+볼륨 삭제
+
+
+
+ a| 
+백업 대상 수정
+
+
+
+ a| 
+클론볼륨
+
+
+
+ a| 
+볼륨 페어링 삭제
+
+
+
+ a| 
+볼륨 수정
+
+
+
+ a| 
+여러 볼륨 복제
+
+
+
+ a| 
+백업 대상 가져오기
+
+
+
+ a| 
+볼륨 쌍 수정
+
+
+
+ a| 
+백업 대상 생성
+
+
+
+ a| 
+기본 QoS 가져오기
+
+
+
+ a| 
+삭제된 볼륨 제거
+
+
+
+ a| 
+스냅샷 만들기
+
+
+
+ a| 
+ListActiveVolumes
+
+
+
+ a| 
+백업 대상 제거
+
+
+
+ a| 
+그룹 스냅샷 만들기
+
+
+
+ a| 
+백업 대상 목록
+
+
+
+ a| 
+볼륨 쌍 제거
+
+
+
+ a| 
+CompleteVolumePairing
+
+
+
+ a| 
+ListGroupSnapshots
+
+
+
+ a| 
+삭제된 볼륨 복원
+
+
+
+ a| 
+여러 볼륨 복제
+
+
+
+ a| 
+계정 볼륨 목록
+
+
+
+ a| 
+그룹 스냅샷으로 롤백
+
+
+
+ a| 
+그룹 스냅샷 삭제
+
+
+
+ a| 
+삭제된 볼륨 목록
+
+
+
+ a| 
+스냅샷으로 롤백
+
+
+
+ a| 
+스냅샷 삭제
+
+
+
+ a| 
+ListGroupSnapshots
+
+
+
+ a| 
+대량 볼륨 읽기 시작
+
+
+
+ a| 
+시작대량볼륨쓰기
+
+
+
+ a| 
+볼륨 페어링 시작
+
+
+
+ a| 
+대량 볼륨 상태 업데이트
+
+|===
+
+
+== 쓰다
+
+쓰기 액세스 유형에는 다음 메서드를 사용할 수 있습니다.
+
+|===
+
+
+ a| 
+드라이브 추가
+
+
+
+ a| 
+노드 제거
+
+
+
+ a| 
+노드 추가
+
+
+
+ a| 
+계정 삭제
+
+
+
+ a| 
+계정 추가
+
+
+
+ a| 
+볼륨 액세스 그룹에서 볼륨 제거
+
+
+
+ a| 
+볼륨 액세스 그룹에 볼륨 추가
+
+
+
+ a| 
+볼륨 액세스 그룹에서 이니시에이터 제거
+
+
+
+ a| 
+AddInitiatorsToVolumeAccessGroup
+
+
+
+ a| 
+볼륨 액세스 그룹 삭제
+
+
+
+ a| 
+볼륨 액세스 그룹 생성
+
+
+
+ a| 
+볼륨 삭제
+
+
+
+ a| 
+볼륨 액세스 그룹 수정
+
+
+
+ a| 
+삭제된 볼륨 복원
+
+
+
+ a| 
+계정 수정
+
+
+
+ a| 
+삭제된 볼륨 제거
+
+
+
+ a| 
+볼륨 생성
+
+
+
+ a| 
+볼륨 수정
+
+
+
+ a| 
+클론볼륨
+
+
+
+ a| 
+비동기 결과 가져오기
+
+
+
+ a| 
+드라이브 제거
+
+|===
+.관련 정보
+link:../storage/concept_system_manage_manage_cluster_administrator_users.html#view-cluster-admin-details["Element UI에서 사용 가능한 액세스 유형에 대해 알아보세요."]

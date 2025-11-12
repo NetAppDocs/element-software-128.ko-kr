@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_attributes.html 
+sidebar: sidebar 
+keywords: QoS,object,Quality,Service 
+summary: 많은 API 요청과 응답은 간단한 유형뿐만 아니라 객체도 사용합니다.  객체는 키-값 쌍의 컬렉션이며, 여기서 값은 간단한 유형이거나 다른 객체일 수 있습니다.  속성은 사용자가 JSON 객체로 설정할 수 있는 사용자 정의 이름-값 쌍입니다.  일부 방법을 사용하면 객체를 생성하거나 수정할 때 속성을 추가할 수 있습니다. 
+---
+= 속성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+많은 API 요청과 응답은 간단한 유형뿐만 아니라 객체도 사용합니다.  객체는 키-값 쌍의 컬렉션이며, 여기서 값은 간단한 유형이거나 다른 객체일 수 있습니다.  속성은 사용자가 JSON 객체로 설정할 수 있는 사용자 정의 이름-값 쌍입니다.  일부 방법을 사용하면 객체를 생성하거나 수정할 때 속성을 추가할 수 있습니다.
+
+인코딩된 속성 객체에는 1000바이트 제한이 있습니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+속성
+ a| 
+JSON 객체 형식의 이름-값 쌍 목록입니다.
+ a| 
+JSON 객체
+
+|===
+
+
+== 요청 예시
+
+다음 요청 예제에서는 AddClusterAdmin 메서드를 사용합니다.
+
+[listing]
+----
+{
+   "method": "AddClusterAdmin",
+   "params": {
+      "username": "joeadmin",
+      "password": "68!5Aru268)$",
+      "access": [
+         "volume",
+         "reporting"
+      ],
+      "attributes": {
+         "name1": "value1",
+         "name2": "value2",
+         "name3": "value3"
+      }
+   }
+}
+----

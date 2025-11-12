@@ -1,0 +1,37 @@
+---
+permalink: storage/index.html 
+sidebar: sidebar 
+keywords:  
+summary:  
+---
+= Element 소프트웨어로 스토리지 관리
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 소프트웨어를 사용하여 SolidFire 스토리지를 설정하고, 클러스터 용량과 성능을 모니터링하고, 멀티 테넌트 인프라 전반에서 스토리지 활동을 관리하세요.
+
+Element는 SolidFire 클러스터의 핵심인 스토리지 운영 체제입니다.  Element 소프트웨어는 클러스터의 모든 노드에서 독립적으로 실행되며, 클러스터의 노드가 리소스를 결합하고 외부 클라이언트에 단일 스토리지 시스템으로 제공할 수 있도록 합니다.  Element 소프트웨어는 시스템 전체의 모든 클러스터 조정, 규모 및 관리를 담당합니다.
+
+소프트웨어 인터페이스는 Element API를 기반으로 구축되었습니다.
+
+* link:task_post_deploy_access_the_element_software_user_interface.html["Element 소프트웨어 사용자 인터페이스에 액세스하세요"]
+* link:task_post_deploy_configure_system_options.html["배포 후 SolidFire 시스템 옵션 구성"]
+* link:../upgrade/concept_element_upgrade_overview.html["스토리지 시스템 구성 요소 업그레이드"]
+* link:task_intro_use_basic_options_in_the_element_software_ui.html["Element 소프트웨어 UI에서 기본 옵션 사용"]
+* link:concept_system_manage_accounts_overview.html["계정 관리"]
+* link:concept_system_manage_system_management.html["시스템 관리"]
+* link:concept_data_manage_data_management.html["볼륨 및 가상 볼륨 관리"]
+* link:concept_data_protection.html["데이터를 보호하세요"]
+* link:concept_system_monitoring_and_troubleshooting.html["시스템 문제 해결"]
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

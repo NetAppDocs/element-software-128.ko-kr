@@ -1,0 +1,83 @@
+---
+permalink: api/reference_element_api_clearclusterfaults.html 
+sidebar: sidebar 
+keywords: cluster,clear,clearing,fault,faults,support bundles,ClearClusterFaults 
+summary: ClearClusterFaults 메서드를 사용하면 현재 감지된 오류와 이전에 감지된 오류에 대한 정보를 지울 수 있습니다.  해결된 오류와 해결되지 않은 오류 모두 지울 수 있습니다. 
+---
+= 클리어클러스터폴트
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `ClearClusterFaults` 현재 및 이전에 감지된 오류에 대한 정보를 지우는 방법입니다.  해결된 오류와 해결되지 않은 오류 모두 지울 수 있습니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+오류 유형
+ a| 
+제거할 오류 유형을 결정합니다. 가능한 값:
+
+* 현재의:
++
+현재 감지되었지만 아직 해결되지 않은 오류입니다.
+
+* 해결됨: 이전에 감지되어 해결된 오류입니다.
+* 모두: 현재 오류와 해결된 오류 모두.  오류 상태는 오류 객체의 "`resolved`" 필드를 통해 확인할 수 있습니다.
+
+ a| 
+끈
+ a| 
+해결됨
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드에는 반환 값이 없습니다.
+
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "ClearClusterFaults",
+   "params": {},
+  "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id" : 1,
+    "result" : {}
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

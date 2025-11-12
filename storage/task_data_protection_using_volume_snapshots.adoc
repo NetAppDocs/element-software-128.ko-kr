@@ -1,0 +1,29 @@
+---
+permalink: storage/task_data_protection_using_volume_snapshots.html 
+sidebar: sidebar 
+keywords: data protection, volume snapshots, roll back volume, replicate snapshots 
+summary: 볼륨 스냅샷은 볼륨의 특정 시점 복사본입니다.  볼륨의 스냅샷을 만든 다음 나중에 스냅샷을 사용하여 스냅샷이 생성된 시점의 상태로 볼륨을 롤백할 수 있습니다. 
+---
+= 데이터 보호를 위해 볼륨 스냅샷을 사용하세요
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+볼륨 스냅샷은 볼륨의 특정 시점 복사본입니다.  볼륨의 스냅샷을 만든 다음 나중에 스냅샷을 사용하여 스냅샷이 생성된 시점의 상태로 볼륨을 롤백할 수 있습니다.
+
+스냅샷은 볼륨 클론과 비슷합니다.  하지만 스냅샷은 단순히 볼륨 메타데이터의 복제본일 뿐이므로 마운트하거나 쓸 수 없습니다.  볼륨 스냅샷을 만드는 데는 시스템 리소스와 공간도 적게 사용되므로 복제보다 스냅샷을 만드는 속도가 더 빠릅니다.
+
+개별 볼륨이나 볼륨 세트의 스냅샷을 찍을 수 있습니다.
+
+선택적으로 스냅샷을 원격 클러스터에 복제하여 볼륨의 백업 사본으로 사용할 수 있습니다.  복제된 스냅샷을 사용하여 볼륨을 특정 시점으로 롤백할 수 있습니다.  또는 복제된 스냅샷에서 볼륨의 복제본을 만들 수 있습니다.
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* xref:task_data_protection_use_individual_volume_snapshots.adoc[데이터 보호를 위해 개별 볼륨 스냅샷을 사용하세요]
+* xref:task_data_protection_use_group_snapshots_for_data_protection.adoc[데이터 보호 작업을 위한 그룹 스냅샷 사용]
+* xref:task_data_protection_schedule_a_snapshot_task.adoc[스냅샷 예약]
+

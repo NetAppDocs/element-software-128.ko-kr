@@ -1,0 +1,70 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview.html 
+summary: '관리 노드(mNode)를 사용하면 시스템 서비스를 사용하고, 클러스터 자산과 설정을 관리하고, 시스템 테스트와 유틸리티를 실행하고, 시스템 모니터링을 위해 Active IQ 구성하고, 문제 해결을 위해 NetApp 지원 액세스를 활성화할 수 있습니다.' 
+keywords: netapp, mnode, api, rest api, mnode ui, management node ui 
+---
+= 관리 노드 개요
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+관리 노드(mNode)를 사용하면 시스템 서비스를 사용하고, 클러스터 자산과 설정을 관리하고, 시스템 테스트와 유틸리티를 실행하고, 시스템 모니터링을 위해 Active IQ 구성하고, 문제 해결을 위해 NetApp 지원 액세스를 활성화할 수 있습니다.
+
+
+NOTE: 모범 사례로, 하나의 관리 노드만 하나의 VMware vCenter 인스턴스에 연결하고, 여러 관리 노드에서 동일한 스토리지 및 컴퓨팅 리소스나 vCenter 인스턴스를 정의하지 마세요.
+
+Element 소프트웨어 버전 11.3 이상을 실행하는 클러스터의 경우 다음 두 인터페이스 중 하나를 사용하여 관리 노드로 작업할 수 있습니다.
+
+* 관리 노드 UI를 사용하여(`https://[mNode IP]:442` ), 네트워크 및 클러스터 설정을 변경하고, 시스템 테스트를 실행하거나 시스템 유틸리티를 사용할 수 있습니다.
+* 내장된 REST API UI를 사용하여(`https://[mNode IP]/mnode` ), 프록시 서버 구성, 서비스 수준 업데이트 또는 자산 관리를 포함하여 관리 노드 서비스와 관련된 API를 실행하거나 이해할 수 있습니다.
+
+
+관리 노드 설치 또는 복구:
+
+* link:task_mnode_install.html["관리 노드 설치"]
+* link:task_mnode_install_add_storage_NIC.html["스토리지 네트워크 인터페이스 컨트롤러(NIC) 구성"]
+* link:task_mnode_recover.html["관리 노드 복구"]
+
+
+관리 노드에 접근하세요:
+
+* link:task_mnode_access_ui.html["관리 노드(UI 또는 REST API)에 액세스합니다."]
+
+
+기본 SSL 인증서를 변경합니다.
+
+* link:reference_change_mnode_default_ssl_certificate.html["관리 노드 기본 SSL 인증서 변경"]
+
+
+관리 노드 UI로 작업 수행:
+
+* link:task_mnode_work_overview_UI.html["관리 노드 UI 개요"]
+
+
+관리 노드 REST API를 사용하여 작업 수행:
+
+* link:task_mnode_work_overview_API.html["관리 노드 REST API UI 개요"]
+
+
+NetApp 지원팀과 원격 SSH 기능을 비활성화하거나 활성화하거나 원격 지원 터널 세션을 시작하여 문제 해결을 도와주세요.
+
+* link:task_mnode_enable_node_troubleshooting_sessions.html["기본 문제 해결을 위해 SSH를 사용하여 스토리지 노드에 액세스"]
++
+** link:task_mnode_enable_remote_support_connections.html["원격 NetApp 지원 연결 활성화"]
+** link:task_mnode_ssh_management.html["관리 노드에서 SSH 기능 관리"]
+
+
+
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+

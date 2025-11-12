@@ -1,0 +1,67 @@
+---
+permalink: api/concept_element_api_volume_api_methods.html 
+sidebar: sidebar 
+keywords: volume,API,method,methods 
+summary: Element 소프트웨어 볼륨 API 메서드를 사용하면 스토리지 노드에 있는 볼륨을 관리할 수 있습니다.  이러한 방법을 사용하여 볼륨을 생성, 수정, 복제 및 삭제할 수 있습니다.  볼륨 API 메서드를 사용하여 볼륨에 대한 데이터 측정값을 수집하고 표시할 수도 있습니다. 
+---
+= 볼륨 API 메서드
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 소프트웨어 볼륨 API 메서드를 사용하면 스토리지 노드에 있는 볼륨을 관리할 수 있습니다.  이러한 방법을 사용하여 볼륨을 생성, 수정, 복제 및 삭제할 수 있습니다.  볼륨 API 메서드를 사용하여 볼륨에 대한 데이터 측정값을 수집하고 표시할 수도 있습니다.
+
+* xref:reference_element_api_cancelclone.adoc[복제 취소]
+* xref:reference_element_api_cancelgroupclone.adoc[그룹 복제 취소]
+* xref:reference_element_api_clonemultiplevolumes.adoc[여러 볼륨 복제]
+* xref:reference_element_api_clonevolume.adoc[클론볼륨]
+* xref:reference_element_api_copyvolume.adoc[복사 볼륨]
+* xref:reference_element_api_createqospolicy.adoc[CreateQoSPolicy]
+* xref:reference_element_api_createvolume.adoc[볼륨 생성]
+* xref:reference_element_api_createbackuptarget.adoc[백업 대상 생성]
+* xref:reference_element_api_deleteqospolicy.adoc[DeleteQoSPolicy]
+* xref:reference_element_api_deletevolume.adoc[볼륨 삭제]
+* xref:reference_element_api_deletevolumes.adoc[볼륨 삭제]
+* xref:reference_element_api_getbackuptarget.adoc[백업 대상 가져오기]
+* xref:reference_element_api_getvolumestats.adoc[볼륨 통계 가져오기]
+* xref:reference_element_api_getdefaultqos.adoc[기본 QoS 가져오기]
+* xref:reference_element_api_getqospolicy.adoc[GetQoSPolicy]
+* xref:reference_element_api_getvolumecount.adoc[볼륨 카운트 가져오기]
+* xref:reference_element_api_getvolumeefficiency.adoc[볼륨 효율성 얻기]
+* xref:reference_element_api_listactivevolumes.adoc[ListActiveVolumes]
+* xref:reference_element_api_listbackuptargets.adoc[백업 대상 목록]
+* xref:reference_element_api_listbulkvolumejobs.adoc[ListBulkVolumeJobs]
+* xref:reference_element_api_listdeletedvolumes.adoc[삭제된 볼륨 목록]
+* xref:reference_element_api_listqospolicies.adoc[ListQoSPolicies]
+* xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]
+* xref:reference_element_api_listvolumeqoshistograms.adoc[ListVolumeQoSHistograms]
+* xref:reference_element_api_listvolumes.adoc[볼륨 목록]
+* xref:reference_element_api_listvolumestats.adoc[볼륨 통계 목록]
+* xref:reference_element_api_listvolumesforaccount.adoc[계정 볼륨 목록]
+* xref:reference_element_api_listvolumestatsbyaccount.adoc[계정별 볼륨 통계 목록]
+* xref:reference_element_api_listvolumestatsbyvirtualvolume.adoc[목록볼륨통계별가상볼륨]
+* xref:reference_element_api_listvolumestatsbyvolume.adoc[볼륨별 통계 목록]
+* xref:reference_element_api_listvolumestatsbyvolumeaccessgroup.adoc[목록볼륨통계별볼륨액세스그룹]
+* xref:reference_element_api_modifybackuptarget.adoc[백업 대상 수정]
+* xref:reference_element_api_modifyqospolicy.adoc[QoSPolicy 수정]
+* xref:reference_element_api_modifyvolume.adoc[볼륨 수정]
+* xref:reference_element_api_modifyvolumes.adoc[볼륨 수정]
+* xref:reference_element_api_purgedeletedvolume.adoc[삭제된 볼륨 제거]
+* xref:reference_element_api_purgedeletedvolumes.adoc[삭제된 볼륨 제거]
+* xref:reference_element_api_removebackuptarget.adoc[백업 대상 제거]
+* xref:reference_element_api_restoredeletedvolume.adoc[삭제된 볼륨 복원]
+* xref:reference_element_api_setdefaultqos.adoc[기본 QoS 설정]
+* xref:reference_element_api_startbulkvolumeread.adoc[대량 볼륨 읽기 시작]
+* xref:reference_element_api_startbulkvolumewrite.adoc[시작대량볼륨쓰기]
+* xref:reference_element_api_updatebulkvolumestatus.adoc[대량 볼륨 상태 업데이트]
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

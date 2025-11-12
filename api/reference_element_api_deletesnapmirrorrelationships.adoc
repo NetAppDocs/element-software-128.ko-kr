@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_deletesnapmirrorrelationships.html 
+sidebar: sidebar 
+keywords: SnapMirror,relationship,relationships,delete,deleting,DeleteSnapMirrorRelationships 
+summary: Element 웹 UI는 DeleteSnapMirrorRelationships 메서드를 사용하여 소스 엔드포인트와 대상 엔드포인트 간의 하나 이상의 SnapMirror 관계를 제거합니다. 
+---
+= 스냅미러 관계 삭제
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 웹 UI는 다음을 사용합니다. `DeleteSnapMirrorRelationships` 소스 엔드포인트와 대상 엔드포인트 간의 하나 이상의 SnapMirror 관계를 제거하는 방법입니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+스냅미러엔드포인트ID
+ a| 
+Element 스토리지 클러스터와 통신하는 원격 ONTAP 스토리지 시스템의 엔드포인트 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+목적지볼륨
+ a| 
+SnapMirror 관계의 대상 볼륨 또는 볼륨입니다.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[스냅미러볼륨정보]정렬
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+결과
+ a| 
+삭제 작업이 성공하면 이 개체에는 성공 메시지가 포함됩니다.  작업이 실패하면 오류 메시지가 포함됩니다.
+ a| 
+JSON 객체
+
+|===
+
+
+== 버전 이후 새로운
+
+10.1

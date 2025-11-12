@@ -1,0 +1,79 @@
+---
+permalink: api/reference_element_api_removekeyserverfromproviderkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key server,unassigning,removing,remove,unassign,removekeyserverfromproviderkmip 
+summary: 'RemoveKeyServerFromProviderKmip 메서드를 사용하면 지정된 키 관리 상호 운용성 프로토콜(KMIP) 키 서버를 해당 공급자로부터 할당 해제할 수 있습니다.  마지막 키 서버가 아니고 해당 공급자가 활성화되어 있는 경우(현재 사용 중인 키 제공)를 제외하고는 키 서버를 공급자에게 할당 해제할 수 없습니다.  지정된 키 서버가 공급자에게 할당되지 않은 경우 아무런 조치도 취해지지 않으며 오류도 반환되지 않습니다.' 
+---
+= ProviderKmip에서 KeyServer 제거
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `RemoveKeyServerFromProviderKmip` 지정된 키 관리 상호 운용성 프로토콜(KMIP) 키 서버를 할당된 공급자로부터 할당 해제하는 방법입니다.  해당 키 서버가 마지막 키 서버가 아니고 해당 공급자가 활성화되어 있는 경우(현재 사용 중인 키를 제공하는 경우)를 제외하고는 공급자로부터 키 서버의 할당을 해제할 수 있습니다.  지정된 키 서버가 공급자에게 할당되지 않은 경우 아무런 조치도 취해지지 않으며 오류도 반환되지 않습니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+키서버ID
+ a| 
+할당 해제할 KMIP 키 서버의 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드에는 반환 값이 없습니다.  오류가 반환되지 않으면 제거가 성공한 것으로 간주됩니다.
+
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "RemoveKeyServerFromProviderKmip",
+  "params": {
+    "keyServerID": 1
+   },
+"id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+    }
+}
+----
+
+
+== 버전 이후 새로운
+
+11.7

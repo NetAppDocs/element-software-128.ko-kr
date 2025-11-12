@@ -1,0 +1,30 @@
+---
+permalink: storage/task_post_deploy_configure_system_options.html 
+sidebar: sidebar 
+keywords: deployment, post deployment options, credentials, components, FIPS security, passwords, MFA, multifactor authentication, mutli-factor authentication, security, EKM, key management, external key management, FIPS 
+summary: 'SolidFire 시스템을 설정한 후에는 몇 가지 선택적 작업을 수행하고 싶을 수 있습니다.  또한 다중 요소 인증, 외부 키 관리, 연방 정보 처리 표준(FIPS) 보안에 대한 설정을 구성할 수 있습니다.' 
+---
+= 배포 후 SolidFire 시스템 옵션 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire 시스템을 설정한 후에는 몇 가지 선택적 작업을 수행하고 싶을 수 있습니다.
+
+시스템의 자격 증명을 변경하는 경우 다른 구성 요소에 미치는 영향을 알고 싶을 수 있습니다.
+
+또한 다중 인증 요소, 외부 키 관리, FIPS(연방 정보 처리 표준) 보안에 대한 설정을 구성할 수 있습니다.  필요한 경우 비밀번호를 업데이트하는 것도 고려해 보세요.
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* link:task_post_deploy_credentials.html["NetApp HCI 및 NetApp SolidFire 에서 자격 증명 변경"]
+* link:reference_post_deploy_change_default_ssl_certificate.html["Element 소프트웨어 기본 SSL 인증서 변경"]
+* link:task_post_deploy_credential_change_ipmi_password.html["노드의 IPMI 비밀번호 변경"]
+* link:task_system_manage_mfa_set_up_multi_factor_authentication.html["다중 요소 인증 활성화"]
+* link:concept_system_manage_key_get_started_with_external_key_management.html["외부 키 관리 시작하기"]
+* link:task_system_manage_fips_create_a_cluster_supporting_fips_drives.html["FIPS 드라이브를 지원하는 클러스터 만들기"]
+

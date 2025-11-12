@@ -1,0 +1,95 @@
+---
+sidebar: sidebar 
+permalink: upgrade/concept_element_upgrade_overview.html 
+summary: 모든 NetApp 스토리지 구성 요소를 업그레이드하면 배포 후에도 SolidFire Element 스토리지 시스템을 최신 상태로 유지할 수 있습니다. 
+keywords: netapp, solidfire upgrade, vcp upgrade, element upgrade, vsphere upgrade 
+---
+= 업그레이드 시퀀스 개요
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+모든 NetApp 스토리지 구성 요소를 순차적으로 업그레이드하면 배포 후에도 SolidFire Element 스토리지 시스템을 최신 상태로 유지할 수 있습니다.
+
+이러한 구성 요소에는 관리 서비스, NetApp Hybrid Cloud Control, Element 소프트웨어, 관리 노드 및(설치에 따라) vCenter Server용 Element 플러그인이 포함됩니다.
+
+[NOTE]
+====
+* 2023년 11월부터 NetApp Hybrid Cloud Control 또는 REST API를 사용하여 구성 요소 업그레이드를 시작할 수 없습니다. 서명 키 인증서(개인 및 공개)가 2023년 11월 5일에 만료되었기 때문입니다.  이 문제는 다음을 통해 해결할 수 있습니다.link:task_hcc_upgrade_management_node.html["관리 노드의 제자리 업그레이드 수행"] NetApp Hybrid Cloud Control 또는 REST API를 사용하여 관리 서비스, Element 소프트웨어 및 스토리지 펌웨어를 업그레이드하기 전에 버전 12.8로 업그레이드하세요.
++
+버전 12.8로 새 관리 노드를 배포하는 경우 NetApp Hybrid Cloud Control 또는 REST API를 사용하여 다음 순서대로 구성 요소 업그레이드를 수행할 수 있습니다.<<sys_upgrade,시스템 업그레이드 순서>> .
+
+* 다음 노드는 지원되지 않습니다.  이러한 노드 중 하나를 지원되지 않는 Element 버전으로 업그레이드하려고 하면 해당 노드가 Element 12.x에서 지원되지 않는다는 오류가 표시됩니다.
++
+** Element 12.8, SF4805, SF9605, SF19210 및 SF38410 스토리지 노드부터 시작합니다.
+** Element 12.7부터 SF2405 및 SF9608 스토리지 노드와 FC0025 및 SF-FCN-01 FC 노드가 시작됩니다.
+
+
+* Element 12.5부터 NetApp HealthTools는 더 이상 Element 소프트웨어 업그레이드를 지원하지 않습니다.  Element 11.0 또는 11.1을 실행 중인 경우 먼저 다음을 수행해야 합니다. https://docs.netapp.com/us-en/element-software-123/upgrade/task_hcc_upgrade_element_software.html#upgrade-element-software-at-connected-sites-using-healthtools["HealthTools를 사용하여 Element 12.3으로 업그레이드"^] 그런 다음 NetApp Hybrid Cloud Control을 사용하여 Element 12.5 이상으로 업그레이드하세요.
+
+
+====
+그만큼<<sys_upgrade,시스템 업그레이드 순서>> 내용은 SolidFire 올플래시 스토리지 시스템 업그레이드를 완료하는 데 필요한 작업을 설명합니다.  이상적으로 이러한 절차는 단독으로가 아니라 더 큰 업그레이드 시퀀스의 일부로 수행됩니다.  구성 요소 기반 업그레이드나 업데이트가 필요한 경우 절차 전제 조건을 참조하여 추가적인 복잡성을 해결하세요.
+
+그만큼link:task_sf_upgrade_all_vsphere.html["vSphere 업그레이드 시퀀스"] vCenter Server용 Element 플러그인을 포함한 콘텐츠에는 vCenter Server용 Element 플러그인을 다시 설치하는 데 필요한 추가적인 업그레이드 전후 단계가 설명되어 있습니다.
+
+.시작하기 전에
+* 관리 노드 11.3 이상을 실행하고 있습니다.  최신 버전의 관리 노드는 개별 서비스를 제공하는 모듈식 아키텍처를 갖추고 있습니다.
++
+
+TIP: 버전을 확인하려면 관리 노드에 로그인하고 로그인 배너에서 Element 버전 번호를 확인하세요.  11.3이 없으면 다음을 참조하세요.link:task_hcc_upgrade_management_node.html["관리 노드 업그레이드"] .
+
+* 관리 서비스를 최소 2.1.326 버전으로 업그레이드했습니다.
++
+NetApp Hybrid Cloud Control을 사용한 업그레이드는 이전 서비스 번들 버전에서는 제공되지 않습니다.
+
+* 모든 노드의 시스템 시간이 동기화되었고, 스토리지 클러스터와 노드에 대해 NTP가 올바르게 구성되었는지 확인했습니다.  각 노드는 노드별 웹 UI에서 DNS 네임서버로 구성되어야 합니다.(`https://[IP address]:442` ) 시간 왜곡과 관련된 해결되지 않은 클러스터 오류가 없습니다.
+* 당신은 당신의 시간을 충분히 예약했습니다link:task_hcc_upgrade_element_software.html#element-upgrade-time["엘리먼트 소프트웨어"] 그리고link:task_hcc_upgrade_storage_firmware.html#storage-firmware-upgrade["저장 펌웨어"] 업그레이드.  Element 소프트웨어 12.5 이상으로 업그레이드하는 경우, 업그레이드 프로세스 시간은 Element 소프트웨어 버전과 펌웨어 업데이트에 따라 다릅니다.
+
+
+
+
+== [[sys_upgrade]]시스템 업그레이드 순서
+
+다음 시퀀스를 사용하여 NetApp SolidFire 올플래시 스토리지 시스템을 Element 12.5 이상으로 업그레이드할 수 있습니다.
+
+.단계
+. link:task_hcc_upgrade_element_prechecks.html["스토리지를 업그레이드하기 전에 Element 스토리지 상태 검사를 실행하세요."].
+. link:task_hcc_upgrade_management_node.html["(선택 사항) 관리 노드 업그레이드"].
++
+
+NOTE: 더 이상 스토리지 클러스터에서 Element 소프트웨어를 업그레이드하기 위해 관리 노드 운영 체제를 업그레이드할 필요가 없습니다. 관리 노드 버전이 11.3 이상인 경우 NetApp Hybrid Cloud Control을 사용하여 Element 업그레이드를 수행하려면 관리 서비스를 최신 버전으로 간단히 업그레이드하면 됩니다. 보안 개선 등의 다른 이유로 관리 노드 운영 체제를 업그레이드해야 하는 경우 시나리오에 맞는 관리 노드 업그레이드 절차를 따르세요.
+
+. link:task_hcc_update_management_services.html["Hybrid Cloud Control에서 관리 서비스 업데이트"].
++
+[IMPORTANT]
+====
+** 관리 서비스 2.27 번들에는 vCenter Server 5.5용 Element 플러그인이 포함되어 있으며, 이는 관리 노드 12.8과만 호환됩니다. 관리 서비스 2.27로 업데이트하는 경우 업그레이드 순서를 변경하고 Element 12.8로 업그레이드한 _후에_ 관리 서비스 번들을 업데이트해야 관리 노드와 관리 서비스 간의 호환성을 확보할 수 있습니다.
+** 관리 서비스 2.21.61~2.26.40으로 업데이트하는 경우 Element 12.8로 업그레이드하기 _전에_ 관리 서비스 번들을 업데이트해야 합니다.
+
+
+====
++
+
+IMPORTANT: 관리 서비스를 버전 2.16 이상으로 업데이트하고 관리 노드 11.3~11.8을 실행 중인 경우 관리 서비스를 업데이트하기 전에 관리 노드 VM의 RAM을 늘려야 합니다.
+
+. link:task_hcc_upgrade_element_software.html["Element 소프트웨어 및 스토리지 펌웨어 업그레이드"].
+. link:task_hcc_upgrade_storage_firmware.html["(선택 사항) Element 스토리지 펌웨어만 업그레이드하세요."].
++
+
+NOTE: 주요 릴리스 이외에 새로운 스토리지 펌웨어 업그레이드가 출시되면 이 작업을 수행할 수 있습니다.
+
+. link:task_vcp_upgrade_plugin.html["vCenter Server용 Element 플러그인 업그레이드"].
+
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+

@@ -1,0 +1,74 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_configure_proxy_server.html 
+summary: 클러스터가 프록시 서버 뒤에 있는 경우 공용 네트워크에 접속하려면 프록시 설정을 구성해야 합니다. 
+keywords: netapp, Element, mnode, api, management node, add proxy, proxy server 
+---
+= 프록시 서버 구성
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+클러스터가 프록시 서버 뒤에 있는 경우 공용 네트워크에 접속할 수 있도록 프록시 설정을 구성해야 합니다.
+
+프록시 서버는 원격 측정 수집기와 역방향 터널 연결에 사용됩니다.  설치 또는 업그레이드 중에 프록시 서버를 구성하지 않은 경우 REST API UI를 사용하여 프록시 서버를 활성화하고 구성할 수 있습니다.  기존 프록시 서버 설정을 수정하거나 프록시 서버를 비활성화할 수도 있습니다.
+
+프록시 서버를 구성하는 명령은 관리 노드의 현재 프록시 설정을 업데이트한 다음 반환합니다.  프록시 설정은 NetApp 모니터링 서비스인 Active IQ 와 NetApp 지원을 위한 역방향 지원 터널을 포함하여 관리 노드에 설치된 기타 Element 소프트웨어 유틸리티에서 사용됩니다.
+
+.시작하기 전에
+* 구성 중인 프록시 서버에 대한 호스트 및 자격 증명 정보를 알아야 합니다.
+* 클러스터 버전에서 NetApp Element 소프트웨어 11.3 이상이 실행되고 있는지 확인하세요.
+* 버전 11.3 이상을 실행하는 관리 노드를 배포했는지 확인하세요.
+* (관리 노드 12.0 이상) 프록시 서버를 구성하기 전에 NetApp Hybrid Cloud Control을 관리 서비스 버전 2.16으로 업데이트했습니다.
+
+
+.단계
+. 관리 노드 IP 주소를 입력한 다음 관리 노드에서 REST API UI에 액세스합니다. `/mnode` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+. *승인* 또는 잠금 아이콘을 선택하고 다음을 완료하세요.
++
+.. 클러스터 사용자 이름과 비밀번호를 입력하세요.
+.. 클라이언트 ID를 다음과 같이 입력하세요. `mnode-client` .
+.. 세션을 시작하려면 *승인*을 선택하세요.
+.. 창을 닫으세요.
+
+
+. *PUT /설정*을 선택하세요.
+. *시도해보기*를 선택하세요.
+. 프록시 서버를 활성화하려면 다음을 설정해야 합니다. `use_proxy` 사실입니다.  IP 또는 호스트 이름과 프록시 포트 대상을 입력하세요.
++
+프록시 사용자 이름, 프록시 비밀번호, SSH 포트는 선택 사항이므로 사용하지 않을 경우 생략해야 합니다.
+
++
+[listing]
+----
+{
+"proxy_ip_or_hostname": "[IP or name]",
+"use_proxy": [true/false],
+"proxy_username": "[username]",
+"proxy_password": "[password]",
+"proxy_port": [port value],
+"proxy_ssh_port": [port value: default is 443]
+}
+----
+. *실행*을 선택하세요.
+
+
+
+NOTE: 환경에 따라 관리 노드를 재부팅해야 할 수도 있습니다.
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+

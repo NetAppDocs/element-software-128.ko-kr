@@ -1,0 +1,26 @@
+---
+permalink: storage/task_data_protection_schedule_a_snapshot_task.html 
+sidebar: sidebar 
+keywords: snapshot, schedule, volume snapshots, group snapshots 
+summary: 지정된 간격으로 볼륨 스냅샷이 발생하도록 예약하여 볼륨이나 볼륨 그룹의 데이터를 보호할 수 있습니다.  단일 볼륨 스냅샷이나 그룹 스냅샷을 자동으로 실행하도록 예약할 수 있습니다. 
+---
+= 스냅샷 예약
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+지정된 간격으로 볼륨 스냅샷이 발생하도록 예약하여 볼륨이나 볼륨 그룹의 데이터를 보호할 수 있습니다.  단일 볼륨 스냅샷이나 그룹 스냅샷을 자동으로 실행하도록 예약할 수 있습니다.
+
+스냅샷 일정을 구성할 때 요일이나 월별 날짜를 기준으로 시간 간격을 선택할 수 있습니다.  다음 스냅샷이 생성되기 전의 날짜, 시간, 분을 지정할 수도 있습니다.  볼륨이 복제되는 경우 결과 스냅샷을 원격 스토리지 시스템에 저장할 수 있습니다.
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* xref:task_data_protection_create_a_snapshot_schedule.adoc[스냅샷 일정 만들기]
+* xref:task_data_protection_edit_a_snapshot_schedule.adoc[스냅샷 일정 편집]
+* xref:task_data_protection_delete_a_snapshot_schedule.adoc[스냅샷 일정 삭제]
+* xref:task_data_protection_copy_a_snapshot_schedule.adoc[스냅샷 일정 복사]
+

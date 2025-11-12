@@ -1,0 +1,22 @@
+---
+permalink: storage/task_system_manage_fips_avoid_mixing_nodes_for_fips_drives.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, nodes, drives, ear 
+summary: FIPS 드라이브 기능을 활성화하기 위한 준비로, 일부는 FIPS 드라이브를 지원하고 일부는 지원하지 않는 노드를 섞어서 사용하지 않도록 해야 합니다. 
+---
+= FIPS 드라이브의 경우 노드 혼합을 피하세요.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+FIPS 드라이브 기능을 활성화하기 위한 준비로, 일부는 FIPS 드라이브를 지원하고 일부는 지원하지 않는 노드를 섞어서 사용하지 않도록 해야 합니다.
+
+클러스터는 다음 조건에 따라 FIPS 드라이브 규격을 준수하는 것으로 간주됩니다.
+
+* 모든 드라이브는 FIPS 드라이브로 인증되었습니다.
+* 모든 노드는 FIPS 드라이브 노드입니다.
+* EAR(Encryption at Rest)이 활성화되었습니다.
+* FIPS 드라이브 기능이 활성화되었습니다.  모든 드라이브와 노드는 FIPS 기능을 갖춰야 하며, FIPS 드라이브 기능을 사용하려면 휴면 상태 암호화를 활성화해야 합니다.
+

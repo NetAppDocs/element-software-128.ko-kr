@@ -1,0 +1,14 @@
+---
+permalink: concepts/concept_solidfire_concepts_initiators.html 
+sidebar: sidebar 
+keywords: netapp, element, initiator, storage volume, element volume, access group 
+summary: 이니시에이터에 대해 알아보고 이를 사용하여 볼륨 액세스 그룹의 저장소에 대한 액세스를 허용하는 방법을 알아보세요. 
+---
+= 개시자
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+이니시에이터는 외부 클라이언트가 클러스터의 볼륨에 액세스할 수 있도록 하여 클라이언트와 볼륨 간 통신의 진입점 역할을 합니다.  계정 기반이 아닌 CHAP 기반으로 스토리지 볼륨에 액세스하려면 이니시에이터를 사용할 수 있습니다.  볼륨 액세스 그룹에 단일 이니시에이터를 추가하면 볼륨 액세스 그룹 구성원이 인증 없이도 그룹에 추가된 모든 스토리지 볼륨에 액세스할 수 있습니다.  개시자는 하나의 액세스 그룹에만 속할 수 있습니다.

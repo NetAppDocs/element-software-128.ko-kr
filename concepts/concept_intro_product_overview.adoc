@@ -1,0 +1,45 @@
+---
+permalink: concepts/concept_intro_product_overview.html 
+sidebar: sidebar 
+keywords:  
+summary: 'SolidFire 올플래시 스토리지 시스템은 단일 스토리지 리소스 풀로 결합된 개별 하드웨어 구성 요소(드라이브 및 노드)로 구성됩니다.  이 통합 클러스터는 외부 클라이언트가 사용할 수 있는 단일 스토리지 시스템으로 제공되며 NetApp Element 소프트웨어로 관리됩니다.' 
+---
+= 제품 개요
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire 올플래시 스토리지 시스템은 단일 스토리지 리소스 풀로 결합된 개별 하드웨어 구성 요소(드라이브 및 노드)로 구성됩니다.  이 통합 클러스터는 외부 클라이언트가 사용할 수 있는 단일 스토리지 시스템으로 제공되며 NetApp Element 소프트웨어로 관리됩니다.
+
+Element 인터페이스, API 또는 기타 관리 도구를 사용하면 SolidFire 클러스터 스토리지 용량과 성능을 모니터링하고, 멀티 테넌트 인프라 전반의 스토리지 활동을 관리할 수 있습니다.
+
+
+
+== SolidFire 기능
+
+Solidfire 시스템은 다음과 같은 기능을 제공합니다.
+
+* 대규모 프라이빗 클라우드 인프라를 위한 고성능 스토리지를 제공합니다.
+* 변화하는 스토리지 요구 사항을 충족할 수 있는 유연한 확장성을 제공합니다.
+* API 기반 스토리지 관리 Element 소프트웨어 인터페이스를 사용합니다.
+* 서비스 품질 정책을 사용하여 성능을 보장합니다.
+* 클러스터의 모든 노드에 걸쳐 자동 부하 분산이 포함됩니다.
+* 노드가 추가되거나 제거되면 클러스터를 자동으로 재조정합니다.
+
+
+
+
+== SolidFire 배포
+
+NetApp 에서 제공하고 NetApp Element 소프트웨어와 통합된 스토리지 노드를 사용합니다.
+
+link:../concepts/concept_solidfire_concepts_solidfire_architecture_overview.html["SolidFire 올플래시 스토리지 아키텍처 개요"]
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

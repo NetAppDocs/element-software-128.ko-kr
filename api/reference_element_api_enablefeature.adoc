@@ -1,0 +1,88 @@
+---
+permalink: api/reference_element_api_enablefeature.html 
+sidebar: sidebar 
+keywords: SNMP,enable,enabling,EnableFeature,vvols,virtual volumes,FIPS,140-2,SnapMirror 
+summary: EnableFeature 메서드를 사용하면 기본적으로 비활성화된 VVol과 같은 클러스터 기능을 활성화할 수 있습니다. 
+---
+= 기능 활성화
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `EnableFeature` 기본적으로 비활성화되어 있는 VVol과 같은 클러스터 기능을 활성화하는 방법입니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+
+NOTE: Element 소프트웨어 11.x를 실행하는 시스템의 경우 보호 도메인 모니터링을 설정하기 전이나 후에 가상 볼륨을 활성화하면 클러스터 보호 도메인 기능이 노드 수준에서만 작동합니다.
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+특징
+ a| 
+클러스터 기능을 활성화합니다. 가능한 값:
+
+* `fips`: HTTPS 통신에 FIPS 140-2 인증 암호화를 활성화합니다.
+* `FipsDrives`: 스토리지 클러스터에 대한 FIPS 140-2 드라이브 지원을 활성화합니다.
+* `SnapMirror`: SnapMirror 복제 클러스터 기능을 활성화합니다.
+* `VolumeLoadBalanceOnActualIOPS`: 최소 IOPS가 아닌 실제 IOPS에 대한 슬라이스 밸런싱을 활성화합니다.  Element 12.8부터 사용 가능합니다.
+* `vvols`: Element 소프트웨어 VVols 클러스터 기능을 활성화합니다.
+
+ a| 
+끈
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드에는 반환 값이 없습니다.
+
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "EnableFeature",
+    "params": {
+        "feature" : "vvols"
+    },
+    "id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

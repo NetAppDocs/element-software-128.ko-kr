@@ -1,0 +1,78 @@
+---
+permalink: api/reference_element_api_deletekeyproviderkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key provider,deleting,delete 
+summary: 'DeleteKeyProviderKmip 메서드를 사용하면 지정된 비활성 Key Management Interoperability Protocol (KMIP) 키 공급자를 삭제할 수 있습니다.' 
+---
+= DeleteKeyProviderKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `DeleteKeyProviderKmip` 지정된 비활성 키 관리 상호 운용성 프로토콜(KMIP) 키 공급자를 삭제하는 방법입니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+키 제공자 ID
+ a| 
+삭제할 키 공급자의 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드에는 반환 값이 없습니다.  오류가 발생하지 않는 한 삭제 작업은 성공한 것으로 간주됩니다.
+
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "DeleteKeyProviderKmip",
+  "params": {
+    "keyProviderID": "1"
+    },
+"id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {}
+}
+----
+
+
+== 버전 이후 새로운
+
+11.7

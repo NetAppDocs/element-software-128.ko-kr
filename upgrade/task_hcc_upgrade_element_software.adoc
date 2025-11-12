@@ -1,0 +1,450 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_element_software.html 
+summary: NetApp SolidFire 시스템 업그레이드의 일환으로 NetApp Element 소프트웨어를 업그레이드합니다. 
+keywords: netapp, solidfire, cluster, element, H610S upgrade, hcc, upgrade role 
+---
+= Element 소프트웨어 업그레이드
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element 소프트웨어를 업그레이드하려면 NetApp Hybrid Cloud Control UI 또는 REST API를 사용할 수 있습니다.  Element 소프트웨어 업그레이드 중에는 노드 추가 및 제거, 드라이브 추가 및 제거, 이니시에이터, 볼륨 액세스 그룹, 가상 네트워크와 관련된 명령 등 특정 작업이 억제됩니다.
+
+[CAUTION]
+====
+관리 서비스 2.27 번들에는 vCenter Server 5.5용 Element 플러그인이 포함되어 있으며, 이는 관리 노드 12.8과만 호환됩니다. 관리 서비스 2.27로 업데이트하는 경우 업그레이드 순서를 변경하고 Element 12.8로 업그레이드한 _후에_ 관리 서비스 번들을 업데이트해야 관리 노드와 관리 서비스 간의 호환성을 확보할 수 있습니다.
+
+관리 서비스 2.21.61~2.26.40으로 업데이트하는 경우 Element 12.8로 업그레이드하기 _전에_ 관리 서비스 번들을 업데이트해야 합니다.
+
+====
+.시작하기 전에
+* *관리자 권한*: 업그레이드를 수행할 수 있는 스토리지 클러스터 관리자 권한이 있습니다.
+* *유효한 업그레이드 경로*: 업그레이드하려는 Element 버전에 대한 업그레이드 경로 정보를 확인했으며 업그레이드 경로가 유효한 것으로 검증되었습니다.https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_is_the_upgrade_matrix_for_storage_clusters_running_NetApp_Element_software%3F["NetApp KB: NetApp Element 소프트웨어를 실행하는 스토리지 클러스터를 위한 업그레이드 매트릭스"^]
++
+Element 12.5부터 NetApp HealthTools는 더 이상 Element 소프트웨어 업그레이드를 지원하지 않습니다.  Element 11.0 또는 11.1을 실행 중인 경우 먼저 다음을 수행해야 합니다.link:https://docs.netapp.com/us-en/element-software-123/upgrade/task_hcc_upgrade_element_software.html#upgrade-element-software-at-connected-sites-using-healthtools["HealthTools를 사용하여 Element 12.3.x로 업그레이드"^] 그런 다음 NetApp Hybrid Cloud Control을 사용하여 Element 12.5 이상으로 업그레이드하세요.
+
+* *시스템 시간 동기화*: 모든 노드의 시스템 시간이 동기화되었고, 스토리지 클러스터와 노드에 대해 NTP가 올바르게 구성되었는지 확인했습니다.  각 노드는 노드별 웹 UI에서 DNS 네임서버로 구성되어야 합니다.(`https://[IP address]:442` ) 시간 왜곡과 관련된 해결되지 않은 클러스터 오류가 없습니다.
+* *시스템 포트*: 업그레이드를 위해 NetApp Hybrid Cloud Control을 사용하는 경우 필요한 포트가 열려 있는지 확인해야 합니다. 보다link:../storage/reference_prereq_network_port_requirements.html["네트워크 포트"] 자세한 내용은.
+* *관리 노드*: NetApp Hybrid Cloud Control UI 및 API의 경우 환경의 관리 노드는 버전 11.3을 실행 중입니다.
+* *클러스터 상태*: 클러스터를 업그레이드할 준비가 되었음을 확인했습니다. 보다link:task_hcc_upgrade_element_prechecks.html["스토리지를 업그레이드하기 전에 Element 스토리지 상태 검사를 실행하세요."] .
+* *H610S 스토리지 노드용 베이스보드 관리 컨트롤러(BMC) 업데이트*: H610S 노드용 BMC 버전을 업그레이드했습니다. 를 참조하십시오link:https://docs.netapp.com/us-en/hci/docs/rn_H610S_BMC_3.84.07.html["릴리스 노트 및 업그레이드 지침"^] .
+
+
+[[element-upgrade-tim]]
+* *업그레이드 프로세스 시간*: 업그레이드를 수행하기에 충분한 시간을 예약했습니다.  Element 소프트웨어 12.5 이상으로 업그레이드하는 경우, 업그레이드 프로세스에 걸리는 시간은 현재 Element 소프트웨어 버전과 펌웨어 업데이트에 따라 다릅니다.
++
+[cols="20,20,20,20,20"]
+|===
+| 저장 노드 | 현재 Element 소프트웨어 버전 | 노드당 대략적인 소프트웨어 및 펌웨어 설치 시간^1^ | 노드당 대략적인 데이터 동기화 시간^2^ | 노드당 대략적인 총 업그레이드 시간 
+
+
+| 최신 펌웨어가 설치된 모든 SolidFire 및 NetApp H 시리즈 노드^3^ | 12.x | 15분 | 10~15분 | 20~30분 
+
+
+| H610S 및 H410S | 12.x 및 11.8 | 60분 | 30~60분 | 90~120분 
+
+
+| H610S | 11.7 및 이전 버전 | 90분 | 40~70분 | 130~160분 또한 https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["노드 전체 종료 및 전원 분리 수행"^] 각 H610S 노드에 대해. 
+|===
++
+^1^하드웨어용 펌웨어 및 드라이버 펌웨어의 전체 매트릭스는 다음을 참조하세요.link:../hardware/fw_storage_nodes.html["SolidFire 스토리지 노드에 지원되는 스토리지 펌웨어 버전"] .
+
++
+^2^ IOPS 쓰기 부하가 큰 클러스터와 펌웨어 업데이트 시간이 긴 클러스터를 결합하면 데이터 동기화 시간이 늘어납니다.
+
++
+^3^ 다음 노드는 지원되지 않습니다.  이러한 노드 중 하나를 지원되지 않는 Element 버전으로 업그레이드하려고 하면 해당 노드가 Element 12.x에서 지원되지 않는다는 오류가 표시됩니다.
+
++
+** Element 12.8, SF4805, SF9605, SF19210 및 SF38410 스토리지 노드부터 시작합니다.
+** Element 12.7부터 SF2405 및 SF9608 스토리지 노드와 FC0025 및 SF-FCN-01 FC 노드가 시작됩니다.
+
+
+* *최종 사용자 라이선스 계약(EULA)*: Management Services 2.20.69부터 NetApp Hybrid Cloud Control UI 또는 API를 사용하여 Element 소프트웨어를 업그레이드하기 전에 EULA에 동의하고 저장해야 합니다.
++
+.. 웹 브라우저에서 관리 노드의 IP 주소를 엽니다.
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. 스토리지 클러스터 관리자 자격 증명을 제공하여 NetApp Hybrid Cloud Control에 로그인합니다.
+.. 인터페이스 오른쪽 상단에 있는 *업그레이드*를 선택하세요.
+.. EULA가 나타납니다.  아래로 스크롤하여 *현재 및 향후 모든 업데이트에 동의합니다*를 선택하고 *저장*을 선택합니다.
+
+
+
+
+.업그레이드 옵션
+다음 Element 소프트웨어 업그레이드 옵션 중 하나를 선택하세요.
+
+* <<NetApp Hybrid Cloud Control UI를 사용하여 Element 스토리지를 업그레이드하세요.>>
+* <<NetApp Hybrid Cloud Control API를 사용하여 Element 스토리지를 업그레이드하세요.>>
+
+
+
+IMPORTANT: H610S 시리즈 노드를 Element 12.5 이상으로 업그레이드하고 노드가 Element 11.8 이전 버전을 실행 중인 경우 이 문서의 추가 업그레이드 단계를 수행해야 합니다. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["KB 문서"^] 각 저장 노드에 대해.  Element 11.8 이상을 사용하는 경우 추가 업그레이드 단계는 필요하지 않습니다.
+
+
+
+== NetApp Hybrid Cloud Control UI를 사용하여 Element 스토리지를 업그레이드하세요.
+
+NetApp Hybrid Cloud Control UI를 사용하면 스토리지 클러스터를 업그레이드할 수 있습니다.
+
+
+CAUTION: NetApp Hybrid Cloud Control을 사용하여 스토리지 클러스터를 업그레이드하는 동안 발생할 수 있는 문제와 해결 방법에 대해서는 다음을 참조하세요. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/Potential_issues_and_workarounds_when_running_storage_upgrades_using_NetApp_Hybrid_Cloud_Control["KB 문서"^] .
+
+.단계
+. 웹 브라우저에서 관리 노드의 IP 주소를 엽니다.
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 스토리지 클러스터 관리자 자격 증명을 제공하여 NetApp Hybrid Cloud Control에 로그인합니다.
+. 인터페이스 오른쪽 상단에 있는 *업그레이드*를 선택하세요.
+. *업그레이드* 페이지에서 *저장소*를 선택하세요.
++
+*저장소* 탭에는 설치에 포함된 저장소 클러스터가 나열됩니다.  NetApp Hybrid Cloud Control에서 클러스터에 액세스할 수 없는 경우 *업그레이드* 페이지에 표시되지 않습니다.
+
+. 다음 옵션 중에서 선택하고 클러스터에 적용 가능한 단계 세트를 수행합니다.
++
+[cols="2*"]
+|===
+| 옵션 | 단계 
+
+
+| Element 11.8 이상을 실행하는 모든 클러스터  a| 
+.. *찾아보기*를 선택하여 다운로드한 업그레이드 패키지를 업로드합니다.
+.. 업로드가 완료될 때까지 기다리세요.  진행률 표시줄은 업로드 상태를 보여줍니다.
++
+
+CAUTION: 브라우저 창에서 벗어나면 파일 업로드가 손실됩니다.
+
++
+파일이 성공적으로 업로드되고 검증되면 화면에 메시지가 표시됩니다.  검증에는 몇 분이 걸릴 수 있습니다.  이 단계에서 브라우저 창을 벗어나면 파일 업로드가 유지됩니다.
+
+.. *업그레이드 시작*을 선택하세요.
++
+
+TIP: *업그레이드 상태*는 업그레이드 중에 프로세스 상태를 반영하여 변경됩니다.  업그레이드를 일시 중지하는 등 사용자가 수행하는 작업에 따라 변경되거나 업그레이드에서 오류가 반환되는 경우에도 변경됩니다. 보다<<업그레이드 상태 변경>> .
+
++
+
+NOTE: 업그레이드가 진행되는 동안에는 페이지를 떠났다가 나중에 다시 돌아와서 진행 상황을 계속 모니터링할 수 있습니다.  클러스터 행이 축소되면 페이지는 상태와 현재 버전을 동적으로 업데이트하지 않습니다.  테이블을 업데이트하려면 클러스터 행을 확장해야 하며, 그렇지 않으면 페이지를 새로 고칠 수 있습니다.
+
++
+업그레이드가 완료되면 로그를 다운로드할 수 있습니다.
+
+
+
+
+
+| Element 버전 11.8보다 이전 버전을 실행하는 H610S 클러스터를 업그레이드하고 있습니다.  a| 
+.. 업그레이드할 클러스터 옆에 있는 드롭다운 화살표를 선택하고, 사용 가능한 업그레이드 버전 중에서 선택하세요.
+.. *업그레이드 시작*을 선택하세요.  업그레이드가 완료되면 UI에서 추가 업그레이드 단계를 수행하라는 메시지가 표시됩니다.
+.. 추가적으로 필요한 단계를 완료하세요. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["KB 문서"^] , UI에서 2단계를 완료했다는 것을 확인합니다.
+
+
+업그레이드가 완료되면 로그를 다운로드할 수 있습니다.  다양한 업그레이드 상태 변경에 대한 정보는 다음을 참조하세요.<<업그레이드 상태 변경>> .
+
+|===
+
+
+
+
+=== 업그레이드 상태 변경
+
+UI의 *업그레이드 상태* 열에 업그레이드 프로세스 전, 중, 후에 표시되는 다양한 상태는 다음과 같습니다.
+
+[cols="2*"]
+|===
+| 업그레이드 상태 | 설명 
+
+
+| 최신 정보 | 클러스터가 최신 Element 버전으로 업그레이드되었습니다. 
+
+
+| 사용 가능한 버전 | Element 및/또는 스토리지 펌웨어의 최신 버전을 업그레이드할 수 있습니다. 
+
+
+| 진행 중 | 업그레이드가 진행 중입니다.  진행률 표시줄에 업그레이드 상태가 표시됩니다.  화면 메시지에는 노드 수준의 오류가 표시되고 업그레이드가 진행됨에 따라 클러스터의 각 노드의 노드 ID가 표시됩니다.  Element UI나 vCenter Server UI용 NetApp Element 플러그인을 사용하여 각 노드의 상태를 모니터링할 수 있습니다. 
+
+
+| 업그레이드 일시 중지 | 업그레이드를 일시 중지할 수 있습니다.  업그레이드 프로세스의 상태에 따라 일시 중지 작업이 성공하거나 실패할 수 있습니다.  일시 정지 작업을 확인할지 묻는 UI 프롬프트가 표시됩니다.  업그레이드를 일시 중지하기 전에 클러스터가 안전한 위치에 있는지 확인하기 위해 업그레이드 작업이 완전히 일시 중지되는 데 최대 2시간이 걸릴 수 있습니다.  업그레이드를 다시 시작하려면 *다시 시작*을 선택하세요. 
+
+
+| 일시 중지됨 | 업그레이드를 일시 중지했습니다.  *다시 시작*을 선택하면 프로세스가 다시 시작됩니다. 
+
+
+| 오류 | 업그레이드하는 동안 오류가 발생했습니다.  오류 로그를 다운로드하여 NetApp 지원팀으로 보낼 수 있습니다.  오류를 해결한 후 해당 페이지로 돌아와서 *다시 시작*을 선택하세요.  업그레이드를 재개하면 시스템이 상태 검사를 실행하고 업그레이드의 현재 상태를 확인하는 동안 진행률 표시줄이 몇 분 동안 뒤로 이동합니다. 
+
+
+| 후속 조치 포함 완료 | Element 버전이 11.8보다 이전인 H610S 노드에서만 업그레이드할 수 있습니다.  업그레이드 프로세스의 1단계가 완료되면 이 상태에서 추가 업그레이드 단계를 수행하라는 메시지가 표시됩니다(참조). https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["KB 문서"^] ).  2단계를 완료하고 완료를 확인하면 상태가 *최신*으로 변경됩니다. 
+|===
+
+
+== NetApp Hybrid Cloud Control API를 사용하여 Element 스토리지를 업그레이드하세요.
+
+API를 사용하여 클러스터의 스토리지 노드를 최신 Element 소프트웨어 버전으로 업그레이드할 수 있습니다.  원하는 자동화 도구를 사용하여 API를 실행할 수 있습니다.  여기에 설명된 API 워크플로는 관리 노드에서 사용 가능한 REST API UI를 예로 들어 설명합니다.
+
+.단계
+. 관리 노드에서 액세스할 수 있는 장치에 스토리지 업그레이드 패키지를 다운로드합니다.
++
+Element 소프트웨어로 이동 https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["다운로드 페이지"^] 최신 스토리지 노드 이미지를 다운로드하세요.
+
+. 관리 노드에 스토리지 업그레이드 패키지를 업로드합니다.
++
+.. 관리 노드에서 관리 노드 REST API UI를 엽니다.
++
+[listing]
+----
+https://<ManagementNodeIP>/package-repository/1/
+----
+.. *승인*을 선택하고 다음을 완료하세요.
++
+... 클러스터 사용자 이름과 비밀번호를 입력하세요.
+... 클라이언트 ID를 다음과 같이 입력하세요. `mnode-client` .
+... 세션을 시작하려면 *승인*을 선택하세요.
+... 승인 창을 닫습니다.
+
+
+.. REST API UI에서 *POST /packages*를 선택합니다.
+.. *시도해보기*를 선택하세요.
+.. *찾아보기*를 선택하고 업그레이드 패키지를 선택하세요.
+.. 업로드를 시작하려면 *실행*을 선택하세요.
+.. 응답에서 패키지 ID를 복사하여 저장합니다.(`"id"` )을 나중에 사용합니다.
+
+
+. 업로드 상태를 확인하세요.
++
+.. REST API UI에서 *GET​ /packages​/{id}​/status*를 선택합니다.
+.. *시도해보기*를 선택하세요.
+.. 이전 단계에서 복사한 패키지 ID를 *id*에 입력합니다.
+.. 상태 요청을 시작하려면 *실행*을 선택하세요.
++
+응답은 다음을 나타냅니다. `state` ~처럼 `SUCCESS` 완료되면.
+
+
+
+. 스토리지 클러스터 ID를 찾으세요.
++
+.. 관리 노드에서 관리 노드 REST API UI를 엽니다.
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
+.. *승인*을 선택하고 다음을 완료하세요.
++
+... 클러스터 사용자 이름과 비밀번호를 입력하세요.
+... 클라이언트 ID를 다음과 같이 입력하세요. `mnode-client` .
+... 세션을 시작하려면 *승인*을 선택하세요.
+... 승인 창을 닫습니다.
+
+
+.. REST API UI에서 *GET /installations*를 선택합니다.
+.. *시도해보기*를 선택하세요.
+.. *실행*을 선택하세요.
+.. 응답에서 설치 자산 ID를 복사합니다.(`"id"` ).
+.. REST API UI에서 *GET /installations/{id}*를 선택합니다.
+.. *시도해보기*를 선택하세요.
+.. 설치 자산 ID를 *id* 필드에 붙여넣습니다.
+.. *실행*을 선택하세요.
+.. 응답에서 스토리지 클러스터 ID를 복사하여 저장합니다.(`"id"` ) 나중에 사용하기 위해 업그레이드하려는 클러스터입니다.
+
+
+. 저장소 업그레이드를 실행합니다.
++
+.. 관리 노드에서 스토리지 REST API UI를 엽니다.
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. *승인*을 선택하고 다음을 완료하세요.
++
+... 클러스터 사용자 이름과 비밀번호를 입력하세요.
+... 클라이언트 ID를 다음과 같이 입력하세요. `mnode-client` .
+... 세션을 시작하려면 *승인*을 선택하세요.
+... 승인 창을 닫습니다.
+
+
+.. *POST /upgrade*를 선택하세요.
+.. *시도해보기*를 선택하세요.
+.. 매개변수 필드에 업그레이드 패키지 ID를 입력하세요.
+.. 매개변수 필드에 스토리지 클러스터 ID를 입력합니다.
++
+페이로드는 다음 예와 비슷하게 보여야 합니다.
+
++
+[listing]
+----
+{
+  "config": {},
+  "packageId": "884f14a4-5a2a-11e9-9088-6c0b84e211c4",
+  "storageId": "884f14a4-5a2a-11e9-9088-6c0b84e211c4"
+}
+----
+.. 업그레이드를 시작하려면 *실행*을 선택하세요.
++
+응답은 상태를 다음과 같이 표시해야 합니다. `initializing` :
+
++
+[listing]
+----
+{
+  "_links": {
+    "collection": "https://localhost:442/storage/upgrades",
+    "self": "https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1",
+    "log": https://localhost:442/storage/upgrades/3fa85f64-1111-4562-b3fc-2c963f66abc1/log
+  },
+  "storageId": "114f14a4-1a1a-11e9-9088-6c0b84e200b4",
+  "upgradeId": "334f14a4-1a1a-11e9-1055`-6c0b84e2001b4",
+  "packageId": "774f14a4-1a1a-11e9-8888-6c0b84e200b4",
+  "config": {},
+  "state": "initializing",
+  "status": {
+    "availableActions": [
+      "string"
+    ],
+    "message": "string",
+    "nodeDetails": [
+      {
+        "message": "string",
+        "step": "NodePreStart",
+        "nodeID": 0,
+        "numAttempt": 0
+      }
+    ],
+    "percent": 0,
+    "step": "ClusterPreStart",
+    "timestamp": "2020-04-21T22:10:57.057Z",
+    "failedHealthChecks": [
+      {
+        "checkID": 0,
+        "name": "string",
+        "displayName": "string",
+        "passed": true,
+        "kb": "string",
+        "description": "string",
+        "remedy": "string",
+        "severity": "string",
+        "data": {},
+        "nodeID": 0
+      }
+    ]
+  },
+  "taskId": "123f14a4-1a1a-11e9-7777-6c0b84e123b2",
+  "dateCompleted": "2020-04-21T22:10:57.057Z",
+  "dateCreated": "2020-04-21T22:10:57.057Z"
+}
+----
+.. 업그레이드 ID를 복사하세요(`"upgradeId"` )이 응답의 일부입니다.
+
+
+. 업그레이드 진행률과 결과를 확인하세요.
++
+.. *GET ​/upgrades/{upgradeId}*를 선택하세요.
+.. *시도해보기*를 선택하세요.
+.. 이전 단계의 업그레이드 ID를 *upgradeId*에 입력합니다.
+.. *실행*을 선택하세요.
+.. 업그레이드 중에 문제나 특별한 요구 사항이 있는 경우 다음 중 하나를 수행하세요.
++
+[cols="2*"]
+|===
+| 옵션 | 단계 
+
+
+| 클러스터 상태 문제를 수정해야 합니다. `failedHealthChecks` 응답 본문의 메시지.  a| 
+... 각 문제에 대해 나열된 특정 KB 문서로 이동하거나 지정된 해결 방법을 수행하세요.
+... KB가 지정된 경우 해당 KB 문서에 설명된 프로세스를 완료하세요.
+... 클러스터 문제를 해결한 후 필요한 경우 다시 인증하고 *PUT ​/upgrades/{upgradeId}*를 선택합니다.
+... *시도해보기*를 선택하세요.
+... 이전 단계의 업그레이드 ID를 *upgradeId*에 입력합니다.
+... 입력하다 `"action":"resume"` 요청 본문에.
++
+[listing]
+----
+{
+  "action": "resume"
+}
+----
+... *실행*을 선택하세요.
+
+
+
+
+| 유지 관리 기간이 끝나가거나 다른 이유로 업그레이드를 일시 중지해야 합니다.  a| 
+... 필요한 경우 다시 인증하고 *PUT ​/upgrades/{upgradeId}*를 선택하세요.
+... *시도해보기*를 선택하세요.
+... 이전 단계의 업그레이드 ID를 *upgradeId*에 입력합니다.
+... 입력하다 `"action":"pause"` 요청 본문에.
++
+[listing]
+----
+{
+  "action": "pause"
+}
+----
+... *실행*을 선택하세요.
+
+
+
+
+| 11.8 이전 Element 버전을 실행하는 H610S 클러스터를 업그레이드하는 경우 다음 상태가 표시됩니다. `finishedNeedsAck` 응답 본문에 각 H610S 스토리지 노드에 대해 추가 업그레이드 단계를 수행해야 합니다.  a| 
+... 여기에서 추가 업그레이드 단계를 완료하세요. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/H_Series/NetApp_H610S_storage_node_power_off_and_on_procedure["KB 문서"^] 각 노드에 대해.
+... 필요한 경우 다시 인증하고 *PUT ​/upgrades/{upgradeId}*를 선택하세요.
+... *시도해보기*를 선택하세요.
+... 이전 단계의 업그레이드 ID를 *upgradeId*에 입력합니다.
+... 입력하다 `"action":"acknowledge"` 요청 본문에.
++
+[listing]
+----
+{
+  "action": "acknowledge"
+}
+----
+... *실행*을 선택하세요.
+
+
+|===
+.. 필요에 따라 *GET ​/upgrades/{upgradeId}* API를 여러 번 실행하여 프로세스가 완료될 때까지 기다립니다.
++
+업그레이드하는 동안 `status` 나타내다 `running` 오류가 발생하지 않으면.  각 노드가 업그레이드됨에 따라 `step` 값이 변경됩니다 `NodeFinished` .
+
++
+업그레이드가 성공적으로 완료되었습니다. `percent` 값은 `100` 그리고 `state` 나타내다 `finished` .
+
+
+
+
+
+
+
+== NetApp Hybrid Cloud Control을 사용하여 업그레이드에 실패하면 어떻게 되나요?
+
+업그레이드 중에 드라이브나 노드에 오류가 발생하면 Element UI에 클러스터 오류가 표시됩니다.  업그레이드 프로세스는 다음 노드로 진행되지 않고 클러스터 오류가 해결될 때까지 기다립니다.  UI의 진행률 표시줄은 업그레이드가 클러스터 오류가 해결될 때까지 기다리고 있음을 보여줍니다.  이 단계에서는 UI에서 *일시 중지*를 선택해도 업그레이드가 클러스터가 정상화될 때까지 기다리기 때문에 작동하지 않습니다.  장애 조사를 위해 NetApp 지원팀에 도움을 요청해야 합니다.
+
+NetApp Hybrid Cloud Control에는 사전 설정된 3시간의 대기 기간이 있으며, 이 기간 동안 다음 시나리오 중 하나가 발생할 수 있습니다.
+
+* 클러스터 오류는 3시간 내에 해결되고 업그레이드가 재개됩니다.  이 시나리오에서는 아무런 조치도 취할 필요가 없습니다.
+* 문제는 3시간 후에도 지속되고 업그레이드 상태에는 빨간색 배너와 함께 *오류*가 표시됩니다.  문제가 해결된 후 *다시 시작*을 선택하면 업그레이드를 다시 시작할 수 있습니다.
+* NetApp 지원팀은 3시간 창 전에 시정 조치를 취하기 위해 업그레이드를 일시적으로 중단해야 한다고 결정했습니다.  지원팀은 API를 사용하여 업그레이드를 중단합니다.
+
+
+
+CAUTION: 노드가 업데이트되는 동안 클러스터 업그레이드를 중단하면 드라이브가 노드에서 비정상적으로 제거될 수 있습니다.  드라이브가 정상적으로 제거되지 않은 경우 업그레이드 중에 드라이브를 다시 추가하려면 NetApp 지원팀의 수동 개입이 필요합니다.  노드에서 펌웨어 업데이트를 수행하거나 업데이트 후 동기화 작업을 수행하는 데 시간이 더 오래 걸릴 수 있습니다.  업그레이드 진행이 중단된 것 같으면 NetApp 지원팀에 문의하여 도움을 받으세요.
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

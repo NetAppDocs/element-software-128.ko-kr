@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_system_manage_key_external_key_management_api_commands.html 
+sidebar: sidebar 
+keywords: ekm, api commands, key providers 
+summary: EKM을 관리하고 구성하는 데 사용할 수 있는 모든 API 목록입니다. 
+---
+= 외부 키 관리 API 명령
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+EKM을 관리하고 구성하는 데 사용할 수 있는 모든 API 목록입니다.
+
+클러스터와 외부 고객 소유 서버 간의 신뢰 관계를 구축하는 데 사용됩니다.
+
+* 공개 개인 키 쌍 생성
+* 클라이언트 인증서 서명 요청 받기
+
+
+외부 고객 소유 서버의 구체적인 세부 정보를 정의하는 데 사용됩니다.
+
+* CreateKeyServerKmip
+* ModifyKeyServerKmip
+* DeleteKeyServerKmip
+* GetKeyServerKmip
+* ListKeyServersKmip
+* 테스트키서버Kmip
+
+
+외부 키 서버를 관리하는 키 공급자를 생성하고 유지 관리하는 데 사용됩니다.
+
+* CreateKeyProviderKmip
+* DeleteKeyProviderKmip
+* AddKeyServerToProviderKmip
+* ProviderKmip에서 KeyServer 제거
+* GetKeyProviderKmip
+* ListKeyProvidersKmip
+* RekeySoftwareEncryptionAtRestMasterKey
+* 테스트키공급자Kmip
+
+
+API 메소드에 대한 정보는 다음을 참조하세요. link:../api/concept_element_api_about_the_api.html["API 참조 정보"].

@@ -1,0 +1,129 @@
+---
+permalink: api/reference_element_api_testldapauthentication.html 
+sidebar: sidebar 
+keywords: ldap,auth,authentication,test,testing,testldapauthentication 
+summary: TestLdapAuthentication 메서드를 사용하면 현재 활성화된 LDAP 인증 설정을 검증할 수 있습니다.  구성이 올바르면 API 호출은 테스트된 사용자의 그룹 멤버십을 반환합니다. 
+---
+= TestLdap 인증
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `TestLdapAuthentication` 현재 활성화된 LDAP 인증 설정을 검증하는 방법입니다.  구성이 올바르면 API 호출은 테스트된 사용자의 그룹 멤버십을 반환합니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+사용자 이름
+ a| 
+테스트할 사용자 이름입니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+비밀번호
+ a| 
+테스트할 사용자 이름의 비밀번호입니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+LDAP 구성
+ a| 
+테스트할 ldapConfiguration 객체입니다.  이 매개변수를 제공하면 LDAP 인증이 현재 비활성화되어 있더라도 시스템은 제공된 구성을 테스트합니다.
+ a| 
+xref:reference_element_api_ldapconfiguration.adoc[LDAP 구성]
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+여러 떼
+ a| 
+테스트된 사용자를 멤버로 포함하는 LDAP 그룹 목록입니다.
+ a| 
+정렬
+
+
+
+ a| 
+사용자 DN
+ a| 
+테스트한 사용자의 전체 LDAP 고유 이름입니다.
+ a| 
+끈
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+"method": "TestLdapAuthentication",
+"params": {"username":"admin1",
+           "password":"admin1PASS"
+      },
+  "id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+ "id": 1,
+ "result": {
+    "groups": [
+        "CN=StorageMgmt,OU=PTUsers,DC=prodtest,DC=solidfire,DC=net"
+      ],
+        "userDN": "CN=Admin1 Jones,OU=PTUsers,DC=prodtest,DC=solidfire,DC=net"
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

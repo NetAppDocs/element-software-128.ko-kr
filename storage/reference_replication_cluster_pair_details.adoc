@@ -1,0 +1,40 @@
+---
+permalink: storage/reference_replication_cluster_pair_details.html 
+sidebar: sidebar 
+keywords: cluster pairs, replication, data protection 
+summary: 데이터 보호 탭의 클러스터 쌍 페이지는 페어링되었거나 페어링 중인 클러스터에 대한 정보를 제공합니다.  시스템은 상태 열에 페어링 및 진행 메시지를 표시합니다. 
+---
+= 클러스터 쌍 세부 정보
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+데이터 보호 탭의 클러스터 쌍 페이지는 페어링되었거나 페어링 중인 클러스터에 대한 정보를 제공합니다.  시스템은 상태 열에 페어링 및 진행 메시지를 표시합니다.
+
+* *ID*
++
+각 클러스터 쌍에 부여되는 시스템 생성 ID입니다.
+
+* *원격 클러스터 이름*
++
+쌍의 다른 클러스터의 이름입니다.
+
+* *원격 MVIP*
++
+쌍 내 다른 클러스터의 관리 가상 IP 주소입니다.
+
+* *상태*
++
+원격 클러스터의 복제 상태
+
+* *볼륨 복제*
++
+복제를 위해 쌍을 이루는 클러스터에 포함된 볼륨의 수입니다.
+
+* *UUID*
++
+쌍의 각 클러스터에 부여된 고유한 ID입니다.
+
+

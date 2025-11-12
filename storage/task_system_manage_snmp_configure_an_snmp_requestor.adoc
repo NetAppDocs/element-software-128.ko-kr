@@ -1,0 +1,35 @@
+---
+permalink: storage/task_system_manage_snmp_configure_an_snmp_requestor.html 
+sidebar: sidebar 
+keywords: SNMP requestor, config, enable, disable, snmp requests 
+summary: SNMP 버전 2를 활성화하면 요청자를 활성화하거나 비활성화할 수 있으며, 요청자가 승인된 SNMP 요청을 받도록 구성할 수 있습니다. 
+---
+= SNMP 요청자 구성
+:allow-uri-read: 
+:experimental: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SNMP 버전 2를 활성화하면 요청자를 활성화하거나 비활성화할 수 있으며, 요청자가 승인된 SNMP 요청을 받도록 구성할 수 있습니다.
+
+. 메뉴:클러스터[SNMP]를 클릭합니다.
+. *일반 SNMP 설정*에서 *예*를 클릭하여 SNMP를 활성화합니다.
+. *버전* 목록에서 *버전 2*를 선택합니다.
+. *요청자* 섹션에 *커뮤니티 문자열*과 *네트워크* 정보를 입력합니다.
++
+
+NOTE: 기본적으로 커뮤니티 문자열은 공개이고 네트워크는 로컬호스트입니다.  이러한 기본 설정을 변경할 수 있습니다.
+
+. *선택 사항:* 다른 요청자를 추가하려면 *요청자 추가*를 클릭하고 *커뮤니티 문자열* 및 *네트워크* 정보를 입력합니다.
+. *변경 사항 저장*을 클릭하세요.
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* xref:task_system_manage_snmp_configure_snmp_traps.adoc[SNMP 트랩 구성]
+* xref:task_system_manage_snmp_view_managed_object_data.adoc[관리 정보 기반 파일을 사용하여 관리되는 개체 데이터 보기]
+

@@ -1,0 +1,99 @@
+---
+permalink: api/reference_element_api_deletesnapshot.html 
+sidebar: sidebar 
+keywords: snapshot,snapshots,delete,deleting,DeleteSnapshot 
+summary: DeleteSnapshot 메서드를 사용하면 스냅샷을 삭제할 수 있습니다. 
+---
+= 스냅샷 삭제
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `DeleteSnapshot` 스냅샷을 삭제하는 방법.
+
+현재 활성 스냅샷은 삭제할 수 없습니다.  현재 스냅샷을 삭제하려면 먼저 롤백하고 다른 스냅샷을 활성화해야 합니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+스냅샷ID
+ a| 
+삭제할 스냅샷의 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+오버라이드스냅미러홀드
+ a| 
+복제 중 스냅샷에 적용된 잠금을 무시합니다.  이 매개변수를 사용하면 연관된 SnapMirror 관계가 삭제된 후 오래된 SnapMirror 스냅샷을 삭제할 수 있습니다.
+ a| 
+부울
+ a| 
+거짓
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드에는 반환 값이 없습니다.
+
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "DeleteSnapshot",
+"params": {
+"snapshotID": 8,
+"overrideSnapMirrorHold": true
+},
+"id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {}
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_rollbacktosnapshot.adoc[스냅샷으로 롤백]

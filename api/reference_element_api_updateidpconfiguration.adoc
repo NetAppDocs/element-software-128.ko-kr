@@ -1,0 +1,159 @@
+---
+permalink: api/reference_element_api_updateidpconfiguration.html 
+sidebar: sidebar 
+keywords: IdP,idp,configuration,update 
+summary: UpdateIdpConfiguration 메서드를 사용하면 클러스터의 타사 IdP로 기존 구성을 업데이트할 수 있습니다. 
+---
+= 업데이트Idp구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `UpdateIdpConfiguration` 클러스터에 대한 타사 IdP로 기존 구성을 업데이트하는 방법입니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+새 인증서 생성
+ a| 
+true로 지정하면 새로운 SAML 키와 인증서가 생성되어 기존 쌍을 대체합니다.  참고: 기존 인증서를 교체하면 클러스터의 서비스 공급자 메타데이터가 IdP에서 다시 로드될 때까지 클러스터와 IdP 간에 설정된 신뢰가 중단됩니다.  제공되지 않거나 false로 설정하면 SAML 인증서와 키는 변경되지 않습니다.
+ a| 
+부울
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+idp구성ID
+ a| 
+타사 IdP 구성을 위한 UUID입니다.
+ a| 
+UUID
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+idp메타데이터
+ a| 
+SAML 2.0 Single Sign-On에 대한 구성 및 통합 세부 정보를 제공하는 IdP 메타데이터입니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+IDP 이름
+ a| 
+SAML 2.0 Single Sign-On을 위한 IdP 공급자를 식별하고 검색하는 데 사용되는 이름입니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+새로운 ID 이름
+ a| 
+지정된 경우 이 이름은 이전 IdP 이름을 대체합니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+idpConfigInfo
+ a| 
+타사 IdP 구성에 대한 정보입니다.
+ a| 
+link:reference_element_api_idpconfiginfo.html["idpConfigInfo"]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+"method": "UpdateIdpConfiguration",
+"params": {
+        "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+        "generateNewCertificate": true
+    }
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+    "result": {
+        "idpConfigInfo": {
+        "enabled": true,
+        "idpConfigurationID": "f983c602-12f9-4c67-b214-bf505185cfed",
+        "idpMetadata": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n
+        <EntityDescriptor xmlns=\"urn:oasis:names:tc:SAML:2.0:metadata\"\r\n
+        xmlns:ds=\"http://www.w3.org/2000/09/xmldsig#\"\r\n
+        xmlns:shibmd=\"urn:mace:shibboleth:metadata:1.0\"\r\n
+        xmlns:xml=\"http://www.w3.org/XML/1998/namespace\"\r\n
+        ...</Organization>\r\n
+        </EntityDescriptor>",
+        "idpName": "https://privider.name.url.com",
+        "serviceProviderCertificate": "-----BEGIN CERTIFICATE-----\n
+        MI...BHi\n
+        -----END CERTIFICATE-----\n",
+        "spMetadataUrl": "https://10.193.100.100/auth/ui/saml2"
+        }
+    }
+}
+----
+
+
+== 버전 이후 새로운
+
+12.0

@@ -1,0 +1,27 @@
+---
+permalink: storage/task_data_protection_edit_members_of_group_snapshot.html 
+sidebar: sidebar 
+keywords: group snapshot members, edit 
+summary: 기존 그룹 스냅샷의 구성원에 대한 보존 설정을 편집할 수 있습니다. 
+---
+= 그룹 스냅샷 멤버 편집
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+기존 그룹 스냅샷의 구성원에 대한 보존 설정을 편집할 수 있습니다.
+
+. *데이터 보호* > *스냅샷*을 클릭합니다.
+. *회원* 탭을 클릭하세요.
+. 편집하려는 그룹 스냅샷 멤버의 작업 아이콘을 클릭합니다.
+. 나타나는 메뉴에서 *편집*을 선택합니다.
+. 스냅샷에 대한 복제 설정을 변경하려면 다음 옵션 중에서 선택하세요.
++
+** *영구 보관*을 클릭하면 스냅샷이 시스템에 무기한 보관됩니다.
+** *보존 기간 설정*을 클릭하고 날짜 스핀 상자를 사용하여 시스템이 스냅샷을 보관할 기간을 선택합니다.
+
+
+. *변경 사항 저장*을 클릭하세요.
+

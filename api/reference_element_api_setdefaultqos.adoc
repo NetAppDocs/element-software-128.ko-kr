@@ -1,0 +1,139 @@
+---
+permalink: api/reference_element_api_setdefaultqos.html 
+sidebar: sidebar 
+keywords: qos,value,configure,configuring,default,set,setting,setdefaultqos 
+summary: 'SetDefaultQoS 메서드를 사용하면 볼륨에 대한 기본 서비스 품질 \(QoS\) 값 \(초당 입력 및 출력, 즉 IOPS\로 측정)을 구성할 수 있습니다.' 
+---
+= 기본 QoS 설정
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `SetDefaultQoS` 볼륨에 대한 기본 서비스 품질(QoS) 값(초당 입력 및 출력, 즉 IOPS로 측정)을 구성하는 방법입니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+최소 IOPS
+ a| 
+클러스터가 볼륨에 제공하는 지속형 IOPS의 최소 수입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+최대 IOPS
+ a| 
+클러스터가 볼륨에 제공하는 지속형 IOPS의 최대 수입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+버스트IOPS
+ a| 
+단기 버스트 시나리오에서 허용되는 최대 IOPS 수입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+최소 IOPS
+ a| 
+클러스터가 볼륨에 제공하는 지속형 IOPS의 최소 수입니다.
+ a| 
+정수
+
+
+
+ a| 
+최대 IOPS
+ a| 
+클러스터가 볼륨에 제공하는 지속형 IOPS의 최대 수입니다.
+ a| 
+정수
+
+
+
+ a| 
+버스트IOPS
+ a| 
+단기 버스트 시나리오에서 허용되는 최대 IOPS 수입니다.
+ a| 
+정수
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "SetDefaultQoS",
+    "params": {
+        "burstIOPS":8000,
+        "maxIOPS":1000,
+        "minIOPS":200
+    },
+    "id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+    "id":1,
+    "result": {
+        "burstIOPS":8000,
+        "maxIOPS":1000,
+        "minIOPS":200
+    ​}
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

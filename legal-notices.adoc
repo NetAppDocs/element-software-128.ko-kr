@@ -1,0 +1,79 @@
+---
+sidebar: sidebar 
+permalink: legal-notices.html 
+keywords:  
+summary:  
+---
+= 법적 고지 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ./media/
+
+
+[role="lead"]
+법적 고지사항은 저작권 표시, 상표, 특허 등에 대한 정보를 제공합니다.
+
+
+
+== 저작권
+
+link:https://www.netapp.com/company/legal/copyright/["https://www.netapp.com/company/legal/copyright/"^]
+
+
+
+== 상표
+
+NETAPP, NETAPP 로고 및 NetApp 상표 페이지에 나열된 마크는 NetApp, Inc.의 상표입니다. 다른 회사 및 제품 이름은 해당 소유자의 상표일 수 있습니다.
+
+link:https://www.netapp.com/company/legal/trademarks/["https://www.netapp.com/company/legal/trademarks/"^]
+
+
+
+== 특허
+
+NetApp 이 소유한 현재 특허 목록은 다음에서 확인할 수 있습니다.
+
+link:https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf["https://www.netapp.com/pdf.html?item=/media/11887-patentspage.pdf"^]
+
+
+
+== 개인정보 보호정책
+
+link:https://www.netapp.com/company/legal/privacy-policy/["https://www.netapp.com/company/legal/privacy-policy/"^]
+
+
+
+== 오픈소스
+
+공지 파일은 NetApp 소프트웨어에서 사용되는 타사 저작권 및 라이선스에 대한 정보를 제공합니다.
+
+* link:./media/Element_Software_12.8.pdf["Element 소프트웨어 12.8에 대한 공지"^]
+* link:./media/Element_Software_12.7.pdf["Element 소프트웨어 12.7에 대한 공지"^]
+* link:./media/Ember_OS_12.7.pdf["Ember OS 12.7에 대한 공지"^]
+* link:./media/mNode_12.7.pdf["관리 노드 12.7에 대한 공지"^]
+* link:./media/Element_Software_12.5.pdf["Element 소프트웨어 12.5에 대한 공지"^]
+* link:./media/mNode_12.5.pdf["관리 노드 12.5에 대한 알림"^]
+* link:./media/mgmt_svcs_2.27_notice.pdf["Management Services 2.27.40(VMware vCenter Server 5.5.16용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt_svcs_2.26_notice.pdf["Management Services 2.26.30(VMware vCenter Server 5.4.1용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt_svcs_2.25_notice.pdf["Management Services 2.25.42(VMware vCenter Server 5.3.9용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt_svcs_2.24_notice.pdf["Management Services 2.24.40(VMware vCenter Server 5.2.12용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt_svcs_2.23_notice.pdf["Management Services 2.23.64(VMware vCenter Server 5.1.12용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt_svcs_2.22_notice.pdf["Management Services 2.22.7(VMware vCenter Server 5.0.37용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt_svcs_2.21_notice.pdf["Management Services 2.21.61(VMware vCenter Server 4.10.12용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt_2.20_notice.pdf["Management Services 2.20.69(vCenter Server 4.9.14용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt_2.19_notice.pdf["Management Services 2.19.48(vCenter Server 4.8.34용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt_svcs_2.18.pdf["Management Services 2.18.91(vCenter Server 4.7.10용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt_2.17.56_notice.pdf["Management Services 2.17.56(vCenter Server 4.6.32용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt-217.pdf["Management Services 2.17.52(vCenter Server 4.6.29용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt-216.pdf["Management Services 2.16(vCenter Server 4.6.29용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt-214.pdf["Management Services 2.14(vCenter Server 4.5.42용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/mgmt-213.pdf["Management Services 2.13(vCenter Server 4.5.42용 NetApp Element 플러그인)에 대한 알림"^]
+* link:./media/storage_firmware_bundle_2.182.0_notices.pdf["스토리지 펌웨어 번들 2.182.0에 대한 공지"^]
+* link:./media/storage_firmware_bundle_2.175.0_notices.pdf["스토리지 펌웨어 번들 2.175.0에 대한 알림"^]
+* link:./media/storage_firmware_bundle_2.164.0_notices.pdf["스토리지 펌웨어 번들 2.164.0에 대한 공지"^]
+* link:./media/storage_firmware_bundle_2.150_notices.pdf["스토리지 펌웨어 번들 2.150에 대한 공지"^]
+* link:./media/storage_firmware_bundle_2.146_notices.pdf["스토리지 펌웨어 번들 2.146에 대한 알림"^]
+* link:./media/storage_firmware_bundle_2.99_notices.pdf["스토리지 펌웨어 번들 2.99.2에 대한 공지"^]
+* link:./media/storage_firmware_bundle_2.76_notices.pdf["스토리지 펌웨어 번들 2.76에 대한 공지"^]
+* link:./media/storage_firmware_bundle_2.27_notices.pdf["스토리지 펌웨어 번들 2.27에 대한 공지"^]
+

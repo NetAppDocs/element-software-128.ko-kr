@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_getnodesupportedtlsciphers.html 
+sidebar: sidebar 
+keywords: tls,cipher,ciphers,get,getting,supported,getnodesupportedtlsciphers 
+summary: 단일 노드에서 GetNodeSupportedTlsCiphers 메서드를 사용하면 현재 이 노드에서 지원되는 TLS 암호 목록을 가져올 수 있습니다.  이 방법은 관리 및 저장 노드에서 사용할 수 있습니다. 
+---
+= GetNodeSupportedTlsCiphers
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `GetNodeSupportedTlsCiphers` 현재 이 노드에서 지원되는 TLS 암호 목록을 얻기 위해 단일 노드에서 사용하는 방법입니다.  이 방법은 관리 및 저장 노드에서 사용할 수 있습니다.
+
+
+
+== 매개변수
+
+이 방법에는 입력 매개변수가 없습니다.
+
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+필수 암호
+ a| 
+노드에 대한 필수 TLS 암호화 제품군 목록입니다.  이는 노드에서 항상 활성화되는 암호입니다.
+ a| 
+끈
+
+
+
+ a| 
+기본 보충 암호
+ a| 
+노드에 대한 기본 보충 TLS 암호 그룹 목록입니다.  ResetNodeSupplementalTlsCiphers API 메서드를 실행하면 보충 암호가 이 목록으로 복원됩니다.
+ a| 
+끈
+
+
+
+ a| 
+지원되는 보충 암호
+ a| 
+SetNodeSupplementalTlsCiphers API 메서드를 사용하여 구성할 수 있는 사용 가능한 보충 TLS 암호화 제품군 목록입니다.
+ a| 
+끈
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "GetNodeSupportedTlsCiphers",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+	"defaultSupplementalCiphers": [
+		"DHE-RSA-AES128-SHA256",
+		"DHE-RSA-AES128-GCM-SHA256",
+		"ECDHE-RSA-AES128-SHA256",
+		"ECDHE-RSA-AES128-GCM-SHA256"
+	],
+	"mandatoryCiphers": [
+		"DHE-RSA-AES256-SHA256",
+		"DHE-RSA-AES256-GCM-SHA384",
+		"ECDHE-RSA-AES256-SHA384",
+		"ECDHE-RSA-AES256-GCM-SHA384"
+	],
+	"supportedSupplementalCiphers": [
+		"DHE-RSA-AES128-SHA256",
+		"DHE-RSA-AES128-GCM-SHA256",
+		"ECDHE-RSA-AES128-SHA256",
+		"ECDHE-RSA-AES128-GCM-SHA256",
+		"DHE-RSA-AES256-SHA",
+		"ECDHE-RSA-AES256-SHA",
+		"DHE-RSA-CAMELLIA256-SHA",
+		"DHE-RSA-AES128-SHA",
+		"ECDHE-RSA-AES128-SHA",
+		"DHE-RSA-CAMELLIA128-SHA"
+	]
+}
+}
+----

@@ -1,0 +1,105 @@
+---
+permalink: api/reference_element_api_deleteauthsessionsbyclusteradmin.html 
+sidebar: sidebar 
+keywords: auth sessions,cluster,admin,delete,authentication sessions 
+summary: DeleteAuthSessionsByClusterAdmin 메서드를 사용하면 지정된 ClusterAdminID와 연결된 모든 인증 세션을 삭제할 수 있습니다.  지정된 ClusterAdminID가 사용자 그룹에 매핑되는 경우 해당 그룹의 모든 구성원에 대한 모든 인증 세션이 삭제됩니다.  삭제 가능한 세션 목록을 보려면 ClusterAdminID 매개변수와 함께 ListAuthSessionsByClusterAdmin 메서드를 사용합니다. 
+---
+= 클러스터 관리자에 의한 인증 세션 삭제
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `DeleteAuthSessionsByClusterAdmin` 지정된 것과 관련된 모든 인증 세션을 삭제하는 방법 `ClusterAdminID` .  지정된 ClusterAdminID가 사용자 그룹에 매핑되는 경우 해당 그룹의 모든 구성원에 대한 모든 인증 세션이 삭제됩니다.  삭제 가능한 세션 목록을 보려면 ListAuthSessionsByClusterAdmin 메서드를 사용하십시오. `ClusterAdminID` 매개변수.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+클러스터 관리자 ID
+ a| 
+클러스터 관리자를 위한 고유 식별자입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+세션
+ a| 
+삭제된 인증 세션에 대한 세션 정보입니다.
+ a| 
+link:reference_element_api_authsessioninfo.html["인증 세션 정보"]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "DeleteAuthSessionsByClusterAdmin",
+  "params": {
+    "clusterAdminID": 1
+  }
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+"sessions": [
+      {
+        "accessGroupList": [
+          "administrator"
+        ],
+        "authMethod": "Cluster",
+        "clusterAdminIDs": [
+          1
+        ],
+        "finalTimeout": "2020-03-14T19:21:24Z",
+        "idpConfigVersion": 0,
+        "lastAccessTimeout": "2020-03-11T19:51:24Z",
+        "sessionCreationTime": "2020-03-11T19:21:24Z",
+        "sessionID": "b12bfc64-f233-44df-8b9f-6fb6c011abf7",
+        "username": "admin"
+      }
+    ]
+}
+----
+
+
+== 버전 이후 새로운
+
+12.0

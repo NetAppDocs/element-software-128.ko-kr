@@ -1,0 +1,35 @@
+---
+permalink: api/concept_element_api_vvols_api_methods.html 
+sidebar: sidebar 
+keywords: virtual,volume,vvol,API,method 
+summary: 'Element 소프트웨어 가상 볼륨 API 메서드를 사용하면 가상 볼륨(VVols)을 관리할 수 있습니다.  이러한 API 메서드를 사용하면 기존 VVol을 볼 수 있을 뿐만 아니라 가상 볼륨 스토리지 컨테이너를 생성, 수정, 삭제할 수도 있습니다.  이러한 메서드를 사용하여 일반 볼륨을 조작할 수는 없지만 일반 볼륨 API 메서드를 사용하여 VVol에 대한 정보를 나열할 수 있습니다.' 
+---
+= 가상 볼륨 API 메서드
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 소프트웨어 가상 볼륨 API 메서드를 사용하면 가상 볼륨(VVol)을 관리할 수 있습니다.  이러한 API 메서드를 사용하면 기존 VVol을 볼 수 있을 뿐만 아니라 가상 볼륨 스토리지 컨테이너를 생성, 수정, 삭제할 수도 있습니다.  이러한 메서드를 사용하여 일반 볼륨을 조작할 수는 없지만 일반 볼륨 API 메서드를 사용하여 VVol에 대한 정보를 나열할 수 있습니다.
+
+* xref:reference_element_api_createstoragecontainer.adoc[CreateStorageContainer]
+* xref:reference_element_api_deletestoragecontainers.adoc[저장소 컨테이너 삭제]
+* xref:reference_element_api_getstoragecontainerefficiency.adoc[GetStorageContainerEfficiency]
+* xref:reference_element_api_getvirtualvolumecount.adoc[가상볼륨수 가져오기]
+* xref:reference_element_api_listprotocolendpoints.adoc[프로토콜 엔드포인트 목록]
+* xref:reference_element_api_liststoragecontainers.adoc[ListStorageContainers]
+* xref:reference_element_api_listvirtualvolumebindings.adoc[가상볼륨 바인딩 목록]
+* xref:reference_element_api_listvirtualvolumehosts.adoc[가상 볼륨 호스트 목록]
+* xref:reference_element_api_listvirtualvolumes.adoc[가상 볼륨 나열]
+* xref:reference_element_api_listvirtualvolumetasks.adoc[가상 볼륨 작업 목록]
+* xref:reference_element_api_modifystoragecontainer.adoc[ModifyStorageContainer]
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

@@ -1,0 +1,14 @@
+---
+permalink: storage/concept_system_manage_mfa_enable_multi_factor_authentication.html 
+sidebar: sidebar 
+keywords: saml, idp, mfa, enable 
+summary: '다중 인증 요소(MFA)는 보안 어설션 마크업 언어(SAML)를 통해 타사 ID 공급자(IdP)를 사용하여 사용자 세션을 관리합니다.  MFA를 사용하면 관리자가 비밀번호와 문자 메시지, 비밀번호와 이메일 메시지 등 필요에 따라 추가적인 인증 요소를 구성할 수 있습니다.' 
+---
+= 다중 요소 인증 활성화
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+다중 인증 요소(MFA)는 SAML(Security Assertion Markup Language)을 통해 타사 ID 공급자(IdP)를 사용하여 사용자 세션을 관리합니다.  MFA를 사용하면 관리자가 비밀번호와 문자 메시지, 비밀번호와 이메일 메시지 등 필요에 따라 추가적인 인증 요소를 구성할 수 있습니다.

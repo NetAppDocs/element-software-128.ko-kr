@@ -1,0 +1,160 @@
+---
+permalink: api/reference_element_api_testconnectsvip.html 
+sidebar: sidebar 
+keywords: storage,connection,svip,test,testing,testconnectsvip 
+summary: TestConnectSvip 메서드를 사용하여 스토리지 클러스터에 대한 스토리지 연결을 테스트할 수 있습니다.  이 테스트는 ICMP 패킷을 사용하여 SVIP에 ping을 보내고, 성공하면 iSCSI 초기자로 연결합니다. 
+---
+= 테스트커넥트스비프
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `TestConnectSvip` 스토리지 클러스터에 대한 스토리지 연결을 테스트하는 방법입니다.  이 테스트는 ICMP 패킷을 사용하여 SVIP에 ping을 보내고, 성공하면 iSCSI 초기자로 연결합니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+svip
+ a| 
+이 값을 전달하여 다른 SVIP의 관리 연결을 테스트할 수 있습니다.  대상 클러스터에 대한 연결을 테스트할 때는 이 값을 사용할 필요가 없습니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+세부
+ a| 
+테스트 작업에 대한 정보(JSON 객체):
+
+* `connected`: 테스트가 SVIP에 연결될 수 있는지 여부를 나타냅니다(부울)
+* `svip`: SVIP가 (문자열)에 대해 테스트되었습니다.
+* `pingBytes`: 56바이트와 9000바이트(객체)를 사용한 ping 테스트의 세부 사항
++
+** `56`: 56바이트 ping 테스트 결과(JSON 객체):
++
+*** `individualResponseTimes`: 각 앙상블 노드의 응답 시간 목록(문자열 배열)
+*** `individualStatus`: 각 앙상블 노드의 ping 상태 목록(부울 배열)
+*** `responseTime`: 평균 ping 응답 시간(문자열)
+*** `successful`: ping 테스트가 성공했는지 여부를 나타냅니다(부울)
+
+
+** `9000`: 9000바이트 ping 테스트 결과(JSON 객체):
++
+*** `individualResponseTimes`: 각 앙상블 노드의 응답 시간 목록(문자열 배열)
+*** `individualStatus`: 각 앙상블 노드의 ping 상태 목록(부울 배열)
+*** `responseTime`: 평균 ping 응답 시간(문자열)
+*** `successful`: ping 테스트가 성공했는지 여부를 나타냅니다(부울)
+
+
+** `duration`: 테스트를 실행하는 데 필요한 시간(문자열)
+** `result`: 테스트 전체 결과(문자열)
+
+
+
+ a| 
+끈
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "TestConnectSvip",
+   "params": {
+      "svip" : "172.27.62.50"
+      },
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "details": {
+      "connected": true,
+      "pingBytes": {
+           "56": {
+               "individualResponseTimes": [
+                   "00:00:00.000152",
+                   "00:00:00.000132",
+                   "00:00:00.000119",
+                   "00:00:00.000114",
+                   "00:00:00.000112"
+              ],
+              "individualStatus": [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+              ],
+              "responseTime": "00:00:00.000126",
+              "successful": true
+           },
+          "9000": {
+                "individualResponseTimes": [
+                    "00:00:00.000295",
+                    "00:00:00.000257",
+                    "00:00:00.000172",
+                    "00:00:00.000172",
+                    "00:00:00.000267"
+              ],
+              "individualStatus": [
+                  true,
+                  true,
+                  true,
+                  true,
+                  true
+             ],
+             "responseTime": "00:00:00.000233",
+             "successful": true
+           }
+        },
+        "svip": "172.27.62.50"
+      },
+      "duration": "00:00:00.421907",
+      "result": "Passed"
+   }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

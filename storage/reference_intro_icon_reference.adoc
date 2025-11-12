@@ -1,0 +1,106 @@
+---
+permalink: storage/reference_intro_icon_reference.html 
+sidebar: sidebar 
+keywords: icons, element interface, actions, system resources, quick reference 
+summary: NetApp Element 소프트웨어 인터페이스는 시스템 리소스에 대해 수행할 수 있는 작업을 나타내는 아이콘을 표시합니다. 
+---
+= Element 인터페이스의 아이콘
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element 소프트웨어 인터페이스는 시스템 리소스에 대해 수행할 수 있는 작업을 나타내는 아이콘을 표시합니다.
+
+다음 표는 빠른 참조를 제공합니다.
+
+|===
+
+
+| 상 | 설명 
+
+
+ a| 
+image:../media/element_icon_action.gif["Element OS 웹 UI의 작업 아이콘"]
+ a| 
+행위
+
+
+
+ a| 
+image:../media/element_icon_backupto.gif["Element OS 웹 UI의 Backupto 아이콘"]
+ a| 
+백업
+
+
+
+ a| 
+image:../media/element_icon_clone.gif["Element OS 웹 UI에서 아이콘 복제"]
+ a| 
+복제 또는 복사
+
+
+
+ a| 
+image:../media/element_icon_delete.gif["Element OS 웹 UI에서 아이콘 삭제"]
+ a| 
+삭제 또는 제거
+
+
+
+ a| 
+image:../media/element_icon_edit.gif["Element OS 웹 UI에서 아이콘 편집"]
+ a| 
+편집하다
+
+
+
+ a| 
+image:../media/element_icon_filter.gif["Element OS 웹 UI의 필터 아이콘"]
+ a| 
+필터
+
+
+
+ a| 
+image:../media/element_icon_pair.gif["Element OS 웹 UI의 쌍 아이콘"]
+ a| 
+쌍
+
+
+
+ a| 
+image:../media/element_icon_refresh.gif["Element OS 웹 UI의 새로 고침 아이콘"]
+ a| 
+새로 고치다
+
+
+
+ a| 
+image:../media/element_icon_restore.gif["Element OS 웹 UI에서 아이콘 복원"]
+ a| 
+복원하다
+
+
+
+ a| 
+image:../media/element_icon_restorefrom.gif["Element OS 웹 UI의 아이콘에서 복원"]
+ a| 
+에서 복원
+
+
+
+ a| 
+image:../media/element_icon_rollback.gif["Element OS 웹 UI의 롤백 아이콘"]
+ a| 
+롤백
+
+
+
+ a| 
+image:../media/element_icon_snapshot.gif["Element OS 웹 UI의 스냅샷 아이콘"]
+ a| 
+스냅샷
+
+|===

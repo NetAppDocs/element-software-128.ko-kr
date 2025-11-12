@@ -1,0 +1,138 @@
+---
+permalink: api/reference_element_api_listvolumeaccessgroups.html 
+sidebar: sidebar 
+keywords: volume,access,group,groups,list,listing,listvolumeaccessgroups 
+summary: ListVolumeAccessGroups 메서드를 사용하면 현재 시스템에 있는 볼륨 액세스 그룹에 대한 정보를 가져올 수 있습니다. 
+---
+= 볼륨 액세스 그룹 목록
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `ListVolumeAccessGroups` 현재 시스템에 있는 볼륨 액세스 그룹에 대한 정보를 얻는 방법입니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+한계
+ a| 
+반환할 volumeAccessGroup 개체의 최대 수입니다.  volumeAccessGroups 매개변수와 상호 배타적입니다.
+ a| 
+정수
+ a| 
+제한 없는
+ a| 
+아니요
+
+
+
+ a| 
+시작 볼륨 액세스 그룹 ID
+ a| 
+목록을 시작할 볼륨 액세스 그룹 ID입니다.  volumeAccessGroups 매개변수와 상호 배타적입니다.
+ a| 
+정수
+ a| 
+0
+ a| 
+아니요
+
+
+
+ a| 
+볼륨액세스그룹
+ a| 
+검색할 volumeAccessGroupID 값 목록입니다.  startVolumeAccessGroupID 및 limit 매개변수와 상호 배타적입니다.
+ a| 
+정수 배열
+ a| 
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+볼륨액세스그룹
+ a| 
+각 볼륨 액세스 그룹을 설명하는 객체 목록입니다.
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[볼륨액세스그룹]정렬
+
+
+
+ a| 
+볼륨액세스그룹을 찾을 수 없음
+ a| 
+시스템에서 찾을 수 없는 볼륨 액세스 그룹 목록입니다.  volumeAccessGroups 매개변수를 사용했고 시스템에서 지정한 하나 이상의 볼륨 액세스 그룹을 찾을 수 없는 경우에 나타납니다.
+ a| 
+정수 배열
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "ListVolumeAccessGroups",
+   "params": {
+      "startVolumeAccessGroupID": 3,
+      "limit"   : 1
+   },
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeAccessGroups": [
+      {
+        "attributes": {},
+        "deletedVolumes": [],
+        "initiatorIDs": [],
+        "initiators": [],
+        "name": "example1",
+        "volumeAccessGroupID": 3,
+        "volumes": []
+      }
+    ]
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

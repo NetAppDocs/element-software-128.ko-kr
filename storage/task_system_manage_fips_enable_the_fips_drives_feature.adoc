@@ -1,0 +1,32 @@
+---
+permalink: storage/task_system_manage_fips_enable_the_fips_drives_feature.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, enable, ear 
+summary: NetApp Element 소프트웨어 EnableFeature API 메서드를 사용하여 FIPS 드라이브 기능을 활성화할 수 있습니다. 
+---
+= FIPS 드라이브 기능 활성화
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element 소프트웨어를 사용하여 FIPS 드라이브 기능을 활성화할 수 있습니다. `EnableFeature` API 방식.
+
+클러스터에서 휴면 상태 암호화를 활성화해야 하며, 모든 노드와 드라이브는 FIPS를 지원해야 합니다. 이는 GetFipsReport에서 모든 노드에 대해 준비 상태가 표시되는 것을 통해 알 수 있습니다.
+
+.단계
+. Element API를 사용하여 다음을 입력하여 모든 드라이브에서 FIPS를 활성화합니다.
++
+`EnableFeature params: FipsDrives`
+
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* link:../api/concept_element_api_about_the_api.html["Element API로 저장소 관리"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

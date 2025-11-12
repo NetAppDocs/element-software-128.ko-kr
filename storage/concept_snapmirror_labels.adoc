@@ -1,0 +1,18 @@
+---
+permalink: storage/concept_snapmirror_labels.html 
+sidebar: sidebar 
+keywords: labels, snapmirror, retention rules 
+summary: SnapMirror 레이블은 관계의 보존 규칙에 따라 지정된 스냅샷을 전송하기 위한 마커 역할을 합니다. 
+---
+= SnapMirror 라벨
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirror 레이블은 관계의 보존 규칙에 따라 지정된 스냅샷을 전송하기 위한 마커 역할을 합니다.
+
+스냅샷에 레이블을 적용하면 해당 스냅샷이 SnapMirror 복제 대상으로 표시됩니다.  관계의 역할은 일치하는 레이블이 지정된 스냅샷을 선택하고, 대상 볼륨에 복사하고, 올바른 수의 복사본이 보관되도록 하여 데이터 전송 시 규칙을 적용하는 것입니다.  보관 횟수와 보관 기간을 결정하는 정책을 말합니다.  정책에는 여러 개의 규칙이 있을 수 있으며 각 규칙에는 고유한 레이블이 있습니다.  이 라벨은 스냅샷과 보존 규칙 간의 링크 역할을 합니다.
+
+선택한 스냅샷, 그룹 스냅샷 또는 일정에 어떤 규칙이 적용되는지 나타내는 것은 SnapMirror 레이블입니다.

@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_getkeyproviderkmip.html 
+sidebar: sidebar 
+keywords: KMIP,key provider,retrieving,get,retrieve 
+summary: 'GetKeyProviderKmip 메서드를 사용하면 지정된 키 관리 상호 운용성 프로토콜(KMIP) 키 공급자에 대한 정보를 검색할 수 있습니다.' 
+---
+= GetKeyProviderKmip
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `GetKeyProviderKmip` 지정된 키 관리 상호 운용성 프로토콜(KMIP) 키 공급자에 대한 정보를 검색하는 방법입니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+키 제공자 ID
+ a| 
+반환할 KMIP 키 공급자 개체의 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+kmipKeyProvider
+ a| 
+요청된 키 공급자에 대한 세부 정보가 포함된 개체입니다.
+ a| 
+link:reference_element_api_keyproviderkmip.html["키프로바이더Kmip"]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "GetKeyProviderKmip",
+  "params": {
+    "keyProviderID": 15
+    },
+"id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+    {
+    "kmipKeyProvider": {
+        "keyProviderID": 15,
+        "kmipCapabilities": "SSL",
+        "keyProviderIsActive": true,
+        "keyServerIDs": [
+            1
+        ],
+        "keyProviderName": "ProviderName"
+    }
+   }
+}
+----
+
+
+== 버전 이후 새로운
+
+11.7

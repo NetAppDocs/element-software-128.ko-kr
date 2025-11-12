@@ -1,0 +1,28 @@
+---
+permalink: storage/concept_system_manage_key_get_started_with_external_key_management.html 
+sidebar: sidebar 
+keywords: kmip, master key, key management, encryption at rest, software encryption at rest, ekm, ak, eks, seds 
+summary: '외부 키 관리(EKM)는 클러스터 외부 키 서버(EKS)와 함께 안전한 인증 키(AK) 관리를 제공합니다.  AK는 클러스터에서 저장 암호화가 활성화된 경우 SED(자체 암호화 드라이브)를 잠그거나 잠금 해제하는 데 사용됩니다.' 
+---
+= 외부 키 관리 시작하기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+외부 키 관리(EKM)는 클러스터 외부 키 서버(EKS)와 함께 안전한 인증 키(AK) 관리를 제공합니다.  AK는 SED(자체 암호화 드라이브)를 잠그거나 잠금 해제하는 데 사용됩니다.link:../concepts/concept_solidfire_concepts_security.html["휴면 암호화"] 클러스터에서 활성화되었습니다.  EKS는 AK의 안전한 생성 및 저장을 제공합니다.  클러스터는 OASIS에서 정의한 표준 프로토콜인 KMIP(Key Management Interoperability Protocol)를 활용하여 EKS와 통신합니다.
+
+* link:task_system_manage_key_set_up_external_key_management.html["외부 관리 설정"]
+* link:task_system_manage_rekey_software_ear_master_key.html["휴면 마스터 키에서 소프트웨어 암호화 재키"]
+* link:concept_system_manage_key_recover_inaccessible_or_invalid_authentication_keys["접근 불가능하거나 잘못된 인증 키 복구"]
+* link:concept_system_manage_key_external_key_management_api_commands.html["외부 키 관리 API 명령"]
+
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* link:../api/reference_element_api_createcluster.html["휴면 상태에서 소프트웨어 암호화를 활성화하는 데 사용할 수 있는 CreateCluster API"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

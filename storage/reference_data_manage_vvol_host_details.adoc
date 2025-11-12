@@ -1,0 +1,42 @@
+---
+permalink: storage/reference_data_manage_vvol_host_details.html 
+sidebar: sidebar 
+keywords: host details, vvols, ESXi host details, virtual volumes, bindings, endpoints 
+summary: VVols 탭의 호스트 페이지는 가상 볼륨을 호스팅하는 VMware ESXi 호스트에 대한 정보를 제공합니다. 
+---
+= 호스트 세부 정보
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VVols 탭의 호스트 페이지는 가상 볼륨을 호스팅하는 VMware ESXi 호스트에 대한 정보를 제공합니다.
+
+다음 정보가 표시됩니다.
+
+* *호스트 ID*
++
+가상 볼륨을 호스팅하고 클러스터에서 알려진 ESXi 호스트의 UUID입니다.
+
+* *호스트 주소*
++
+ESXi 호스트의 IP 주소 또는 DNS 이름입니다.
+
+* *바인딩*
++
+ESXi 호스트에 의해 바인딩된 모든 가상 볼륨에 대한 바인딩 ID입니다.
+
+* *ESX 클러스터 ID*
++
+vSphere 호스트 클러스터 ID 또는 vCenter GUID입니다.
+
+* *개시자 IQN*
++
+가상 볼륨 호스트에 대한 개시자 IQN입니다.
+
+* * SolidFire 프로토콜 엔드포인트 ID*
++
+현재 ESXi 호스트에서 볼 수 있는 프로토콜 엔드포인트입니다.
+
+

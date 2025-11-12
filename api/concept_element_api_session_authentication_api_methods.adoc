@@ -1,0 +1,26 @@
+---
+permalink: api/concept_element_api_session_authentication_api_methods.html 
+sidebar: sidebar 
+keywords: session auth 
+summary: 세션 기반 인증을 사용하여 사용자 세션을 관리할 수 있습니다. 
+---
+= 세션 인증 API 메서드
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+세션 기반 인증을 사용하여 사용자 세션을 관리할 수 있습니다.
+
+* xref:reference_element_api_listauthsessionbyclusteradmin.adoc[ListAuthSessionsByClusterAdmin]
+* xref:reference_element_api_listauthsessionbyusername.adoc[사용자 이름별 인증 세션 목록]
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

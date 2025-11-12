@@ -1,0 +1,66 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_multi_vcenter_config.html 
+summary: REST API UI를 사용하여 NetApp Hybrid Cloud Control을 구성하여 여러 vCenter를 사용할 수 있습니다. 
+keywords: netapp, mnode, management node, multi-vcenter, Element 
+---
+= 여러 vCenter에 대한 NetApp Hybrid Cloud Control 구성
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+연결 모드를 사용하지 않는 두 개 이상의 vCenter에서 자산을 관리하도록 NetApp Hybrid Cloud Control을 구성할 수 있습니다.
+
+최근에 확장된 설치에 자산을 추가해야 하거나 새 자산이 구성에 자동으로 추가되지 않은 경우 초기 설치 후에 이 프로세스를 사용해야 합니다.  이러한 API를 사용하여 설치에 최근 추가된 자산을 추가하세요.
+
+.필요한 것
+* 귀하의 클러스터 버전은 NetApp Element 소프트웨어 11.3 이상을 실행하고 있습니다.
+* 버전 11.3 이상을 실행하는 관리 노드를 배포했습니다.
+
+
+.단계
+. link:task_mnode_add_assets.html["새 vCenter를 컨트롤러 자산으로 추가"]관리 노드 구성으로.
+. 관리 노드에서 인벤토리 서비스 API를 새로 고칩니다.
++
+[listing]
+----
+https://<ManagementNodeIP>/inventory/1/
+----
++
+
+NOTE: 또는 NetApp Hybrid Cloud Control UI에서 인벤토리가 업데이트될 때까지 2분간 기다릴 수 있습니다.
+
++
+.. *승인*을 선택하고 다음을 완료하세요.
++
+... 클러스터 사용자 이름과 비밀번호를 입력하세요.
+... 클라이언트 ID를 다음과 같이 입력하세요. `mnode-client` .
+... 세션을 시작하려면 *승인*을 선택하세요.
+... 창을 닫으세요.
+
+
+.. REST API UI에서 *GET ​/installations*를 선택합니다.
+.. *시도해보기*를 선택하세요.
+.. *실행*을 선택하세요.
+.. 응답에서 설치 자산 ID를 복사합니다.(`"id"` ).
+.. REST API UI에서 *GET /installations/{id}*를 선택합니다.
+.. *시도해보기*를 선택하세요.
+.. 새로 고침을 설정하세요 `True` .
+.. 설치 자산 ID를 *id* 필드에 붙여넣습니다.
+.. *실행*을 선택하세요.
+
+
+. NetApp Hybrid Cloud Control 브라우저를 새로 고쳐 변경 사항을 확인하세요.
+
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+

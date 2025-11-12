@@ -1,0 +1,24 @@
+---
+permalink: storage/task_data_protection_copy_a_snapshot_schedule.html 
+sidebar: sidebar 
+keywords: snapshot schedule, copy, maintain, schedule attributes 
+summary: 일정을 복사하여 현재 속성을 유지할 수 있습니다. 
+---
+= 스냅샷 일정 복사
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+일정을 복사하여 현재 속성을 유지할 수 있습니다.
+
+. *데이터 보호* > *일정*을 클릭하세요.
+. 복사하려는 일정에 대한 작업 아이콘을 클릭합니다.
+. 나타나는 메뉴에서 *복사본 만들기*를 클릭합니다.
++
+*일정 만들기* 대화 상자가 나타나고 일정의 현재 속성이 입력됩니다.
+
+. *선택 사항:* 새 일정의 이름과 업데이트된 속성을 입력합니다.
+. *일정 만들기*를 클릭하세요.
+

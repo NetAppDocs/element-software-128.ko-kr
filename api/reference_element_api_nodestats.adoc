@@ -1,0 +1,208 @@
+---
+permalink: api/reference_element_api_nodestats.html 
+sidebar: sidebar 
+keywords: object,objects,nodestats 
+summary: nodeStats 객체에는 노드에 대한 고수준 활동 측정값이 포함되어 있습니다.  GetNodeStats 및 ListNodeStats API 메서드를 사용하면 일부 또는 모든 nodeStats 객체를 가져올 수 있습니다. 
+---
+= 노드 통계
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+nodeStats 객체에는 노드에 대한 고수준 활동 측정값이 포함되어 있습니다.  당신은 사용할 수 있습니다 `GetNodeStats` 그리고 `ListNodeStats` nodeStats 객체 중 일부 또는 전체를 가져오는 API 메서드입니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+세다
+ a| 
+nodeStats 객체의 총 샘플 수입니다.
+ a| 
+정수
+
+
+
+ a| 
+씨피유
+ a| 
+CPU 사용량(%)
+ a| 
+정수
+
+
+
+ a| 
+cpu총계
+ a| 
+CPU 활용도가 단조롭게 증가합니다.
+ a| 
+정수
+
+
+
+ a| 
+c바이트인
+ a| 
+클러스터 인터페이스에 바이트가 들어왔습니다.
+ a| 
+정수
+
+
+
+ a| 
+c바이트아웃
+ a| 
+클러스터 인터페이스에서 바이트가 출력됩니다.
+ a| 
+정수
+
+
+
+ a| 
+s바이트인
+ a| 
+저장 인터페이스에 바이트가 들어옵니다.
+ a| 
+정수
+
+
+
+ a| 
+s바이트아웃
+ a| 
+저장 인터페이스에서 바이트가 출력됩니다.
+ a| 
+정수
+
+
+
+ a| 
+m바이트
+ a| 
+관리 인터페이스에 바이트가 입력되었습니다.
+ a| 
+정수
+
+
+
+ a| 
+m바이트아웃
+ a| 
+관리 인터페이스에서 바이트가 출력됩니다.
+ a| 
+정수
+
+
+
+ a| 
+네트워크 활용 클러스터
+ a| 
+클러스터 네트워크 인터페이스의 네트워크 인터페이스 활용도(%)입니다.
+ a| 
+정수
+
+
+
+ a| 
+네트워크 활용도 저장
+ a| 
+저장 네트워크 인터페이스에 대한 네트워크 인터페이스 활용도(%)입니다.
+ a| 
+정수
+
+
+
+ a| 
+노드히트
+ a| 
+노드 활용 정보.  Element 12.8부터 사용 가능합니다.  회원:
+
+* primaryTotalHeat: 노드 기본 총 IOPS / 노드 구성 IOPS(24시간 평균)
+* recentPrimaryTotalHeat: 노드 기본 총 IOPS / 노드 구성 IOPS(1시간 평균)
+* recentTotalHeat: 노드 총 IOPS / 노드 구성 IOPS(1시간 평균)
+* totalHeat: 노드 총 IOPS / 노드 구성 IOPS(24시간 평균)
+
+ a| 
+JSON 객체
+
+
+
+ a| 
+readLatencyUSecTotal
+ a| 
+노드에 대한 읽기 작업을 수행하는 데 소요된 총 시간의 단조롭게 증가하는 값입니다.
+ a| 
+정수
+
+
+
+ a| 
+읽기 작업
+ a| 
+노드에 대한 총 읽기 작업의 값이 단조롭게 증가합니다.
+ a| 
+정수
+
+
+
+ a| 
+ssLoadHistogram
+ a| 
+시간 경과에 따른 슬라이스 서비스 부하를 보여주는 히스토그램 데이터입니다.
+ a| 
+JSON 객체
+
+
+
+ a| 
+타임스탬프
+ a| 
+UTC+0 형식의 현재 시간입니다.
+ a| 
+ISO 8601 날짜 문자열
+
+
+
+ a| 
+사용된 메모리
+ a| 
+총 메모리 사용량(바이트)
+ a| 
+정수
+
+
+
+ a| 
+writeLatencyUSecTotal
+ a| 
+노드에 쓰기 작업을 수행하는 데 소요된 총 시간의 단조롭게 증가하는 값입니다.
+ a| 
+정수
+
+
+
+ a| 
+writeOps
+ a| 
+노드에 대한 총 쓰기 작업의 값이 단조롭게 증가합니다.
+ a| 
+정수
+
+|===
+
+
+== 더 많은 정보를 찾아보세요
+
+* xref:reference_element_api_getnodestats.adoc[노드 통계 가져오기]
+* xref:reference_element_api_listnodestats.adoc[리스트노드통계]
+

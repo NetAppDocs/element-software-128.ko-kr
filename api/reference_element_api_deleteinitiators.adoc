@@ -1,0 +1,100 @@
+---
+permalink: api/reference_element_api_deleteinitiators.html 
+sidebar: sidebar 
+keywords: delete,deleting,initiator,initiators,DeleteInitiators 
+summary: 'DeleteInitiators를 사용하면 시스템(및 연관된 볼륨이나 볼륨 액세스 그룹)에서 하나 이상의 이니시에이터를 삭제할 수 있습니다.' 
+---
+= DeleteInitiators
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+사용할 수 있습니다 `DeleteInitiators` 시스템(및 연관된 볼륨이나 볼륨 액세스 그룹)에서 하나 이상의 개시자를 삭제합니다.
+
+만약에 `DeleteInitiators` 매개변수에 제공된 개시자 중 하나를 삭제하지 못하면 시스템은 오류를 반환하고 개시자를 삭제하지 않습니다(부분 완료는 불가능합니다).
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+개시자들
+ a| 
+삭제할 시작자의 ID 배열입니다.
+ a| 
+정수 배열
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드에는 반환 값이 없습니다.
+
+
+
+== 오류
+
+이 메서드는 다음과 같은 오류를 반환할 수 있습니다.
+
+|===
+
+
+| 이름 | 설명 
+
+
+ a| 
+xInitiatorDoesNotExist
+ a| 
+선택한 개시자 이름이 존재하지 않는 경우 반환됩니다.
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "id": 5101,
+  "method": "DeleteInitiators",
+  "params": {
+    "initiators": [
+      145,
+      147
+    ]
+  }
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 5101,
+  "result": {}
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

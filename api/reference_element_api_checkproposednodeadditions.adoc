@@ -1,0 +1,121 @@
+---
+permalink: api/reference_element_api_checkproposednodeadditions.html 
+sidebar: sidebar 
+keywords: proposed,node,additions,CheckProposedNodeAdditions,storage,checking 
+summary: CheckProposedNodeAdditions 메서드를 사용하면 스토리지 노드 세트를 테스트하여 오류나 모범 사례 위반 없이 스토리지 클러스터에 추가할 수 있는지 확인할 수 있습니다. 
+---
+= 제안된 노드 추가 확인
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `CheckProposedNodeAdditions` 오류나 모범 사례 위반 없이 스토리지 클러스터에 스토리지 노드 세트를 추가할 수 있는지 확인하기 위해 스토리지 노드 세트를 테스트하는 방법입니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+노드
+ a| 
+스토리지 클러스터에 추가할 준비가 된 스토리지 노드의 스토리지 IP 주소 목록입니다.
+ a| 
+문자열 배열
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+제안된 클러스터 유효
+ a| 
+제안된 스토리지 노드가 유효한 스토리지 클러스터를 구성하는지 여부를 나타냅니다. 가능한 값:
+
+* true
+* 거짓
+
+ a| 
+부울
+
+
+
+ a| 
+제안된 클러스터 오류
+ a| 
+제안된 스토리지 노드를 사용하여 스토리지 클러스터를 생성하면 발생할 수 있는 오류입니다.  가능한 오류 코드:
+
+* `nodesNoCapacity`: 노드에 사용 가능한 용량이 없습니다.
+* `nodesTooLarge`: 노드는 활성 보호 체계에 비해 클러스터 용량의 너무 큰 부분을 차지합니다.
+* `nodesConnectFailed`: 하드웨어 구성을 쿼리하기 위해 노드에 연결할 수 없습니다.
+* `nodesQueryFailed`: 하드웨어 구성에 대한 노드를 쿼리할 수 없습니다.
+* `nodesClusterMember`: 노드의 IP 주소가 이미 클러스터에서 사용 중입니다.
+* `nonFipsNodeCapable`: FIPS 140-2 드라이브 암호화 기능이 활성화되어 있는 동안에는 스토리지 클러스터에 FIPS가 불가능한 노드를 추가할 수 없습니다.
+* `nonFipsDrivesCapable`: FIPS 140-2 드라이브 암호화 기능이 활성화되어 있는 동안에는 FIPS를 지원하지 않는 드라이브가 있는 노드를 클러스터에 추가할 수 없습니다.
+
+ a| 
+문자열 배열
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+	"method": "CheckProposedNodeAdditions",
+	"params": {
+	"nodes": [
+		"192.168.1.11",
+		"192.168.1.12",
+		"192.168.1.13",
+		"192.168.1.14"
+	]
+},
+	"id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+	"id": 1,
+	"result": {
+		"proposedClusterValid": true,
+		"proposedClusterErrors": [ ]
+	}
+}
+----
+
+
+== 버전 이후 새로운
+
+11.0

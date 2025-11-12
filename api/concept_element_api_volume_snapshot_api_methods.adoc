@@ -1,0 +1,39 @@
+---
+permalink: api/concept_element_api_volume_snapshot_api_methods.html 
+sidebar: sidebar 
+keywords: volume,snapshot,API,method 
+summary: Element 소프트웨어 볼륨 스냅샷 API 메서드를 사용하면 볼륨 스냅샷을 관리할 수 있습니다.  볼륨 스냅샷 API 메서드를 사용하여 볼륨 스냅샷을 생성, 수정, 복제 및 삭제할 수 있습니다. 
+---
+= 볼륨 스냅샷 API 메서드
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 소프트웨어 볼륨 스냅샷 API 메서드를 사용하면 볼륨 스냅샷을 관리할 수 있습니다.  볼륨 스냅샷 API 메서드를 사용하여 볼륨 스냅샷을 생성, 수정, 복제 및 삭제할 수 있습니다.
+
+* xref:concept_element_api_snapshots_overview.adoc[스냅샷 개요]
+* xref:reference_element_api_creategroupsnapshot.adoc[그룹 스냅샷 만들기]
+* xref:reference_element_api_createschedule.adoc[일정 만들기]
+* xref:reference_element_api_createsnapshot.adoc[스냅샷 만들기]
+* xref:reference_element_api_deletegroupsnapshot.adoc[그룹 스냅샷 삭제]
+* xref:reference_element_api_deletesnapshot.adoc[스냅샷 삭제]
+* xref:reference_element_api_getschedule.adoc[일정을 얻으세요]
+* xref:reference_element_api_listgroupsnapshots.adoc[ListGroupSnapshots]
+* xref:reference_element_api_listschedules.adoc[목록 일정]
+* xref:reference_element_api_listsnapshots.adoc[리스트스냅샷]
+* xref:reference_element_api_modifygroupsnapshot.adoc[그룹 스냅샷 수정]
+* xref:reference_element_api_modifyschedule.adoc[일정 수정]
+* xref:reference_element_api_modifysnapshot.adoc[스냅샷 수정]
+* xref:reference_element_api_rollbacktogroupsnapshot.adoc[그룹 스냅샷으로 롤백]
+* xref:reference_element_api_rollbacktosnapshot.adoc[스냅샷으로 롤백]
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

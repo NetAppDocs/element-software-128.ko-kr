@@ -1,0 +1,108 @@
+---
+permalink: api/reference_element_api_testhardwareconfig.html 
+sidebar: sidebar 
+keywords: node,test,testing,hardware,config,configuration,testhardwareconfig 
+summary: TestHardwareConfig 메서드를 사용하면 노드에서 하드웨어 테스트를 수행할 수 있습니다.  테스트 옵션에는 하드웨어 구성, 펌웨어 버전, 모든 드라이브가 있는지 확인하는 것이 포함됩니다. 
+---
+= 테스트하드웨어구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `TestHardwareConfig` 노드에서 하드웨어 테스트를 수행하는 방법입니다.  테스트 옵션에는 하드웨어 구성, 펌웨어 버전, 모든 드라이브가 있는지 확인하는 것이 포함됩니다.
+
+
+
+== 매개변수
+
+
+NOTE: 이 테스트는 하드웨어 오류를 감지하기 위한 것이 아닙니다.
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+깨끗한
+ a| 
+캐시를 정리하여 하드웨어 구성 테스트를 시작합니다. 가능한 값:
+
+* true: 캐시된 테스트 결과 파일을 삭제하고 테스트를 다시 실행합니다.
+* false: 캐시된 테스트 결과를 검색합니다.
+
+ a| 
+부울
+ a| 
+거짓
+ a| 
+아니요
+
+
+
+ a| 
+힘
+ a| 
+노드를 성공적으로 재설정하려면 이 메서드에 force 매개변수를 포함해야 합니다.
+ a| 
+부울
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+세부
+ a| 
+하드웨어 구성 세부 정보.
+ a| 
+JSON 객체
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "TestHardwareConfig",
+   "params": {
+      "force": true
+     },
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 응답 예시는 길이가 길기 때문에 보충 주제에 문서화되어 있습니다.
+
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_response_example_testhardwareconfig.adoc[테스트하드웨어구성]

@@ -1,0 +1,83 @@
+---
+permalink: api/reference_element_api_usmuser.html 
+sidebar: sidebar 
+keywords: object,objects,usmUser 
+summary: SNMP usmUser 개체와 SetSnmpInfo API 메서드를 사용하여 스토리지 클러스터에서 SNMP를 구성할 수 있습니다. 
+---
+= usm사용자
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SNMP usmUser 객체를 다음과 함께 사용할 수 있습니다. `SetSnmpInfo` 스토리지 클러스터에서 SNMP를 구성하는 API 방법입니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+입장
+ a| 
+이 사용자에 대한 SNMP 액세스 유형입니다. 가능한 값:
+
+* rouser: 읽기 전용 접근.
+* rwuser: 읽기-쓰기 접근 권한.  모든 Element 소프트웨어 MIB 객체는 읽기 전용입니다.
+
+ a| 
+끈
+
+
+
+ a| 
+이름
+ a| 
+사용자의 이름.
+ a| 
+끈
+
+
+
+ a| 
+비밀번호
+ a| 
+사용자의 비밀번호입니다.
+ a| 
+끈
+
+
+
+ a| 
+암호
+ a| 
+사용자의 암호입니다.
+ a| 
+끈
+
+
+
+ a| 
+초레벨
+ a| 
+이 사용자에게 필요한 자격 증명 유형입니다. 가능한 값:
+
+* noauth: 비밀번호나 암호구문이 필요하지 않습니다.
+* auth: 사용자 접근을 위해서는 비밀번호가 필요합니다.
+* priv: 사용자 접근을 위해서는 비밀번호와 암호구문이 필요합니다.
+
+ a| 
+끈
+
+|===
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_setsnmpinfo.adoc[SetSnmpInfo]

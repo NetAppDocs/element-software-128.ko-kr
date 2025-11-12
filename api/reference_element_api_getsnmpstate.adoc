@@ -1,0 +1,101 @@
+---
+permalink: api/reference_element_api_getsnmpstate.html 
+sidebar: sidebar 
+keywords: snmp,state,get,getting,getsnmpstate 
+summary: GetSnmpState 메서드를 사용하면 SNMP 기능의 현재 상태를 가져올 수 있습니다. 
+---
+= GetSnmpState
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `GetSnmpState` SNMP 기능의 현재 상태를 가져오는 방법입니다.
+
+
+
+== 매개변수
+
+이 방법에는 입력 매개변수가 없습니다.
+
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+활성화됨
+ a| 
+가능한 값:
+
+* true
+* 거짓
+
+
+기본값은 false입니다. 클러스터의 노드가 SNMP에 대해 구성된 경우 true를 반환합니다.
+ a| 
+부울
+
+
+
+ a| 
+snmpV3Enabled
+ a| 
+가능한 값:
+
+* true
+* 거짓
+
+
+기본값은 false입니다. 클러스터의 노드가 SNMP v3에 대해 구성된 경우 true를 반환합니다.
+ a| 
+부울
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "GetSnmpState",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+   "enabled": true,
+   "snmpV3Enabled": false
+   }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_setsnmpacl.adoc[SetSnmpACL]

@@ -1,0 +1,98 @@
+---
+permalink: api/reference_element_api_getaccountbyname.html 
+sidebar: sidebar 
+keywords: accounts,account,name,username,GetAccountByName 
+summary: GetAccountByName을 사용하면 사용자 이름을 기준으로 특정 계정에 대한 세부 정보를 얻을 수 있습니다. 
+---
+= 이름으로 계정 가져오기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+사용할 수 있습니다 `GetAccountByName` 사용자 이름을 사용하여 특정 계정에 대한 세부 정보를 가져옵니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+사용자 이름
+ a| 
+계정의 사용자 이름입니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+계정
+ a| 
+계좌 세부 정보.
+ a| 
+xref:reference_element_api_account.adoc[계정]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "GetAccountByName",
+   "params": {
+     "username"  : "jimmyd"
+   },
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+    "account": {
+        "attributes": {},
+        "username": "jimmyd",
+        "targetSecret": "targetsecret",
+        "volumes": [],
+        "enableChap": true,
+        "status": "active",
+        "accountID": 1,
+        "storageContainerID": "abcdef01-1234-5678-90ab-cdef01234567",
+        "initiatorSecret": "initiatorsecret"
+    }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

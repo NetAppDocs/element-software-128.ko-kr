@@ -1,0 +1,32 @@
+---
+permalink: hardware/concept_sfseries_info.html 
+sidebar: sidebar 
+keywords: sf-series nodes, hardware installation, hardware maintenance 
+summary: SF 시리즈 스토리지 노드의 설치 및 유지관리에 대한 정보를 찾을 수 있습니다. 
+---
+= SF 시리즈 하드웨어 정보
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SF 시리즈 스토리지 노드의 설치 및 유지관리에 대한 정보를 찾을 수 있습니다.
+
+설치 및 유지관리 콘텐츠에 대한 링크는 다음과 같습니다.
+
+* link:../media/c-series-isi.pdf["SolidFire C 시리즈 노드 설치 및 설정"^]
+* link:../media/fc-getting-started-guide.pdf["파이버 채널 노드 설치 및 설정"^]
+* link:../media/solidfire-10-getting-started-guide.pdf["SF 시리즈 스토리지 노드 설치 및 설정"^]
+* link:task_sfseries_chassisrepl.html["섀시 교체"^]
+* link:task_sfseries_driverepl.html["드라이브 교체"^]
+* link:task_sfseries_psurepl.html["전원 공급 장치 교체"^]
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

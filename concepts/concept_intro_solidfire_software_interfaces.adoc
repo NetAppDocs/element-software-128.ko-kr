@@ -1,0 +1,122 @@
+---
+permalink: concepts/concept_intro_solidfire_software_interfaces.html 
+sidebar: sidebar 
+keywords: interfaces, integration, user interface, Plug-in, vCenter, API, node UIs, command line, snapshots, shadow copies, Element software, Element, Element UI, UI, manage storage, utilities, integration utilities 
+summary: NetApp Element 소프트웨어 인터페이스와 통합 유틸리티를 사용하여 SolidFire 스토리지 시스템을 관리할 수 있습니다. 
+---
+= SolidFire 소프트웨어 인터페이스
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+다양한 NetApp Element 소프트웨어 인터페이스와 통합 유틸리티를 사용하여 SolidFire 스토리지 시스템을 관리할 수 있습니다.
+
+.옵션
+* <<NetApp Element 소프트웨어 사용자 인터페이스>>
+* <<NetApp Element 소프트웨어 API>>
+* <<vCenter Server용 NetApp Element 플러그인>>
+* <<NetApp 하이브리드 클라우드 제어>>
+* <<관리 노드 UI>>
+* <<추가 통합 유틸리티 및 도구>>
+
+
+
+
+== NetApp Element 소프트웨어 사용자 인터페이스
+
+Element 스토리지를 설정하고, 클러스터 용량과 성능을 모니터링하고, 멀티 테넌트 인프라 전반에서 스토리지 활동을 관리할 수 있습니다.  Element는 SolidFire 클러스터의 핵심인 스토리지 운영 체제입니다.  Element 소프트웨어는 클러스터의 모든 노드에서 독립적으로 실행되며, 클러스터 노드가 외부 클라이언트에 단일 스토리지 시스템으로 제공되는 리소스를 결합할 수 있도록 합니다.  Element 소프트웨어는 시스템 전체의 모든 클러스터 조정, 규모 및 관리를 담당합니다.  소프트웨어 인터페이스는 Element API를 기반으로 구축되었습니다.
+
+link:../storage/index.html["Element 소프트웨어로 스토리지 관리"]
+
+
+
+== NetApp Element 소프트웨어 API
+
+객체, 메서드, 루틴 세트를 사용하여 Element 저장소를 관리할 수 있습니다.  Element API는 HTTPS를 통한 JSON-RPC 프로토콜을 기반으로 합니다.  API 로그를 활성화하면 Element UI에서 API 작업을 모니터링할 수 있습니다. 이를 통해 시스템에 발행된 메서드를 볼 수 있습니다.  요청과 응답을 모두 활성화하면 발행된 메서드에 시스템이 어떻게 응답하는지 확인할 수 있습니다.
+
+link:../api/concept_element_api_about_the_api.html["Element API로 저장소 관리"]
+
+
+
+== vCenter Server용 NetApp Element 플러그인
+
+VMware vSphere 내의 Element UI에 대한 대체 인터페이스를 사용하여 Element 소프트웨어를 실행하는 스토리지 클러스터를 구성하고 관리할 수 있습니다.
+
+https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+
+
+
+== NetApp 하이브리드 클라우드 제어
+
+NetApp Hybrid Cloud Control 인터페이스를 사용하여 Element 스토리지 및 관리 서비스를 업그레이드하고 스토리지 자산을 관리할 수 있습니다.
+
+link:../hccstorage/task-hcc-manage-storage-clusters.html["NetApp Hybrid Cloud Control을 사용하여 스토리지를 관리하고 모니터링하세요"]
+
+
+
+== 관리 노드 UI
+
+관리 노드에는 두 개의 UI가 포함되어 있습니다. REST 기반 서비스를 관리하는 UI와 네트워크 및 클러스터 설정, 운영 체제 테스트 및 유틸리티를 관리하는 노드별 UI입니다.  REST API UI에서 관리 노드의 서비스 기반 시스템 기능을 제어하는 서비스 관련 API 메뉴에 액세스할 수 있습니다.
+
+
+
+== 추가 통합 유틸리티 및 도구
+
+일반적으로 NetApp Element, NetApp Element API 및 vCenter Server용 NetApp Element 플러그인을 사용하여 스토리지를 관리하지만 추가 통합 유틸리티와 도구를 사용하여 스토리지에 액세스할 수 있습니다.
+
+
+
+=== 요소 CLI
+
+https://mysupport.netapp.com/site/tools/tool-eula/elem-cli["요소 CLI"^]Element API를 사용하지 않고도 명령줄 인터페이스를 사용하여 SolidFire 스토리지 시스템을 제어할 수 있습니다.
+
+
+
+=== Element PowerShell 도구
+
+https://mysupport.netapp.com/site/tools/tool-eula/elem-powershell-tools["Element PowerShell 도구"^]Element API를 사용하여 SolidFire 스토리지 시스템을 관리하는 Microsoft Windows PowerShell 함수 모음을 사용할 수 있습니다.
+
+
+
+=== Element SDK
+
+https://mysupport.netapp.com/site/products/all/details/netapphci-solidfire-elementsoftware/tools-tab["Element SDK"^]다음 도구를 사용하여 SolidFire 클러스터를 관리할 수 있습니다.
+
+* Element Java SDK: 프로그래머가 Element API를 Java 프로그래밍 언어와 통합할 수 있도록 합니다.
+* Element .NET SDK: 프로그래머가 Element API를 .NET 프로그래밍 플랫폼과 통합할 수 있도록 합니다.
+* Element Python SDK: 프로그래머가 Element API를 Python 프로그래밍 언어와 통합할 수 있도록 합니다.
+
+
+
+
+=== SolidFire Postman API 테스트 모음
+
+프로그래머가 컬렉션을 사용할 수 있도록 합니다.link:https://github.com/solidfire/postman["우편 집배원"^] Element API 호출을 테스트하는 함수입니다.
+
+
+
+=== SolidFire 스토리지 복제 어댑터
+
+https://mysupport.netapp.com/site/products/all/details/elementsra/downloads-tab["SolidFire 스토리지 복제 어댑터"^]복제된 SolidFire 스토리지 클러스터와 통신하고 지원되는 워크플로를 실행하기 위해 VMware Site Recovery Manager(SRM)와 통합됩니다.
+
+
+
+=== SolidFire vRO
+
+https://mysupport.netapp.com/site/products/all/details/solidfire-vro/downloads-tab["SolidFire vRO"^]VMware vRealize Orchestrator를 사용하여 SolidFire 스토리지 시스템을 관리하기 위한 Element API를 사용하는 편리한 방법을 제공합니다.
+
+
+
+=== SolidFire VSS 공급자
+
+https://mysupport.netapp.com/site/products/all/details/solidfire-vss-provider/downloads-tab["SolidFire VSS 공급자"^]VSS 섀도 복사본을 Element 스냅샷 및 복제본과 통합합니다.
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

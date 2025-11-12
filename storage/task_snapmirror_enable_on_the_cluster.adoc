@@ -1,0 +1,30 @@
+---
+permalink: storage/task_snapmirror_enable_on_the_cluster.html 
+sidebar: sidebar 
+keywords: element, snapmirror, enable, cluster, ui, manually enable 
+summary: NetApp Element UI를 통해 클러스터 수준에서 SnapMirror 기능을 수동으로 활성화해야 합니다.  이 시스템에서는 SnapMirror 기능이 기본적으로 비활성화되어 있으며, 새로 설치하거나 업그레이드해도 자동으로 활성화되지 않습니다.  SnapMirror 기능을 활성화하는 것은 한 번만 수행하면 되는 구성 작업입니다. 
+---
+= 클러스터에서 SnapMirror 활성화
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element UI를 통해 클러스터 수준에서 SnapMirror 기능을 수동으로 활성화해야 합니다.  이 시스템에서는 SnapMirror 기능이 기본적으로 비활성화되어 있으며, 새로 설치하거나 업그레이드해도 자동으로 활성화되지 않습니다.  SnapMirror 기능을 활성화하는 것은 한 번만 수행하면 되는 구성 작업입니다.
+
+SnapMirror NetApp ONTAP 시스템의 볼륨과 함께 사용되는 Element 소프트웨어를 실행하는 클러스터에서만 활성화할 수 있습니다.  클러스터가 NetApp ONTAP 볼륨과 함께 사용하도록 연결된 경우에만 SnapMirror 기능을 활성화해야 합니다.
+
+.필요한 것
+스토리지 클러스터는 NetApp Element 소프트웨어를 실행해야 합니다.
+
+.단계
+. *클러스터* > *설정*을 클릭합니다.
+. SnapMirror 에 대한 클러스터별 설정을 찾습니다.
+. * SnapMirror 사용*을 클릭합니다.
++
+
+NOTE: SnapMirror 기능을 활성화하면 Element 소프트웨어 구성이 영구적으로 변경됩니다.  SnapMirror 기능을 비활성화하고 클러스터를 공장 이미지로 되돌리는 것만으로 기본 설정을 복원할 수 있습니다.
+
+. *예*를 클릭하여 SnapMirror 구성 변경을 확인합니다.
+

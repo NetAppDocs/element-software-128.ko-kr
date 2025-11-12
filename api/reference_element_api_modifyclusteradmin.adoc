@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_modifyclusteradmin.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,cluster,admin,settings,modifyclusteradmin 
+summary: 'ModifyClusterAdmin 메서드를 사용하면 클러스터 관리자, LDAP 클러스터 관리자 또는 타사 ID 공급자(IdP) 클러스터 관리자의 설정을 변경할 수 있습니다.  관리자 클러스터 관리자 계정에 대한 액세스 권한을 변경할 수 없습니다.' 
+---
+= 클러스터 관리자 수정
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `ModifyClusterAdmin` 클러스터 관리자, LDAP 클러스터 관리자 또는 타사 ID 공급자(IdP) 클러스터 관리자의 설정을 변경하는 방법입니다.  관리자 클러스터 관리자 계정에 대한 액세스 권한을 변경할 수 없습니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+입장
+ a| 
+이 클러스터 관리자가 사용할 수 있는 방법을 제어합니다.
+ a| 
+문자열 배열
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+속성
+ a| 
+JSON 객체 형식의 이름-값 쌍 목록입니다.
+ a| 
+JSON 객체
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+클러스터 관리자 ID
+ a| 
+클러스터 관리자, LDAP 클러스터 관리자 또는 IdP 클러스터 관리자가 수정할 ClusterAdminID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+비밀번호
+ a| 
+이 클러스터 관리자를 인증하는 데 사용되는 비밀번호입니다.  이 매개변수는 LDAP 또는 IdP 클러스터 관리자에게는 적용되지 않습니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드에는 반환 값이 없습니다.
+
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "ModifyClusterAdmin",
+   "params": {
+     "clusterAdminID"  : 2,
+     "password"   : "7925Brc429a"
+   },
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+ "id" : 1
+ "result" : { }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_app_b_access_control.adoc[접근 제어]

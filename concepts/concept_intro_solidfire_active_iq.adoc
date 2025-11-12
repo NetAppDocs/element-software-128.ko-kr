@@ -1,0 +1,33 @@
+---
+permalink: concepts/concept_intro_solidfire_active_iq.html 
+sidebar: sidebar 
+keywords: solidfire, active, iq, activeiq, tool, aiq 
+summary: Active IQ 는 클러스터 전체 데이터의 지속적으로 업데이트된 과거 보기를 제공하는 웹 기반 도구입니다.  특정 이벤트, 임계값 또는 메트릭에 대한 알림을 설정할 수 있습니다.  Active IQ 사용하면 시스템 성능과 용량을 모니터링하고 클러스터 상태에 대한 정보를 얻을 수 있습니다. 
+---
+= SolidFire Active IQ
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+https://activeiq.solidfire.com["SolidFire Active IQ"^]클러스터 전체 데이터의 지속적으로 업데이트된 과거 보기를 제공하는 웹 기반 도구입니다.  특정 이벤트, 임계값 또는 메트릭에 대한 알림을 설정할 수 있습니다.  SolidFire Active IQ 사용하면 시스템 성능과 용량을 모니터링하고 클러스터 상태에 대한 정보를 얻을 수 있습니다.
+
+SolidFire Active IQ 에서 시스템에 대한 다음 정보를 찾을 수 있습니다.
+
+* 노드 수 및 노드 상태: 정상, 오프라인 또는 오류
+* CPU, 메모리 사용량 및 노드 제한의 그래픽 표현
+* 스토리지 노드에서 실행되는 NetApp Element 소프트웨어의 일련 번호, 섀시 내 슬롯 위치, 모델 및 버전과 같은 노드에 대한 세부 정보
+* 가상 머신에 대한 CPU 및 스토리지 관련 정보
+
+
+SolidFire Active IQ 에 대해 알아보려면 다음을 참조하세요. https://docs.netapp.com/us-en/solidfire-active-iq/index.html["SolidFire Active IQ 설명서"^] .
+
+
+
+== 더 많은 정보를 원하시면
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+* https://mysupport.netapp.com/site/tools/tool-eula/5ddb829ebd393e00015179b2["NetApp 지원 사이트 > Active IQ 도구"^]
+

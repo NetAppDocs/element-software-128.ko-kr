@@ -1,0 +1,160 @@
+---
+permalink: api/reference_element_api_deletevolume.html 
+sidebar: sidebar 
+keywords: volume,volumes,delete,deleting,DeleteVolume 
+summary: 'DeleteVolume 메서드를 사용하면 활성 볼륨을 삭제할 수 있습니다.  표시된 경우, 정리 간격이 경과한 후 볼륨이 제거(영구적으로 삭제)됩니다.' 
+---
+= 볼륨 삭제
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `DeleteVolume` 활성 볼륨을 삭제하도록 표시하는 방법입니다.  표시된 경우, 정리 간격이 경과한 후 볼륨이 제거(영구적으로 삭제)됩니다.
+
+볼륨을 삭제하라는 요청을 하면 해당 볼륨에 대한 모든 활성 iSCSI 연결이 즉시 종료되고 볼륨이 이 상태에 있는 동안에는 더 이상 연결이 허용되지 않습니다.  표시된 볼륨은 대상 검색 요청에 반환되지 않습니다.
+
+삭제 표시된 볼륨의 스냅샷은 영향을 받지 않습니다.  볼륨이 시스템에서 제거될 때까지 스냅샷이 보관됩니다.  볼륨이 삭제로 표시되고 대량 볼륨 읽기 또는 대량 볼륨 쓰기 작업이 진행 중인 경우 대량 볼륨 읽기 또는 쓰기 작업이 중지됩니다.
+
+삭제한 볼륨이 다른 볼륨과 페어링된 경우 페어링된 볼륨 간 복제가 중단되고 삭제된 상태에서는 해당 볼륨으로 데이터가 전송되지 않습니다.  삭제된 볼륨과 페어링된 원격 볼륨은 PausedMisconfigured 상태로 전환되고 더 이상 해당 볼륨이나 삭제된 볼륨에서 데이터가 전송되지 않습니다.  삭제된 볼륨이 정리될 때까지 볼륨을 복원하고 데이터 전송을 재개할 수 있습니다.  삭제된 볼륨이 시스템에서 제거되면 페어링된 볼륨은 StoppedMisconfigured 상태로 전환되고 볼륨 페어링 상태가 제거됩니다.  제거된 볼륨은 영구적으로 사용할 수 없게 됩니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+볼륨ID
+ a| 
+삭제할 볼륨의 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+용량
+ a| 
+삭제된 볼륨에 대한 정보가 포함된 개체입니다.
+ a| 
+xref:reference_element_api_volume.adoc[용량]
+
+
+
+ a| 
+볼륨ID
+ a| 
+삭제된 볼륨의 볼륨 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+곡선
+ a| 
+곡선은 키-값 쌍의 집합입니다.  키는 바이트 단위의 I/O 크기입니다.  값은 특정 I/O 크기에서 IOP를 수행하는 데 드는 비용을 나타냅니다.  곡선은 100 IOPS로 설정된 4096바이트 작업을 기준으로 계산됩니다.
+ a| 
+JSON 객체
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "DeleteVolume",
+   "params": {
+      "volumeID"  : 5
+   },
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volume": {
+      "access": "readWrite",
+      "accountID": 1,
+      "attributes": {
+        "name1": "value1",
+        "name2": "value2",
+        "name3": "value3"
+      },
+      "blockSize": 4096,
+      "createTime": "2016-03-28T16:16:13Z",
+      "deleteTime": "2016-03-31T22:59:42Z",
+      "enable512e": true,
+      "iqn": "iqn.2010-01.com.solidfire:jyay.1459181777648.5",
+      "name": "1459181777648",
+      "purgeTime": "2016-04-01T06:59:42Z",
+      "qos": {
+        "burstIOPS": 150,
+        "burstTime": 60,
+        "curve": {
+          "4096": 100,
+          "8192": 160,
+          "16384": 270,
+          "32768": 500,
+          "65536": 1000,
+          "131072": 1950,
+          "262144": 3900,
+          "524288": 7600,
+          "1048576": 15000
+        },
+        "maxIOPS": 100,
+        "minIOPS": 60
+      },
+      "scsiEUIDeviceID": "6a79617900000005f47acc0100000000",
+      "scsiNAADeviceID": "6f47acc1000000006a79617900000005",
+      "sliceCount": 1,
+      "status": "deleted",
+      "totalSize": 1000341504,
+      "virtualVolumeID": null,
+      "volumeAccessGroups": [
+        1
+      ],
+      "volumeID": 5,
+      "volumePairs": []
+    }
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

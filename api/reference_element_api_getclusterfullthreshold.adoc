@@ -1,0 +1,300 @@
+---
+permalink: api/reference_element_api_getclusterfullthreshold.html 
+sidebar: sidebar 
+keywords: cluster,get,getting,full,threshold,level,fullness,storage,capacity,getclusterfullthreshold 
+summary: GetClusterFullThreshold 메서드를 사용하면 클러스터 충만도 수준에 대해 설정된 단계를 볼 수 있습니다.  이 메서드는 클러스터의 모든 충만도 메트릭을 반환합니다. 
+---
+= GetClusterFullThreshold
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `GetClusterFullThreshold` 클러스터 충만도 수준에 대해 설정된 단계를 보는 방법입니다.  이 메서드는 클러스터의 모든 충만도 메트릭을 반환합니다.
+
+
+NOTE: 클러스터가 블록 클러스터 충만도의 오류 단계에 도달하면 모든 볼륨의 최대 IOPS는 클러스터가 중요 단계에 접근함에 따라 볼륨 최소 IOPS로 선형적으로 감소합니다.  이는 클러스터가 블록 클러스터 충만도의 중요 단계에 도달하는 것을 방지하는 데 도움이 됩니다.
+
+
+
+== 매개변수
+
+이 방법에는 입력 매개변수가 없습니다.
+
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+블록 충만도
+ a| 
+클러스터의 블록 충만도의 현재 계산된 수준입니다.
+
+* stage1Happy: 알림이나 오류 조건이 없습니다.  웹 UI의 *정상* 상태에 해당합니다.
+* stage2Aware: 경고나 오류 조건이 없습니다.  웹 UI의 *건강* 상태에 해당합니다.
+* stage3Low: 귀하의 시스템은 두 개의 비동시적 노드 장애로부터 중복 데이터 보호를 제공할 수 없습니다.  웹 UI의 *경고* 상태에 해당합니다.  이 수준은 웹 UI에서 구성할 수 있습니다(기본적으로 시스템은 오류 상태보다 3% 낮은 수준에서 이 경고를 트리거합니다).
+* stage4Critical: 시스템은 단일 노드 장애로부터 중복 데이터 보호를 제공할 수 없습니다.  새로운 볼륨이나 복제본을 생성할 수 없습니다.  Element UI의 *오류* 상태에 해당합니다.
+* stage5완전히 소모됨: 완전히 소모됨.  클러스터는 읽기 전용이고 iSCSI 연결은 유지되지만 모든 쓰기는 중단됩니다.  Element UI의 *중요* 상태에 해당합니다.
+
+ a| 
+끈
+
+
+
+ a| 
+비만
+ a| 
+"blockFullness"와 "metadataFullness" 사이의 가장 높은 수준의 충만도를 반영합니다.
+ a| 
+끈
+
+
+
+ a| 
+최대 메타데이터 오버 프로비저닝 계수
+ a| 
+사용 가능한 공간의 양에 비해 메타데이터 공간이 과도하게 프로비저닝될 수 있는 횟수를 나타내는 값입니다.  예를 들어, 100TiB 볼륨을 저장할 수 있는 충분한 메타데이터 공간이 있고 이 숫자를 5로 설정하면 500TiB의 볼륨을 생성할 수 있습니다.
+ a| 
+정수
+
+
+
+ a| 
+메타데이터충만함
+ a| 
+클러스터의 메타데이터 충만도의 현재 계산된 수준입니다.
+
+* stage1Happy: 알림이나 오류 조건이 없습니다.  웹 UI의 *정상* 상태에 해당합니다.
+* stage2Aware: 경고나 오류 조건이 없습니다.  웹 UI의 *건강* 상태에 해당합니다.
+* stage3Low: 귀하의 시스템은 두 개의 비동시적 노드 장애로부터 중복 데이터 보호를 제공할 수 없습니다.  웹 UI의 *경고* 상태에 해당합니다.  이 수준은 웹 UI에서 구성할 수 있습니다(기본적으로 시스템은 오류 상태보다 3% 낮은 수준에서 이 경고를 트리거합니다).
+* stage4Critical: 시스템은 단일 노드 장애로부터 중복 데이터 보호를 제공할 수 없습니다.  새로운 볼륨이나 복제본을 생성할 수 없습니다.  Element UI의 *오류* 상태에 해당합니다.
+* stage5완전히 소모됨: 완전히 소모됨.  클러스터는 읽기 전용이고 iSCSI 연결은 유지되지만 모든 쓰기는 중단됩니다.  Element UI의 *중요* 상태에 해당합니다.
+
+ a| 
+끈
+
+
+
+ a| 
+슬라이스 예약 사용 임계값 백분율
+ a| 
+오류 상태.  예약된 슬라이스 사용률이 이 값보다 크면 시스템 경고가 발생합니다.
+ a| 
+정수
+
+
+
+ a| 
+stage2AwareThreshold
+ a| 
+인식 상태.  2단계 클러스터 임계값 수준에 설정된 값입니다.
+ a| 
+정수
+
+
+
+ a| 
+stage2BlockThresholdBytes
+ a| 
+2단계 조건이 존재하는 클러스터에서 사용되는 바이트 수입니다.
+ a| 
+정수
+
+
+
+ a| 
+stage2MetadataThresholdBytes
+ a| 
+클러스터에서 사용되는 메타데이터 바이트 수로, 2단계 충만도 조건이 발생합니다.
+ a| 
+
+
+
+ a| 
+stage3BlockThresholdBytes
+ a| 
+클러스터에서 사용되는 저장 바이트 수로, 3단계 충만 조건이 발생합니다.
+ a| 
+정수
+
+
+
+ a| 
+stage3BlockThresholdPercent
+ a| 
+3단계에 설정된 백분율 값입니다.  이 비율이 채워지면 알림 로그에 경고가 게시됩니다.
+ a| 
+정수
+
+
+
+ a| 
+stage3LowThreshold
+ a| 
+오류 상태.  클러스터의 용량이 부족하여 시스템 경고가 생성되는 임계값입니다.
+ a| 
+정수
+
+
+
+ a| 
+stage3MetadataThresholdBytes
+ a| 
+클러스터에서 사용되는 메타데이터 바이트 수로, 이 바이트 수에서는 3단계 충만 조건이 발생합니다.
+ a| 
+정수
+
+
+
+ a| 
+stage3MetadataThresholdPercent
+ a| 
+메타데이터 충만도의 3단계에 설정된 백분율 값입니다.  이 비율이 채워지면 알림 로그에 경고가 게시됩니다.
+ a| 
+정수
+
+
+
+ a| 
+stage4BlockThresholdBytes
+ a| 
+클러스터에서 사용되는 저장 바이트 수로, 이 수준에서 4단계 충만 조건이 발생합니다.
+ a| 
+정수
+
+
+
+ a| 
+stage4CriticalThreshold
+ a| 
+오류 상태.  클러스터의 용량이 심각하게 부족함을 경고하기 위해 시스템 경고가 생성되는 임계값입니다.
+ a| 
+정수
+
+
+
+ a| 
+stage4MetadataThresholdBytes
+ a| 
+클러스터에서 사용되는 메타데이터 바이트 수로, 이 바이트 수에서는 4단계 충만 조건이 발생합니다.
+ a| 
+정수
+
+
+
+ a| 
+stage5BlockThresholdBytes
+ a| 
+클러스터에서 사용되는 저장 바이트 수로, 이 수준에서 5단계 충만 조건이 발생합니다.
+ a| 
+정수
+
+
+
+ a| 
+stage5MetadataThresholdBytes
+ a| 
+클러스터에서 사용되는 메타데이터 바이트 수로, 이 바이트 수에서는 5단계 충만 조건이 발생합니다.
+ a| 
+정수
+
+
+
+ a| 
+합계 클러스터 바이트
+ a| 
+바이트 단위로 측정한 클러스터의 물리적 용량입니다.
+ a| 
+정수
+
+
+
+ a| 
+합계 총 메타데이터 클러스터 바이트
+ a| 
+메타데이터를 저장하는 데 사용할 수 있는 총 공간입니다.
+ a| 
+정수
+
+
+
+ a| 
+사용된 클러스터 바이트 합계
+ a| 
+클러스터에서 사용된 저장 바이트 수입니다.
+ a| 
+정수
+
+
+
+ a| 
+sumUsedMetadataClusterBytes
+ a| 
+볼륨 드라이브에서 메타데이터를 저장하는 데 사용되는 공간의 양입니다.
+ a| 
+정수
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method" : "GetClusterFullThreshold",
+   "params" : {},
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id":1,
+  "result":{
+    "blockFullness":"stage1Happy",
+    "fullness":"stage3Low",
+    "maxMetadataOverProvisionFactor":5,
+    "metadataFullness":"stage3Low",
+    "sliceReserveUsedThresholdPct":5,
+    "stage2AwareThreshold":3,
+    "stage2BlockThresholdBytes":2640607661261,
+    "stage3BlockThresholdBytes":8281905846682,
+    "stage3BlockThresholdPercent":5,
+    "stage3LowThreshold":2,
+    "stage4BlockThresholdBytes":8641988709581,
+    "stage4CriticalThreshold":1,
+    "stage5BlockThresholdBytes":12002762096640,
+    "sumTotalClusterBytes":12002762096640,
+    "sumTotalMetadataClusterBytes":404849531289,
+    "sumUsedClusterBytes":45553617581,
+    "sumUsedMetadataClusterBytes":31703113728
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_modifyclusterfullthreshold.adoc[클러스터 전체 임계값 수정]

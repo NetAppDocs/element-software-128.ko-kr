@@ -1,0 +1,44 @@
+---
+permalink: storage/concept_troubleshoot_nodes.html 
+sidebar: sidebar 
+keywords: troubleshoot, nodes removing 
+summary: 유지관리나 교체를 위해 클러스터에서 노드를 제거할 수 있습니다.  오프라인으로 전환하기 전에 NetApp Element UI 또는 API를 사용하여 노드를 제거해야 합니다. 
+---
+= 노드 문제 해결
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+유지관리나 교체를 위해 클러스터에서 노드를 제거할 수 있습니다.  오프라인으로 전환하기 전에 NetApp Element UI 또는 API를 사용하여 노드를 제거해야 합니다.
+
+저장 노드를 제거하는 절차에 대한 개요는 다음과 같습니다.
+
+* 노드에 데이터 복사본을 생성하기에 충분한 용량이 클러스터에 있는지 확인하세요.
+* UI 또는 RemoveDrives API 메서드를 사용하여 클러스터에서 드라이브를 제거합니다.
++
+이를 통해 시스템은 노드 드라이브의 데이터를 클러스터의 다른 드라이브로 마이그레이션합니다.  이 프로세스에 걸리는 시간은 마이그레이션해야 하는 데이터 양에 따라 달라집니다.
+
+* 클러스터에서 노드를 제거합니다.
+
+
+노드의 전원을 끄거나 켜기 전에 다음 사항을 고려하세요.
+
+* 노드와 클러스터의 전원을 끄는 작업은 올바르게 수행하지 않으면 위험할 수 있습니다.
++
+노드의 전원을 끄는 작업은 NetApp 지원팀의 지시에 따라 수행해야 합니다.
+
+* 어떤 종류의 종료 조건에서든 노드가 5.5분 이상 다운되면 Double Helix 데이터 보호는 다른 노드에 단일 복제 블록을 작성하여 데이터를 복제하는 작업을 시작합니다.  이 경우 NetApp 지원팀에 문의하여 실패한 노드를 분석하는 데 도움을 받으세요.
+* 노드를 안전하게 재부팅하거나 전원을 끄려면 Shutdown API 명령을 사용할 수 있습니다.
+* 노드가 다운되거나 꺼진 상태인 경우, 다시 온라인으로 전환하기 전에 NetApp 지원팀에 문의해야 합니다.
+* 노드가 다시 온라인 상태가 되면 서비스를 중단한 기간에 따라 드라이브를 다시 클러스터에 추가해야 합니다.
+
+
+
+
+== 더 많은 정보를 원하시면
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2844772["고장난 SolidFire 섀시 교체"]
+
+https://library.netapp.com/ecm/ecm_download_file/ECMLP2846861["고장난 H600S 시리즈 노드 교체"]

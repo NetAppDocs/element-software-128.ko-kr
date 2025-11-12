@@ -1,0 +1,129 @@
+---
+permalink: api/reference_element_api_listsnapshots.html 
+sidebar: sidebar 
+keywords: snapshot,snapshots,list,listing,attributes,listsnapshots 
+summary: ListSnapshots를 사용하면 볼륨에서 생성된 각 스냅샷의 속성을 반환할 수 있습니다. 
+---
+= 리스트스냅샷
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+사용할 수 있습니다 `ListSnapshots` 볼륨에서 촬영된 각 스냅샷의 속성을 반환합니다.
+
+이 메서드가 소스 클러스터에서 호출되면 대상 클러스터에 있는 스냅샷에 대한 정보가 소스 클러스터에 표시됩니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+볼륨ID
+ a| 
+볼륨의 스냅샷을 검색합니다.  volumeID가 제공되지 않으면 모든 볼륨의 모든 스냅샷이 반환됩니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+스냅샷ID
+ a| 
+개별 스냅샷 ID에 대한 정보를 검색합니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+스냅샷
+ a| 
+각 볼륨의 각 스냅샷에 대한 정보입니다.  volumeID가 제공되지 않으면 모든 볼륨의 모든 스냅샷이 반환됩니다.  그룹 내의 스냅샷은 그룹 ID와 함께 반환됩니다.
+ a| 
+xref:reference_element_api_snapshot.adoc[스냅 사진]정렬
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "ListSnapshots",
+   "params": {
+             "volumeID": "1"
+       },
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "snapshots": [
+        {
+          "attributes": {},
+          "checksum": "0x0",
+          "createTime": "2015-05-08T13:15:00Z",
+          "enableRemoteReplication": true,
+          "expirationReason": "None",
+          "expirationTime": "2015-05-08T21:15:00Z",
+          "groupID": 0,
+          "groupSnapshotUUID": "00000000-0000-0000-0000-000000000000",
+          "name": "Hourly",
+          "remoteStatuses": [
+              {
+                "remoteStatus": "Present",
+                "volumePairUUID": "237e1cf9-fb4a-49de-a089-a6a9a1f0361e"
+              }
+         ],
+          "snapshotID": 572,
+          "snapshotUUID": "efa98e40-cb36-4c20-a090-a36c48296c14",
+          "status": "done",
+          "totalSize": 10000269312,
+          "volumeID": 1
+        }
+      ]
+    }
+  }
+----
+
+
+== 버전 이후 새로운
+
+9.6

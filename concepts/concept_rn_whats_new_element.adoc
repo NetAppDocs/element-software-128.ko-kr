@@ -1,0 +1,172 @@
+---
+permalink: concepts/concept_rn_whats_new_element.html 
+sidebar: sidebar 
+keywords: netapp, solidfire, element, storage, solidfire enterprise sds 
+summary: NetApp SolidFire 와 Element 소프트웨어를 주기적으로 업데이트하여 새로운 기능, 향상된 기능, 버그 수정을 제공합니다. 
+---
+= Element 소프트웨어의 새로운 기능
+:allow-uri-read: 
+:url-peak: https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/Element_Software_-_Apache_Log4j_Vulnerability_-_Workaround
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp SolidFire 와 Element 소프트웨어를 주기적으로 업데이트하여 새로운 기능, 향상된 기능, 버그 수정을 제공합니다.  Element 12.8은 최신 릴리스로 보안 및 시스템 구성 요소 업데이트, 운영 개선 사항, 해결된 문제가 포함되어 있습니다.
+
+
+NOTE: 누적된 소프트웨어 및 펌웨어 업데이트는 스토리지 클러스터에서 실행되는 현재 Element 버전을 기반으로 하는 Element 12.8 업그레이드의 일부로 설치됩니다.  예를 들어, 클러스터가 현재 Element 12.5를 실행 중인 경우 Element 12.8로 직접 업그레이드하면 Element 12.7과 12.8의 누적 업데이트를 모두 받을 수 있습니다.  지원되는 업그레이드 경로에 대해서는 기술 자료 문서를 참조하세요. https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Element_Software/What_is_the_upgrade_matrix_for_storage_clusters_running_NetApp_Element_software["NetApp Element 소프트웨어를 실행하는 스토리지 클러스터의 업그레이드 매트릭스는 무엇입니까?"^] .
+
+
+
+== 원소 12.8
+
+Element 12.8의 새로운 기능에 대해 자세히 알아보세요.
+
+
+
+=== 볼륨 로드 밸런싱
+
+Element 12.8에서는 볼륨 로드 밸런싱 기능이 도입되었습니다.  이 기능을 사용하면 QoS 정책에 구성된 최소 IOPS 대신 각 볼륨의 실제 IOPS 수준을 기준으로 노드 전체에서 볼륨의 균형을 조정할 수 있습니다.  볼륨 로드 밸런싱 기능은 볼륨을 균형 있게 조정하는 데만 사용할 수 있습니다.  가상 볼륨의 균형을 맞추는 데 사용할 수 없습니다.  볼륨 로드 밸런싱 기능은 기본적으로 비활성화되어 있습니다.  다음을 사용하여 활성화 및 비활성화할 수 있습니다. `VolumeLoadBalanceOnActualIOPS` API 매개변수와 함께link:../api/reference_element_api_enablefeature.html["기능 활성화"] 그리고link:../api/reference_element_api_disablefeature.html["기능 비활성화"] API 메소드 또는 다음을 사용하여link:../storage/task_system_manage_cluster_volume_load_balancing.html["볼륨 로드 밸런싱"] Element UI의 옵션.
+
+
+
+=== 노드 활용 정보 보기
+
+Element 12.8을 사용하면 노드 활용 정보를 다음과 같이 볼 수 있습니다. `nodeHeat` 사용하여 `GetNodeStats` 그리고 `ListNodeStats` API 방법.  그만큼 `nodeHeat` 객체는 다음의 멤버입니다. `nodeStats` 객체를 생성하고 기본 총 IOPS 또는 총 IOPS와 구성된 IOPS의 비율(시간 경과에 따른 평균)을 기반으로 노드 활용 정보를 표시합니다.
+
+또한 노드 활용도를 백분율로 볼 수 있습니다. `recentPrimaryTotalHeat` Element UI의 노드에 대한 세부 정보 보기 표시에서.
+
+
+
+=== 볼륨에 대한 I/O 통계 보기
+
+Element 12.8을 사용하면 볼륨에 대한 I/O 사용 통계를 다음과 같이 볼 수 있습니다. `sliceIopsStats` 사용하여 `GetVolumeStats` 그리고 `ListVolumeStatsByVolume` API 방법.  I/O 통계는 볼륨에 대한 읽기 및 쓰기 IOPS 정보를 사용하여 계산되고, 지난 24시간과 지난 1시간의 두 기간 동안 측정됩니다. link:../api/reference_element_api_volumestats.html#object-members["자세히 알아보기"].
+
+
+
+=== iSCSI 세션을 위한 CHAP 알고리즘
+
+호스트 iSCSI 초기자는 Element iSCSI 대상과 iSCSI 세션을 생성할 때 사용할 CHAP(Challenge-Handshake 인증 프로토콜) 알고리즘 목록을 요청합니다.  Element 12.8부터 Element iSCSI 대상이 iSCSI 세션에 사용하기로 선택한 지원되는 CHAP 알고리즘을 볼 수 있습니다.
+
+
+
+=== VM 하드웨어 버전 업그레이드
+
+기존 관리 노드를 Element 12.8로 인플레이스 업그레이드하는 경우 업그레이드하기 전에 환경에 따라 관리 노드의 VM 하드웨어 버전이 ESXi 6.7(VM 하드웨어 버전 14) 이상과 호환되는지 확인해야 합니다. link:../upgrade/task_hcc_upgrade_management_node.html#step-1-upgrade-vm-hardware-version-on-a-management-node["자세히 알아보기"].
+
+
+
+== 원소 12.7
+
+Element 12.7의 새로운 기능에 대해 자세히 알아보세요.
+
+
+
+=== 보안 CHAP 알고리즘
+
+Element 12.7에는 보안 FIPS 호환 CHAP(Challenge-Handshake Authentication Protocol) 알고리즘 SHA1, SHA-256, SHA3-256에 대한 지원이 포함되어 있습니다. link:../storage/task_data_manage_accounts_work_with_accounts_task.html["자세히 알아보기"].
+
+
+
+=== 동적 블록(bin) 동기화 속도
+
+노드 추가, 업그레이드 또는 유지 관리나 드라이브 추가 등의 클러스터 작업은 블록(bin) 동기화를 트리거하여 클러스터 레이아웃의 새 노드나 업데이트된 노드에 블록 데이터를 배포합니다.  기본 동기화 속도로 느린 속도 하나만 사용하면 이러한 작업에 시간이 오래 걸리고 대규모 노드의 높은 처리 능력을 활용하지 못합니다.  Element 12.7부터 동기화 속도는 스토리지 노드의 코어 수에 따라 동적으로 조정되어 이러한 작업을 훨씬 더 빠르게 진행할 수 있습니다.
+
+예를 들어, Element 12.7을 실행하는 대용량 28코어 스토리지 노드(H610S, SF19210, SF38410)를 기존 클러스터에 추가하면 데이터의 동기화 속도가 60Mbps가 아닌 110Mbps로 자동 조정됩니다.  또한, NetApp Hybrid Cloud Control을 사용하여 Element 12.3.x 이상에서 Element 12.7로 업그레이드하는 동안과 같이 이러한 대규모 스토리지 노드를 노드 유지 관리 모드에서 해제하면 변경된 블록 데이터 속도에 대한 동기화 속도가 20Mbps가 아닌 110Mbps로 자동 조정됩니다.
+
+Element 12.7 클러스터에 중간 16코어 스토리지 노드(H410S)와 작은 12코어 스토리지 노드(SF4805)를 추가하면 데이터의 동기화 속도는 60Mbps로 유지됩니다. 그러나 Element 12.3.x에서 Element 12.7로 업그레이드하는 동안 노드 유지 관리 모드에서 벗어나 변경된 블록을 동기화하는 경우, 동기화 속도가 중간 스토리지 노드의 경우 20Mbps에서 60Mbps로, 작은 스토리지 노드의 경우 40Mbps로 자동 조정됩니다.
+
+스토리지 노드를 제거해도 블록 동기화 속도에 영향을 미치지 않으므로 클라이언트 I/O의 성능에 영향을 미치지 않습니다.
+
+
+
+=== 가비지 콜렉션 개선
+
+예를 들어, H610S-4와 같이 대용량 스토리지 노드가 있는 클러스터의 경우, 사용된 공간이 1PB이고 덮어쓰기로 매우 높은 작업 부하를 실행하며 높은 중복 제거 및 압축 기능을 갖추고 있습니다. 이제 대용량 노드의 기본 블룸 필터 크기가 700GB 이상 메모리에서 1048576비트로 증가함에 따라 가비지 수집 작업을 따라잡을 수 있습니다.  이 변경 사항은 스토리지 노드를 Element 12.7로 업그레이드한 후 자동으로 적용되며 규모가 작은 노드에는 영향을 미치지 않습니다.
+
+
+
+=== 규모 개선
+
+Element 12.7을 사용하면 기존 클러스터에 여러 스토리지 노드에 해당하는 블록 및 메타데이터 드라이브를 추가할 때 특정 순서를 따를 필요가 없습니다.  Element UI나 API를 사용하면 사용 가능한 모든 드라이브를 간단히 선택하고 동시에 대량으로 추가할 수 있습니다.  Element 12.7은 모든 블록 서비스가 동시에 동기화되도록 데이터 동기화를 자동으로 관리합니다.  각 노드의 블록 서비스가 동기화를 완료하면 해당 노드의 메타데이터 드라이브를 호스트 볼륨에 할당할 수 있게 됩니다.  이러한 규모 개선을 통해 읽기 응답 지연 시간이 크게 줄어들고 새로 추가된 스토리지 노드에서 데이터가 동기화되는 동안 성능 저하가 방지됩니다.
+
+
+
+=== 스토리지 노드 펌웨어 업데이트
+
+Element 12.7에는 새로운 시스템 구성 요소에 대한 지원이 포함된 스토리지 펌웨어 번들 버전 2.164.0이 포함되어 있습니다. link:https://docs.netapp.com/us-en/hci/docs/rn_storage_firmware_2.164.0.html["자세히 알아보기"].
+
+
+NOTE: Element 12.7 릴리스에는 새로운 펌웨어 업데이트가 없습니다.  하지만 스토리지 노드에서 실행 중인 현재 펌웨어 번들을 기준으로 Element 12.7로 업그레이드하면 누적 업데이트가 설치됩니다.
+
+
+
+=== SolidFire Active IQ 설명서
+
+SolidFire Active IQ UI에서 이제 QoS 관리 페이지로 이동하여 클러스터에 대한 권장 사항과 노드 제한 정보를 볼 수 있습니다.  또한, 클러스터 대시보드에 이제 총 스냅샷 수가 표시됩니다.  최근 개선된 사항으로는 활성 볼륨에 대한 기본 및 보조 노드 정보와 노드의 기본 볼륨에서 지난 30분 동안의 평균 처리량, IOPS, 평균 지연 시간이 추가되었습니다.
+
+이제 Element 소프트웨어 설명서에서 SolidFire Active IQ 설명서에 액세스할 수 있습니다. link:https://docs.netapp.com/us-en/element-software/monitor-storage-active-iq.html["자세히 알아보기"].
+
+
+
+=== NetApp Bugs Online에는 해결된 문제와 알려진 문제가 포함되어 있습니다.
+
+해결된 문제와 알려진 문제는 NetApp Bugs Online 도구에 나열되어 있습니다.  Element 소프트웨어 및 기타 제품에 대한 이러한 문제는 다음에서 찾아볼 수 있습니다. https://mysupport.netapp.com/site/products/all/details/element-software/bugsonline-tab["NetApp 버그 온라인"^] .
+
+
+
+== 원소 12.5
+
+Element 12.5의 새로운 기능에 대해 자세히 알아보세요.
+
+
+
+=== 향상된 스토리지 노드 액세스
+
+Element 12.5는 서명된 SSH 인증서를 사용하여 개별 노드에 대한 원격 액세스를 개선합니다.  저장 노드에 대한 안전한 원격 액세스를 제공하기 위해 새로운 제한된 권한의 로컬 사용자 계정이 제공됩니다. `sfreadonly` 이제 저장 노드의 RTFI 중에 생성됩니다.  그만큼 `sfreadonly` 계정을 통해 기본적인 유지 관리나 문제 해결 목적으로 스토리지 노드 백엔드에 액세스할 수 있습니다.  이제 다음을 구성할 수 있습니다. `supportAdmin` 클러스터 관리자 사용자가 NetApp 지원팀에 필요에 따라 클러스터에 대한 액세스를 허용할 수 있는 액세스 유형입니다.
+
+
+
+=== 향상된 사용자 지정 보호 도메인 관리 기능
+
+Element 12.5에서는 기존 사용자 정의 보호 도메인을 빠르고 쉽게 보고 새로운 사용자 정의 보호 도메인을 구성할 수 있는 새로운 사용자 인터페이스가 제공됩니다.
+
+
+
+=== 새롭고 개선된 클러스터 오류, 이벤트 및 알림
+
+Element 12.5는 새로운 클러스터 오류 코드 도입으로 시스템 문제 해결을 향상시킵니다. `BmcSelfTestFailed` 그리고 `CpuThermalEventThreshold` .  Element 12.5에는 기존 클러스터 이벤트 및 경고에 대한 견고성 개선 사항도 포함되어 있습니다. `nodeOffline` , `volumeOffline` , `driveHealthFault` , `networkEvent` , 그리고	`cSumEvent` .
+
+
+
+=== 클러스터 생성 UI에서 휴면 상태의 소프트웨어 암호화 활성화
+
+Element 12.5에서는 클러스터 생성 UI에 새로운 체크박스가 추가되어 클러스터 생성 중에 SolidFire 올플래시 스토리지 클러스터에 대해 클러스터 전체의 휴면 상태 소프트웨어 암호화를 활성화하는 옵션을 제공합니다.
+
+
+
+=== 스토리지 노드 펌웨어 업데이트
+
+Element 12.5에는 스토리지 노드에 대한 펌웨어 업데이트가 포함되어 있습니다. link:../concepts/concept_rn_relatedrn_element.html#storage-firmware["자세히 알아보기"].
+
+
+
+=== 강화된 보안
+
+Element 12.5에는 Apache Log4j 취약점에 대한 Element 소프트웨어 노출을 종식시키는 완화 조치가 포함되어 있습니다.  가상 볼륨(VVols) 기능이 활성화된 NetApp SolidFire 스토리지 클러스터는 Apache Log4j 취약점에 노출됩니다.  NetApp Element 소프트웨어의 Apache Log4j 취약점에 대한 해결 방법에 대한 자세한 내용은 {url-peak}[KB 문서^]를 참조하세요.
+
+Element 11.x, 12.0 또는 12.2를 실행 중이거나 스토리지 클러스터가 이미 VVols 기능이 활성화된 Element 12.3 또는 12.3.1인 경우 12.5로 업그레이드해야 합니다.
+
+Element 12.5에는 120개 이상의 CVE 보안 취약점 해결 방법도 포함되어 있습니다.
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://kb.netapp.com/Advice_and_Troubleshooting/Data_Storage_Software/Management_services_for_Element_Software_and_NetApp_HCI/Management_Services_Release_Notes["NetApp 하이브리드 클라우드 제어 및 관리 서비스 릴리스 노트"^]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+* http://docs.netapp.com/sfe-122/index.jsp["이전 버전에 대한 SolidFire 및 Element 소프트웨어 문서 센터"^]
+* https://docs.netapp.com/us-en/hci/index.html["NetApp HCI 문서"^]
+* link:../hardware/fw_storage_nodes.html["SolidFire 스토리지 노드에 지원되는 스토리지 펌웨어 버전"]
+

@@ -1,0 +1,138 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-dashboard.html 
+summary: NetApp Hybrid Cloud Control 대시보드에서 스토리지 리소스를 볼 수 있습니다.  또한, 저장 용량과 저장 성능을 모니터링할 수 있습니다. 
+keywords: netapp, element, hcc, hybrid cloud control, storage, storage performance, capacity 
+---
+= 하이브리드 클라우드 제어 대시보드에서 스토리지 리소스 모니터링
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Hybrid Cloud Control 대시보드를 사용하면 모든 스토리지 리소스를 한눈에 볼 수 있습니다.  또한, 저장 용량과 저장 성능을 모니터링할 수 있습니다.
+
+
+NOTE: 처음으로 새로운 NetApp Hybrid Cloud Control 세션을 시작하면 관리 노드가 여러 클러스터를 관리하는 경우 NetApp Hybrid Cloud Control 대시보드 보기를 로드하는 데 지연이 발생할 수 있습니다.  로딩 시간은 관리 노드가 적극적으로 관리하는 클러스터 수에 따라 달라집니다.  이후 출시부터는 로딩 시간이 더 빨라집니다.
+
+* <<NetApp HCC 대시보드에 액세스하세요>>
+* <<스토리지 리소스 모니터링>>
+* <<저장 용량 모니터링>>
+* <<스토리지 성능 모니터링>>
+
+
+
+
+== NetApp HCC 대시보드에 액세스하세요
+
+. 웹 브라우저에서 관리 노드의 IP 주소를 엽니다. 예를 들어:
++
+[listing]
+----
+https://[management node IP address]
+----
+. SolidFire 올플래시 스토리지 클러스터 관리자 자격 증명을 제공하여 NetApp Hybrid Cloud Control에 로그인합니다.
+. 하이브리드 클라우드 제어 대시보드를 확인하세요.
+
+
+image::hcc_dashboard_all.PNG[HCC 대시보드]
+
+
+
+== 스토리지 리소스 모니터링
+
+*저장소* 창을 사용하여 전체 저장 환경을 확인하세요.  스토리지 클러스터, 스토리지 노드, 총 볼륨의 수를 모니터링할 수 있습니다.
+
+자세한 내용을 보려면 저장소 창에서 *자세히 보기*를 선택하세요.
+
+image::hcc_dashboard_storage_node_number.PNG[저장소 보기]
+
+
+NOTE: 총 스토리지 노드 수에는 2노드 스토리지 클러스터의 감시 노드가 포함되지 않습니다.  증인 노드는 해당 클러스터의 세부 정보 섹션에 있는 노드 번호에 포함됩니다.
+
+
+TIP: 최신 스토리지 클러스터 데이터를 보려면 대시보드보다 폴링이 더 자주 발생하는 스토리지 클러스터 페이지를 사용하세요.
+
+
+
+== 저장 용량 모니터링
+
+환경의 저장 용량을 모니터링하는 것은 중요합니다.  스토리지 용량 창을 사용하면 압축, 중복 제거, 씬 프로비저닝 기능을 활성화하거나 비활성화했을 때 스토리지 용량 효율성이 얼마나 향상되는지 확인할 수 있습니다.
+
+클러스터에서 사용 가능한 총 물리적 저장 공간은 *RAW* 탭에서 확인할 수 있으며, 프로비저닝된 저장 공간에 대한 정보는 *EFFECTIVE* 탭에서 확인할 수 있습니다.
+
+image::hcc_dashboard_storage_capacity_effective.png[HCC 대시보드 > 저장 용량 창]
+
+.단계
+. 클러스터에서 사용되고 있는 총 물리적 저장 공간을 확인하려면 *RAW* 탭을 선택하세요.
++
+수직선을 보고 사용 용량이 전체보다 적은지, 아니면 경고, 오류 또는 위험 임계값보다 적은지 확인하세요.  자세한 내용을 보려면 선 위에 마우스를 올려 놓으세요.
+
++
+
+NOTE: 경고에 대한 임계값을 설정할 수 있으며, 기본값은 오류 임계값보다 3% 낮습니다.  오류 및 위험 임계값은 사전 설정되어 있으며 설계상 구성할 수 없습니다.  오류 임계값은 클러스터에 남아 있는 노드 용량이 1개 미만임을 나타냅니다.  임계값 설정 단계는 다음을 참조하세요.link:../storage/task_system_manage_cluster_set_the_cluster_full_threshold.html["클러스터 전체 임계값 설정"] .
+
++
+
+TIP: 관련 클러스터 임계값 Element API에 대한 자세한 내용은 다음을 참조하세요.link:../api/reference_element_api_getclusterfullthreshold.html[""getClusterFullThreshold""] _Element 소프트웨어 API 문서_에서.  블록 및 메타데이터 용량에 대한 세부 정보를 보려면 다음을 참조하세요.link:../storage/concept_monitor_understand_cluster_fullness_levels.html["클러스터 충만도 수준 이해"] _Element 소프트웨어 설명서_에서.
+
+. *효과적* 탭을 선택하면 연결된 호스트에 제공된 총 저장 용량에 대한 정보와 효율성 등급을 확인할 수 있습니다.
++
+.. 선택적으로 *씬 프로비저닝 포함*을 선택하여 유효 용량 막대 차트에서 씬 프로비저닝 효율성 비율을 확인하세요.
+.. *유효 용량 막대형 차트*: 세로선을 보고 사용 용량이 전체보다 적은지, 아니면 경고, 오류 또는 위험 임계값보다 적은지 확인하세요.  Raw 탭과 마찬가지로 세로선 위에 마우스를 올려놓으면 세부 정보를 볼 수 있습니다.
+.. *효율성*: 압축, 중복 제거, 씬 프로비저닝 기능을 활성화했을 때 스토리지 용량 효율성이 얼마나 향상되는지 확인하려면 이러한 등급을 확인하세요.  예를 들어, 압축률이 "1.3x"로 표시되면 압축을 활성화한 경우의 저장 효율성이 압축을 활성화하지 않은 경우보다 1.3배 더 높다는 것을 의미합니다.
++
+
+NOTE: 총 효율성은 (maxUsedSpace * 효율성 계수) / 2와 같으며, 여기서 efficiencyFactor = (thinProvisioningFactor * deDuplicationFactor * compressionFactor)입니다.  씬 프로비저닝이 선택되지 않으면 총 효율성에 포함되지 않습니다.
+
+.. 유효 저장 용량이 오류 또는 위험 임계값에 가까워지면 시스템의 데이터를 지우는 것을 고려하세요.
+
+
+. 추가 분석 및 역사적 맥락을 보려면 다음을 살펴보세요. https://activeiq.solidfire.com/["NetApp SolidFire Active IQ 세부 정보"^] .
+
+
+
+
+== 스토리지 성능 모니터링
+
+저장소 성능 창을 사용하면 해당 리소스의 유용한 성능을 초과하지 않고도 클러스터에서 얼마나 많은 IOPS 또는 처리량을 얻을 수 있는지 확인할 수 있습니다.  스토리지 성능은 지연 시간이 문제가 되기 전에 최대 활용도를 얻을 수 있는 지점입니다.
+
+스토리지 성능 창을 통해 작업 부하가 증가하면 성능이 저하될 수 있는 지점에 도달했는지 여부를 파악할 수 있습니다.
+
+이 창의 정보는 10초마다 새로 고쳐지며 그래프의 모든 지점에 대한 평균을 보여줍니다.
+
+연관된 Element API 메서드에 대한 자세한 내용은 다음을 참조하세요.link:../api/reference_element_api_getclusterstats.html["클러스터 통계 가져오기"] _Element 소프트웨어 API 설명서_의 메서드입니다.
+
+.단계
+. 저장소 성능 창을 봅니다.  자세한 내용을 보려면 그래프의 지점 위에 마우스를 올려 놓으세요.
++
+.. *IOPS* 탭: 초당 현재 작업 수를 확인합니다.  데이터의 추세나 급증을 살펴보세요.  예를 들어, 최대 IOPS가 160K이고 그 중 100K가 무료 또는 사용 가능한 IOPS인 경우 이 클러스터에 더 많은 작업 부하를 추가하는 것이 좋습니다.  반면, 사용 가능한 용량이 140K에 불과하다면 작업 부하를 분산하거나 시스템을 확장하는 것을 고려해 볼 수 있습니다.
++
+image::hcc_dashboard_storage_perform_iops.png[스토리지 성능 > IOPS 탭]
+
+.. *처리량* 탭: 처리량의 패턴이나 급증을 모니터링합니다.  또한 지속적으로 높은 처리량 값을 모니터링하세요. 이는 리소스의 최대 유용 성능에 가까워지고 있음을 나타낼 수 있습니다.
++
+image::hcc_dashboard_storage_perform_throughput.png[스토리지 성능 > 처리량 탭]
+
+.. *사용률* 탭: 클러스터 수준에서 합산된 총 IOPS에 대한 IOPS 사용률을 모니터링합니다.
++
+image::hcc_dashboard_storage_perform_utlization.png[스토리지 성능 > 활용도 탭]
+
+
+
+. 추가 분석을 위해 vCenter Server용 NetApp Element 플러그인을 사용하여 스토리지 성능을 살펴보세요.
++
+https://docs.netapp.com/us-en/vcp/vcp_task_reports_volume_performance.html["vCenter Server용 NetApp Element 플러그인에 표시된 성능"^].
+
+
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+

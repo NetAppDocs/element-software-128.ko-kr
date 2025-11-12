@@ -1,0 +1,79 @@
+---
+permalink: storage/task_snapmirror_transfer_or_one_time_migration_from_ontap_to_element.html 
+sidebar: sidebar 
+keywords: element, ui, transfer, perform, source, volume, snapmirror, dr, disaster, recovery, one-time, migration 
+summary: 일반적으로 NetApp Element 소프트웨어를 실행하는 SolidFire 스토리지 클러스터에서 ONTAP 소프트웨어로 재해 복구를 위해 SnapMirror 사용하는 경우 Element는 소스이고 ONTAP 대상입니다.  그러나 어떤 경우에는 ONTAP 스토리지 시스템이 소스 역할을 하고 Element가 목적지 역할을 할 수 있습니다. 
+---
+= ONTAP 에서 Element로 전송 또는 일회성 마이그레이션을 수행합니다.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+일반적으로 NetApp Element 소프트웨어를 실행하는 SolidFire 스토리지 클러스터에서 ONTAP 소프트웨어로 재해 복구를 위해 SnapMirror 사용하는 경우 Element는 소스이고 ONTAP 대상입니다.  그러나 어떤 경우에는 ONTAP 스토리지 시스템이 소스 역할을 하고 Element가 목적지 역할을 할 수 있습니다.
+
+* 두 가지 시나리오가 있습니다.
++
+** 이전에 재해 복구 관계가 존재하지 않습니다.  이 절차의 모든 단계를 따르세요.
+** 이전 재해 복구 관계는 존재하지만 이 완화에 사용되는 볼륨 간에는 존재하지 않습니다.  이 경우에는 아래 3단계와 4단계만 따르세요.
+
+
+
+
+.필요한 것
+* Element 대상 노드는 ONTAP 에서 접근 가능해야 합니다.
+* SnapMirror 복제를 위해 Element 볼륨이 활성화되어 있어야 합니다.
+
+
+Element 대상 경로를 hostip:/lun/<id_number> 형식으로 지정해야 합니다. 여기서 lun은 실제 문자열 "`lun`"이고 id_number는 Element 볼륨의 ID입니다.
+
+.단계
+. ONTAP 사용하여 Element 클러스터와의 관계를 생성합니다.
++
+[listing]
+----
+snapmirror create -source-path SVM:volume|cluster://SVM/volume
+-destination-path hostip:/lun/name -type XDP -schedule schedule -policy
+    policy
+----
++
+[listing]
+----
+cluster_dst::> snapmirror create -source-path svm_1:volA_dst
+-destination-path 10.0.0.11:/lun/0005 -type XDP -schedule my_daily -policy MirrorLatest
+----
+. ONTAP snapmirror show 명령을 사용하여 SnapMirror 관계가 생성되었는지 확인합니다.
++
+ONTAP 설명서에서 복제 관계 생성에 대한 정보를 확인하고, 전체 명령 구문은 ONTAP 매뉴얼 페이지에서 확인하세요.
+
+. 를 사용하여 `ElementCreateVolume` API, 대상 볼륨을 생성하고 대상 볼륨 액세스 모드를 SnapMirror 로 설정합니다.
++
+Element API를 사용하여 Element 볼륨을 만듭니다.
+
++
+[listing]
+----
+{
+   "method": "CreateVolume",
+   "params": {
+        "name": "SMTargetVolumeTest2",
+        "accountID": 1,
+        "totalSize": 100000000000,
+        "enable512e": true,
+        "attributes": {},
+        "qosPolicyID": 1,
+        "enableSnapMirrorReplication": true,
+        "access": "snapMirrorTarget"
+    },
+    "id": 1
+}
+----
+. ONTAP 사용하여 복제 관계 초기화 `snapmirror initialize` 명령:
++
+[listing]
+----
+snapmirror initialize -source-path hostip:/lun/name
+-destination-path SVM:volume|cluster://SVM/volume
+----
+

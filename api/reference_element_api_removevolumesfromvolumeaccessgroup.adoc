@@ -1,0 +1,121 @@
+---
+permalink: api/reference_element_api_removevolumesfromvolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: remove,removing,volume,volumes,access,group,removevolumesfromvolumeaccessgroup 
+summary: RemoveVolumesFromVolumeAccessGroup 메서드를 사용하면 지정된 볼륨 액세스 그룹에서 볼륨을 제거할 수 있습니다. 
+---
+= 볼륨 액세스 그룹에서 볼륨 제거
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `RemoveVolumesFromVolumeAccessGroup` 지정된 볼륨 액세스 그룹에서 볼륨을 제거하는 방법입니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+볼륨액세스그룹ID
+ a| 
+볼륨을 제거할 VolumeAccessGroupID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+볼륨
+ a| 
+볼륨 액세스 그룹에서 제거할 볼륨의 VolumeID입니다.
+ a| 
+정수 배열
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+볼륨액세스그룹
+ a| 
+새로 수정된 볼륨 액세스 그룹에 대한 정보를 담고 있는 객체입니다.
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[볼륨액세스그룹]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "RemoveVolumesFromVolumeAccessGroup",
+   "params": {
+      "volumeAccessGroupID": 96,
+      "volumes": [1,2]
+   },
+   "id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [
+        346
+      ],
+      "initiatorIDs": [
+        116,
+        117
+      ],
+      "initiators": [
+        "iqn.1993-08.org.debian:01:181324777",
+        "iqn.1993-08.org.debian:01:181324888"
+      ],
+      "name": "northbanktest",
+      "volumeAccessGroupID": 96,
+      "volumes": []
+    }
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

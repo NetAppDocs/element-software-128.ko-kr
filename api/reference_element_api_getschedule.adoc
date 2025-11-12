@@ -1,0 +1,116 @@
+---
+permalink: api/reference_element_api_getschedule.html 
+sidebar: sidebar 
+keywords: snapshot,schedule,get,getting,getschedule 
+summary: GetSchedule을 사용하면 예약된 스냅샷에 대한 정보를 얻을 수 있습니다. 
+---
+= 일정을 얻으세요
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+사용할 수 있습니다 `GetSchedule` 예약된 스냅샷에 대한 정보를 얻으려면.
+
+시스템에 스냅샷 일정이 많은 경우 특정 일정에 대한 정보를 볼 수 있습니다.  이 메서드를 사용하면 scheduleID 매개변수에 추가 ID를 지정하여 두 개 이상의 일정에 대한 정보를 검색할 수도 있습니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+스케줄ID
+ a| 
+표시할 일정 또는 여러 일정의 고유 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+일정
+ a| 
+일정 속성의 배열입니다.
+ a| 
+xref:reference_element_api_schedule.adoc[일정]정렬
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+"method": "GetSchedule",
+  "params": {
+              "scheduleID" : 2
+      },
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Time Interval"
+      },
+       "hasError": false,
+       "hours": 0,
+       "lastRunStatus": "Success",
+       "lastRunTimeStarted": "2015-03-23T21:25:00Z",
+       "minutes": 2,
+       "monthdays": [],
+       "paused": false,
+       "recurring": true,
+       "runNextInterval": false,
+       "scheduleID": 2,
+       "scheduleInfo": {
+          "name": "MCA2",
+          "volumeID": "3"
+       },
+       "scheduleName": "MCAsnapshot2",
+       "scheduleType": "Snapshot",
+       "startingDate": "2015-03-23T19:28:57Z",
+       "toBeDeleted": false,
+       "weekdays": []
+      }
+   }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

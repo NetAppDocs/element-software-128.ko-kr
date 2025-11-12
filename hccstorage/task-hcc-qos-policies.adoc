@@ -1,0 +1,161 @@
+---
+sidebar: sidebar 
+permalink: hccstorage/task-hcc-qos-policies.html 
+summary: 스토리지 클러스터의 볼륨에 적용할 QoS 정책을 설정하고 수정할 수 있습니다. 
+keywords: netapp, qos policy, quality of service, qos policies, volumes, element 
+---
+= 볼륨 QoS 정책을 생성하고 관리합니다.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+QoS(서비스 품질) 정책을 사용하면 여러 볼륨에 적용할 수 있는 표준화된 서비스 품질 설정을 만들고 저장할 수 있습니다.  QoS 정책을 사용하려면 선택한 클러스터가 Element 10.0 이상이어야 합니다. 그렇지 않으면 QoS 정책 기능을 사용할 수 없습니다.
+
+
+NOTE: 자세한 내용은 SolidFire 올플래시 스토리지 개념 콘텐츠를 참조하세요.link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html#qos-policies["QoS 정책"] 개별 볼륨 대신link:../concepts/concept_data_manage_volumes_solidfire_quality_of_service.html["서비스 품질"] .
+
+NetApp Hybrid Cloud Control을 사용하면 다음 작업을 완료하여 QoS 정책을 만들고 관리할 수 있습니다.
+
+* <<QoS 정책 생성>>
+* <<볼륨에 QoS 정책 적용>>
+* <<볼륨의 QoS 정책 할당 변경>>
+* <<QoS 정책 편집>>
+* <<QoS 정책 삭제>>
+
+
+
+
+== QoS 정책 생성
+
+QoS 정책을 만들고 동일한 성능을 가져야 하는 볼륨에 적용할 수 있습니다.
+
+
+NOTE: QoS 정책을 사용하는 경우 볼륨에서 사용자 지정 QoS를 사용하지 마세요.  사용자 지정 QoS는 볼륨 QoS 설정에 대한 QoS 정책 값을 재정의하고 조정합니다.
+
+.단계
+. Element 스토리지 클러스터 관리자 자격 증명을 제공하여 NetApp Hybrid Cloud Control에 로그인합니다.
+. 대시보드에서 스토리지 클러스터의 메뉴를 확장합니다.
+. *저장소 > 볼륨*을 선택합니다.
+. *QoS 정책* 탭을 선택합니다.
+. *정책 만들기*를 선택하세요.
+. *정책 이름*을 입력하세요.
++
+
+TIP: 설명적인 명명 모범 사례를 사용하세요.  특히 환경에서 여러 클러스터나 vCenter Server를 사용하는 경우 이 점이 중요합니다.
+
+. 최소 IOPS, 최대 IOPS, 버스트 IOPS 값을 입력하세요.
+. *QoS 정책 만들기*를 선택합니다.
++
+정책에 대한 시스템 ID가 생성되고 정책은 할당된 QoS 값과 함께 QoS 정책 페이지에 나타납니다.
+
+
+
+
+
+== 볼륨에 QoS 정책 적용
+
+NetApp Hybrid Cloud Control을 사용하여 기존 QoS 정책을 볼륨에 할당할 수 있습니다.
+
+.필요한 것
+할당하려는 QoS 정책이<<QoS 정책 생성,생성됨>> .
+
+.이 작업에 관하여
+이 작업에서는 설정을 변경하여 개별 볼륨에 QoS 정책을 할당하는 방법을 설명합니다.  NetApp Hybrid Cloud Control의 최신 버전에는 두 개 이상의 볼륨에 대한 대량 할당 옵션이 없습니다.  향후 릴리스에서 대량 할당 기능이 제공될 때까지 Element 웹 UI 또는 vCenter 플러그인 UI를 사용하여 QoS 정책을 대량으로 할당할 수 있습니다.
+
+.단계
+. Element 스토리지 클러스터 관리자 자격 증명을 제공하여 NetApp Hybrid Cloud Control에 로그인합니다.
+. 대시보드에서 스토리지 클러스터의 메뉴를 확장합니다.
+. *저장소 > 볼륨*을 선택합니다.
+. 수정하려는 볼륨 옆에 있는 *작업* 메뉴를 선택합니다.
+. 나타나는 메뉴에서 *편집*을 선택합니다.
+. 대화 상자에서 *QoS 정책 할당*을 활성화하고 드롭다운 목록에서 선택한 볼륨에 적용할 QoS 정책을 선택합니다.
++
+
+NOTE: QoS를 할당하면 이전에 적용된 개별 볼륨 QoS 값이 재정의됩니다.
+
+. *저장*을 선택하세요.
+
+
+
+
+== 볼륨의 QoS 정책 할당 변경
+
+볼륨에서 QoS 정책 할당을 제거하거나 다른 QoS 정책이나 사용자 지정 QoS를 선택할 수 있습니다.
+
+.필요한 것
+수정하려는 볼륨은 다음과 같습니다.<<볼륨에 QoS 정책 적용,할당된>> QoS 정책.
+
+.단계
+. Element 스토리지 클러스터 관리자 자격 증명을 제공하여 NetApp Hybrid Cloud Control에 로그인합니다.
+. 대시보드에서 스토리지 클러스터의 메뉴를 확장합니다.
+. *저장소 > 볼륨*을 선택합니다.
+. 수정하려는 볼륨 옆에 있는 *작업* 메뉴를 선택합니다.
+. 나타나는 메뉴에서 *편집*을 선택합니다.
+. 대화 상자에서 다음 중 하나를 수행합니다.
++
+** *QoS 정책 할당*을 비활성화하고 개별 볼륨 QoS에 대한 *최소 IOPS*, *최대 IOPS*, *버스트 IOPS* 값을 수정합니다.
++
+
+NOTE: QoS 정책이 비활성화되면 볼륨은 달리 수정하지 않는 한 기본 QoS IOPS 값을 사용합니다.
+
+** 드롭다운 목록에서 다른 QoS 정책을 선택하여 선택한 볼륨에 적용합니다.
+
+
+. *저장*을 선택하세요.
+
+
+
+
+== QoS 정책 편집
+
+기존 QoS 정책의 이름을 변경하거나 정책과 연결된 값을 편집할 수 있습니다.  QoS 정책 성능 값을 변경하면 해당 정책과 연결된 모든 볼륨의 QoS에 영향을 미칩니다.
+
+.단계
+. Element 스토리지 클러스터 관리자 자격 증명을 제공하여 NetApp Hybrid Cloud Control에 로그인합니다.
+. 대시보드에서 스토리지 클러스터의 메뉴를 확장합니다.
+. *저장소 > 볼륨*을 선택합니다.
+. *QoS 정책* 탭을 선택합니다.
+. 수정하려는 QoS 정책 옆에 있는 *작업* 메뉴를 선택합니다.
+. *편집*을 선택하세요.
+. *QoS 정책 편집* 대화 상자에서 다음 중 하나 이상을 변경합니다.
++
+** *이름*: QoS 정책에 대한 사용자 정의 이름입니다.
+** *최소 IOPS*: 볼륨에 대해 보장되는 최소 IOPS 수입니다.  기본값 = 50.
+** *최대 IOPS*: 볼륨에 허용되는 최대 IOPS 수입니다.  기본값 = 15,000.
+** *버스트 IOPS*: 볼륨에 대해 짧은 시간 동안 허용되는 최대 IOPS 수입니다.  기본값 = 15,000.
+
+
+. *저장*을 선택하세요.
++
+
+TIP: 정책의 *활성 볼륨* 열에 있는 링크를 선택하면 해당 정책에 할당된 볼륨의 필터링된 목록이 표시됩니다.
+
+
+
+
+
+== QoS 정책 삭제
+
+더 이상 필요하지 않은 QoS 정책을 삭제할 수 있습니다.  QoS 정책을 삭제하면 해당 정책이 할당된 모든 볼륨은 정책에서 이전에 정의한 QoS 값을 개별 볼륨 QoS로 유지합니다.  삭제된 QoS 정책과의 모든 연결이 제거됩니다.
+
+.단계
+. Element 스토리지 클러스터 관리자 자격 증명을 제공하여 NetApp Hybrid Cloud Control에 로그인합니다.
+. 대시보드에서 스토리지 클러스터의 메뉴를 확장합니다.
+. *저장소 > 볼륨*을 선택합니다.
+. *QoS 정책* 탭을 선택합니다.
+. 수정하려는 QoS 정책 옆에 있는 *작업* 메뉴를 선택합니다.
+. *삭제*를 선택하세요.
+. 작업을 확인합니다.
+
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"^]
+

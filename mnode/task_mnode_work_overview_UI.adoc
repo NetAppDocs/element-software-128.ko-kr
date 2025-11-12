@@ -1,0 +1,32 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_work_overview_UI.html 
+summary: '관리 노드 UI를 사용하여(https://<mNodeIP>:442[] ), 네트워크 및 클러스터 설정을 변경하고, 시스템 테스트를 실행하거나 시스템 유틸리티를 사용할 수 있습니다.' 
+keywords: 'netapp, management node ui, mnode ui, :442, Element' 
+---
+= 관리 노드 UI 개요
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+관리 노드 UI를 사용하여(`https://<ManagementNodeIP>:442` ), 네트워크 및 클러스터 설정을 변경하고, 시스템 테스트를 실행하거나 시스템 유틸리티를 사용할 수 있습니다.
+
+관리 노드 UI로 수행할 수 있는 작업:
+
+* link:task_mnode_enable_alerts.html["알림 모니터링 구성"]
+* link:task_mnode_settings.html["관리 노드 네트워크, 클러스터 및 시스템 설정을 수정하고 테스트합니다."]
+* link:task_mnode_run_system_utilities.html["관리 노드에서 시스템 유틸리티 실행"]
+
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* link:task_mnode_access_ui.html["관리 노드에 접근"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+

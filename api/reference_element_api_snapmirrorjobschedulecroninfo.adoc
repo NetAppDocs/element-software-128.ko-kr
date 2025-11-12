@@ -1,0 +1,51 @@
+---
+permalink: api/reference_element_api_snapmirrorjobschedulecroninfo.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorJobScheduleCronInfo 
+summary: snapMirrorJobScheduleCronInfo 개체에는 ONTAP 시스템의 Cron 작업 일정에 대한 정보가 포함되어 있습니다. 
+---
+= snapMirrorJobScheduleCronInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorJobScheduleCronInfo 개체에는 ONTAP 시스템의 Cron 작업 일정에 대한 정보가 포함되어 있습니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+스냅미러엔드포인트ID
+ a| 
+대상 ONTAP 시스템의 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+작업 일정 이름
+ a| 
+작업 일정의 이름입니다.
+ a| 
+끈
+
+
+
+ a| 
+작업 일정 설명
+ a| 
+일정에 대한 자동 생성된 사람이 읽을 수 있는 요약입니다.
+ a| 
+끈
+
+|===

@@ -1,0 +1,138 @@
+---
+permalink: api/reference_element_api_addinitiatorstovolumeaccessgroup.html 
+sidebar: sidebar 
+keywords: addinitiatorstovolumeaccessgroup,add,adding,initiators,initiator,volume,access,group 
+summary: AddInitiatorsToVolumeAccessGroup 메서드를 사용하면 지정된 볼륨 액세스 그룹에 시작자를 추가할 수 있습니다. 
+---
+= AddInitiatorsToVolumeAccessGroup
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `AddInitiatorsToVolumeAccessGroup` 지정된 볼륨 액세스 그룹에 시작자를 추가하는 방법입니다.
+
+허용되는 개시자 IQN 형식은 iqn.yyyy-mm입니다. 여기서 y와 m은 숫자이고, 그 뒤에 숫자, 소문자 알파벳, 마침표(.), 콜론(:) 또는 대시(-)만 포함하는 텍스트가 옵니다. 다음 예를 참조하세요.
+
+[listing]
+----
+iqn.2010-01.com.solidfire:17oi.solidfire-0.1
+----
+파이버 채널 개시자 WWPN의 허용되는 형식은 Aa:bB:CC:dd:11:22:33:44 또는 AabBCCdd11223344입니다. 다음 예를 참조하세요.
+
+[listing]
+----
+21:00:00:0e:1e:11:f1:81
+----
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+개시자들
+ a| 
+볼륨 액세스 그룹에 포함할 개시자 ID 또는 이름(IQN 및 WWPN) 목록입니다.  개시자 이름 목록을 전달하면 개시자가 존재하지 않으면 생성됩니다.  개시자 ID 목록을 전달하는 경우, 해당 메서드는 개시자 중에 아직 존재하지 않는 것이 있으면 오류를 반환합니다.
+
+개시자 이름을 전달하는 것은 더 이상 사용되지 않습니다. 가능한 경우 개시자 ID를 사용해야 합니다.
+ a| 
+정수 배열 또는 문자열 배열(더 이상 사용되지 않음)
+ a| 
+ a| 
+예
+
+
+
+ a| 
+볼륨액세스그룹ID
+ a| 
+이니시에이터를 추가할 볼륨 액세스 그룹의 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+볼륨액세스그룹
+ a| 
+새로 수정된 볼륨 액세스 그룹에 대한 정보를 담고 있는 객체입니다.
+ a| 
+xref:reference_element_api_volumeaccessgroup.adoc[볼륨액세스그룹]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "id": 13171,
+  "method": "AddInitiatorsToVolumeAccessGroup",
+  "params": {
+    "initiators": [116,117],
+    "volumeAccessGroupID": 96
+  }
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 13171,
+  "result": {
+    "volumeAccessGroup": {
+      "attributes": {},
+      "deletedVolumes": [
+        327
+      ],
+      "initiatorIDs": [
+        116,
+        117
+      ],
+      "initiators": [
+        "iqn.1993-08.org.debian:01:181324777",
+        "iqn.1993-08.org.debian:01:181324888"
+      ],
+      "name": "northbanktest",
+      "volumeAccessGroupID": 96,
+      "volumes": [
+        346
+      ]
+    }
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

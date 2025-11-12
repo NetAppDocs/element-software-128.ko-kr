@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_listnodestats.html 
+sidebar: sidebar 
+keywords: node,nodes,stats,list,listing,listnodestats 
+summary: ListNodeStats 메서드를 사용하면 스토리지 클러스터의 모든 스토리지 노드에 대한 상위 수준 활동 측정값을 볼 수 있습니다. 
+---
+= 리스트노드통계
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `ListNodeStats` 스토리지 클러스터의 모든 스토리지 노드에 대한 상위 수준 활동 측정값을 보는 방법입니다.
+
+
+
+== 매개변수
+
+이 방법에는 입력 매개변수가 없습니다.
+
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+노드 통계
+ a| 
+저장 노드 활동 정보.
+ a| 
+xref:reference_element_api_nodestats.adoc[노드 통계]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "ListNodeStats",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "nodeStats": {
+       "nodes": [
+         {
+           "cBytesIn": 223022159806,
+           "cBytesOut": 206324217921,
+           "count": 17274,
+           "cpu": 0,
+           "cpuTotal": 9796,
+           "mBytesIn": 608219007,
+           "mBytesOut": 3487659798,
+           "networkUtilizationCluster": 0,
+           "networkUtilizationStorage": 0,
+           "nodeHeat": {
+             "primaryTotalHeat": 0.00028,
+             "recentPrimaryTotalHeat": 0.0,
+             "recentTotalHeat": 0.00097,
+             "totalHeat": 0.00138
+           },
+           "nodeID": 1,
+           "readLatencyUSecTotal": 8964,
+           "readOps": 29544,
+           "sBytesIn": 223022159806,
+           "sBytesOut": 206324217921,
+           "ssLoadHistogram": {
+             "Bucket0": 5083,
+             "Bucket1To19": 5637426,
+             "Bucket20To39": 19389,
+             "Bucket40To59": 156,
+             "Bucket60To79": 0,
+             "Bucket80To100": 0
+           },
+           "timestamp": "2024-02-27T18:21:26.183659Z",
+           "usedMemory": 104828780544,
+           "writeLatencyUSecTotal": 271773335,
+           "writeOps": 23898
+         }
+       ]
+     }
+ }
+----
+
+
+== 버전 이후 새로운
+
+9.6

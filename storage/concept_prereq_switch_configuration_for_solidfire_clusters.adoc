@@ -1,0 +1,76 @@
+---
+permalink: storage/concept_prereq_switch_configuration_for_solidfire_clusters.html 
+sidebar: sidebar 
+keywords: cluster switch configuration, best practices for switch configuration, optimal storage performance, node hardware, traffic, cluster, Element software, best practices, switches, switch requirements, storage, performance, storage performance 
+summary: NetApp Element 소프트웨어 시스템에는 최적의 스토리지 성능을 위한 특정 스위치 요구 사항과 모범 사례가 있습니다. 
+---
+= Element 소프트웨어를 실행하는 클러스터에 대한 스위치 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element 소프트웨어 시스템에는 최적의 스토리지 성능을 위한 특정 스위치 요구 사항과 모범 사례가 있습니다.
+
+스토리지 노드에는 iSCSI 스토리지 서비스와 노드 내 클러스터 서비스 통신을 위해 특정 노드 하드웨어에 따라 10GbE 또는 25GbE 이더넷 스위치가 필요합니다.  1GbE 스위치는 다음 유형의 트래픽에 사용될 수 있습니다.
+
+* 클러스터 및 노드 관리
+* 노드 간 클러스터 내 관리 트래픽
+* 클러스터 노드와 관리 노드 가상 머신 간의 트래픽
+
+
+|===
+
+
+ a| 
+*모범 사례:* 클러스터 트래픽을 위해 이더넷 스위치를 구성할 때 다음 모범 사례를 구현해야 합니다.
+
+* 클러스터 내 비저장 트래픽의 경우, 높은 가용성과 부하 공유를 제공하기 위해 1GbE 스위치 쌍을 배포합니다.
+* 스토리지 네트워크 스위치에서 스위치를 쌍으로 배포하고 점보 프레임(MTU 크기 9216바이트)을 구성하여 활용합니다.  이를 통해 성공적인 설치가 보장되고, 패킷 조각으로 인한 저장 네트워크 오류가 제거됩니다.
+
+
+|===
+요소 배포에는 다음 각 유형의 트래픽에 대해 하나씩, 최소 두 개의 네트워크 세그먼트가 필요합니다.
+
+* 관리
+* 저장/데이터
+
+
+NetApp H-시리즈 스토리지 노드 모델과 계획된 케이블 구성에 따라 별도의 스위치를 사용하여 이러한 네트워크를 물리적으로 분리하거나 VLAN을 사용하여 논리적으로 분리할 수 있습니다.  하지만 대부분의 배포에서는 VLAN을 사용하여 이러한 네트워크를 논리적으로 분리해야 합니다.
+
+저장 노드는 배포 전, 배포 중, 배포 후에 통신할 수 있어야 합니다.
+
+스토리지 노드에 대해 별도의 관리 네트워크를 구현하는 경우 이러한 관리 네트워크 간에 네트워크 경로가 있는지 확인하세요.  이러한 네트워크에는 게이트웨이가 할당되어야 하며, 게이트웨이 간에 경로가 있어야 합니다.  각 새 노드에 노드와 관리 네트워크 간 통신을 원활하게 하기 위한 게이트웨이가 할당되어 있는지 확인하세요.
+
+NetApp Element 다음이 필요합니다.
+
+* NetApp H 시리즈 스토리지 노드에 연결된 모든 스위치 포트는 스패닝 트리 에지 포트로 구성되어야 합니다.
++
+** Cisco 스위치의 경우 스위치 모델, 소프트웨어 버전 및 포트 유형에 따라 다음 명령 중 하나를 사용하여 이 작업을 수행할 수 있습니다.
++
+*** `spanning-tree port type edge`
+*** `spanning-tree port type edge trunk`
+*** `spanning-tree portfast`
+*** `spanning-tree portfast trunk`
+
+
+** Mellanox 스위치에서는 다음을 사용하여 이 작업을 수행할 수 있습니다. `spanning-tree port type edge` 명령.
+
+
+* 스토리지 트래픽을 처리하는 스위치는 포트당 최소 10GbE의 속도를 지원해야 합니다(포트당 최대 25GbE 지원).
+* 관리 트래픽을 처리하는 스위치는 포트당 최소 1GbE의 속도를 지원해야 합니다.
+* 스토리지 트래픽을 처리하는 스위치 포트에서 점보 프레임을 구성해야 합니다.  성공적인 설치를 위해서는 호스트가 종단 간에 9000바이트 패킷을 전송할 수 있어야 합니다.
+* 모든 저장 노드 간의 왕복 네트워크 지연 시간은 2ms를 초과해서는 안 됩니다.
+
+
+일부 노드는 전용 관리 포트를 통해 추가적인 대역 외 관리 기능을 제공합니다.  NetApp H300S, H500S 및 H700S 노드도 포트 A를 통해 IPMI 액세스를 허용합니다. 모범 사례로, 환경의 모든 노드에 대해 대역 외 관리를 구성하여 원격 관리를 용이하게 하는 것이 좋습니다.
+
+
+
+== 더 많은 정보를 원하시면
+
+* https://docs.netapp.com/us-en/hci/docs/hci_prereqs_network_switch.html["NetApp HCI 네트워크 및 스위치 요구 사항"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

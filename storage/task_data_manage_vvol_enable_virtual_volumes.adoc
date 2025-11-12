@@ -1,0 +1,55 @@
+---
+permalink: storage/task_data_manage_vvol_enable_virtual_volumes.html 
+sidebar: sidebar 
+keywords: virtual volumes, enable, functionality on the cluster, vvols 
+summary: 'NetApp Element 소프트웨어를 통해 vSphere Virtual Volumes \(VVols\) 기능을 수동으로 활성화해야 합니다.  Element 소프트웨어 시스템은 기본적으로 VVols 기능이 비활성화되어 있으며, 새로 설치하거나 업그레이드해도 자동으로 활성화되지 않습니다.  VVols 기능을 활성화하는 것은 한 번만 수행하면 되는 구성 작업입니다.' 
+---
+= 가상 볼륨 활성화
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element 소프트웨어를 통해 vSphere Virtual Volumes(VVols) 기능을 수동으로 활성화해야 합니다.  Element 소프트웨어 시스템은 기본적으로 VVols 기능이 비활성화되어 있으며, 새로 설치하거나 업그레이드해도 자동으로 활성화되지 않습니다.  VVols 기능을 활성화하는 것은 한 번만 수행하면 되는 구성 작업입니다.
+
+.필요한 것
+* 클러스터는 Element 9.0 이상을 실행해야 합니다.
+* 클러스터는 VVol과 호환되는 ESXi 6.0 이상 환경에 연결되어야 합니다.
+* Element 11.3 이상을 사용하는 경우 클러스터는 ESXi 6.0 업데이트 3 이상 환경에 연결되어야 합니다.
+
+
+
+IMPORTANT: vSphere Virtual Volumes 기능을 활성화하면 Element 소프트웨어 구성이 영구적으로 변경됩니다.  클러스터가 VMware ESXi VVols 호환 환경에 연결된 경우에만 VVols 기능을 활성화해야 합니다.  클러스터를 공장 이미지로 되돌려 VVols 기능을 비활성화하고 기본 설정으로만 복원할 수 있으며, 이렇게 하면 시스템의 모든 데이터가 삭제됩니다.
+
+.단계
+. *클러스터* > *설정*을 선택합니다.
+. 가상 볼륨에 대한 클러스터별 설정을 찾습니다.
+. *가상 볼륨 사용*을 클릭합니다.
+. *예*를 클릭하여 가상 볼륨 구성 변경을 확인합니다.
++
+*VVols* 탭은 Element UI에 나타납니다.
+
++
+
+NOTE: VVols 기능이 활성화되면 SolidFire 클러스터는 VASA 공급자를 시작하고, VASA 트래픽을 위해 포트 8444를 열고, vCenter와 모든 ESXi 호스트에서 검색할 수 있는 프로토콜 엔드포인트를 생성합니다.
+
+. *클러스터* > *설정*의 가상 볼륨(VVols) 설정에서 VASA 공급자 URL을 복사합니다.  이 URL을 사용하여 vCenter에 VASA 공급자를 등록합니다.
+. *VVols* > *Storage Containers*에서 저장 컨테이너를 만듭니다.
++
+
+NOTE: VM을 VVol 데이터 저장소에 프로비저닝할 수 있도록 최소한 하나의 스토리지 컨테이너를 만들어야 합니다.
+
+. *VVols* > *프로토콜 엔드포인트*를 선택합니다.
+. 클러스터의 각 노드에 대해 프로토콜 엔드포인트가 생성되었는지 확인합니다.
++
+
+NOTE: vSphere에서는 추가 구성 작업이 필요합니다.  vCenter에 VASA 공급자를 등록하고, VVol 데이터 저장소를 생성 및 관리하고, 정책에 따라 스토리지를 관리하려면 SolidFire 스토리지 구성 가이드를 위한 VMware vSphere Virtual Volumes_를 참조하세요.
+
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+https://www.netapp.com/pdf.html?item=/media/10516-tr4642pdf.pdf["SolidFire 스토리지 구성 가이드를 위한 VMware vSphere 가상 볼륨"^]

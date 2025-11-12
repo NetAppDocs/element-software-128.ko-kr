@@ -1,0 +1,209 @@
+---
+permalink: api/reference_element_api_rollbacktogroupsnapshot.html 
+sidebar: sidebar 
+keywords: rollbacktogroupsnapshot,snapshot,group,individual,creating,create,roll,back,rollback,roll back,existing 
+summary: RollbackToGroupSnapshot을 사용하면 스냅샷 그룹의 모든 개별 볼륨을 각 볼륨의 개별 스냅샷으로 롤백할 수 있습니다. 
+---
+= 그룹 스냅샷으로 롤백
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+사용할 수 있습니다 `RollbackToGroupSnapshot` 스냅샷 그룹의 모든 개별 볼륨을 각 볼륨의 개별 스냅샷으로 롤백합니다.
+
+그룹 스냅샷으로 롤백하면 그룹 스냅샷 내의 각 볼륨에 대한 임시 스냅샷이 생성됩니다.
+
+[NOTE]
+====
+* 클러스터 충만도가 1, 2 또는 3단계인 경우 스냅샷을 만드는 것이 허용됩니다.  클러스터 충만도가 4단계 또는 5단계일 때는 스냅샷이 생성되지 않습니다.
+* 슬라이스 동기화가 진행 중일 때 볼륨을 그룹 스냅샷으로 롤백하는 작업이 실패할 수 있습니다.  다시 해 보다 `RollbackToGroupSnapshot` 동기화가 완료된 후.
+
+
+====
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+`groupSnapshotID`
+ a| 
+그룹 스냅샷의 고유 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+`attributes`
+ a| 
+JSON 객체 형식의 이름-값 쌍 목록입니다.
+ a| 
+JSON 객체
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+`name`
+ a| 
+볼륨의 현재 상태에 대한 그룹 스냅샷의 이름은 다음과 같습니다. `saveCurrentState` true로 설정됩니다.  이름을 지정하지 않으면 스냅샷 이름(그룹 및 개별 볼륨)은 롤백이 발생한 시간의 타임스탬프로 설정됩니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+`saveCurrentState`
+ a| 
+이전 활성 볼륨 이미지를 저장할지 여부를 지정합니다.  유효한 값:
+
+* `true`: 이전 활성 볼륨 이미지가 유지됩니다.
+* `false`: 이전 활성 볼륨 이미지가 삭제됩니다.
+
+ a| 
+부울
+ a| 
+거짓
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+회원들
+ a| 
+그룹 스냅샷 멤버의 볼륨 ID와 스냅샷 ID를 포함하는 배열입니다.  가치:
+
+* 체크섬: 저장된 스냅샷의 데이터에 대한 작은 문자열 표현입니다.  이 체크섬은 나중에 다른 스냅샷을 비교하여 데이터의 오류를 감지하는 데 사용할 수 있습니다.  (끈)
+* snapshotID: 새 스냅샷이 만들어진 스냅샷의 고유 ID입니다.  snapshotID는 지정된 볼륨의 스냅샷이어야 합니다.  (정수)
+* volumeID: 스냅샷의 소스 볼륨 ID입니다.  (정수)
+
+ a| 
+JSON 객체 배열
+
+
+
+ a| 
+그룹스냅샷ID
+ a| 
+만약에 `saveCurrentState` false로 설정되면 이 값은 null입니다.
+
+만약에 `saveCurrentState` 새로 생성된 그룹 스냅샷의 고유 ID가 true로 설정되었습니다.
+ a| 
+정수
+
+
+
+ a| 
+그룹스냅샷
+ a| 
+만약에 `saveCurrentState` false로 설정되면 이 값은 null입니다.
+
+만약에 `saveCurrentState` 그룹 스냅샷에 대한 정보를 포함하는 객체가 true로 설정되었습니다. `RollbackToGroupSnapshot` 방금 롤백했습니다.
+ a| 
+xref:reference_element_api_groupsnapshot.adoc[그룹스냅샷]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "id": 438,
+  "method": "RollbackToGroupSnapshot",
+  "params": {
+    "groupSnapshotID": 1,
+    "name": "grpsnap1",
+    "saveCurrentState": true
+  }
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 438,
+  "result": {
+    "groupSnapshot": {
+      "attributes": {},
+      "createTime": "2016-04-06T17:27:17Z",
+      "groupSnapshotID": 1,
+      "groupSnapshotUUID": "468fe181-0002-4b1d-ae7f-8b2a5c171eee",
+      "members": [
+        {
+          "attributes": {},
+          "checksum": "0x0",
+          "createTime": "2016-04-06T17:27:17Z",
+          "enableRemoteReplication": false,
+          "expirationReason": "None",
+          "expirationTime": null,
+          "groupID": 1,
+          "groupSnapshotUUID": "468fe181-0002-4b1d-ae7f-8b2a5c171eee",
+          "name": "2016-04-06T17:27:17Z",
+          "snapshotID": 4,
+          "snapshotUUID": "03563c5e-51c4-4e3b-a256-a4d0e6b7959d",
+          "status": "done",
+          "totalSize": 1000341504,
+          "virtualVolumeID": null,
+          "volumeID": 2
+        }
+      ],
+      "name": "2016-04-06T17:27:17Z",
+      "status": "done"
+    },
+    "groupSnapshotID": 3,
+    "members": [
+      {
+        "checksum": "0x0",
+        "snapshotID": 2,
+        "snapshotUUID": "719b162c-e170-4d80-b4c7-1282ed88f4e1",
+        "volumeID": 2
+      }
+    ]
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

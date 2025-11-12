@@ -1,0 +1,17 @@
+---
+permalink: storage/concept_snapmirror_disaster_recovery.html 
+sidebar: sidebar 
+keywords: dr, disaster recovery, snapmirror 
+summary: NetApp Element 소프트웨어를 실행하는 볼륨이나 클러스터에 문제가 발생하는 경우 SnapMirror 기능을 사용하여 관계를 끊고 대상 볼륨으로 장애 조치를 취합니다. 
+---
+= SnapMirror 사용한 재해 복구
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element 소프트웨어를 실행하는 볼륨이나 클러스터에 문제가 발생하는 경우 SnapMirror 기능을 사용하여 관계를 끊고 대상 볼륨으로 장애 조치를 취합니다.
+
+
+NOTE: 원래 클러스터가 완전히 실패했거나 존재하지 않는 경우 NetApp 지원팀에 문의하여 추가 지원을 받으세요.

@@ -1,0 +1,24 @@
+---
+permalink: storage/concept_prereq_networking.html 
+sidebar: sidebar 
+keywords: 'network setup, setup network, switch requirements, port requirements, network," "networking," "set up network," "prerequisites," "requirements' 
+summary: SolidFire 시스템의 네트워크 설정은 스위치와 포트 요구 사항으로 구성됩니다.  이러한 기능의 구현은 시스템에 따라 달라집니다. 
+---
+= 네트워킹
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire 시스템의 네트워크 설정은 스위치와 포트 요구 사항으로 구성됩니다.  이러한 기능의 구현은 시스템에 따라 달라집니다.
+
+
+
+== 더 많은 정보를 원하시면
+
+* link:../storage/concept_prereq_switch_configuration_for_solidfire_clusters.html["Element 소프트웨어를 실행하는 클러스터에 대한 스위치 구성"]
+* link:../storage/reference_prereq_network_port_requirements.html["네트워크 포트 요구 사항"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

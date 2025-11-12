@@ -1,0 +1,61 @@
+---
+permalink: api/concept_element_api_system_configuration_api_methods.html 
+sidebar: sidebar 
+keywords: system,config,configuration,methods,api 
+summary: 시스템 구성 API 메서드를 사용하면 클러스터의 모든 노드에 적용되는 구성 값을 얻고 설정할 수 있습니다. 
+---
+= 시스템 구성 API 메서드
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+시스템 구성 API 메서드를 사용하면 클러스터의 모든 노드에 적용되는 구성 값을 얻고 설정할 수 있습니다.
+
+* xref:reference_element_api_disablebmccoldreset.adoc[DisableBmcColdReset]
+* xref:reference_element_api_disableclusterssh.adoc[DisableClusterSsh]
+* xref:reference_element_api_disablesnmp.adoc[DisableSnmp]
+* xref:reference_element_api_enablebmccoldreset.adoc[EnableBmcColdReset]
+* xref:reference_element_api_enableclusterssh.adoc[EnableClusterSsh]
+* xref:reference_element_api_enablesnmp.adoc[EnableSnmp]
+* xref:reference_element_api_getbinassignmentproperties.adoc[GetBinAssignmentProperties]
+* xref:reference_element_api_getclustersshinfo.adoc[GetClusterSshInfo]
+* xref:reference_element_api_getclusterstructure.adoc[클러스터 구조 가져오기]
+* xref:reference_element_api_getfipsreport.adoc[GetFipsReport]
+* xref:reference_element_api_getlldpconfig.adoc[GetLldpConfig]
+* xref:reference_element_api_getlldpinfo.adoc[GetLldpInfo]
+* xref:reference_element_api_system_configuration_getnodefipsdrivesreport.adoc[GetNodeFipsDrivesReport]
+* xref:reference_element_api_getntpinfo.adoc[GetNtpInfo]
+* xref:reference_element_api_getnvraminfo.adoc[GetNvramInfo]
+* xref:reference_element_api_getprotectiondomainlayout.adoc[보호 도메인 레이아웃 가져오기]
+* xref:reference_element_api_getremotelogginghosts.adoc[GetRemoteLoggingHosts]
+* xref:reference_element_api_getsnmpacl.adoc[GetSnmpACL]
+* xref:reference_element_api_getsnmpinfo.adoc[GetSnmpInfo]
+* xref:reference_element_api_getsnmpstate.adoc[GetSnmpState]
+* xref:reference_element_api_getsnmptrapinfo.adoc[GetSnmpTrapInfo]
+* xref:reference_element_api_getsslcertificate.adoc[SSL 인증서 받기]
+* xref:reference_element_api_listprotectiondomainlevels.adoc[ListProtectionDomainLevels]
+* xref:reference_element_api_removesslcertificate.adoc[SSL 인증서 제거]
+* xref:reference_element_api_resetnetworkconfig.adoc[네트워크 구성 재설정]
+* xref:reference_element_api_resetsupplementaltlsciphers.adoc[ResetSupplementalTlsCiphers]
+* xref:reference_element_api_setclusterstructure.adoc[클러스터 구조 설정]
+* xref:reference_element_api_setlldpconfig.adoc[SetLldpConfig]
+* xref:reference_element_api_setntpinfo.adoc[SetNtpInfo]
+* xref:reference_element_api_setprotectiondomainlayout.adoc[보호 도메인 레이아웃 설정]
+* xref:reference_element_api_setremotelogginghosts.adoc[원격로깅호스트 설정]
+* xref:reference_element_api_setsnmpacl.adoc[SetSnmpACL]
+* xref:reference_element_api_setsnmpinfo.adoc[SetSnmpInfo]
+* xref:reference_element_api_setsnmptrapinfo.adoc[SetSnmpTrapInfo]
+* xref:reference_element_api_setsslcertificate.adoc[SSL 인증서 설정]
+* xref:reference_element_api_snmpsendtesttraps.adoc[SNMP 전송 테스트 트랩]
+* xref:reference_element_api_testaddressavailability.adoc[테스트 주소 가용성]
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

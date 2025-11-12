@@ -1,0 +1,48 @@
+---
+permalink: api/reference_element_api_clusterstructure.html 
+sidebar: sidebar 
+keywords: objects,cluster,structure,clusterStructure,object 
+summary: clusterStructure 객체는 GetClusterStructure 메서드에 의해 생성된 클러스터 구성 백업 정보를 보관합니다.  SetClusterStructure 메서드를 사용하면 이 정보를 재구축 중인 스토리지 클러스터로 복원할 수 있습니다. 
+---
+= 클러스터 구조
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+clusterStructure 객체는 GetClusterStructure 메서드에 의해 생성된 클러스터 구성 백업 정보를 보관합니다.  SetClusterStructure 메서드를 사용하면 이 정보를 재구축 중인 스토리지 클러스터로 복원할 수 있습니다.
+
+
+
+== 객체 멤버
+
+이 객체는 다음 메서드의 결합된 반환 정보를 포함합니다.
+
+* xref:reference_element_api_getclusterinfo.adoc[클러스터 정보 가져오기]
+* xref:reference_element_api_listaccounts.adoc[계정 목록]
+* xref:reference_element_api_listinitiators.adoc[리스트이니시에이터]
+* xref:reference_element_api_listvolumes.adoc[볼륨 목록](includeVirtualVolumes=false)
+* xref:reference_element_api_listvolumeaccessgroups.adoc[볼륨 액세스 그룹 목록]
+* xref:reference_element_api_liststoragecontainers.adoc[ListStorageContainers]
+* xref:reference_element_api_listqospolicies.adoc[ListQoSPolicies]
+* xref:reference_element_api_getsnmpinfo.adoc[GetSnmpInfo]
+* xref:reference_element_api_getntpinfo.adoc[GetNtpInfo]
+* xref:reference_element_api_listvirtualnetworks.adoc[가상 네트워크 목록]
+* xref:reference_element_api_listclusteradmins.adoc[클러스터 관리자 목록]
+* xref:reference_element_api_listschedules.adoc[목록 일정]
+* xref:reference_element_api_listsnapmirrorendpoints.adoc[ListSnapMirrorEndpoints]
+* xref:reference_element_api_getfeaturestatus.adoc[기능 상태 가져오기]
+* xref:reference_element_api_getldapconfiguration.adoc[GetLdapConfiguration]
+* xref:reference_element_api_getremotelogginghosts.adoc[GetRemoteLoggingHosts]
+* xref:reference_element_api_getdefaultqos.adoc[기본 QoS 가져오기]
+* xref:reference_element_api_getvolumeaccessgrouplunassignments.adoc[볼륨 액세스 그룹 LUN 할당 가져오기]
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* xref:reference_element_api_getclusterstructure.adoc[클러스터 구조 가져오기]
+* xref:reference_element_api_setclusterstructure.adoc[클러스터 구조 설정]
+

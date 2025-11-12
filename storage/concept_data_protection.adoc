@@ -1,0 +1,52 @@
+---
+permalink: storage/concept_data_protection.html 
+sidebar: sidebar 
+keywords: data protection, protect your data, snapshots, replication, back up 
+summary: NetApp Element 소프트웨어를 사용하면 개별 볼륨이나 볼륨 그룹에 대한 스냅샷, Element에서 실행되는 클러스터와 볼륨 간 복제, ONTAP 시스템으로의 복제 등의 기능을 통해 다양한 방식으로 데이터를 보호할 수 있습니다. 
+---
+= 데이터를 보호하세요
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+NetApp Element 소프트웨어를 사용하면 개별 볼륨이나 볼륨 그룹에 대한 스냅샷, Element에서 실행되는 클러스터와 볼륨 간 복제, ONTAP 시스템으로의 복제 등의 기능을 통해 다양한 방식으로 데이터를 보호할 수 있습니다.
+
+* *스냅샷*
++
+스냅샷 전용 데이터 보호는 특정 시점에 변경된 데이터를 원격 클러스터에 복제합니다.  소스 클러스터에서 생성된 스냅샷만 복제됩니다.  소스 볼륨의 활성 쓰기는 그렇지 않습니다.
+
++
+xref:task_data_protection_using_volume_snapshots.adoc[데이터 보호를 위해 볼륨 스냅샷을 사용하세요]
+
+* *Element에서 실행되는 클러스터와 볼륨 간 원격 복제*
++
+장애 조치 및 장애 복구 시나리오를 위해 Element에서 실행되는 클러스터 쌍의 두 클러스터에서 동기식 또는 비동기식으로 볼륨 데이터를 복제할 수 있습니다.
+
++
+xref:task_replication_perform_remote_replication_between_element_clusters.adoc[NetApp Element 소프트웨어를 실행하는 클러스터 간 원격 복제 수행]
+
+* * SnapMirror 기술을 사용한 Element와 ONTAP 클러스터 간 복제*
++
+NetApp SnapMirror 기술을 사용하면 Element를 사용하여 촬영한 스냅샷을 ONTAP 에 복제하여 재해 복구 목적으로 사용할 수 있습니다.  SnapMirror 관계에서 Element는 한 엔드포인트이고 ONTAP 다른 엔드포인트입니다.
+
++
+xref:task_snapmirror_use_replication_between_element_and_ontap_clusters.adoc[Element와 ONTAP 클러스터 간 SnapMirror 복제 사용]
+
+* * SolidFire, S3 또는 Swift 개체 저장소에서 볼륨 백업 및 복원*
++
+Amazon S3 또는 OpenStack Swift와 호환되는 보조 객체 저장소뿐만 아니라 다른 SolidFire 스토리지에도 볼륨을 백업하고 복원할 수 있습니다.
+
++
+xref:task_data_protection_back_up_and_restore_volumes.adoc[SolidFire, S3 또는 Swift 개체 저장소에 볼륨 백업 및 복원]
+
+
+
+
+
+== 더 많은 정보를 원하시면
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

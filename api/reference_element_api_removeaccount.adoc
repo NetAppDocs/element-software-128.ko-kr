@@ -1,0 +1,84 @@
+---
+permalink: api/reference_element_api_removeaccount.html 
+sidebar: sidebar 
+keywords: account,accounts,remove,removing,deleting,delete,purge,volume,volumes,removeaccount 
+summary: RemoveAccount 메서드를 사용하면 기존 계정을 제거할 수 있습니다.  계정을 제거하려면 먼저 DeleteVolume을 사용하여 해당 계정과 연결된 모든 볼륨을 삭제하고 제거해야 합니다.  해당 계정의 볼륨이 삭제 대기 중인 경우 RemoveAccount를 사용하여 계정을 제거할 수 없습니다. 
+---
+= 계정 삭제
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `RemoveAccount` 기존 계정을 제거하는 방법.  계정과 관련된 모든 볼륨을 삭제하고 정리해야 합니다. `DeleteVolume` 계정을 삭제하기 전에.  계정의 볼륨이 여전히 삭제 대기 중인 경우 다음을 사용할 수 없습니다. `RemoveAccount` 계정을 삭제하려면.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+계정ID
+ a| 
+제거할 계정의 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드에는 반환 값이 없습니다.
+
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "RemoveAccount",
+   "params": {
+     "accountID"  : 25
+   },
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+
+{
+ "id" : 1,
+ "result" : { }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_deletevolume.adoc[볼륨 삭제]

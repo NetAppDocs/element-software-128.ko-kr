@@ -1,0 +1,35 @@
+---
+permalink: storage/task_intro_sort_lists.html 
+sidebar: sidebar 
+keywords: sort lists, sorting on a single column, sorting on multiple columns, sort button, column selections, using sort criteria 
+summary: Element UI의 특정 페이지에서 하나 이상의 기준에 따라 목록 정보를 정렬할 수 있습니다.  이를 통해 화면에 필요한 정보를 정리할 수 있습니다. 
+---
+= 목록 정렬
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element UI의 특정 페이지에서 하나 이상의 기준에 따라 목록 정보를 정렬할 수 있습니다.  이를 통해 화면에 필요한 정보를 정리할 수 있습니다.
+
+. 단일 열을 기준으로 정렬하려면 정보가 원하는 순서로 정렬될 때까지 열 머리글을 클릭합니다.
+. 여러 열을 사용하여 정렬하려면 정렬 기준으로 사용할 각 열의 열 머리글을 클릭하여 각 열의 정보가 원하는 순서대로 정렬되도록 합니다.
++
+여러 열을 사용하여 정렬하면 정렬 버튼이 나타납니다.
+
+. 정렬 기준을 다시 정렬하려면 다음 단계를 수행하세요.
++
+.. *정렬*을 클릭하세요.
++
+시스템은 열 선택 사항을 기준으로 정렬 필드를 채웁니다.
+
+.. 정렬 기준 필드의 열을 목록을 정렬하려는 순서대로 정렬합니다.
++
+시스템은 목록 정보를 정렬합니다.
+
+
+
+. 단일 정렬 기준을 제거하려면 정렬 기준 이름 옆에 있는 *제거* 아이콘을 클릭합니다.
+. 모든 정렬 기준을 제거하려면 *모두 지우기*를 클릭하세요.
+

@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_protectiondomaintolerance.html 
+sidebar: sidebar 
+keywords: object,objects,protectionDomainTolerance 
+summary: protectionDomainTolerance 개체에는 연관된 보호 도메인 유형의 단일 보호 도메인 내에서 하나 이상의 장애가 발생한 경우에도 스토리지 클러스터가 데이터를 계속 읽고 쓸 수 있는 기능에 대한 정보가 포함되어 있습니다. 
+---
+= 보호 도메인 허용 범위
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+protectionDomainTolerance 개체에는 연관된 보호 도메인 유형의 단일 보호 도메인 내에서 하나 이상의 장애가 발생한 경우에도 스토리지 클러스터가 데이터를 계속 읽고 쓸 수 있는 기능에 대한 정보가 포함되어 있습니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+보호 계획 허용 오차
+ a| 
+연관된 보호 도메인 유형에 대한 장애 허용 정보를 포함하는 개체 목록(보호 체계별로 하나씩)입니다.
+ a| 
+xref:reference_element_api_protectionschemetolerance.adoc[보호 계획 허용 범위]정렬
+
+
+
+ a| 
+지속 가능한 앙상블 실패
+ a| 
+앙상블 쿼럼을 잃지 않고 발생할 수 있는 연관된 보호 도메인 유형 내에서 동시적인 실패의 수입니다.
+ a| 
+정수
+
+|===

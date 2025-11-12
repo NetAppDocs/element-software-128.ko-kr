@@ -1,0 +1,41 @@
+---
+permalink: storage/concept_system_manage_cluster_configure_cluster_settings.html 
+sidebar: sidebar 
+keywords: configure, cluster, threshold, support access, encryption at rest, virtual volumes, ntp broadcast, client, snapmirror 
+summary: Element UI의 클러스터 탭에서 클러스터 전체 설정을 보고 변경하고 클러스터별 작업을 수행할 수 있습니다. 
+---
+= 클러스터 설정 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element UI의 클러스터 탭에서 클러스터 전체 설정을 보고 변경하고 클러스터별 작업을 수행할 수 있습니다.
+
+클러스터 충만도 임계값, 지원 액세스, 저장 시 암호화, 가상 볼륨, SnapMirror, NTP 브로드캐스트 클라이언트와 같은 설정을 구성할 수 있습니다.
+
+.옵션
+* xref:concept_data_manage_vvol_work_virtual_volumes.adoc[가상 볼륨 작업]
+* xref:task_snapmirror_use_replication_between_element_and_ontap_clusters.adoc[Element와 ONTAP 클러스터 간 SnapMirror 복제 사용]
+* xref:task_system_manage_cluster_set_the_cluster_full_threshold.adoc[클러스터 전체 임계값 설정]
+* xref:task_system_manage_cluster_volume_load_balancing.adoc[볼륨 로드 밸런싱 활성화 및 비활성화]
+* xref:task_system_manage_cluster_enable_and_disable_support_access.adoc[지원 액세스 활성화 및 비활성화]
+* https://kb.netapp.com/Advice_and_Troubleshooting/Flash_Storage/SF_Series/How_are_the_blockSpace_thresholds_calculated_for_Element["Element에 대한 blockSpace 임계값은 어떻게 계산됩니까?"]
+* xref:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.adoc[클러스터에 대한 암호화 활성화 및 비활성화]
+* xref:concept_system_manage_cluster_terms_manage_the_terms_of_use_banner.adoc[이용약관 배너 관리]
+* xref:task_system_manage_cluster_ntp_configure.adoc[클러스터가 쿼리할 수 있도록 네트워크 시간 프로토콜 서버를 구성합니다.]
+* xref:concept_system_manage_snmp_manage_snmp.adoc[SNMP 관리]
+* xref:concept_system_manage_drives_managing_drives.adoc[드라이브 관리]
+* xref:concept_system_manage_nodes_manage_nodes.adoc[노드 관리]
+* xref:task_system_manage_fc_view_fibre_channel_ports_details.adoc[파이버 채널 포트 세부 정보 보기]
+* xref:concept_system_manage_virtual_manage_virtual_networks.adoc[가상 네트워크 관리]
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

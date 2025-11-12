@@ -1,0 +1,24 @@
+---
+permalink: storage/task_system_manage_fips_create_a_cluster_supporting_fips_drives.html 
+sidebar: sidebar 
+keywords: fips, security, federal information processing standards, 140-2, cluster, create 
+summary: '다양한 고객 환경에서 솔루션을 배포할 때 보안이 점점 더 중요해지고 있습니다.  연방 정보 처리 표준(FIPS)은 컴퓨터 보안 및 상호 운용성에 대한 표준입니다.  저장 중인 데이터에 대한 FIPS 140-2 인증 암호화는 전반적인 보안 솔루션의 구성 요소입니다.' 
+---
+= FIPS 드라이브 기능을 위한 Element 클러스터 준비
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+다양한 고객 환경에서 솔루션을 배포할 때 보안이 점점 더 중요해지고 있습니다.  연방 정보 처리 표준(FIPS)은 컴퓨터 보안 및 상호 운용성에 대한 표준입니다.  저장 중인 데이터에 대한 FIPS 140-2 인증 암호화는 전반적인 보안 솔루션의 구성 요소입니다.
+
+FIPS 드라이브 기능을 활성화하기 위한 준비로, 일부는 FIPS 드라이브를 지원하고 일부는 지원하지 않는 노드를 섞어서 사용하지 않도록 해야 합니다.
+
+클러스터는 다음 조건에 따라 FIPS 드라이브 규격을 준수하는 것으로 간주됩니다.
+
+* 모든 드라이브는 FIPS 드라이브로 인증되었습니다.
+* 모든 노드는 FIPS 드라이브 노드입니다.
+* EAR(Encryption at Rest)이 활성화되었습니다.
+* FIPS 드라이브 기능이 활성화되었습니다.  모든 드라이브와 노드는 FIPS 기능을 갖춰야 하며, FIPS 드라이브 기능을 사용하려면 휴면 상태 암호화를 활성화해야 합니다.
+

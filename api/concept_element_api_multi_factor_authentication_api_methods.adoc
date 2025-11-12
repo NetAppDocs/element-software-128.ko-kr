@@ -1,0 +1,36 @@
+---
+permalink: api/concept_element_api_multi_factor_authentication_api_methods.html 
+sidebar: sidebar 
+keywords: multi-factor,MFA,idp,authentication,methods 
+summary: '보안 어설션 마크업 언어(SAML)를 통해 타사 ID 공급자(IdP)를 사용하여 사용자 세션을 관리하기 위해 다중 요소 인증(MFA)을 사용할 수 있습니다.' 
+---
+= 다중 인증 API 방법
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+보안 어설션 마크업 언어(SAML)를 통해 타사 ID 공급자(IdP)를 사용하여 사용자 세션을 관리하기 위해 다중 요소 인증(MFA)을 사용할 수 있습니다.
+
+* xref:reference_element_api_addidpclusteradmin.adoc[AddIdpClusterAdmin]
+* xref:reference_element_api_createidpconfiguration.adoc[CreateIdpConfiguration]
+* xref:reference_element_api_deleteauthsession.adoc[DeleteAuthSession]
+* xref:reference_element_api_deleteauthsessionsbyclusteradmin.adoc[클러스터 관리자에 의한 인증 세션 삭제]
+* xref:reference_element_api_deleteauthsessionsbyusername.adoc[사용자 이름으로 인증 세션 삭제]
+* xref:reference_element_api_deleteidpconfiguration.adoc[DeleteIdpConfiguration]
+* xref:reference_element_api_disableidpauthentication.adoc[DisableIdpAuthentication]
+* xref:reference_element_api_enableidpauthentication.adoc[EnableIdpAuthentication]
+* xref:reference_element_api_getidpauthenticationstate.adoc[GetIdpAuthenticationState]
+* xref:reference_element_api_listactiveauthsessions.adoc[ListActiveAuthSessions]
+* xref:reference_element_api_listidpconfigurations.adoc[ListIdpConfigurations]
+* xref:reference_element_api_updateidpconfiguration.adoc[업데이트Idp구성]
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

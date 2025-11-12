@@ -1,0 +1,20 @@
+= 더 많은 정보를 찾아보세요
+:allow-uri-read: 
+
+
+RTFI(Return To Factory Image) 프로세스는 완전히 독립적이고 최소한의 Linux OS가 포함된 부팅 가능하고 설치 가능한 미디어를 사용하여 노드에 Element 소프트웨어를 배포합니다.  Element 소프트웨어 버전에 맞는 RTFI ISO 이미지를 다음에서 다운로드할 수 있습니다. https://mysupport.netapp.com/site/products/all/details/element-software/downloads-tab["NetApp 지원 사이트"^] .
+
+RTFI ISO 이미지를 다운로드한 후 일반적으로 사용되는 다음 방법 중 하나에 따라 배포할 수 있습니다.
+
+* *물리적 USB 키*: 부팅 가능한 Element 소프트웨어 ISO를 USB 키에 쓸 수 있습니다.  지침은 기술 자료 문서를 참조하세요. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_create_an_RTFI_key_to_re-image_a_SolidFire_storage_node["SolidFire 스토리지 노드를 다시 이미지화하기 위한 RTFI 키를 만드는 방법"^] .  ISO가 담긴 USB 키를 노드에 삽입하고 USB 키에서 부팅합니다.
+* *베이스보드 관리 컨트롤러(BMC) 관리 포트를 사용한 가상 미디어*: BMC 를 사용하여 클라이언트 시스템에 있는 ISO에 동적으로 연결할 수 있습니다.  ISO는 호스트 OS에서 가상 드라이브(CD 또는 DVD)로 제공됩니다.  자세한 내용은 지식 기반 문서를 참조하세요. https://kb.netapp.com/Advice_and_Troubleshooting/Hybrid_Cloud_Infrastructure/NetApp_HCI/How_to_RTFI_a_node_via_BMC["BMC 통해 노드를 RTFI하는 방법"^] .
+* *PXE(Preboot Execution Environment), TFTP(Trivial File Transfer Protocol) 또는 FTP를 사용한 네트워크 부팅*: ISO 이미지를 수동으로 압축 해제하는 대신 다음을 사용할 수 있습니다. `autofs` RTFI 프로세스에서 요청하면 자동으로 이미지를 추출합니다.  이 배포 메커니즘은 초기 설정이 더 필요하지만 설치를 올바르게 자동화하고 확장할 수 있습니다.
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

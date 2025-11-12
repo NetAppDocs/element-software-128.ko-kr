@@ -1,0 +1,299 @@
+---
+permalink: api/reference_element_api_clonevolume.html 
+sidebar: sidebar 
+keywords: volumes,volume,cloning,clone,CloneVolume 
+summary: CloneVolume 메서드를 사용하면 볼륨의 복사본을 만들 수 있습니다.  이 방법은 비동기적이므로 완료하는 데 시간이 걸릴 수 있습니다. 
+---
+= 클론볼륨
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `CloneVolume` 볼륨의 복사본을 만드는 방법입니다.  이 방법은 비동기적이므로 완료하는 데 시간이 걸릴 수 있습니다.
+
+복제 프로세스는 다음을 만들 때 즉시 시작됩니다. `CloneVolume` 요청이며 API 메서드가 발행될 때 볼륨 상태를 나타냅니다.  당신은 사용할 수 있습니다xref:reference_element_api_getasyncresult.adoc[비동기 결과 가져오기] 복제 프로세스가 완료되고 새 볼륨을 연결에 사용할 수 있는 시점을 확인하는 방법입니다.  사용할 수 있습니다xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs] 복제본 생성 진행 상황을 확인하세요.  볼륨의 초기 속성과 서비스 품질 설정은 복제되는 볼륨에서 상속됩니다.  이러한 설정은 다음을 사용하여 변경할 수 있습니다.xref:reference_element_api_modifyvolume.adoc[볼륨 수정] .
+
+
+NOTE: 복제된 볼륨은 소스 볼륨의 볼륨 액세스 그룹 멤버십을 상속하지 않습니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+입장
+ a| 
+새로운 볼륨에 대한 접근이 허용되었습니다.  값이 지정되지 않으면 액세스 값은 변경되지 않습니다. 가능한 값:
+
+* `readOnly`: (선택 사항) 읽기 작업만 허용됩니다.
+* `readWrite`: (선택 사항) 읽기와 쓰기가 허용됩니다.
+* `locked`: (선택 사항) 읽기나 쓰기가 허용되지 않습니다.  지정하지 않으면 복제되는 볼륨의 액세스 값이 사용됩니다.
+* `replicationTarget`: (선택 사항) 볼륨 쌍에 대한 대상 볼륨을 식별합니다.  볼륨이 페어링되지 않으면 액세스 상태가 잠금됩니다.
+
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+속성
+ a| 
+JSON 객체 형식의 이름-값 쌍 목록입니다.
+ a| 
+JSON 객체
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+enable512e
+ a| 
+새 볼륨에서 512바이트 섹터 에뮬레이션을 사용할지 여부를 지정합니다.  지정하지 않으면 복제되는 볼륨의 설정이 사용됩니다.
+ a| 
+부울
+ a| 
+원래 볼륨 설정
+ a| 
+아니요
+
+
+
+ a| 
+enableSnapMirrorReplication
+ a| 
+SnapMirror 엔드포인트를 사용하여 볼륨을 복제하는 데 사용할 수 있는지 여부를 결정합니다. 가능한 값:
+
+* true
+* 거짓
+
+ a| 
+부울
+ a| 
+거짓
+ a| 
+아니요
+
+
+
+ a| 
+이름
+ a| 
+새로 복제된 볼륨의 이름입니다. 길이는 1~64자여야 합니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+새 계정 ID
+ a| 
+새 볼륨 소유자의 계정 ID입니다.  지정하지 않으면 복제되는 볼륨 소유자의 accountID가 사용됩니다.
+ a| 
+정수
+ a| 
+원본 볼륨 소유자의 계정 ID
+ a| 
+아니요
+
+
+
+ a| 
+새로운 크기
+ a| 
+볼륨의 새로운 크기(바이트)입니다.  복제되는 볼륨의 크기보다 크거나 작을 수 있습니다.  지정하지 않으면 볼륨 크기는 변경되지 않습니다.  크기는 가장 가까운 1MB로 반올림됩니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+스냅샷ID
+ a| 
+복제본의 소스로 사용되는 스냅샷의 ID입니다.  ID가 제공되지 않으면 현재 활성 볼륨이 사용됩니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+볼륨ID
+ a| 
+복제할 볼륨의 VolumeID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+비동기 핸들
+ a| 
+연산 결과를 얻는 데 사용되는 핸들 값입니다.
+ a| 
+정수
+
+
+
+ a| 
+클론ID
+ a| 
+새로 복제된 볼륨의 cloneID입니다.
+ a| 
+정수
+
+
+
+ a| 
+곡선
+ a| 
+복제본에 적용된 QoS 곡선 값입니다.
+ a| 
+JSON 객체
+
+
+
+ a| 
+용량
+ a| 
+새로 복제된 볼륨에 대한 정보가 포함된 객체입니다.
+ a| 
+xref:reference_element_api_volume.adoc[용량]
+
+
+
+ a| 
+볼륨ID
+ a| 
+새로 복제된 볼륨의 VolumeID입니다.
+ a| 
+정수
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "CloneVolume",
+   "params": {
+      "volumeID" : 5,
+      "name"  : "mysqldata-snapshot1",
+      "access" : "readOnly"
+   },
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+      "asyncHandle": 42,
+      "cloneID": 37,
+      "volume": {
+          "access": "readOnly",
+          "accountID": 1,
+          "attributes": {},
+          "blockSize": 4096,
+          "createTime": "2016-03-31T22:26:03Z",
+          "deleteTime": "",
+          "enable512e": true,
+          "iqn": "iqn.2010-01.com.solidfire:jyay.mysqldata-snapshot1.680",
+          "name": "mysqldata-snapshot1",
+          "purgeTime": "",
+          "qos": {
+              "burstIOPS": 100,
+              "burstTime": 60,
+              "curve": {
+                  "4096": 100,
+                  "8192": 160,
+                  "16384": 270,
+                  "32768": 500,
+                  "65536": 1000,
+                  "131072": 1950,
+                  "262144": 3900,
+                  "524288": 7600,
+                  "1048576": 15000
+              },
+              "maxIOPS": 100,
+              "minIOPS": 50
+          },
+          "scsiEUIDeviceID": "6a796179000002a8f47acc0100000000",
+          "scsiNAADeviceID": "6f47acc1000000006a796179000002a8",
+          "sliceCount": 0,
+          "status": "init",
+          "totalSize": 1000341504,
+          "virtualVolumeID": null,
+          "volumeAccessGroups": [],
+          "volumeID": 680,
+          "volumePairs": []
+      },
+      "volumeID": 680
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* xref:reference_element_api_getasyncresult.adoc[비동기 결과 가져오기]
+* xref:reference_element_api_listsyncjobs.adoc[ListSyncJobs]
+* xref:reference_element_api_modifyvolume.adoc[볼륨 수정]
+

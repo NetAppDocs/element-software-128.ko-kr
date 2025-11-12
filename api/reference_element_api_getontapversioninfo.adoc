@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_getontapversioninfo.html 
+sidebar: sidebar 
+keywords: ontap,version,info,information,get,getting,api,support,getontapversioninfo 
+summary: Element 웹 UI는 GetOntapVersionInfo를 사용하여 SnapMirror 관계의 ONTAP 클러스터에서 API 버전 지원에 대한 정보를 가져옵니다. 
+---
+= GetOntapVersionInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 웹 UI는 다음을 사용합니다. `GetOntapVersionInfo` SnapMirror 관계에서 ONTAP 클러스터의 API 버전 지원에 대한 정보를 가져옵니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+스냅미러엔드포인트ID
+ a| 
+제공된 경우 시스템은 지정된 snapMirrorEndpointID가 있는 엔드포인트의 버전 정보를 나열합니다.  제공되지 않으면 시스템은 알려진 모든 SnapMirror 엔드포인트의 버전 정보를 나열합니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+ontapVersionInfo
+ a| 
+ONTAP 엔드포인트의 소프트웨어 버전 정보입니다.
+ a| 
+xref:reference_element_api_ontapversioninfo.adoc[ontapVersionInfo]정렬
+
+|===
+
+
+== 버전 이후 새로운
+
+10.1

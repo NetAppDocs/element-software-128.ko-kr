@@ -1,0 +1,125 @@
+---
+permalink: api/reference_element_api_addldapclusteradmin.html 
+sidebar: sidebar 
+keywords: LDAP,cluster,admin,add,adding,addldapclusteradmin 
+summary: AddLdapClusterAdmin을 사용하여 새로운 LDAP 클러스터 관리자 사용자를 추가할 수 있습니다.  LDAP 클러스터 관리자는 API와 관리 도구를 사용하여 클러스터를 관리할 수 있습니다.  LDAP 클러스터 관리자 계정은 표준 테넌트 계정과 완전히 별개이며 관련이 없습니다. 
+---
+= AddLdapClusterAdmin
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `AddLdapClusterAdmin` 새로운 LDAP 클러스터 관리자 사용자를 추가합니다.  LDAP 클러스터 관리자는 API와 관리 도구를 사용하여 클러스터를 관리할 수 있습니다.  LDAP 클러스터 관리자 계정은 표준 테넌트 계정과 완전히 별개이며 관련이 없습니다.
+
+
+
+== 매개변수
+
+이 방법을 사용하면 Active Directory®에 정의된 LDAP 그룹을 추가할 수도 있습니다.  그룹에 부여된 액세스 수준은 LDAP 그룹의 개별 사용자에게 전달됩니다.
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+입장
+ a| 
+이 클러스터 관리자가 사용할 수 있는 방법을 제어합니다.
+ a| 
+문자열 배열
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+EULA 수락
+ a| 
+최종 사용자 라이선스 계약에 동의하세요.  시스템에 클러스터 관리자 계정을 추가하려면 true로 설정합니다.  생략하거나 false로 설정하면 메서드 호출이 실패합니다.
+ a| 
+부울
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+속성
+ a| 
+JSON 객체 형식의 이름-값 쌍 목록입니다.
+ a| 
+JSON 객체
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+사용자 이름
+ a| 
+새 LDAP 클러스터 관리자의 고유 사용자 이름입니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드에는 반환 값이 없습니다.
+
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "AddLdapClusterAdmin",
+  "params": {"username":"cn=mike jones,ou=ptusers,dc=prodtest,dc=solidfire,dc=net",
+    "access": ["administrator", "read"
+    ]
+  },
+"id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+ "id": 1,
+ "result": {}
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_app_b_access_control.adoc[접근 제어]

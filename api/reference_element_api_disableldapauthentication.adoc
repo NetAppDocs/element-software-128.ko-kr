@@ -1,0 +1,59 @@
+---
+permalink: api/reference_element_api_disableldapauthentication.html 
+sidebar: sidebar 
+keywords: LDAP,authentication,auth,disable,disabling,DisableLdapAuthentication 
+summary: DisableLdapAuthentication 메서드를 사용하면 LDAP 인증을 비활성화하고 모든 LDAP 구성 설정을 제거할 수 있습니다.  이 방법을 사용해도 사용자나 그룹에 대해 구성된 클러스터 관리자 계정은 제거되지 않습니다.  LDAP 인증이 비활성화되면 LDAP 인증을 사용하도록 구성된 클러스터 관리자는 더 이상 클러스터에 액세스할 수 없습니다. 
+---
+= DisableLdapAuthentication
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `DisableLdapAuthentication` LDAP 인증을 비활성화하고 모든 LDAP 구성 설정을 제거하는 방법입니다.  이 방법을 사용해도 사용자나 그룹에 대해 구성된 클러스터 관리자 계정은 제거되지 않습니다.  LDAP 인증이 비활성화되면 LDAP 인증을 사용하도록 구성된 클러스터 관리자는 더 이상 클러스터에 액세스할 수 없습니다.
+
+
+
+== 매개변수
+
+이 방법에는 입력 매개변수가 없습니다.
+
+
+
+== 반환 값
+
+이 메서드에는 반환 값이 없습니다.
+
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "DisableLdapAuthentication",
+  "params": {},
+"id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+"id": 1,
+"result": {}
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

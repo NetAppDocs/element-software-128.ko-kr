@@ -1,0 +1,117 @@
+---
+permalink: api/reference_element_api_getclustercapacity.html 
+sidebar: sidebar 
+keywords: cluster,capacity,getting,get,measurements,measure,deduplication,GetClusterCapacity 
+summary: GetClusterCapacity를 사용하면 전체 스토리지 클러스터에 대한 높은 수준의 용량 측정값을 반환할 수 있습니다.  이 메서드는 Element 웹 UI에 표시되는 효율성 비율을 계산하는 데 사용할 수 있는 필드를 반환합니다.  스크립트에서 효율성 계산을 사용하면 씬 프로비저닝, 중복 제거, 압축 및 전반적인 효율성에 대한 효율성 비율을 반환할 수 있습니다. 
+---
+= 클러스터 용량 가져오기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `GetClusterCapacity` 전체 스토리지 클러스터에 대한 고수준 용량 측정값을 반환합니다.  이 메서드는 Element 웹 UI에 표시되는 효율성 비율을 계산하는 데 사용할 수 있는 필드를 반환합니다.  스크립트에서 효율성 계산을 사용하면 씬 프로비저닝, 중복 제거, 압축 및 전반적인 효율성에 대한 효율성 비율을 반환할 수 있습니다.
+
+
+
+== 효율성 계산
+
+다음 방정식을 사용하여 씬 프로비저닝, 중복 제거 및 압축을 계산합니다.  이러한 방정식은 Element 8.2 이상에 적용됩니다.
+
+* thinProvisioningFactor = (nonZeroBlocks + zeroBlocks) / nonZeroBlocks
+* 중복 제거 요소 = (nonZeroBlocks + snapshotNonZeroBlocks) / uniqueBlocks
+* 압축 계수 = (고유 블록 * 4096) / (고유 블록 사용 공간 * 0.93)
+
+
+
+
+== 전체 효율율 계산
+
+다음 방정식을 사용하면 씬 프로비저닝, 중복 제거 및 압축 효율성 계산 결과를 사용하여 전체 클러스터 효율성을 계산할 수 있습니다.
+
+* 효율성 요인 = thinProvisioningFactor * deDuplicationFactor * compressionFactor
+
+
+
+
+== 매개변수
+
+이 방법에는 입력 매개변수가 없습니다.
+
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+클러스터 용량
+ a| 
+스토리지 클러스터의 용량 측정.
+ a| 
+xref:reference_element_api_clustercapacity.adoc[클러스터 용량]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "GetClusterCapacity",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "clusterCapacity": {
+      "activeBlockSpace": 236015557096,
+      "activeSessions": 20,
+      "averageIOPS": 0,
+      "clusterRecentIOSize": 0,
+      "currentIOPS": 0,
+      "maxIOPS": 150000,
+      "maxOverProvisionableSpace": 259189767127040,
+      "maxProvisionedSpace": 51837953425408,
+      "maxUsedMetadataSpace": 404984011161,
+      "maxUsedSpace": 12002762096640,
+      "nonZeroBlocks": 310080350,
+      "peakActiveSessions": 20,
+      "peakIOPS": 0,
+      "provisionedSpace": 1357931085824,
+      "snapshotNonZeroBlocks": 0,
+      "timestamp": "2016-10-17T21:24:36Z",
+      "totalOps": 1027407650,
+      "uniqueBlocks": 108180156,
+      "uniqueBlocksUsedSpace": 244572686901,
+      "usedMetadataSpace": 8745762816,
+      "usedMetadataSpaceInSnapshots": 8745762816,
+      "usedSpace": 244572686901,
+      "zeroBlocks": 352971938
+    }
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

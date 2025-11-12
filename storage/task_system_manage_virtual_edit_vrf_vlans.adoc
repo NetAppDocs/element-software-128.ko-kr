@@ -1,0 +1,21 @@
+---
+permalink: storage/task_system_manage_virtual_edit_vrf_vlans.html 
+sidebar: sidebar 
+keywords: vrf vlans edit, vrf vlan attributes, change 
+summary: VLAN 이름, 넷마스크, 게이트웨이, IP 주소 블록 등의 VRF VLAN 속성을 변경할 수 있습니다. 
+---
+= VRF VLAN 편집
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+VLAN 이름, 넷마스크, 게이트웨이, IP 주소 블록 등의 VRF VLAN 속성을 변경할 수 있습니다.
+
+. *클러스터* > *네트워크*를 클릭합니다.
+. 편집하려는 VLAN에 대한 작업 아이콘을 클릭합니다.
+. *편집*을 클릭하세요.
+. *VLAN 편집* 대화 상자에 VRF VLAN의 새 속성을 입력합니다.
+. *변경 사항 저장*을 클릭하세요.
+

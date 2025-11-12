@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_snapmirrorvserveraggregateinfo.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorVserverAggregateInfo 
+summary: 'snapMirrorVserverAggregateInfo 개체에는 대상 ONTAP 클러스터에서 사용 가능한 데이터 스토리지 가상 머신(Vserver라고도 함)에 대한 정보가 포함되어 있습니다.' 
+---
+= snapMirrorVserverAggregateInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorVserverAggregateInfo 개체에는 대상 ONTAP 클러스터에서 사용 가능한 데이터 스토리지 가상 머신(Vserver라고도 함)에 대한 정보가 포함되어 있습니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+aggrName
+ a| 
+Vserver에 할당된 집계의 이름입니다.
+ a| 
+끈
+
+
+
+ a| 
+aggrAvailSize
+ a| 
+할당된 집계의 사용 가능한 크기입니다.
+ a| 
+정수
+
+|===

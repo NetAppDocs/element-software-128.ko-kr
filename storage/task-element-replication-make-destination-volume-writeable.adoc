@@ -1,0 +1,67 @@
+---
+permalink: storage/task-element-replication-make-destination-volume-writeable.html 
+sidebar: sidebar 
+keywords: ontap, cli, make, destination, volume, write 
+summary: 볼륨에서 클라이언트로 데이터를 제공하려면 먼저 대상 볼륨을 쓰기 가능하게 만들어야 합니다.  snapmirror quiesce 명령을 사용하면 대상에 대한 예약된 전송을 중지할 수 있고, snapmirror abort 명령을 사용하면 진행 중인 전송을 중지할 수 있으며, snapmirror break 명령을 사용하면 대상을 쓰기 가능하게 만들 수 있습니다. 
+---
+= 대상 볼륨을 쓰기 가능하게 만들기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+재해로 인해 SnapMirror DR 관계에 대한 기본 사이트가 비활성화되면 최소한의 중단으로 대상 볼륨에서 데이터를 제공할 수 있습니다.  기본 사이트에서 서비스가 복구되면 소스 볼륨을 다시 활성화할 수 있습니다.
+
+볼륨에서 클라이언트로 데이터를 제공하려면 먼저 대상 볼륨을 쓰기 가능하게 만들어야 합니다.  당신은 사용할 수 있습니다 `snapmirror quiesce` 목적지로의 예약된 전송을 중지하는 명령 `snapmirror abort` 진행 중인 전송을 중지하라는 명령 및 `snapmirror break` 대상을 쓰기 가능하게 만드는 명령입니다.
+
+.이 작업에 관하여
+양식에서 Element 소스 경로를 지정해야 합니다. `<hostip:>/lun/<name>` 여기서 "`lun`"은 실제 문자열 "`lun`"이고 `name` Element 볼륨의 이름입니다.
+
+.단계
+. 목적지로의 예정된 환승을 중지합니다.
++
+`snapmirror quiesce -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+전체 명령 구문은 매뉴얼 페이지를 참조하세요.
+
++
+다음 예제에서는 소스 볼륨 간의 예약된 전송을 중지합니다. `0005` IP 주소 10.0.0.11 및 대상 볼륨 `volA_dst` ~에 `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror quiesce -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+. 목적지로의 진행 중인 전송을 중지합니다.
++
+`snapmirror abort -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+전체 명령 구문은 매뉴얼 페이지를 참조하세요.
+
++
+다음 예제에서는 소스 볼륨 간의 진행 중인 전송을 중지합니다. `0005` IP 주소 10.0.0.11 및 대상 볼륨 `volA_dst` ~에 `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror abort -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+. SnapMirror DR 관계 끊기:
++
+`snapmirror break -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+전체 명령 구문은 매뉴얼 페이지를 참조하세요.
+
++
+다음 예제에서는 소스 볼륨 간의 관계를 끊습니다. `0005` IP 주소 10.0.0.11 및 대상 볼륨 `volA_dst` ~에 `svm_backup` 그리고 대상 볼륨 `volA_dst` ~에 `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror break -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+

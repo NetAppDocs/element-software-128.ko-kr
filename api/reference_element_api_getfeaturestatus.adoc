@@ -1,0 +1,123 @@
+---
+permalink: api/reference_element_api_getfeaturestatus.html 
+sidebar: sidebar 
+keywords: feature,status,cluster,get,getting,getfeaturestatus 
+summary: GetFeatureStatus 메서드를 사용하면 클러스터 기능의 상태를 검색할 수 있습니다. 
+---
+= 기능 상태 가져오기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `GetFeatureStatus` 클러스터 기능의 상태를 검색하는 방법입니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+[cols="1a,3a,1a,1a,1a"]
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+특징
+ a| 
+클러스터 기능의 상태입니다.  값이 제공되지 않으면 시스템은 모든 기능의 상태를 반환합니다. 가능한 값:
+
+* `Vvols`: VVols 클러스터 기능에 대한 상태를 검색합니다.
+* `SnapMirror`: SnapMirror 복제 클러스터 기능에 대한 상태를 검색합니다.
+* `Fips`: HTTPS 통신 기능에 대한 FIPS 140-2 암호화 상태를 검색합니다.
+* `FipsDrives`: FIPS 140-2 드라이브 암호화 기능에 대한 상태를 검색합니다.
+* `VolumeLoadBalanceOnActualIOPS`: 최소 IOPS 기능이 아닌 실제 IOPS에 대한 슬라이스 밸런싱 상태를 검색합니다.  Element 12.8부터 사용 가능합니다.
+
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+특징
+ a| 
+기능 이름과 상태를 나타내는 기능 객체의 배열입니다.  객체 멤버:
+
+* 기능: (문자열) 기능의 이름입니다.
+* 활성화됨: (부울) 기능이 활성화되어 있는지 여부입니다.
+
+ a| 
+JSON 객체 배열
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "GetFeatureStatus",
+    "params": {
+    },
+    "id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+    "id": 1,
+    "result": {
+        "features": [
+            {
+                "enabled": true,
+                "feature": "Vvols"
+            },
+            {
+                "enabled": true,
+                "feature": "SnapMirror"
+            },
+            {
+                "enabled": true,
+                "feature": "Fips"
+            },
+            {
+                "enabled": true,
+                "feature": "FipsDrives"
+            },
+            {
+                "enabled": true,
+                "feature": "VolumeLoadBalanceOnActualIOPS"
+            }
+        ]
+    }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

@@ -1,0 +1,141 @@
+---
+permalink: api/reference_element_api_fibrechannelport.html 
+sidebar: sidebar 
+keywords: object,objects,fibreChannelPort 
+summary: fibreChannelPort 객체에는 노드의 개별 포트 또는 클러스터의 전체 노드에 대한 정보가 포함되어 있습니다.  ListNodeFibreChannelPortInfo 메서드를 사용하여 이 정보를 검색할 수 있습니다. 
+---
+= 파이버채널포트
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+fibreChannelPort 객체에는 노드의 개별 포트 또는 클러스터의 전체 노드에 대한 정보가 포함되어 있습니다.  이 정보는 다음을 사용하여 검색할 수 있습니다. `ListNodeFibreChannelPortInfo` 방법.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+펌웨어
+ a| 
+파이버 채널 포트에 설치된 펌웨어 버전입니다.
+ a| 
+정수
+
+
+
+ a| 
+hba포트
+ a| 
+개별 호스트 버스 어댑터(HBA) 포트의 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+모델
+ a| 
+항구에 있는 HBA 모델.
+ a| 
+끈
+
+
+
+ a| 
+nPortID
+ a| 
+고유한 포트 노드 ID입니다.
+ a| 
+끈
+
+
+
+ a| 
+pci슬롯
+ a| 
+파이버 채널 노드 섀시에 있는 PCI 카드가 들어 있는 슬롯입니다.
+ a| 
+정수
+
+
+
+ a| 
+연속물
+ a| 
+파이버 채널 포트의 일련 번호입니다.
+ a| 
+끈
+
+
+
+ a| 
+속도
+ a| 
+포트의 HBA 속도.
+ a| 
+끈
+
+
+
+ a| 
+상태
+ a| 
+가능한 값:
+
+* 알려지지 않은
+* 존재하지 않음
+* 온라인
+* 오프라인
+* 막힌
+* 우회됨
+* 진단
+* 링크다운
+* 오류
+* 루프백
+* 삭제됨
+
+ a| 
+끈
+
+
+
+ a| 
+스위치Wwn
+ a| 
+파이버 채널 스위치 포트의 World Wide Name입니다.
+ a| 
+끈
+
+
+
+ a| 
+wwnn
+ a| 
+HBA 노드의 World Wide Node 이름입니다.
+ a| 
+끈
+
+
+
+ a| 
+wwpn
+ a| 
+HBA의 물리적 포트에 할당된 World Wide Port Name입니다.
+ a| 
+끈
+
+|===
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_listnodefibrechannelportinfo.adoc[ListNodeFibreChannelPortInfo]

@@ -1,0 +1,37 @@
+---
+permalink: storage/task-element-replication-resynchronize-data-protection-relationship.html 
+sidebar: sidebar 
+keywords: ontap, cli, update, replication, relationship, manually 
+summary: 네트워크 오류로 인해 업데이트가 실패하는 경우 복제 관계를 수동으로 업데이트해야 할 수도 있습니다. 
+---
+= 복제 관계 재동기화
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+대상 볼륨을 쓰기 가능하게 만든 후, 소스 및 대상 볼륨에 공통 스냅샷 복사본이 없어 업데이트가 실패한 후 또는 관계에 대한 복제 정책을 변경하려는 경우 복제 관계를 다시 동기화해야 합니다.
+
+.이 작업에 관하여
+재동기화에는 기준선 전송이 필요하지 않지만 시간이 많이 걸릴 수 있습니다.  비수요 시간대에 재동기화를 실행하는 것이 좋습니다.
+
+양식에서 Element 소스 경로를 지정해야 합니다. `<hostip:>/lun/<name>` 여기서 "`lun`"은 실제 문자열 "`lun`"이고 `name` Element 볼륨의 이름입니다.
+
+.단계
+. 소스 및 대상 볼륨을 다시 동기화합니다.
++
+`snapmirror resync -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume> -type XDP -policy <policy>`
+
++
+전체 명령 구문은 매뉴얼 페이지를 참조하세요.
+
++
+다음 예제에서는 소스 볼륨 간의 관계를 다시 동기화합니다. `0005` IP 주소 10.0.0.11 및 대상 볼륨 `volA_dst` ~에 `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror resync -source-path 10.0.0.11:/lun/0005 -policy MirrorLatest -destination-path svm_backup:volA_dst
+----
+

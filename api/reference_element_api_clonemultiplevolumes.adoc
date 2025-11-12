@@ -1,0 +1,206 @@
+---
+permalink: api/reference_element_api_clonemultiplevolumes.html 
+sidebar: sidebar 
+keywords: volume,volumes,clone,cloning,multiple,CloneMultipleVolumes 
+summary: CloneMultipleVolumes 메서드를 사용하면 지정된 볼륨 그룹의 복제본을 만들 수 있습니다.  여러 볼륨을 함께 복제하면 일관된 특성 집합을 여러 볼륨 그룹에 할당할 수 있습니다. 
+---
+= 여러 볼륨 복제
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `CloneMultipleVolumes` 지정된 볼륨 그룹의 복제본을 만드는 방법입니다.  여러 볼륨을 함께 복제하면 일관된 특성 집합을 여러 볼륨 그룹에 할당할 수 있습니다.
+
+그룹 스냅샷의 볼륨을 복제하기 위해 groupSnapshotID 매개변수를 사용하기 전에 먼저 다음을 사용하여 그룹 스냅샷을 만들어야 합니다.xref:reference_element_api_creategroupsnapshot.adoc[그룹 스냅샷 만들기] API 방법 또는 웹 UI.  여러 볼륨을 복제하는 경우 groupSnapshotID를 사용하는 것은 선택 사항입니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+입장
+ a| 
+볼륨 배열에서 전달된 정보로 재정의되지 않는 경우 새 볼륨에 대한 새로운 기본 액세스 방법이 적용됩니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+enableSnapMirrorReplication
+ a| 
+SnapMirror 엔드포인트를 사용하여 볼륨을 복제하는 데 사용할 수 있는지 여부를 결정합니다. 가능한 값:
+
+* true
+* 거짓
+
+ a| 
+부울
+ a| 
+거짓
+ a| 
+아니요
+
+
+
+ a| 
+그룹스냅샷ID
+ a| 
+복제본의 기준으로 사용할 그룹 스냅샷의 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+새 계정 ID
+ a| 
+볼륨 배열에 전달된 정보로 재정의되지 않으면 볼륨에 대한 새 계정 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+볼륨
+ a| 
+새로운 볼륨에 대해 지정한 멤버의 컬렉션입니다.  회원:
+
+* volumeID: (필수)
+* 액세스: (선택 사항) readOnly, readWrite, locked 또는 replicationTarget 중 하나일 수 있습니다.
+* 속성: (선택 사항) JSON 객체 형식의 이름-값 쌍 목록입니다.
+* 이름: (선택 사항) 복제본의 새 이름입니다.
+* newAccountID: (선택 사항) 새 볼륨의 계정 ID입니다.
+* newSize: (선택 사항) 볼륨의 총 크기(바이트)입니다.  크기는 가장 가까운 메가바이트로 반올림됩니다.
+
+
+선택적 멤버가 지정되지 않으면 값은 소스 볼륨에서 상속됩니다.
+ a| 
+JSON 객체 배열
+ a| 
+None
+ a| 
+예(볼륨ID)
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+비동기 핸들
+ a| 
+비동기 메서드 호출에서 반환된 값입니다.
+ a| 
+정수
+
+
+
+ a| 
+그룹클론ID
+ a| 
+새로운 그룹 복제본의 고유 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+회원들
+ a| 
+소스 및 대상 볼륨 쌍에 대한 볼륨 ID 목록입니다.
+ a| 
+JSON 객체 배열
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "CloneMultipleVolumes",
+   "params": {
+       "volumes": [
+           {
+              "volumeID": 5
+              "name":"foxhill",
+              "access":"readOnly"
+              },
+           {
+              "volumeID": 18
+              },
+           {
+             "volumeID": 20
+              }
+     ]
+   },
+   "id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "asyncHandle": 12,
+    "groupCloneID": 4,
+    "members": [
+     {
+      "srcVolumeID": 5,
+      "volumeID": 29
+     },
+     {
+      "srcVolumeID": 18,
+      "volumeID": 30
+     },
+     {
+      "srcVolumeID": 20,
+      "volumeID": 31
+      }
+    ]
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

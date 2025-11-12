@@ -1,0 +1,110 @@
+---
+permalink: api/reference_element_api_authsessioninfo.html 
+sidebar: sidebar 
+keywords: objects,object,authSessionInfo 
+summary: authSessionInfo 개체에는 인증 세션에 대한 정보가 포함되어 있습니다. 
+---
+= 인증 세션 정보
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+그만큼 `authSessionInfo` 객체에는 인증 세션에 대한 정보가 포함되어 있습니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+`accessGroupList`
+ a| 
+사용자의 액세스 그룹 목록입니다.
+ a| 
+문자열 배열
+
+
+
+ a| 
+`authMethod`
+ a| 
+클러스터 관리자가 가진 권한 유형입니다. 가능한 값:
+
+* LDAP - LDAP를 통해 인증됨.
+* 클러스터 - 클러스터 데이터베이스에 저장된 사용자 이름과 비밀번호를 통해 인증됩니다.
+* IdP - 타사 ID 공급자를 통해 인증됨.
+
+ a| 
+끈
+
+
+
+ a| 
+`clusterAdminIDs`
+ a| 
+이 세션과 연관된 클러스터 AdminID 목록입니다.  LDAP 또는 타사 ID 공급자(IdP)와 관련된 세션의 경우 이는 이 세션과 연관된 일치하는 클러스터 관리자 ID의 집계 목록이 됩니다.
+ a| 
+정수 배열
+
+
+
+ a| 
+`finalTimeout`
+ a| 
+세션이 무효화되는 시간입니다. 이는 세션이 생성될 때 설정되며 변경할 수 없습니다.
+ a| 
+끈
+
+
+
+ a| 
+`idpConfigVersion`
+ a| 
+세션이 생성되었을 당시의 IdP 구성 버전입니다.
+ a| 
+정수
+
+
+
+ a| 
+`lastAccessTimeout`
+ a| 
+세션이 비활성화되어 무효화되는 시간입니다. 세션에 액세스하여 사용할 때 새 값으로 설정되며, finalTimeout에 도달하여 세션이 무효화되는 시간까지 설정됩니다.
+ a| 
+끈
+
+
+
+ a| 
+`sessionCreationTime`
+ a| 
+세션이 생성된 시간입니다.
+ a| 
+끈
+
+
+
+ a| 
+`sessionID`
+ a| 
+이 세션의 UUID입니다.
+ a| 
+UUID
+
+
+
+ a| 
+`username`
+ a| 
+이 세션과 관련된 사용자 이름입니다.  LDAP와 관련된 세션의 경우 이는 사용자의 LDAP DN이 됩니다.  타사 IdP와 관련된 세션의 경우 이는 세션 내에서 작업을 감사하는 데 사용되는 임의의 이름-값 쌍이 됩니다.  클러스터의 클러스터 관리자 이름과 반드시 일치하지는 않습니다.  예를 들어, SAML 주체 이름 ID가 있지만 이는 IdP 구성과 SAML 어설션의 결과 내용에 따라 결정됩니다.
+ a| 
+끈
+
+|===

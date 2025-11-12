@@ -1,0 +1,553 @@
+---
+permalink: storage/reference_prereq_network_port_requirements.html 
+sidebar: sidebar 
+keywords: network port requirements, TCP ports, firewall, utilities, URL, access attempt, ICMP, MIP, SIP, MVIP, SVIP 
+summary: 원격으로 시스템을 관리하고 데이터 센터 외부의 클라이언트가 리소스에 연결할 수 있도록 하려면 데이터 센터의 에지 방화벽을 통해 다음 TCP 포트를 허용해야 할 수도 있습니다.  시스템 사용 방법에 따라 이러한 포트 중 일부는 필요하지 않을 수도 있습니다. 
+---
+= 네트워크 포트 요구 사항
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+원격으로 시스템을 관리하고 데이터 센터 외부의 클라이언트가 리소스에 연결할 수 있도록 하려면 데이터 센터의 에지 방화벽을 통해 다음 TCP 및 UDP 포트를 허용해야 할 수도 있습니다.  시스템 사용 방법에 따라 이러한 포트 중 일부는 필요하지 않을 수도 있습니다.
+
+달리 명시되지 않는 한 모든 포트는 TCP이며, 모든 TCP 포트는 NetApp 지원 서버, 관리 노드 및 Element 소프트웨어를 실행하는 노드 간의 3방향 핸드셰이크 통신을 지원해야 합니다.  예를 들어, 관리 노드 소스의 호스트는 TCP 포트 443을 통해 스토리지 클러스터 MVIP 대상의 호스트와 통신하고, 대상 호스트는 모든 포트를 통해 소스 호스트와 다시 통신합니다.
+
+
+TIP: 관리 노드, Element 소프트웨어를 실행하는 노드, 클러스터 MVIP 사이에서 ICMP를 활성화합니다.
+
+표에는 다음 약어가 사용되었습니다.
+
+* MIP: 관리 IP 주소, 노드별 주소
+* SIP: 저장소 IP 주소, 노드별 주소
+* MVIP: 관리 가상 IP 주소
+* SVIP: 스토리지 가상 IP 주소
+
+
+[cols="25,25,15,35"]
+|===
+| 원천 | 목적지 | 포트 | 설명 
+
+
+ a| 
+iSCSI 클라이언트
+ a| 
+스토리지 클러스터 MVIP
+ a| 
+443
+ a| 
+(선택 사항) UI 및 API 액세스
+
+
+
+ a| 
+iSCSI 클라이언트
+ a| 
+스토리지 클러스터 SVIP
+ a| 
+3260
+ a| 
+클라이언트 iSCSI 통신
+
+
+
+ a| 
+iSCSI 클라이언트
+ a| 
+스토리지 노드 SIP
+ a| 
+3260
+ a| 
+클라이언트 iSCSI 통신
+
+
+
+ a| 
+관리 노드
+ a| 
+`sfsupport.solidfire.com`
+ a| 
+22
+ a| 
+지원 액세스를 위한 역방향 SSH 터널
+
+
+
+ a| 
+관리 노드
+ a| 
+스토리지 노드 MIP
+ a| 
+22
+ a| 
+지원을 위한 SSH 액세스
+
+
+
+ a| 
+관리 노드
+ a| 
+DNS 서버
+ a| 
+53 TCP/UDP
+ a| 
+DNS 조회
+
+
+
+ a| 
+관리 노드
+ a| 
+스토리지 노드 MIP
+ a| 
+442
+ a| 
+스토리지 노드 및 Element 소프트웨어 업그레이드에 대한 UI 및 API 액세스
+
+
+
+ a| 
+관리 노드
+ a| 
+스토리지 클러스터 MVIP
+ a| 
+442
+ a| 
+스토리지 노드 및 Element 소프트웨어 업그레이드에 대한 UI 및 API 액세스
+
+
+
+ a| 
+관리 노드
+ a| 
+`monitoring.solidfire.com`
+ a| 
+443
+ a| 
+Active IQ 에 대한 스토리지 클러스터 보고
+
+
+
+ a| 
+관리 노드
+ a| 
+스토리지 클러스터 MVIP
+ a| 
+443
+ a| 
+스토리지 노드 및 Element 소프트웨어 업그레이드에 대한 UI 및 API 액세스
+
+
+
+ a| 
+관리 노드
+ a| 
+repo.netapp.com
+ a| 
+443
+ a| 
+온프레미스 배포를 설치/업데이트하는 데 필요한 구성 요소에 대한 액세스를 제공합니다.
+
+
+
+| 관리 노드 | 스토리지 노드 BMC/IPMI | 623 UDP | RMCP 포트.  이는 IPMI 지원 시스템을 관리하는 데 필요합니다. 
+
+
+ a| 
+관리 노드
+ a| 
+증인 노드
+ a| 
+9442
+ a| 
+노드별 구성 API 서비스
+
+
+
+ a| 
+관리 노드
+ a| 
+vCenter 서버
+ a| 
+9443
+ a| 
+vCenter 플러그인 등록.  등록이 완료된 후에는 포트를 닫을 수 있습니다.
+
+
+
+ a| 
+SNMP 서버
+ a| 
+스토리지 클러스터 MVIP
+ a| 
+161 UDP
+ a| 
+SNMP 폴링
+
+
+
+ a| 
+SNMP 서버
+| 스토리지 노드 MIP  a| 
+161 UDP
+ a| 
+SNMP 폴링
+
+
+
+| 스토리지 노드 BMC/IPMI | 관리 노드 | 623 UDP | RMCP 포트.  이는 IPMI 지원 시스템을 관리하는 데 필요합니다. 
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+DNS 서버
+ a| 
+53 TCP/UDP
+ a| 
+DNS 조회
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+관리 노드
+ a| 
+80
+ a| 
+Element 소프트웨어 업그레이드
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+S3/Swift 엔드포인트
+ a| 
+80
+ a| 
+(선택 사항) 백업 및 복구를 위한 S3/Swift 엔드포인트에 대한 HTTP 통신
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+NTP 서버
+ a| 
+123 UDP
+ a| 
+엔티피
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+관리 노드
+ a| 
+162 UDP
+ a| 
+(선택 사항) SNMP 트랩
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+SNMP 서버
+ a| 
+162 UDP
+ a| 
+(선택 사항) SNMP 트랩
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+LDAP 서버
+ a| 
+389 TCP/UDP
+ a| 
+(선택 사항) LDAP 조회
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+관리 노드
+ a| 
+443
+ a| 
+엘리먼트 스토리지 업그레이드
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+원격 스토리지 클러스터 MVIP
+ a| 
+443
+ a| 
+원격 복제 클러스터 페어링 통신
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+원격 스토리지 노드 MIP
+ a| 
+443
+ a| 
+원격 복제 클러스터 페어링 통신
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+S3/Swift 엔드포인트
+ a| 
+443
+ a| 
+(선택 사항) 백업 및 복구를 위한 S3/Swift 엔드포인트에 대한 HTTPS 통신
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+관리 노드
+ a| 
+514 TCP/UDP
+
+10514 TCP/UDP
+ a| 
+Syslog 전달
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+시스템 로그 서버
+ a| 
+514 TCP/UDP
+
+10514 TCP/UDP
+ a| 
+Syslog 전달
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+LDAPS 서버
+ a| 
+636 TCP/UDP
+ a| 
+LDAPS 조회
+
+
+
+ a| 
+스토리지 노드 MIP
+ a| 
+원격 스토리지 노드 MIP
+ a| 
+2181
+ a| 
+원격 복제를 위한 클러스터 간 통신
+
+
+
+ a| 
+스토리지 노드 SIP
+ a| 
+원격 스토리지 노드 SIP
+ a| 
+2181
+ a| 
+원격 복제를 위한 클러스터 간 통신
+
+
+
+ a| 
+스토리지 노드 SIP
+ a| 
+스토리지 노드 SIP
+ a| 
+3260
+ a| 
+노드 간 iSCSI
+
+
+
+ a| 
+스토리지 노드 SIP
+ a| 
+원격 스토리지 노드 SIP
+ a| 
+4000부터 4020까지
+ a| 
+원격 복제 노드 간 데이터 전송
+
+
+
+ a| 
+시스템 관리자 PC
+ a| 
+관리 노드
+ a| 
+442
+ a| 
+관리 노드에 대한 HTTPS UI 액세스
+
+
+
+ a| 
+시스템 관리자 PC
+ a| 
+스토리지 노드 MIP
+ a| 
+442
+ a| 
+스토리지 노드에 대한 HTTPS UI 및 API 액세스
+
+
+
+ a| 
+시스템 관리자 PC
+ a| 
+관리 노드
+ a| 
+443
+ a| 
+관리 노드에 대한 HTTPS UI 및 API 액세스
+
+
+
+ a| 
+시스템 관리자 PC
+ a| 
+스토리지 클러스터 MVIP
+ a| 
+443
+ a| 
+스토리지 클러스터에 대한 HTTPS UI 및 API 액세스
+
+
+
+ a| 
+시스템 관리자 PC
+ a| 
+스토리지 노드 베이스보드 관리 컨트롤러(BMC)/지능형 플랫폼 관리 인터페이스(IPMI) H410 및 H600 시리즈
+ a| 
+443
+ a| 
+노드 원격 제어에 대한 HTTPS UI 및 API 액세스
+
+
+
+ a| 
+시스템 관리자 PC
+ a| 
+스토리지 노드 MIP
+ a| 
+443
+ a| 
+HTTPS 스토리지 클러스터 생성, 배포 후 스토리지 클러스터에 대한 UI 액세스
+
+
+
+ a| 
+시스템 관리자 PC
+ a| 
+스토리지 노드 BMC/IPMI H410 및 H600 시리즈
+ a| 
+623 UDP
+ a| 
+원격 관리 제어 프로토콜 포트.  이는 IPMI 지원 시스템을 관리하는 데 필요합니다.
+
+
+
+ a| 
+시스템 관리자 PC
+ a| 
+증인 노드
+ a| 
+8080
+ a| 
+Witness Node 노드별 웹 UI
+
+
+
+ a| 
+vCenter 서버
+ a| 
+스토리지 클러스터 MVIP
+ a| 
+443
+ a| 
+vCenter 플러그인 API 액세스
+
+
+
+ a| 
+vCenter 서버
+ a| 
+원격 플러그인
+ a| 
+8333
+ a| 
+원격 vCenter 플러그인 서비스
+
+
+
+ a| 
+vCenter 서버
+ a| 
+관리 노드
+ a| 
+8443
+ a| 
+(선택 사항) vCenter 플러그인 QoSSIOC 서비스.
+
+
+
+ a| 
+vCenter 서버
+ a| 
+스토리지 클러스터 MVIP
+ a| 
+8444
+ a| 
+vCenter VASA 공급자 액세스(VVol만 해당)
+
+
+
+ a| 
+vCenter 서버
+ a| 
+관리 노드
+ a| 
+9443
+ a| 
+vCenter 플러그인 등록.  등록이 완료된 후에는 포트를 닫을 수 있습니다.
+
+|===
+
+
+== 더 많은 정보를 원하시면
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

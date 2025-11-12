@@ -1,0 +1,32 @@
+---
+permalink: storage/task-element-replication-enable-snapmirror-source-volume.html 
+sidebar: sidebar 
+keywords: ontap, cli, enable, snapmirror, element, source, volume 
+summary: 복제 관계를 생성하려면 먼저 Element 소스 볼륨에서 SnapMirror 활성화해야 합니다.  이 작업은 Element 소프트웨어 웹 UI 또는 API 메서드를 사용해서만 수행할 수 있습니다. 
+---
+= Element 소스 볼륨에서 SnapMirror 활성화
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+복제 관계를 생성하려면 먼저 Element 소스 볼륨에서 SnapMirror 활성화해야 합니다.  이 작업은 Element 소프트웨어 웹 UI에서만 수행할 수 있습니다.link:../api/reference_element_api_modifyvolume.html["볼륨 수정"] 그리고link:../api/reference_element_api_modifyvolumes.html["볼륨 수정"] API 방법.
+
+.시작하기 전에
+* Element 클러스터에서 SnapMirror 활성화해야 합니다.
+* 볼륨 블록 크기는 512바이트여야 합니다.
+* 볼륨은 Element 원격 복제에 참여해서는 안 됩니다.
+* 볼륨 액세스 유형은 "`복제 대상`"이어서는 안 됩니다.
+
+
+.이 작업에 관하여
+아래 절차에서는 볼륨이 이미 존재한다고 가정합니다.  볼륨을 생성하거나 복제할 때 SnapMirror 활성화할 수도 있습니다.
+
+.단계
+. *관리* > *볼륨*을 선택합니다.
+. 선택하세요image:../media/action-icon.gif["작업 아이콘"] 볼륨 조절 버튼.
+. 드롭다운 메뉴에서 *편집*을 선택합니다.
+. *볼륨 편집* 대화 상자에서 * SnapMirror 사용*을 선택합니다.
+. *변경 사항 저장*을 선택하세요.
+

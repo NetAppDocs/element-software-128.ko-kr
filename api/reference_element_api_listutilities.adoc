@@ -1,0 +1,81 @@
+---
+permalink: api/reference_element_api_listutilities.html 
+sidebar: sidebar 
+keywords: utilities,list,listing,listutilities 
+summary: ListUtilities 메서드를 사용하면 노드에서 실행할 수 있는 작업을 나열할 수 있습니다. 
+---
+= 리스트유틸리티
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `ListUtilities` 노드에서 실행할 수 있는 작업을 나열하는 방법입니다.
+
+
+
+== 매개변수
+
+이 방법에는 입력 매개변수가 없습니다.
+
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+유용
+ a| 
+현재 노드에서 실행할 수 있는 유틸리티 목록입니다.
+ a| 
+문자열 배열
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "ListUtilities",
+   "params": {},
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "utilities": [
+      "ResetDrives",
+      "ResetNode",
+      "RestartNetworking",
+      "RestartServices",
+      "CreateSupportBundle",
+      "DeleteAllSupportBundles",
+      "CreateClusterSupportBundle"
+    ]
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

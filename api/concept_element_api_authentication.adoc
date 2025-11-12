@@ -1,0 +1,24 @@
+---
+permalink: api/concept_element_api_authentication.html 
+sidebar: sidebar 
+keywords: API,authentication,auth,SolidFire 
+summary: API를 사용할 때 모든 API 요청에 HTTP 기본 인증 헤더를 포함하면 시스템에 인증할 수 있습니다.  인증 정보를 생략하면 시스템은 HTTP 401 응답으로 인증되지 않은 요청을 거부합니다.  이 시스템은 TLS를 통한 HTTP 기본 인증을 지원합니다. 
+---
+= API 인증
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+API를 사용할 때 모든 API 요청에 HTTP 기본 인증 헤더를 포함하면 시스템에 인증할 수 있습니다.  인증 정보를 생략하면 시스템은 HTTP 401 응답으로 인증되지 않은 요청을 거부합니다.  이 시스템은 TLS를 통한 HTTP 기본 인증을 지원합니다.
+
+API 인증을 위해 클러스터 관리자 계정을 사용하세요.
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

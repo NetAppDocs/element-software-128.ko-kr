@@ -1,0 +1,118 @@
+---
+permalink: api/reference_element_api_setconfig.html 
+sidebar: sidebar 
+keywords: config,configuration,set,setting,node,setconfig,network,cluster 
+summary: SetConfig 메서드를 사용하면 노드의 네트워크 및 클러스터 정보를 설정할 수 있습니다.  이 메서드는 SetClusterConfig 및 SetNetworkConfig 메서드 모두에서 사용할 수 있는 동일한 설정을 단일 API 메서드에 포함합니다.  이 방법에는 변경하려는 필드만 포함하면 됩니다. 
+---
+= 설정 구성
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `SetConfig` 노드에 대한 네트워크 및 클러스터 정보를 설정하는 방법입니다.  이 방법에는 두 가지 모두에서 사용할 수 있는 단일 API 방법에 동일한 설정이 포함됩니다. `SetClusterConfig` 그리고 `SetNetworkConfig` 행동 양식.  이 방법에는 변경하려는 필드만 포함하면 됩니다.
+
+
+
+== 매개변수
+
+주의:
+
+노드의 본드 모드를 변경하면 네트워크 연결이 일시적으로 끊어질 수 있습니다.
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+무리
+ a| 
+스토리지 노드가 연관된 스토리지 클러스터와 통신하는 방식을 식별하는 클러스터 정보입니다.
+ a| 
+xref:reference_element_api_cluster.adoc[무리]
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+회로망
+ a| 
+노드의 각 네트워크 인터페이스에 대한 네트워크 연결 유형 및 현재 설정입니다.
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[네트워크(모든 인터페이스)]
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+설정
+ a| 
+노드에 대한 새롭고 현재 구성입니다.  이 개체에는 다음이 포함되어 있습니다.
+
+* xref:reference_element_api_cluster.adoc[무리]: 스토리지 노드가 연관된 스토리지 클러스터와 통신하는 방식을 식별하는 클러스터 정보입니다.
+* xref:reference_element_api_network_all_interfaces.adoc[네트워크(모든 인터페이스)]: 노드의 각 네트워크 인터페이스에 대한 네트워크 연결 유형 및 현재 설정.
+
+ a| 
+JSON 객체
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+	"method": "SetConfig",
+	"params": {
+		"cluster": {
+			"name": "MyHostname"
+		},
+		"network": {
+			"Bond10G": {
+				"bond-mode": "ALB"
+			}
+		}
+	}
+}
+----
+
+
+== 응답 예시
+
+이 메서드의 응답은 GetConfig 메서드의 반환 값과 동일합니다.  SetConfig를 사용하면 객체 표시 및 업데이트된 값에 대한 모든 필드가 표시됩니다.
+
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* xref:reference_element_api_setclusterconfig.adoc[클러스터 구성 설정]
+* xref:reference_element_api_setnetworkconfig.adoc[네트워크 구성 설정]
+* xref:reference_element_api_response_example_getconfig.adoc[GetConfig]
+

@@ -1,0 +1,101 @@
+---
+permalink: api/reference_element_api_resyncsnapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: SnapMirror,relationship,resync,resyncing,ResyncSnapMirrorRelationship 
+summary: Element 소프트웨어 웹 UI는 ResyncSnapMirrorRelationship 메서드를 사용하여 소스 및 대상 엔드포인트 간의 미러 관계를 설정하거나 재설정합니다.  관계를 다시 동기화하면 시스템은 공통 스냅샷 복사본보다 최신인 대상 볼륨의 스냅샷을 제거한 다음, 공통 스냅샷 복사본을 내보낸 스냅샷 복사본으로 사용하여 대상 볼륨을 데이터 보호 볼륨으로 마운트합니다. 
+---
+= ResyncSnapMirror관계
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 소프트웨어 웹 UI는 다음을 사용합니다. `ResyncSnapMirrorRelationship` 소스와 대상 엔드포인트 간의 미러 관계를 설정하거나 재설정하는 방법입니다.  관계를 다시 동기화하면 시스템은 공통 스냅샷 복사본보다 최신인 대상 볼륨의 스냅샷을 제거한 다음, 공통 스냅샷 복사본을 내보낸 스냅샷 복사본으로 사용하여 대상 볼륨을 데이터 보호 볼륨으로 마운트합니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+스냅미러엔드포인트ID
+ a| 
+Element 스토리지 클러스터와 통신하는 원격 ONTAP 스토리지 시스템의 엔드포인트 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+목적지볼륨
+ a| 
+SnapMirror 관계의 대상 볼륨입니다.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[스냅미러볼륨정보]
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+최대 전송률
+ a| 
+볼륨 간 최대 데이터 전송 속도를 초당 킬로바이트 단위로 지정합니다.  기본값인 0은 무제한이며 SnapMirror 관계가 사용 가능한 네트워크 대역폭을 최대한 활용할 수 있도록 허용합니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+소스볼륨
+ a| 
+SnapMirror 관계의 소스 볼륨입니다.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[스냅미러볼륨정보]
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+스냅미러관계
+ a| 
+재동기화된 SnapMirror 관계에 대한 정보를 담고 있는 객체입니다.
+ a| 
+xref:reference_element_api_snapmirrorrelationship.adoc[스냅미러관계]
+
+|===
+
+
+== 버전 이후 새로운
+
+10.1

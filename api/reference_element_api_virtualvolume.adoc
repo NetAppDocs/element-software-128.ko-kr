@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_virtualvolume.html 
+sidebar: sidebar 
+keywords: object,objects,virtualVolume 
+summary: virtualVolume 개체에는 가상 볼륨에 대한 구성 정보와 가상 볼륨의 스냅샷에 대한 정보가 포함되어 있습니다.  여기에는 런타임이나 사용 정보가 포함되지 않습니다.  ListVirtualVolumes 메서드를 사용하면 클러스터에 대한 이 정보를 검색할 수 있습니다. 
+---
+= 가상 볼륨
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+virtualVolume 개체에는 가상 볼륨에 대한 구성 정보와 가상 볼륨의 스냅샷에 대한 정보가 포함되어 있습니다.  여기에는 런타임이나 사용 정보가 포함되지 않습니다.  당신은 사용할 수 있습니다 `ListVirtualVolumes` 클러스터에 대한 정보를 검색하는 방법입니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+바인딩
+ a| 
+이 가상 볼륨에 대한 바인딩 ID 목록입니다.
+ a| 
+UUID 배열
+
+
+
+ a| 
+어린이들
+ a| 
+이 가상 볼륨의 자식인 가상 볼륨 UUID 목록입니다.
+ a| 
+UUID 배열
+
+
+
+ a| 
+자손
+ a| 
+ListVirtualVolumes 메서드에 recursive: true를 전달하면 이 가상 볼륨의 하위 항목인 가상 볼륨 UUID 목록이 포함됩니다.
+ a| 
+UUID 배열
+
+
+
+ a| 
+메타데이터
+ a| 
+가상 볼륨의 메타데이터에 대한 키-값 쌍(가상 볼륨 유형, 게스트 OS 유형 등)입니다.
+ a| 
+JSON 객체
+
+
+
+ a| 
+부모가상볼륨ID
+ a| 
+부모 가상 볼륨의 가상 볼륨 ID입니다.  ID가 모두 0인 경우 상위 볼륨과 연결되지 않은 독립적인 가상 볼륨입니다.
+ a| 
+UUID
+
+
+
+ a| 
+스냅샷ID
+ a| 
+기본 볼륨 스냅샷의 ID입니다.  가상 볼륨이 스냅샷을 나타내지 않으면 이 값은 "0"입니다.
+ a| 
+정수
+
+
+
+ a| 
+스냅샷 정보
+ a| 
+연관된 스냅샷에 대한 스냅샷 개체(비정상인 경우 null).
+ a| 
+xref:reference_element_api_snapshot.adoc[스냅 사진]
+
+
+
+ a| 
+상태
+ a| 
+가상 볼륨의 현재 상태입니다. 가능한 값:
+
+* 복제: 가상 볼륨은 복제 또는 스냅샷 작업에 대한 응답으로 처리되고 있습니다.
+* 대기 중: 가상 볼륨이 스냅샷 작업이 완료될 때까지 기다리고 있습니다.
+* 준비: 가상 볼륨이 일반적인 용도로 사용할 준비가 되었습니다.
+
+ a| 
+끈
+
+
+
+ a| 
+저장용기
+ a| 
+이 가상 볼륨을 소유한 스토리지 컨테이너를 설명하는 개체입니다.
+ a| 
+xref:reference_element_api_storagecontainer.adoc[저장용기]
+
+
+
+ a| 
+가상볼륨ID
+ a| 
+가상 볼륨의 고유 ID입니다.
+ a| 
+UUID
+
+
+
+ a| 
+가상 볼륨 유형
+ a| 
+가상 볼륨의 유형입니다.
+ a| 
+끈
+
+
+
+ a| 
+볼륨ID
+ a| 
+기본 볼륨의 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+볼륨정보
+ a| 
+ListVirtualVolumes 메서드에 details: true를 전달하면 이 멤버는 볼륨을 설명하는 개체입니다.
+ a| 
+xref:reference_element_api_volume.adoc[용량]
+
+|===
+
+
+== 더 많은 정보를 찾아보세요
+
+* xref:reference_element_api_listvirtualvolumes.adoc[가상 볼륨 나열]
+* xref:reference_element_api_snapshot.adoc[스냅 사진]
+* xref:reference_element_api_storagecontainer.adoc[저장용기]
+* xref:reference_element_api_volume.adoc[용량]
+

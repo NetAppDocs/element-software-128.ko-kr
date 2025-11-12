@@ -1,0 +1,60 @@
+---
+permalink: api/reference_element_api_listsnapmirrorpolicies.html 
+sidebar: sidebar 
+keywords: snapmirror,policy,policies,list,listing,ontap,listsnapmirrorpolicies 
+summary: Element 소프트웨어 웹 UI는 ListSnapMirrorPolicies 메서드를 사용하여 원격 ONTAP 시스템의 모든 SnapMirror 정책을 나열합니다. 
+---
+= ListSnapMirror정책
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 소프트웨어 웹 UI는 다음을 사용합니다. `ListSnapMirrorPolicies` 원격 ONTAP 시스템의 모든 SnapMirror 정책을 나열하는 방법입니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+스냅미러엔드포인트ID
+ a| 
+지정된 엔드포인트 ID와 연결된 정책만 나열합니다.  엔드포인트 ID가 제공되지 않으면 시스템은 알려진 모든 SnapMirror 엔드포인트의 정책을 나열합니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+스냅미러정책
+ a| 
+ONTAP 스토리지 시스템의 SnapMirror 정책 목록입니다.
+ a| 
+xref:reference_element_api_snapmirrorpolicy.adoc[스냅미러정책]정렬
+
+|===
+
+
+== 버전 이후 새로운
+
+10.1

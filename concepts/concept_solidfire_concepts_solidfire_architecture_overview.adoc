@@ -1,0 +1,77 @@
+---
+permalink: concepts/concept_solidfire_concepts_solidfire_architecture_overview.html 
+sidebar: sidebar 
+keywords: solidfire, element, aiq, cluster, active iq, vcenter plugin, vcp, storage, what is, activeiq 
+summary: 'SolidFire 올플래시 스토리지 시스템은 개별 하드웨어 구성 요소(드라이브 및 노드)로 구성되며, 각 구성 요소는 각 노드에서 독립적으로 실행되는 NetApp Element 소프트웨어를 통해 단일 스토리지 리소스 풀로 결합됩니다.  이 통합 클러스터는 외부 클라이언트가 사용할 수 있는 단일 스토리지 시스템으로 제공되며 Element 소프트웨어 UI, API 및 기타 관리 도구를 통해 단일 엔터티로 관리됩니다.' 
+---
+= SolidFire 아키텍처에 대해 알아보세요
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SolidFire 올플래시 스토리지 시스템은 드라이브와 노드라는 개별 하드웨어 구성 요소로 이루어져 있으며, 이러한 구성 요소는 스토리지 리소스 풀로 결합되고 각 노드에서 NetApp Element 소프트웨어가 독립적으로 실행됩니다.  이 단일 스토리지 시스템은 Element 소프트웨어 UI, API 및 기타 관리 도구를 사용하여 단일 엔터티로 관리됩니다.
+
+SolidFire 스토리지 시스템에는 다음과 같은 하드웨어 구성 요소가 포함됩니다.
+
+* *클러스터*: 노드의 집합인 SolidFire 스토리지 시스템의 허브입니다.
+* *노드*: 클러스터로 그룹화된 하드웨어 구성 요소입니다.  노드에는 두 가지 유형이 있습니다.
++
+** 드라이브 컬렉션을 포함하는 서버인 스토리지 노드
+** FC 클라이언트에 연결하는 데 사용하는 FC(Fibre Channel) 노드
+
+
+* *드라이브*: 클러스터의 데이터를 저장하기 위해 스토리지 노드에서 사용됩니다.  저장 노드에는 두 가지 유형의 드라이브가 포함됩니다.
++
+** 볼륨 메타데이터 드라이브는 클러스터 내의 볼륨 및 기타 객체를 정의하는 정보를 저장합니다.
+** 블록 드라이브는 볼륨의 데이터 블록을 저장합니다.
+
+
+
+
+image::../media/solidfire_concepts_guide_architecture_image.gif[Element Software 아키텍처 다이어그램]
+
+Element 웹 UI 및 기타 호환 도구를 사용하여 시스템을 관리, 모니터링 및 업데이트할 수 있습니다.
+
+* link:../concepts/concept_intro_solidfire_software_interfaces.html["SolidFire 소프트웨어 인터페이스"]
+* link:../concepts/concept_intro_solidfire_active_iq.html["SolidFire Active IQ"]
+* link:../concepts/concept_intro_management_node.html["Element 소프트웨어 관리 노드"]
+* link:../concepts/concept_intro_management_services_for_afa.html["관리 서비스"]
+
+
+
+
+== 일반 URL
+
+SolidFire 올플래시 스토리지 시스템에서 일반적으로 사용되는 URL은 다음과 같습니다.
+
+[cols="2*"]
+|===
+| URL | 설명 
+
+
+| `https://[storage cluster MVIP address]` | NetApp Element 소프트웨어 UI에 액세스합니다. 
+
+
+| `https://activeiq.solidfire.com` | 데이터를 모니터링하고 성능 병목 현상이나 잠재적인 시스템 문제에 대한 알림을 받습니다. 
+
+
+| `https://[management node IP address]` | NetApp Hybrid Cloud Control에 액세스하여 스토리지 설치를 업그레이드하고 관리 서비스를 업데이트하세요. 
+
+
+| `https://[IP address]:442` | 노드별 UI에서 네트워크 및 클러스터 설정에 액세스하고 시스템 테스트와 유틸리티를 활용합니다.link:../storage/task_per_node_access_settings.html["자세히 알아보세요."] 
+
+
+| `https://[management node IP address]/mnode` | 관리 노드에서 관리 서비스 REST API 및 기타 기능을 사용합니다.link:../mnode/task_mnode_work_overview.html["자세히 알아보세요."] 
+
+
+| `https://[management node IP address]:9443` | vSphere Web Client에서 vCenter 플러그인 패키지를 등록합니다.link:https://docs.netapp.com/us-en/vcp/vcp_task_getstarted.html["자세히 알아보세요."^] 
+|===
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

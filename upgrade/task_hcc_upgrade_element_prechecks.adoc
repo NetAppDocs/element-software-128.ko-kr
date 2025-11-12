@@ -1,0 +1,251 @@
+---
+sidebar: sidebar 
+permalink: upgrade/task_hcc_upgrade_element_prechecks.html 
+summary: NetApp SolidFire 스토리지 시스템 업그레이드의 일환으로 NetApp Element 소프트웨어에 대한 상태 검사를 실행해야 합니다. 
+keywords: netapp, storage prechecks, element upgrade, sfupgradecheck 
+---
+= 스토리지를 업그레이드하기 전에 Element 스토리지 상태 검사를 실행하세요.
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 스토리지를 업그레이드하기 전에 상태 검사를 실행하여 클러스터의 모든 스토리지 노드가 다음 Element 스토리지 업그레이드에 대비할 준비가 되었는지 확인해야 합니다.
+
+.필요한 것
+* *관리 서비스*: 최신 관리 서비스 번들(2.10.27 이상)로 업데이트했습니다.
++
+
+IMPORTANT: Element 소프트웨어를 업그레이드하기 전에 최신 관리 서비스 번들로 업그레이드해야 합니다.
+
+* *관리 노드*: 관리 노드 11.3 이상을 실행 중입니다.
+* *Element 소프트웨어*: 클러스터 버전에서 NetApp Element 소프트웨어 11.3 이상이 실행되고 있습니다.
+* *최종 사용자 라이선스 계약(EULA)*: Management Services 2.20.69부터 NetApp Hybrid Cloud Control UI 또는 API를 사용하여 Element 스토리지 상태 검사를 실행하기 전에 EULA에 동의하고 저장해야 합니다.
++
+.. 웹 브라우저에서 관리 노드의 IP 주소를 엽니다.
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+.. 스토리지 클러스터 관리자 자격 증명을 제공하여 NetApp Hybrid Cloud Control에 로그인합니다.
+.. 인터페이스 오른쪽 상단에 있는 *업그레이드*를 선택하세요.
+.. EULA가 나타납니다.  아래로 스크롤하여 *현재 및 향후 모든 업데이트에 동의합니다*를 선택하고 *저장*을 선택합니다.
+
+
+
+
+.건강 검진 옵션
+NetApp Hybrid Cloud Control UI 또는 NetApp Hybrid Cloud Control API를 사용하여 상태 검사를 실행할 수 있습니다.
+
+* <<스토리지를 업그레이드하기 전에 NetApp Hybrid Cloud Control을 사용하여 Element 스토리지 상태 검사를 실행하세요.>>(선호하는 방법)
+
+
+서비스에서 실행하는 스토리지 상태 검사에 대해 자세히 알아볼 수도 있습니다.
+
+* <<서비스에서 수행한 스토리지 상태 검사>>
+
+
+
+
+== 스토리지를 업그레이드하기 전에 NetApp Hybrid Cloud Control을 사용하여 Element 스토리지 상태 검사를 실행하세요.
+
+NetApp Hybrid Cloud Control을 사용하면 스토리지 클러스터가 업그레이드될 준비가 되었는지 확인할 수 있습니다.
+
+.단계
+. 웹 브라우저에서 관리 노드의 IP 주소를 엽니다.
++
+[listing]
+----
+https://<ManagementNodeIP>
+----
+. 스토리지 클러스터 관리자 자격 증명을 제공하여 NetApp Hybrid Cloud Control에 로그인합니다.
+. 인터페이스 오른쪽 상단에 있는 *업그레이드*를 선택하세요.
+. *업그레이드* 페이지에서 *저장소* 탭을 선택합니다.
+. 건강검진을 선택하세요image:hcc_healthcheck_icon.png["상"] 업그레이드 준비 여부를 확인하려는 클러스터에 대해.
+. *저장소 상태 점검* 페이지에서 *상태 점검 실행*을 선택합니다.
+. 문제가 있는 경우 다음을 수행하세요.
++
+.. 각 문제에 대해 나열된 특정 KB 문서로 이동하거나 지정된 해결 방법을 수행하세요.
+.. KB가 지정된 경우 해당 KB 문서에 설명된 프로세스를 완료하세요.
+.. 클러스터 문제를 해결한 후 *상태 점검 다시 실행*을 선택하세요.
+
+
+
+
+오류 없이 상태 검사가 완료되면 스토리지 클러스터를 업그레이드할 준비가 됩니다.  스토리지 노드 업그레이드 참조link:task_hcc_upgrade_element_software.html["지침"] 계속하려면.
+
+
+
+== 스토리지를 업그레이드하기 전에 API를 사용하여 Element 스토리지 상태 검사를 실행합니다.
+
+REST API를 사용하여 스토리지 클러스터가 업그레이드될 준비가 되었는지 확인할 수 있습니다.  상태 점검에서는 보류 중인 노드, 디스크 공간 문제, 클러스터 오류 등 업그레이드에 방해가 되는 요소가 없는지 확인합니다.
+
+.단계
+. 스토리지 클러스터 ID를 찾으세요.
++
+.. 관리 노드에서 관리 노드 REST API UI를 엽니다.
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode
+----
+.. *승인*을 선택하고 다음을 완료하세요.
++
+... 클러스터 사용자 이름과 비밀번호를 입력하세요.
+... 클라이언트 ID를 다음과 같이 입력하세요. `mnode-client` 값이 아직 채워지지 않은 경우.
+... 세션을 시작하려면 *승인*을 선택하세요.
+... 승인 창을 닫습니다.
+
+
+.. REST API UI에서 다음을 선택하세요. `GET /assets` .
+.. *시도해보기*를 선택하세요.
+.. *실행*을 선택하세요.
+.. 응답에서 다음을 복사하세요. `"id"` 에서 `"storage"` 업그레이드 준비 여부를 확인하려는 클러스터 섹션입니다.
++
+
+NOTE: 사용하지 마십시오 `"parent"` 이 섹션의 값은 스토리지 클러스터의 ID가 아니라 관리 노드의 ID이기 때문입니다.
+
++
+[listing, subs="+quotes"]
+----
+"config": {},
+"credentialid": "12bbb2b2-f1be-123b-1234-12c3d4bc123e",
+"host_name": "SF_DEMO",
+*"id": "12cc3a45-e6e7-8d91-a2bb-0bdb3456b789",*
+"ip": "10.123.12.12",
+"parent": "d123ec42-456e-8912-ad3e-4bd56f4a789a",
+"sshcredentialid": null,
+"ssl_certificate": null
+----
+
+
+. 스토리지 클러스터에서 상태 검사를 실행합니다.
++
+.. 관리 노드에서 스토리지 REST API UI를 엽니다.
++
+[listing]
+----
+https://<ManagementNodeIP>/storage/1/
+----
+.. *승인*을 선택하고 다음을 완료하세요.
++
+... 클러스터 사용자 이름과 비밀번호를 입력하세요.
+... 클라이언트 ID를 다음과 같이 입력하세요. `mnode-client` 값이 아직 채워지지 않은 경우.
+... 세션을 시작하려면 *승인*을 선택하세요.
+... 승인 창을 닫습니다.
+
+
+.. *POST /health-checks*를 선택하세요.
+.. *시도해보기*를 선택하세요.
+.. 매개변수 필드에 1단계에서 얻은 스토리지 클러스터 ID를 입력합니다.
++
+[listing]
+----
+{
+  "config": {},
+  "storageId": "123a45b6-1a2b-12a3-1234-1a2b34c567d8"
+}
+----
+.. 지정된 스토리지 클러스터에 대한 상태 검사를 실행하려면 *실행*을 선택합니다.
++
+응답은 상태를 다음과 같이 표시해야 합니다. `initializing` :
+
++
+[listing]
+----
+{
+  "_links": {
+    "collection": "https://10.117.149.231/storage/1/health-checks",
+    "log": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc/log",
+    "self": "https://10.117.149.231/storage/1/health-checks/358f073f-896e-4751-ab7b-ccbb5f61f9fc"
+  },
+  "config": {},
+  "dateCompleted": null,
+  "dateCreated": "2020-02-21T22:11:15.476937+00:00",
+  "healthCheckId": "358f073f-896e-4751-ab7b-ccbb5f61f9fc",
+  "state": "initializing",
+  "status": null,
+  "storageId": "c6d124b2-396a-4417-8a47-df10d647f4ab",
+  "taskId": "73f4df64-bda5-42c1-9074-b4e7843dbb77"
+}
+----
+.. 복사하다 `healthCheckID` 그것은 응답의 일부입니다.
+
+
+. 건강 검진 결과를 확인하세요.
++
+.. *GET ​/health-checks​/{healthCheckId}*를 선택하세요.
+.. *시도해보기*를 선택하세요.
+.. 매개변수 필드에 상태 검사 ID를 입력하세요.
+.. *실행*을 선택하세요.
+.. 응답 본문의 맨 아래로 스크롤합니다.
++
+모든 상태 검사가 성공하면 반환 값은 다음 예와 비슷합니다.
+
++
+[listing]
+----
+"message": "All checks completed successfully.",
+"percent": 100,
+"timestamp": "2020-03-06T00:03:16.321621Z"
+----
+
+
+. 만약 `message` 반환값은 클러스터 상태에 문제가 있음을 나타냅니다. 다음을 수행합니다.
++
+.. *GET ​/health-checks​/{healthCheckId}/log*를 선택하세요
+.. *시도해보기*를 선택하세요.
+.. 매개변수 필드에 상태 검사 ID를 입력하세요.
+.. *실행*을 선택하세요.
+.. 특정 오류를 검토하고 관련 KB 문서 링크를 얻으세요.
+.. 각 문제에 대해 나열된 특정 KB 문서로 이동하거나 지정된 해결 방법을 수행하세요.
+.. KB가 지정된 경우 해당 KB 문서에 설명된 프로세스를 완료하세요.
+.. 클러스터 문제를 해결한 후 *GET ​/health-checks​/{healthCheckId}/log*를 다시 실행하세요.
+
+
+
+
+
+
+== 서비스에서 수행한 스토리지 상태 검사
+
+저장소 상태 검사는 클러스터별로 다음과 같은 검사를 수행합니다.
+
+|===
+| 이름 확인 | 노드/클러스터 | 설명 
+
+
+| 비동기 결과 확인 | 무리 | 데이터베이스의 비동기 결과 수가 임계값보다 낮은지 확인합니다. 
+
+
+| 클러스터 오류 검사 | 무리 | Element 소스에 정의된 대로 업그레이드 차단 클러스터 오류가 없는지 확인합니다. 
+
+
+| 업로드 속도 확인 | 마디 | 저장 노드와 관리 노드 간의 업로드 속도를 측정합니다. 
+
+
+| 연결 속도 확인 | 마디 | 노드가 업그레이드 패키지를 제공하는 관리 노드에 연결되어 있는지 확인하고 연결 속도를 추정합니다. 
+
+
+| 체크_코어 | 마디 | 노드에서 커널 크래시 덤프와 코어 파일을 확인합니다.  최근 기간(임계값 7일) 동안 발생한 충돌에 대한 검사가 실패합니다. 
+
+
+| 체크_루트_디스크_공간 | 마디 | 업그레이드를 수행하기에 충분한 여유 공간이 루트 파일 시스템에 있는지 확인합니다. 
+
+
+| check_var_log_disk_space | 마디 | 그것을 확인합니다 `/var/log` 여유 공간이 일정 비율의 여유 공간 임계값을 충족합니다.  그렇지 않은 경우 검사가 순환되어 오래된 로그가 제거되어 임계값 아래로 떨어집니다.  충분한 여유 공간을 만드는 데 실패하면 검사가 실패합니다. 
+
+
+| 확인 보류 노드 | 무리 | 클러스터에 보류 중인 노드가 없는지 확인합니다. 
+|===
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

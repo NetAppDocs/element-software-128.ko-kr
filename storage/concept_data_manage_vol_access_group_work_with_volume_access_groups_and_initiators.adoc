@@ -1,0 +1,51 @@
+---
+permalink: storage/concept_data_manage_vol_access_group_work_with_volume_access_groups_and_initiators.html 
+sidebar: sidebar 
+keywords: volume access groups, initiators, working with, chap, fc, iscsi 
+summary: iSCSI 이니시에이터 또는 파이버 채널 이니시에이터를 사용하여 볼륨 액세스 그룹 내에 정의된 볼륨에 액세스할 수 있습니다. 
+---
+= 볼륨 액세스 그룹 및 개시자와 함께 작업
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+iSCSI 이니시에이터 또는 파이버 채널 이니시에이터를 사용하여 볼륨 액세스 그룹 내에 정의된 볼륨에 액세스할 수 있습니다.
+
+볼륨 컬렉션에서 iSCSI 이니시에이터 IQN 또는 파이버 채널 WWPN을 매핑하여 액세스 그룹을 만들 수 있습니다.  액세스 그룹에 추가하는 각 IQN은 CHAP 인증이 필요하지 않고도 그룹의 각 볼륨에 액세스할 수 있습니다.
+
+CHAP 인증 방법에는 두 가지 유형이 있습니다.
+
+* 계정 수준 CHAP 인증: 계정에 CHAP 인증을 할당할 수 있습니다.
+* 초기자 수준 CHAP 인증: 단일 계정에서 단일 CHAP에 구속되지 않고도 특정 초기자에 대해 고유한 CHAP 대상과 비밀번호를 할당할 수 있습니다.  이 개시자 수준 CHAP 인증은 계정 수준 자격 증명을 대체합니다.
+
+
+선택적으로, 초기자별 CHAP를 사용하여 초기자 권한 부여 및 초기자별 CHAP 인증을 적용할 수 있습니다.  이러한 옵션은 개시자별로 정의할 수 있으며 액세스 그룹에는 다양한 옵션을 가진 여러 개시자가 포함될 수 있습니다.
+
+액세스 그룹에 WWPN을 추가하면 액세스 그룹의 볼륨에 대한 파이버 채널 네트워크 액세스가 가능해집니다.
+
+
+NOTE: 볼륨 액세스 그룹에는 다음과 같은 제한이 있습니다.
+
+* 액세스 그룹에서는 최대 64개의 IQN 또는 WWPN이 허용됩니다.
+* 액세스 그룹은 최대 2000개의 볼륨으로 구성될 수 있습니다.
+* IQN 또는 WWPN은 하나의 액세스 그룹에만 속할 수 있습니다.
+* 하나의 볼륨은 최대 4개의 액세스 그룹에 속할 수 있습니다.
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* xref:task_data_manage_vol_access_group_create_a_volume_access_group.adoc[볼륨 액세스 그룹 생성]
+* xref:task_data_manage_vol_access_group_add_volumes.adoc[액세스 그룹에 볼륨 추가]
+* xref:task_data_manage_vol_access_group_remove_volumes.adoc[액세스 그룹에서 볼륨 제거]
+* xref:task_data_manage_vol_access_group_create_an_initiator.adoc[개시자를 생성하세요]
+* xref:task_data_manage_vol_access_group_edit_an_initiator.adoc[개시자 편집]
+* xref:task_data_manage_vol_access_group_add_a_single_initiator.adoc[볼륨 액세스 그룹에 단일 이니시에이터 추가]
+* xref:task_data_manage_vol_access_group_add_multiple_initiators.adoc[볼륨 액세스 그룹에 여러 이니시에이터 추가]
+* xref:task_data_manage_vol_access_group_remove_initiators_from_an_access_group.adoc[액세스 그룹에서 개시자 제거]
+* xref:task_data_manage_vol_access_group_delete.adoc[액세스 그룹 삭제]
+* xref:task_data_manage_vol_access_group_delete_an_initiator.adoc[개시자 삭제]
+

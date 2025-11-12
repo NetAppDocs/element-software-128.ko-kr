@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_getclientcertificatesignrequest.html 
+sidebar: sidebar 
+keywords: client certificate,certificate signing request,creating certificate signing request,CSR,CA 
+summary: GetClientCertificateSignRequest 메서드를 사용하면 인증 기관에서 서명하여 클러스터에 대한 클라이언트 인증서를 생성할 수 있는 인증서 서명 요청을 생성할 수 있습니다.  외부 서비스와 상호 작용하기 위한 신뢰 관계를 구축하려면 서명된 인증서가 필요합니다. 
+---
+= 클라이언트 인증서 서명 요청 받기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `GetClientCertificateSignRequest` 클러스터에 대한 클라이언트 인증서를 생성하기 위해 인증 기관에서 서명할 수 있는 인증서 서명 요청을 생성하는 방법입니다.  외부 서비스와 상호 작용하기 위한 신뢰 관계를 구축하려면 서명된 인증서가 필요합니다.
+
+
+
+== 매개변수
+
+이 방법에는 입력 매개변수가 없습니다.
+
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+클라이언트 인증서 서명 요청
+ a| 
+PEM 형식으로 Base64로 인코딩된 PKCS#10 X.509 클라이언트 인증서 서명 요청입니다.
+ a| 
+끈
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "GetClientCertificateSignRequest",
+  "params": {
+  },
+"id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+   "id": 1,
+   "result":
+      {
+        "clientCertificateSignRequest": "MIIByjCCATMCAQAwgYkxCzAJBgNVBAYTAlVTMRMwEQYDVQQIEwpDYWxpZm9ybm..."
+   }
+}
+----
+
+
+== 버전 이후 새로운
+
+11.7

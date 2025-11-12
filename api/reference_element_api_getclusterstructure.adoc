@@ -1,0 +1,71 @@
+---
+permalink: api/reference_element_api_getclusterstructure.html 
+sidebar: sidebar 
+keywords: storage,cluster,structure,config,configuration,info,get,getting,getclusterstructure 
+summary: GetClusterStructure 메서드를 사용하면 현재 스토리지 클러스터 구성 정보를 백업할 수 있습니다.  이 방법을 실행하는 동안 스토리지 클러스터 구성이 변경되면 구성 백업 내용을 예측할 수 없게 됩니다.  이 데이터를 텍스트 파일에 저장하여 다른 클러스터에서 복원할 수 있으며, 재해 발생 시 동일한 클러스터에서 복원할 수도 있습니다. 
+---
+= 클러스터 구조 가져오기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `GetClusterStructure` 현재 스토리지 클러스터 구성 정보를 백업하는 방법입니다.  이 방법을 실행하는 동안 스토리지 클러스터 구성이 변경되면 구성 백업 내용을 예측할 수 없게 됩니다.  이 데이터를 텍스트 파일에 저장하여 다른 클러스터에서 복원할 수 있으며, 재해 발생 시 동일한 클러스터에서 복원할 수도 있습니다.
+
+
+
+== 매개변수
+
+이 방법에는 입력 매개변수가 없습니다.
+
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+결과
+ a| 
+현재 스토리지 클러스터 구성 정보를 포함하는 JSON 개체입니다.
+ a| 
+xref:reference_element_api_clusterstructure.adoc[클러스터 구조]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "GetClusterStructure",
+  "params": {},
+  "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+	"id": 1,
+	"result" : <clusterStructure object containing configuration information>
+	}
+----
+
+
+== 버전 이후 새로운
+
+10.3

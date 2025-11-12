@@ -1,0 +1,19 @@
+---
+permalink: storage/concept_mnode_work_with_the_management_node.html 
+sidebar: sidebar 
+keywords: management node,mNode 
+summary: '관리 노드 (mNode)를 사용하면 시스템 서비스를 업그레이드하고, 클러스터 자산 및 설정을 관리하고, 시스템 테스트 및 유틸리티를 실행하고, 시스템 모니터링을 위해 Active IQ 구성하고, 문제 해결을 위해 NetApp 지원 액세스를 활성화할 수 있습니다.' 
+---
+= 관리 노드로 작업
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+관리 노드(mNode)를 사용하면 시스템 서비스를 업그레이드하고, 클러스터 자산과 설정을 관리하고, 시스템 테스트와 유틸리티를 실행하고, 시스템 모니터링을 위해 Active IQ 구성하고, 문제 해결을 위해 NetApp 지원 액세스를 활성화할 수 있습니다.
+
+
+NOTE: 모범 사례로, 하나의 관리 노드만 하나의 VMware vCenter 인스턴스에 연결하고, 여러 관리 노드에서 동일한 스토리지 및 컴퓨팅 리소스나 vCenter 인스턴스를 정의하지 마세요.
+
+보다link:../mnode/task_mnode_work_overview.html["관리 노드 문서"] 자세한 내용은.

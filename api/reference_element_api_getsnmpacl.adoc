@@ -1,0 +1,90 @@
+---
+permalink: api/reference_element_api_getsnmpacl.html 
+sidebar: sidebar 
+keywords: snmp,acl,get,getting,getsnmpacl 
+summary: GetSnmpACL 메서드를 사용하면 클러스터 노드에 대한 현재 SNMP 액세스 권한을 가져올 수 있습니다. 
+---
+= GetSnmpACL
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `GetSnmpACL` 클러스터 노드에 대한 현재 SNMP 액세스 권한을 가져오는 방법입니다.
+
+
+
+== 매개변수
+
+이 방법에는 입력 매개변수가 없습니다.
+
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+네트워크
+ a| 
+클러스터 노드에서 실행되는 SNMP 서버에 대한 네트워크 및 액세스 유형 목록입니다.  SNMP v3가 비활성화된 경우 이 값이 존재합니다.
+ a| 
+xref:reference_element_api_network_snmp.adoc[회로망]정렬
+
+
+
+ a| 
+usm사용자
+ a| 
+클러스터 노드에서 실행되는 SNMP 서버에 대한 사용자 목록과 해당 사용자의 액세스 유형입니다.  SNMP v3가 활성화된 경우 이 값이 존재합니다.
+ a| 
+xref:reference_element_api_usmuser.adoc[usm사용자]정렬
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+"method": "GetSnmpACL",
+"params": {},
+"id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id" : 1,
+  "result" : {
+     "usmUsers"  : [
+       {
+          "name": "jdoe",
+          "access": "rouser",
+          "secLevel": "priv",
+          "password": "mypassword",
+          "passphrase": "mypassphrase",
+       }
+     ]
+   }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

@@ -1,0 +1,54 @@
+---
+permalink: api/reference_element_api_response_object_members.html 
+sidebar: sidebar 
+keywords: response,object,member 
+summary: 각 Element 소프트웨어 API 응답 본문에는 다음과 같은 기본 부분이 있습니다. 
+---
+= 응답 객체 멤버
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+각 Element 소프트웨어 API 응답 본문에는 다음과 같은 기본 부분이 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+결과
+ a| 
+메서드에서 반환된 객체입니다.  시스템은 메서드의 문서화된 반환 값에 해당하는 명명된 멤버가 포함된 객체를 반환합니다.  오류가 발생한 경우 이 멤버는 존재하지 않습니다.
+ a| 
+JSON 객체
+
+
+
+ a| 
+오류
+ a| 
+오류가 발생하면 반환되는 객체입니다.  이 멤버는 오류가 발생한 경우에만 존재합니다.
+ a| 
+물체
+
+
+
+ a| 
+ID
+ a| 
+요청에 제공된 대로 요청과 응답을 일치시키는 데 사용되는 식별자입니다.
+ a| 
+문자열 또는 정수
+
+
+
+ a| 
+사용되지 않은 매개변수
+ a| 
+적어도 하나의 잘못된 매개변수가 API 메서드에 전달되어 사용되지 않았다는 경고 메시지입니다.
+ a| 
+물체
+
+|===

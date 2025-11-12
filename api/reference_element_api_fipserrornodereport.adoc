@@ -1,0 +1,42 @@
+---
+permalink: api/reference_element_api_fipserrornodereport.html 
+sidebar: sidebar 
+keywords: objects,object,fipsErrorNodeReport 
+summary: fipsErrorNodeReport 개체에는 GetFipsReport 메서드로 쿼리를 실행할 때 FIPS 140-2 지원에 대한 정보로 응답하지 않는 각 노드에 대한 오류 정보가 포함되어 있습니다. 
+---
+= fipsErrorNodeReport
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+fipsErrorNodeReport 개체에는 FIPS 140-2 지원에 대한 정보를 쿼리할 때 응답하지 않는 각 노드에 대한 오류 정보가 포함되어 있습니다. `GetFipsReport` 방법.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+노드ID
+ a| 
+응답하지 않은 노드의 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+오류
+ a| 
+오류 정보를 포함하는 JSON 객체입니다.
+ a| 
+JSON 객체
+
+|===

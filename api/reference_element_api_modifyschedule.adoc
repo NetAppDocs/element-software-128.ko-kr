@@ -1,0 +1,351 @@
+---
+permalink: api/reference_element_api_modifyschedule.html 
+sidebar: sidebar 
+keywords: modify,modifying,edit,editing,change,changing,snapshot,schedule,scheduled,delete,pause,modifyschedule 
+summary: ModifySchedule을 사용하면 예약된 스냅샷이 발생하는 간격을 변경할 수 있습니다.  이 방법을 사용하면 일정을 삭제하거나 일시 중지할 수도 있습니다. 
+---
+= 일정 수정
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+사용할 수 있습니다 `ModifySchedule` 예약된 스냅샷이 발생하는 간격을 변경합니다.  이 방법을 사용하면 일정을 삭제하거나 일시 중지할 수도 있습니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+속성
+ a| 
+스냅샷 발생 빈도를 변경하는 데 사용합니다. 가능한 값:
+
+* `Days of Week`
+* `Days of Month`
+* `Time Interval`
+
+ a| 
+JSON 객체
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+시간
+ a| 
+요일 또는 월 모드에서 스냅샷 사이의 시간 수 또는 스냅샷이 발생하는 시간입니다. 유효한 값은 0~24입니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+이름
+ a| 
+스냅샷의 이름입니다.  이름을 입력하지 않으면 그룹 스냅샷이 촬영된 날짜와 시간이 사용됩니다.  허용되는 최대 이름 길이는 244자입니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+분
+ a| 
+주중 또는 월중 모드에서 스냅샷 사이의 분 수 또는 스냅샷이 발생하는 분입니다. 유효한 값은 0~59입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+
+
+| 마지막 실행 상태 | 마지막으로 예약된 스냅샷 생성의 결과 또는 상태입니다. | 끈 | None | 아니요 
+
+
+ a| 
+일시 정지
+ a| 
+일정을 일시 중지할지 여부를 나타냅니다.  유효한 값:
+
+* `true`
+* `false`
+
+ a| 
+부울
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+반복되는
+ a| 
+일정이 반복되는지 여부를 나타냅니다.  유효한 값은 다음과 같습니다.
+
+* `true`
+* `false`
+
+ a| 
+부울
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+다음 간격 실행
+ a| 
+스케줄러가 활성화되면 다음에 스냅샷을 실행할지 여부를 선택하는 데 사용됩니다.  유효한 값:
+
+* `true`
+* `false`
+
+
+true로 설정하면 스케줄러가 다음에 활성화될 때 예약된 스냅샷이 실행되고, 그 후에는 다시 false로 재설정됩니다.
+ a| 
+부울
+ a| 
+거짓
+ a| 
+아니요
+
+
+
+ a| 
+스케줄ID
+ a| 
+일정의 고유 ID입니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+일정 이름
+ a| 
+일정에 대한 고유한 이름입니다.  허용되는 일정 이름의 최대 길이는 244자입니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+일정 유형
+ a| 
+생성할 일정의 유형을 나타냅니다.  지원되는 유일한 값은 다음과 같습니다. `snapshot` .
+ a| 
+끈
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+`scheduleInfo`
+ a| 
+일정에 지정된 고유한 이름, 생성된 스냅샷의 보존 기간, 스냅샷이 생성된 볼륨의 볼륨 ID입니다.  유효한 값:
+
+* `enableRemoteReplication`: 스냅샷을 원격 복제에 포함할지 여부를 나타냅니다.  (부울)
+* `ensureSerialCreation`: 이전 스냅샷 복제가 진행 중인 경우 새 스냅샷 생성을 허용할지 여부를 지정합니다.  (부울)
+* `name`: 사용할 스냅샷 이름입니다.  (끈)
+* `retention`: 스냅샷이 보관되는 시간입니다.  시간에 따라 다음 형식 중 하나로 표시됩니다.
++
+** `fifo`: 스냅샷은 FIFO(선입선출) 방식으로 보관됩니다.  비어 있으면 스냅샷은 영구적으로 보관됩니다.  (끈)
+** 시:분:초
+
+
+* `volumeID`: 스냅샷에 포함될 볼륨의 ID입니다.  (정수)
+* `volumes`: 그룹 스냅샷에 포함될 볼륨 ID 목록입니다.  (정수 배열)
+
+ a| 
+link:reference_element_api_schedule.html["일정"^]
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+스냅미러라벨
+ a| 
+SnapMirror 소프트웨어에서 SnapMirror 엔드포인트의 스냅샷 보존 정책을 지정하는 데 사용되는 레이블입니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+삭제 예정
+ a| 
+일정이 삭제되도록 표시되었는지 여부를 나타냅니다.  유효한 값:
+
+* `true`
+* `false`
+
+ a| 
+부울
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+시작일
+ a| 
+일정이 처음 시작되거나 시작될 날짜를 나타냅니다.
+ a| 
+ISO 8601 날짜 문자열
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+월 일
+ a| 
+스냅샷을 찍을 날짜입니다. 유효한 값은 1~31입니다.
+ a| 
+정수 배열
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+평일
+ a| 
+스냅샷을 만들 요일입니다.  요일은 일요일부터 시작하며 값은 0이고 오프셋은 1입니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+일정
+ a| 
+수정된 일정 속성을 포함하는 객체입니다.
+ a| 
+xref:reference_element_api_schedule.adoc[일정]
+
+|===
+
+
+== 요청 예시
+
+[listing]
+----
+{
+  "method": "ModifySchedule",
+  "params": {
+    "scheduleName" : "Chicago",
+    "scheduleID" : 3
+    },
+  "id": 1
+}
+----
+
+
+== 응답 예시
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "schedule": {
+      "attributes": {
+        "frequency": "Days Of Week"
+            },
+      "hasError": false,
+      "hours": 5,
+      "lastRunStatus": "Success",
+      "lastRunTimeStarted": null,
+      "minutes": 0,
+      "monthdays": [],
+      "paused": false,
+      "recurring": true,
+      "runNextInterval": false,
+      "scheduleID": 3,
+      "scheduleInfo": {
+        "volumeID": "2"
+            },
+      "scheduleName": "Chicago",
+      "scheduleType": "Snapshot",
+      "startingDate": null,
+      "toBeDeleted": false,
+      "weekdays": [
+        {
+          "day": 2,
+          "offset": 1
+      }
+      ]
+    }
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

@@ -1,0 +1,163 @@
+---
+permalink: storage/task-element-replication-reactivate-original-source-volume.html 
+sidebar: sidebar 
+keywords: ontap,cli, reactivate, original, source, volume 
+summary: 더 이상 대상 볼륨에서 데이터를 제공할 필요가 없으면 소스 볼륨과 대상 볼륨 간의 원래 데이터 보호 관계를 다시 설정할 수 있습니다. 
+---
+= 원본 소스 볼륨을 다시 활성화합니다.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+더 이상 대상 볼륨에서 데이터를 제공할 필요가 없으면 소스 볼륨과 대상 볼륨 간의 원래 데이터 보호 관계를 다시 설정할 수 있습니다.
+
+.이 작업에 관하여
+아래 절차에서는 원본 볼륨의 기준선이 손상되지 않았다고 가정합니다.  기준선이 손상되지 않은 경우 절차를 수행하기 전에 데이터를 제공하는 볼륨과 원래 소스 볼륨 간의 관계를 만들고 초기화해야 합니다.
+
+양식에서 Element 소스 경로를 지정해야 합니다. `<hostip:>/lun/<name>` 여기서 "`lun`"은 실제 문자열 "`lun`"이고 `name` Element 볼륨의 이름입니다.
+
+ONTAP 9.4부터 ONTAP 대상에서 데이터를 제공하는 동안 생성된 LUN의 스냅샷 복사본은 Element 소스가 다시 활성화될 때 자동으로 복제됩니다.
+
+복제 규칙은 다음과 같습니다.
+
+* iSCSI LUN만 지원됩니다.
+* ONTAP 볼륨에서 Element 볼륨으로 두 개 이상의 LUN을 복제할 수 없습니다.
+* ONTAP 볼륨에서 여러 Element 볼륨으로 LUN을 복제할 수 없습니다.
+
+
+.단계
+. 원래 데이터 보호 관계를 삭제합니다.
++
+`snapmirror delete -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name> -policy <policy>`
+
++
+전체 명령 구문은 매뉴얼 페이지를 참조하세요.
+
++
+다음 예제에서는 원본 볼륨과 원본 볼륨 간의 관계를 삭제합니다. `0005` IP 주소 10.0.0.11 및 데이터를 제공하는 볼륨에서 `volA_dst` ~에 `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror delete -source-path 10.0.0.11:/lun/0005 -policy MirrorLatest -destination-path svm_backup:volA_dst
+----
+. 원래 데이터 보호 관계를 되돌립니다.
++
+`snapmirror resync -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name> -policy <policy>`
+
++
+전체 명령 구문은 매뉴얼 페이지를 참조하세요.
+
++
+재동기화에는 기준선 전송이 필요하지 않지만 시간이 많이 걸릴 수 있습니다.  비수요 시간대에 재동기화를 실행하는 것이 좋습니다.
+
++
+다음 예제는 원본 볼륨과 원본 볼륨 간의 관계를 반대로 합니다. `0005` IP 주소 10.0.0.11 및 데이터를 제공하는 볼륨에서 `volA_dst` ~에 `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror resync -source-path svm_backup:volA_dst -destination-path 10.0.0.11:/lun/0005 -policy MirrorLatest
+----
+. 역관계를 업데이트합니다.
++
+`snapmirror update -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name>`
+
++
+전체 명령 구문은 매뉴얼 페이지를 참조하세요.
+
++
+[NOTE]
+====
+소스와 대상에 공통 스냅샷 복사본이 없으면 명령이 실패합니다.  사용 `snapmirror initialize` 관계를 다시 초기화합니다.
+
+====
++
+다음 예제에서는 데이터를 제공하는 볼륨 간의 관계를 업데이트합니다. `volA_dst` ~에 `svm_backup` , 그리고 원본 소스 볼륨, `0005` IP 주소 10.0.0.11에서:
+
++
+[listing]
+----
+cluster_dst::> snapmirror update -source-path svm_backup:volA_dst -destination-path 10.0.0.11:/lun/0005
+----
+. 역전된 관계에 대한 예약된 전송을 중지합니다.
++
+`snapmirror quiesce -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name>`
+
++
+전체 명령 구문은 매뉴얼 페이지를 참조하세요.
+
++
+다음 예제에서는 데이터를 제공하고 있는 볼륨 간의 예약된 전송을 중지합니다. `volA_dst` ~에 `svm_backup` , 그리고 원본 소스 볼륨, `0005` IP 주소 10.0.0.11에서:
+
++
+[listing]
+----
+cluster_dst::> snapmirror quiesce -source-path svm_backup:volA_dst -destination-path 10.0.0.11:/lun/0005
+----
+. 역전된 관계에 대한 진행 중인 전송을 중지합니다.
++
+`snapmirror abort -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name>`
+
++
+전체 명령 구문은 매뉴얼 페이지를 참조하세요.
+
++
+다음 예제에서는 데이터를 제공하고 있는 볼륨 간의 진행 중인 전송을 중지합니다. `volA_dst` ~에 `svm_backup` , 그리고 원본 소스 볼륨, `0005` IP 주소 10.0.0.11에서:
+
++
+[listing]
+----
+cluster_dst::> snapmirror abort -source-path svm_backup:volA_dst -destination-path 10.0.0.11:/lun/0005
+----
+. 역관계를 끊으세요:
++
+`snapmirror break -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name>`
+
++
+전체 명령 구문은 매뉴얼 페이지를 참조하세요.
+
++
+다음 예제에서는 데이터를 제공하는 볼륨 간의 관계를 끊습니다. `volA_dst` ~에 `svm_backup` , 그리고 원본 소스 볼륨, `0005` IP 주소 10.0.0.11에서:
+
++
+[listing]
+----
+cluster_dst::> snapmirror break -source-path svm_backup:volA_dst -destination-path 10.0.0.11:/lun/0005
+----
+. 역전된 데이터 보호 관계를 삭제합니다.
++
+`snapmirror delete -source-path <SVM:volume>|<cluster://SVM/volume> -destination-path <hostip:>/lun/<name> -policy <policy>`
+
++
+전체 명령 구문은 매뉴얼 페이지를 참조하세요.
+
++
+다음 예제에서는 원본 볼륨과 원본 볼륨 사이의 역관계를 삭제합니다. `0005` IP 주소 10.0.0.11 및 데이터를 제공하는 볼륨에서 `volA_dst` ~에 `svm_backup` :
+
++
+[listing]
+----
+cluster_src::> snapmirror delete -source-path svm_backup:volA_dst -destination-path 10.0.0.11:/lun/0005 -policy MirrorLatest
+----
+. 원래의 데이터 보호 관계를 재설정합니다.
++
+`snapmirror resync -source-path <hostip:>/lun/<name> -destination-path <SVM:volume>|<cluster://SVM/volume>`
+
++
+전체 명령 구문은 매뉴얼 페이지를 참조하세요.
+
++
+다음 예에서는 원본 볼륨과 원본 볼륨 간의 관계를 재설정합니다. `0005` IP 주소 10.0.0.11 및 원래 대상 볼륨에서 `volA_dst` ~에 `svm_backup` :
+
++
+[listing]
+----
+cluster_dst::> snapmirror resync -source-path 10.0.0.11:/lun/0005 -destination-path svm_backup:volA_dst
+----
+
+
+.당신이 완료한 후
+사용하다 `snapmirror show` SnapMirror 관계가 생성되었는지 확인하는 명령입니다.  전체 명령 구문은 매뉴얼 페이지를 참조하세요.

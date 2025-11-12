@@ -1,0 +1,59 @@
+---
+permalink: storage/task_system_manage_key_set_up_external_key_management.html 
+sidebar: sidebar 
+keywords: sign request, certificate authority, software encryption at rest, ear, eks, csr 
+summary: 다음 단계를 따르고 나열된 Element API 메서드를 사용하여 외부 키 관리 기능을 설정할 수 있습니다. 
+---
+= 외부 키 관리 설정
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+다음 단계를 따르고 나열된 Element API 메서드를 사용하여 외부 키 관리 기능을 설정할 수 있습니다.
+
+.필요한 것
+* 휴면 상태의 소프트웨어 암호화와 함께 외부 키 관리를 설정하는 경우 다음을 사용하여 휴면 상태의 소프트웨어 암호화를 활성화했습니다.link:../api/reference_element_api_createcluster.html["클러스터 생성"] 볼륨을 포함하지 않는 새 클러스터에 대한 메서드입니다.
+
+
+.단계
+. 외부 키 서버(EKS)와 신뢰 관계를 구축합니다.
++
+.. 다음 API 메서드를 호출하여 키 서버와의 신뢰 관계를 구축하는 데 사용되는 Element 클러스터에 대한 공개/개인 키 쌍을 만듭니다.link:../api/reference_element_api_createpublicprivatekeypair.html["공개 개인 키 쌍 생성"]
+.. 인증 기관이 서명해야 하는 인증서 서명 요청(CSR)을 가져옵니다.  CSR을 통해 키 서버는 키에 액세스할 Element 클러스터가 Element 클러스터로 인증되었는지 확인할 수 있습니다.  다음 API 메서드를 호출합니다.link:../api/reference_element_api_getclientcertificatesignrequest.html["클라이언트 인증서 서명 요청 받기"]
+.. EKS/인증 기관을 사용하여 검색된 CSR에 서명합니다.  자세한 내용은 타사 문서를 참조하세요.
+
+
+. 클러스터에 서버와 공급자를 생성하여 EKS와 통신합니다.  키 제공자는 키를 어디에서 얻어야 하는지 정의하고, 서버는 통신할 EKS의 구체적인 속성을 정의합니다.
++
+.. 다음 API 메서드를 호출하여 키 서버 세부 정보가 저장될 키 공급자를 만듭니다.link:../api/reference_element_api_createkeyproviderkmip.html["CreateKeyProviderKmip"]
+.. 다음 API 메서드를 호출하여 서명된 인증서와 인증 기관의 공개 키 인증서를 제공하는 키 서버를 만듭니다.link:../api/reference_element_api_createkeyserverkmip.html["CreateKeyServerKmip"] link:../api/reference_element_api_testkeyserverkmip.html["테스트키서버Kmip"]
++
+테스트에 실패하면 서버 연결 및 구성을 확인하세요.  그런 다음 테스트를 반복합니다.
+
+.. 다음 API 메서드를 호출하여 키 제공자 컨테이너에 키 서버를 추가합니다.link:../api/reference_element_api_addkeyservertoproviderkmip.html["AddKeyServerToProviderKmip"] link:../api/reference_element_api_testkeyproviderkmip.html["테스트키공급자Kmip"]
++
+테스트에 실패하면 서버 연결 및 구성을 확인하세요.  그런 다음 테스트를 반복합니다.
+
+
+
+. 저장 중 암호화를 위한 다음 단계로 다음 중 하나를 수행하세요.
++
+.. (휴면 하드웨어 암호화의 경우) 활성화link:../concepts/concept_solidfire_concepts_security.html["휴면 상태의 하드웨어 암호화"] 키를 저장하는 데 사용되는 키 서버를 포함하는 키 공급자의 ID를 제공하여 호출합니다.link:../api/reference_element_api_enableencryptionatrest.html["휴지상태에서 암호화 활성화"] API 방식.
++
+
+NOTE: 다음을 통해 휴면 암호화를 활성화해야 합니다.link:../api/reference_element_api_enableencryptionatrest.html["API"] .  기존 Element UI 버튼을 사용하여 저장 상태에서 암호화를 활성화하면 해당 기능이 내부적으로 생성된 키를 사용하도록 되돌아갑니다.
+
+.. (휴면 상태의 소프트웨어 암호화를 위해)link:../concepts/concept_solidfire_concepts_security.html["휴면 상태의 소프트웨어 암호화"] 새로 생성된 키 공급자를 활용하려면 키 공급자 ID를 다음 항목에 전달합니다.link:../api/reference_element_api_rekeysoftwareencryptionatrestmasterkey.html["RekeySoftwareEncryptionAtRestMasterKey"] API 방식.
+
+
+
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* link:task_system_manage_cluster_enable_and_disable_encryption_for_a_cluster.html["클러스터에 대한 암호화 활성화 및 비활성화"]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

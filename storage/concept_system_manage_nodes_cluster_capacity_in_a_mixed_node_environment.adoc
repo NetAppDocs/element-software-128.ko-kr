@@ -1,0 +1,50 @@
+---
+permalink: storage/concept_system_manage_nodes_cluster_capacity_in_a_mixed_node_environment.html 
+sidebar: sidebar 
+keywords: nodes, mixed environment, capacity, cluster capacity, mixed nodes, encrypted, non-encrypted, threshold 
+summary: 클러스터에서 여러 유형의 노드를 혼합할 수 있습니다.  SF 시리즈 2405, 3010, 4805, 6010, 9605, 9010, 19210, 38410 및 H 시리즈는 클러스터로 공존할 수 있습니다. 
+---
+= 혼합 노드 환경의 클러스터 용량
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+클러스터에서 여러 유형의 노드를 혼합할 수 있습니다.  SF 시리즈 2405, 3010, 4805, 6010, 9605, 9010, 19210, 38410 및 H 시리즈는 클러스터로 공존할 수 있습니다.
+
+H 시리즈는 H610S-1, H610S-2, H610S-4, H410S 노드로 구성됩니다.  이 노드는 모두 10GbE와 25GbE를 지원합니다.
+
+암호화되지 않은 노드와 암호화된 노드를 섞어 사용하지 않는 것이 가장 좋습니다.  혼합 노드 클러스터에서는 어떤 노드도 전체 클러스터 용량의 33%보다 클 수 없습니다.  예를 들어, SF-시리즈 4805 노드가 4개 있는 클러스터에서 단독으로 추가할 수 있는 가장 큰 노드는 SF-시리즈 9605입니다.  클러스터 용량 임계값은 이 상황에서 가장 큰 노드의 잠재적 손실에 따라 계산됩니다.
+
+Element 소프트웨어 버전에 따라 다음 SF 시리즈 스토리지 노드는 지원되지 않습니다.
+
+[cols="40,40"]
+|===
+| ...부터 시작해서 | 저장 노드가 지원되지 않습니다... 
+
+
+| 원소 12.8  a| 
+* SF4805
+* SF9605
+* SF19210
+* SF38410
+
+
+
+
+| 원소 12.7  a| 
+* SF2405
+* SF9608
+
+
+
+
+| 원소 12.0  a| 
+* SF3010
+* SF6010
+* SF9010
+
+
+|===
+이러한 노드 중 하나를 지원되지 않는 Element 버전으로 업그레이드하려고 하면 해당 노드가 Element 12.x에서 지원되지 않는다는 오류가 표시됩니다.

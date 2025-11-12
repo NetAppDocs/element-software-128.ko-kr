@@ -1,0 +1,80 @@
+---
+permalink: api/reference_element_api_getcurrentclusteradmin.html 
+sidebar: sidebar 
+keywords: cluster,admin,get,getting,current,getcurrentclusteradmin 
+summary: GetCurrentClusterAdmin 메서드를 사용하면 현재 기본 클러스터 관리자에 대한 정보를 반환할 수 있습니다.  기본 클러스터 관리자는 클러스터가 생성될 때 생성되었습니다. 
+---
+= GetCurrentClusterAdmin
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `GetCurrentClusterAdmin` 현재 기본 클러스터 관리자에 대한 정보를 반환하는 방법입니다.  기본 클러스터 관리자는 클러스터가 생성될 때 생성되었습니다.
+
+
+
+== 매개변수
+
+이 방법에는 입력 매개변수가 없습니다.
+
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+클러스터 관리자
+ a| 
+클러스터 관리자에 대한 정보입니다.
+ a| 
+xref:reference_element_api_clusteradmin.adoc[클러스터 관리자]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+"method": "GetCurrentClusterAdmin",
+"id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+"id": 1,
+"result": {
+    "clusterAdmin":
+        "access": [
+           "administrator"
+        ],
+         "attributes": null,
+         "authMethod": "Cluster"
+         "clusterAdminID": 1,
+         "username": "admin"
+     }
+   }
+}
+----
+
+
+== 버전 이후 새로운
+
+10.0

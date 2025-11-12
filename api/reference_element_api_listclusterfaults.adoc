@@ -1,0 +1,152 @@
+---
+permalink: api/reference_element_api_listclusterfaults.html 
+sidebar: sidebar 
+keywords: cluster,list,listing,fault,faults,listclusterfaults,error,errors 
+summary: ListClusterFaults 메서드를 사용하면 클러스터에서 감지된 모든 오류에 대한 정보를 나열할 수 있습니다.  이 방법을 사용하면 현재 오류와 해결된 오류를 모두 나열할 수 있습니다.  시스템은 30초마다 오류를 캐시합니다. 
+---
+= ListClusterFaults
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `ListClusterFaults` 클러스터에서 감지된 모든 오류에 대한 정보를 나열하는 방법입니다.  이 방법을 사용하면 현재 오류와 해결된 오류를 모두 나열할 수 있습니다.  시스템은 30초마다 오류를 캐시합니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+모범 사례
+ a| 
+최적이 아닌 시스템 구성으로 인해 발생하는 오류를 포함합니다. 가능한 값:
+
+* true
+* 거짓
+
+ a| 
+부울
+ a| 
+None
+ a| 
+아니요
+
+
+
+ a| 
+오류 유형
+ a| 
+반환된 오류 유형을 결정합니다. 가능한 값:
+
+* 현재: 활성화되어 있지만 해결되지 않은 오류를 나열합니다.
+* 해결됨: 이전에 감지되어 해결된 오류를 나열합니다.
+* 모두: 현재 오류와 해결된 오류를 모두 나열합니다.  오류 객체의 "`resolved`" 멤버에서 오류 상태를 볼 수 있습니다.
+
+ a| 
+끈
+ a| 
+모두
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+단층
+ a| 
+요청된 클러스터 오류를 설명하는 객체입니다.
+ a| 
+xref:reference_element_api_fault.adoc[잘못]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "method": "ListClusterFaults",
+    "params": {
+      "faultTypes": "current",
+      "bestPractices": true
+    },
+    "id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "faults": [
+      {
+        "blocksUpgrade": false,
+        "clusterFaultID": 3,
+        "code": "driveAvailable",
+        "data": null,
+        "date": "2024-04-03T22:22:56.660275Z",
+        "details": "Node ID 1 has 6 available drive(s).",
+        "driveID": 0,
+        "driveIDs": [],
+        "externalSource": "",
+        "networkInterface": "",
+        "nodeHardwareFaultID": 0,
+        "nodeID": 1,
+        "resolved": true,
+        "resolvedDate": "2024-04-03T22:24:54.598693Z",
+        "serviceID": 0,
+        "severity": "warning",
+        "type": "drive"
+      },
+      {
+        "clusterFaultID": 9,
+        "code": "disconnectedClusterPair",
+        "data": null,
+        "date": "2016-04-26T20:40:08.736597Z",
+        "details": "One of the clusters in a pair may have become misconfigured or disconnected.  Remove the local pairing and retry pairing the clusters. Disconnected Cluster Pairs: []. Misconfigured Cluster Pairs: [3]",
+        "driveID": 0,
+        "driveIDs": [],
+        "nodeHardwareFaultID": 0,
+        "nodeID": 0,
+        "resolved": false,
+        "resolvedDate": "",
+        "serviceID": 0,
+        "severity": "warning",
+        "type": "cluster"
+      }
+    ]
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

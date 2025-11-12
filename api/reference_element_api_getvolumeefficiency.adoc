@@ -1,0 +1,133 @@
+---
+permalink: api/reference_element_api_getvolumeefficiency.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,stats,measurements,efficiency,GetVolumeEfficiency 
+summary: GetVolumeEfficiency 메서드를 사용하면 볼륨에 대한 정보를 얻을 수 있습니다.  이 API 메서드에서 매개변수로 제공한 볼륨만 용량을 계산하는 데 사용됩니다. 
+---
+= 볼륨 효율성 얻기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `GetVolumeEfficiency` 볼륨에 대한 정보를 얻는 방법입니다.  이 API 메서드에서 매개변수로 제공한 볼륨만 용량을 계산하는 데 사용됩니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+볼륨ID
+ a| 
+용량이 계산되는 볼륨을 지정합니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+압축
+ a| 
+단일 볼륨의 데이터를 압축하여 절약되는 공간의 양입니다.  비율로 표현되며, 1은 데이터가 압축되지 않고 저장되었음을 의미합니다.
+ a| 
+뜨다
+
+
+
+ a| 
+중복 제거
+ a| 
+데이터를 복제하지 않음으로써 단일 볼륨에서 절약되는 공간의 양입니다.  비율로 표시됩니다.
+ a| 
+뜨다
+
+
+
+ a| 
+누락된 볼륨
+ a| 
+효율성 데이터를 쿼리할 수 없는 볼륨입니다.  볼륨 누락은 가비지 수집(GC)이 1시간 이내에 이루어졌거나, 일시적인 네트워크 손실 또는 GC 주기 이후 서비스가 다시 시작된 경우에 발생할 수 있습니다.
+ a| 
+정수 배열
+
+
+
+ a| 
+씬프로비저닝
+ a| 
+데이터를 저장하기 위해 할당된 공간의 양에 대한 사용된 공간의 비율입니다.  비율로 표시됩니다.
+ a| 
+뜨다
+
+
+
+ a| 
+타임스탬프
+ a| 
+GC 이후 효율성 데이터가 수집된 마지막 시간입니다.
+ a| 
+ISO 8601 데이터 문자열
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "GetVolumeEfficiency",
+   "params": {
+      "volumeID": 606
+   },
+   "id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+       "compression": 2.001591240821456,
+       "deduplication": 1,
+       "missingVolumes": [],
+       "thinProvisioning": 1.009861932938856,
+       "timestamp": "2014-03-10T16:06:33Z"
+   }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

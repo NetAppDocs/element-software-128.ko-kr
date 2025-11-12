@@ -1,0 +1,36 @@
+---
+section: setup
+title: 저장소 설정
+entries:
+- title: 저장소 설정에 대해 알아보세요
+  url: "/setup/concept_setup_overview.html"
+- title: 스토리지 노드가 있는 클러스터 설정
+  entries:
+  - title: 스토리지 노드 구성
+    url: "/setup/concept_setup_configure_a_storage_node.html"
+  - title: 스토리지 클러스터 생성
+    url: "/setup/task_setup_create_a_storage_cluster.html"
+  - title: Element 소프트웨어 사용자 인터페이스에 로그인하세요
+    url: "/setup/task_post_deploy_access_the_element_software_user_interface.html"
+  - title: 클러스터에 드라이브 추가
+    url: "/setup/task_setup_add_drives_to_a_cluster.html"
+- title: 파이버 채널 노드로 클러스터 설정
+  entries:
+  - title: 파이버 채널 노드 구성
+    url: "/setup/concept_setup_fc_configure_a_fibre_channel_node.html"
+  - title: 파이버 채널 노드가 있는 새 클러스터를 만듭니다.
+    url: "/setup/task_setup_fc_create_a_new_cluster_with_fibre_channel_nodes.html"
+  - title: 클러스터에 파이버 채널 노드 추가
+    url: "/setup/task_setup_fc_add_fibre_channel_nodes_to_a_cluster.html"
+  - title: 파이버 채널 노드에 대한 영역 설정
+    url: "/setup/concept_setup_fc_set_up_zones_for_fibre_channel_nodes.html"
+  - title: 파이버 채널 클라이언트에 대한 볼륨 액세스 그룹을 만듭니다.
+    url: "/setup/task_setup_create_a_volume_access_group_for_fibre_channel_clients.html"
+- title: 설치할 SolidFire 구성 요소를 결정하세요
+  url: "/setup/task_setup_determine_which_solidfire_components_to_install.html"
+- title: 관리 노드 설정
+  url: "/setup/task_setup_gh_redirect_set_up_a_management_node.html"
+- title: 정규화된 도메인 이름 웹 UI 액세스 구성
+  url: "/setup/task_setup_configure_fqdn_web_ui_access.html"
+- title: 다음은 무엇인가요?
+  url: "/setup/concept_setup_whats_next.html"

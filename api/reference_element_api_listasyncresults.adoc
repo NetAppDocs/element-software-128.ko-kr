@@ -1,0 +1,119 @@
+---
+permalink: api/reference_element_api_listasyncresults.html 
+sidebar: sidebar 
+keywords: async,asynchronous,result,results,get,list,listing,listasyncresults 
+summary: ListAsyncResults를 사용하면 시스템에서 현재 실행 중이고 완료된 모든 비동기 메서드의 결과를 나열할 수 있습니다.  ListAsyncResults를 사용하여 비동기 결과를 쿼리해도 완료된 asyncHandle이 만료되지 않습니다. GetAsyncResult를 사용하면 ListAsyncResults에서 반환된 모든 asyncHandle을 쿼리할 수 있습니다. 
+---
+= 비동기 결과 목록
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+사용할 수 있습니다 `ListAsyncResults` 시스템에서 현재 실행 중이고 완료된 모든 비동기 메서드의 결과를 나열합니다.  비동기 결과 쿼리 `ListAsyncResults` 완료된 asyncHandles가 만료되지 않도록 합니다. 사용할 수 있습니다. `GetAsyncResult` 반환된 asyncHandles를 쿼리하려면 `ListAsyncResults` .
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+비동기 결과 유형
+ a| 
+결과 유형의 선택적 목록입니다.  이 목록을 사용하면 해당 유형의 작업에만 결과를 제한할 수 있습니다. 가능한 값:
+
+* DriveAdd: 클러스터에 드라이브를 추가하는 시스템과 관련된 작업입니다.
+* BulkVolume: 백업이나 복원과 같은 볼륨 간 복사 작업입니다.
+* 복제: 볼륨 복제 작업.
+* DriveRemoval: 클러스터에서 드라이브를 제거하기 위해 시스템이 드라이브에서 데이터를 복사하는 작업입니다.
+* RtfiPendingNode: 클러스터에 노드를 추가하기 전에 시스템이 해당 노드에 호환 소프트웨어를 설치하는 작업입니다.
+
+ a| 
+문자열 배열
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+비동기 핸들
+ a| 
+직렬화된 비동기 메서드 결과의 배열입니다.
+ a| 
+JSON 객체 배열
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "ListAsyncResults",
+   "params": {
+   },
+   "id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+   "id": 1,
+   "result": {
+     "asyncHandles": [
+       {
+         "asyncResultID": 47,
+         "completed": true,
+         "createTime": "2016-01-01T22:29:19Z",
+         "data": {
+           "cloneID": 26,
+           "message": "Clone complete.",
+           "volumeID": 48
+         },
+         "lastUpdateTime": "2016-01-01T22:45:43Z",
+         "resultType": "Clone",
+         "success": true
+      },
+      ...]
+   }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_getasyncresult.adoc[비동기 결과 가져오기]

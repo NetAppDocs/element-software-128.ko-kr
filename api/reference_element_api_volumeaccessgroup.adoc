@@ -1,0 +1,92 @@
+---
+permalink: api/reference_element_api_volumeaccessgroup.html 
+sidebar: sidebar 
+keywords: object,objects,volumeAccessGroup 
+summary: volumeAccessGroup 개체에는 특정 볼륨 액세스 그룹에 대한 정보가 포함되어 있습니다.  API 메서드 ListVolumeAccessGroups를 사용하면 모든 액세스 그룹에 대한 정보 목록을 검색할 수 있습니다. 
+---
+= 볼륨액세스그룹
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+volumeAccessGroup 개체에는 특정 볼륨 액세스 그룹에 대한 정보가 포함되어 있습니다.  API 메서드를 사용하여 모든 액세스 그룹에 대한 이 정보 목록을 검색할 수 있습니다. `ListVolumeAccessGroups` .
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+속성
+ a| 
+JSON 객체 형식의 이름-값 쌍 목록입니다.
+ a| 
+JSON 객체
+
+
+
+ a| 
+삭제된 볼륨
+ a| 
+볼륨 액세스 그룹에서 삭제되었지만 아직 시스템에서 제거되지 않은 볼륨 배열입니다.
+ a| 
+정수 배열
+
+
+
+ a| 
+개시자 ID
+ a| 
+볼륨 액세스 그룹에 매핑된 개시자 ID 목록입니다.
+ a| 
+정수 배열
+
+
+
+ a| 
+개시자들
+ a| 
+볼륨 액세스 그룹에 매핑된 고유한 IQN/WWPN 개시자 배열입니다.
+ a| 
+문자열 배열
+
+
+
+ a| 
+이름
+ a| 
+볼륨 액세스 그룹의 이름입니다.
+ a| 
+끈
+
+
+
+ a| 
+볼륨액세스그룹ID
+ a| 
+볼륨 액세스 그룹에 대한 고유한 VolumeAccessGroupID 식별자입니다.
+ a| 
+정수
+
+
+
+ a| 
+볼륨
+ a| 
+볼륨 액세스 그룹에 속하는 VolumeID 목록입니다.
+ a| 
+정수 배열
+
+|===
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_listvolumeaccessgroups.adoc[볼륨 액세스 그룹 목록]

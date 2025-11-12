@@ -1,0 +1,109 @@
+---
+permalink: api/reference_element_api_setclusterconfig.html 
+sidebar: sidebar 
+keywords: cluster,configuration,set,setting,node,setclusterconfig 
+summary: SetClusterConfig 메서드를 사용하면 노드가 연관된 클러스터와 통신하는 데 사용하는 구성을 설정할 수 있습니다.  노드의 현재 클러스터 인터페이스 설정을 표시하려면 GetClusterConfig API 메서드를 실행합니다. 
+---
+= 클러스터 구성 설정
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `SetClusterConfig` 노드가 연관된 클러스터와 통신하는 데 사용하는 구성을 설정하는 방법입니다.  노드의 현재 클러스터 인터페이스 설정을 표시하려면 다음을 실행하세요. `GetClusterConfig` API 방식.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+무리
+ a| 
+이 메서드 호출 중에 변경되어야 하는 구성 속성입니다.  변경하려는 필드만 이 매개변수의 멤버로 이 메서드에 추가하면 됩니다.
+ a| 
+xref:reference_element_api_cluster.adoc[무리]
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+무리
+ a| 
+노드가 클러스터와 통신하는 데 사용하는 구성 정보입니다.
+ a| 
+xref:reference_element_api_cluster.adoc[무리]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "SetClusterConfig",
+   "params": {
+      "cluster": {
+         "name": "myhost",
+         "mipi": "Bond10G"
+      },
+    "id" : 1
+   }
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+   "id" : 1,
+   "result" : {
+      "cluster" : {
+         "cipi" : "Bond10G",
+         "cluster" : "QoS",
+         "ensemble" : [
+            "1:10.10.5.42",
+            "2:10.10.5.43",
+            "3:10.10.5.44",
+            "4:10.10.5.46",
+            "5:10.10.5.47"
+         ],
+          "hostname" : "myhost",
+          "mipi" : "Bond10G",
+          "nodeID" : 1,
+          "sipi" : "Bond10G",
+          "state" : "Active"
+      }
+   }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

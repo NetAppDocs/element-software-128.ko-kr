@@ -1,0 +1,172 @@
+---
+permalink: api/reference_element_api_signsshkeys.html 
+sidebar: sidebar 
+keywords: ssh, sign key 
+summary: 노드나 클러스터에서 ssh가 활성화되면 SignSshKeys 메서드를 사용하여 sfadmin 또는 sfreadonly로 노드의 셸에 액세스할 수 있습니다. sfreadonly는 Element 12.5부터 새로 추가된 사용자 계정으로, 노드에서 초기 문제 해결은 가능하지만 관리자 권한을 가진 명령을 내릴 수 있는 권한은 없습니다. 
+---
+= SignSshKeys
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+클러스터에서 SSH가 활성화된 후link:../api/reference_element_api_enablessh.html["EnableSSH 메서드"] , 당신은 사용할 수 있습니다 `SignSshKeys` 노드의 셸에 접근하는 방법.
+
+Element 12.5부터 시작하여, `sfreadonly` 새로운 시스템 계정을 사용하면 노드에서 기본적인 문제 해결이 가능합니다.  이 API는 다음을 사용하여 SSH 액세스를 활성화합니다. `sfreadonly` 클러스터의 모든 노드에 대한 시스템 계정입니다.
+
+
+WARNING: NetApp 지원팀의 별도 안내 없이 시스템을 변경하는 것은 지원되지 않으며, 지원 계약이 무효화되고 데이터 불안정이나 접근 불가 현상이 발생할 수 있습니다.
+
+해당 방법을 사용한 후에는 응답에서 키체인을 복사하여 SSH 연결을 시작할 시스템에 저장한 후 다음 명령을 실행해야 합니다.
+
+[listing]
+----
+ssh -i <identity_file> sfreadonly@<node_ip>
+----
+ `identity_file`공개 키 인증을 위한 ID(개인 키)를 읽어들이는 파일입니다. `node_ip` 는 노드의 IP 주소입니다.  자세한 내용은 `identity_file` SSH 매뉴얼 페이지를 참조하세요.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+지속
+ a| 
+서명된 키가 유효한 데 걸리는 시간을 나타내는 1~24의 정수입니다.  기간이 지정되지 않으면 기본값이 사용됩니다.
+ a| 
+정수
+ a| 
+1
+ a| 
+아니요
+
+
+
+ a| 
+공개키
+ a| 
+이 매개변수가 제공되면 사용자에게 전체 키체인을 생성하는 대신 signed_public_key만 반환합니다.
+
+
+NOTE: 브라우저의 URL 표시줄을 사용하여 제출된 공개 키 `+` 간격을 두고 끊어서 표기하는 것으로 해석됩니다.
+ a| 
+끈
+ a| 
+널
+ a| 
+아니요
+
+
+
+ a| 
+sfadmin
+ a| 
+supportAdmin 클러스터 액세스로 API 호출을 하거나 노드가 클러스터에 없을 때 sfadmin 셸 계정에 액세스할 수 있도록 허용합니다.
+ a| 
+부울
+ a| 
+거짓
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+키젠 상태
+ a| 
+서명된 키의 ID, 허용되는 주체, 키의 유효한 시작 및 종료 날짜가 포함되어 있습니다.
+ a| 
+끈
+
+
+
+ a| 
+개인 키
+ a| 
+API가 최종 사용자를 위한 완전한 키체인을 생성하는 경우에만 개인 SSH 키 값이 반환됩니다.
+
+
+NOTE: 값은 Base64로 인코딩되어 있습니다. 유효한 개인 키로 읽히는지 확인하려면 파일에 쓸 때 값을 디코딩해야 합니다.
+ a| 
+끈
+
+
+
+ a| 
+공개키
+ a| 
+공개 SSH 키 값은 API가 최종 사용자를 위한 완전한 키체인을 생성하는 경우에만 반환됩니다.
+
+
+NOTE: API 메서드에 public_key 매개변수를 전달하는 경우 `signed_public_key` 응답에서 값이 반환됩니다.
+ a| 
+끈
+
+
+
+ a| 
+서명된 공개 키
+ a| 
+사용자가 제공했거나 API에서 생성한 공개 키에 서명하여 생성되는 SSH 공개 키입니다.
+ a| 
+끈
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+    "method": "SignSshKeys",
+    "params": {
+        "duration": 2,
+        "publicKey":<string>
+    },
+    "id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": null,
+  "result": {
+    "signedKeys": {
+      "keygen_status": <keygen_status>,
+      "signed_public_key": <signed_public_key>
+    }
+  }
+}
+----
+이 예에서는 공개 키가 서명되어 유효 기간(1~24시간) 동안 반환됩니다.
+
+
+
+== 버전 이후 새로운
+
+12.5

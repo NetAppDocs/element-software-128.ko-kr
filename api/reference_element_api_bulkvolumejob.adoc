@@ -1,0 +1,155 @@
+---
+permalink: api/reference_element_api_bulkvolumejob.html 
+sidebar: sidebar 
+keywords: bulkVolumeJob,object,objects,read,write,clones,snapshots,clone,snapshot 
+summary: bulkVolumeJob 개체에는 복제나 스냅샷 생성과 같은 대량 볼륨 읽기 또는 쓰기 작업에 대한 정보가 포함되어 있습니다. 
+---
+= 대량 볼륨 작업
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+그만큼 `bulkVolumeJob` 개체에는 복제나 스냅샷 생성과 같은 대량 볼륨 읽기 또는 쓰기 작업에 대한 정보가 포함되어 있습니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+`attributes`
+ a| 
+대량 볼륨 작업의 JSON 속성입니다.
+ a| 
+JSON 객체
+
+
+
+ a| 
+`bulkVolumeID`
+ a| 
+내부 대량 볼륨 작업 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+`createTime`
+ a| 
+UTC+0 형식으로 대량 볼륨 작업을 위해 생성된 타임스탬프입니다.
+ a| 
+ISO 8601 날짜 문자열
+
+
+
+ a| 
+`elapsedTime`
+ a| 
+작업이 시작된 이후 경과된 초 수입니다.
+ a| 
+끈
+
+
+
+ a| 
+`format`
+ a| 
+대량 거래 작업의 형식입니다. 가능한 값:
+
+* 토종의
+* 압축되지 않은
+
+ a| 
+끈
+
+
+
+ a| 
+`key`
+ a| 
+대량 볼륨 세션에서 생성된 고유 키입니다.
+ a| 
+끈
+
+
+
+ a| 
+`percentComplete`
+ a| 
+작업에서 보고한 완료율입니다.
+ a| 
+정수
+
+
+
+ a| 
+`remainingTime`
+ a| 
+남은 예상 시간(초)입니다.
+ a| 
+정수
+
+
+
+ a| 
+`srcVolumeID`
+ a| 
+소스 볼륨 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+`status`
+ a| 
+작업 상태. 가능한 값:
+
+* 준비 중
+* 달리기
+* 완벽한
+* 실패한
+
+ a| 
+끈
+
+
+
+ a| 
+`script`
+ a| 
+스크립트 이름이 제공된 경우 해당 스크립트의 이름입니다.
+ a| 
+끈
+
+
+
+ a| 
+`snapshotID`
+ a| 
+대량 볼륨 작업의 소스에 스냅샷이 있는 경우 스냅샷의 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+`type`
+ a| 
+대량 작업의 유형. 가능한 값:
+
+* 읽다
+* 쓰다
+
+ a| 
+끈
+
+|===

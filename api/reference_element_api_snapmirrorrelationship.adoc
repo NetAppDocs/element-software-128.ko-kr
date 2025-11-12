@@ -1,0 +1,243 @@
+---
+permalink: api/reference_element_api_snapmirrorrelationship.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorRelationship 
+summary: snapMirrorRelationship 개체에는 Element 볼륨과 ONTAP 볼륨 간의 SnapMirror 관계에 대한 정보가 포함되어 있습니다. 
+---
+= 스냅미러관계
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorRelationship 개체에는 Element 볼륨과 ONTAP 볼륨 간의 SnapMirror 관계에 대한 정보가 포함되어 있습니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+스냅미러엔드포인트ID
+ a| 
+대상 ONTAP 시스템의 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+스냅미러관계ID
+ a| 
+ListSnapMirrorRelationships에서 반환되는 배열의 각 snapMirrorRelationship 개체에 대한 고유 식별자입니다.  이 UUID는 ONTAP 시스템에서 생성되어 반환됩니다.
+ a| 
+끈
+
+
+
+ a| 
+소스볼륨
+ a| 
+소스 볼륨을 설명하는 객체입니다.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[스냅미러볼륨정보]
+
+
+
+ a| 
+목적지볼륨
+ a| 
+대상 볼륨을 설명하는 객체입니다.
+ a| 
+xref:reference_element_api_snapmirrorvolumeinfo.adoc[스냅미러볼륨정보]
+
+
+
+ a| 
+현재 최대 전송률
+ a| 
+소스 및 대상 볼륨 간의 현재 최대 전송 속도(초당 킬로바이트)입니다.
+ a| 
+정수
+
+
+
+ a| 
+건강하다
+ a| 
+관계가 건강한지 아닌지. 가능한 값:
+
+* 참: 관계가 건강합니다.
+* 거짓: 관계가 건강하지 않습니다.  이는 수동 또는 예약된 업데이트가 실패하거나 중단되었거나 마지막으로 예약된 업데이트가 지연된 경우 발생할 수 있습니다.
+
+ a| 
+부울
+
+
+
+ a| 
+지연 시간
+ a| 
+대상 볼륨의 데이터가 소스 볼륨의 데이터보다 뒤처지는 시간(초)입니다.
+ a| 
+정수
+
+
+
+ a| 
+마지막 전송 기간
+ a| 
+마지막 전송이 완료되는 데 걸린 시간(초)입니다.
+ a| 
+정수
+
+
+
+ a| 
+마지막 전송 오류
+ a| 
+마지막 전송 실패의 원인을 설명하는 메시지입니다.
+ a| 
+끈
+
+
+
+ a| 
+마지막 전송 크기
+ a| 
+마지막 전송 중에 전송된 총 바이트 수입니다.
+ a| 
+정수
+
+
+
+ a| 
+마지막 전송 종료 타임스탬프
+ a| 
+마지막 전송이 종료된 타임스탬프입니다.
+ a| 
+ISO 8601 날짜 문자열
+
+
+
+ a| 
+마지막 전송 유형
+ a| 
+관계에서 이전에 이루어진 전송의 유형입니다.
+ a| 
+끈
+
+
+
+ a| 
+최대 전송률
+ a| 
+볼륨 간 최대 데이터 전송 속도를 초당 킬로바이트 단위로 지정합니다.  기본값인 0은 무제한이며 SnapMirror 관계가 사용 가능한 네트워크 대역폭을 최대한 활용할 수 있도록 허용합니다.
+ a| 
+정수
+
+
+
+ a| 
+미러 상태
+ a| 
+SnapMirror 관계의 미러 상태입니다. 가능한 값:
+
+* 초기화되지 않음: 대상 볼륨이 초기화되지 않았습니다.
+* snapmirrored: 대상 볼륨이 초기화되었으며 SnapMirror 업데이트를 받을 준비가 되었습니다.
+* broken-off: 대상 볼륨이 읽기-쓰기가 가능하고 스냅샷이 존재합니다.
+
+ a| 
+끈
+
+
+
+ a| 
+최신 스냅샷
+ a| 
+대상 볼륨의 최신 스냅샷 복사본의 이름입니다.
+ a| 
+끈
+
+
+
+ a| 
+정책 이름
+ a| 
+관계에 대한 ONTAP SnapMirror 정책의 이름을 지정합니다.  사용 가능한 정책 목록은 ListSnapMirrorPolicies를 사용하여 검색할 수 있습니다.  예시 값은 "`MirrorLatest`" 및 "`MirrorAndVault`"입니다.
+ a| 
+끈
+
+
+
+ a| 
+정책 유형
+ a| 
+관계에 대한 ONTAP SnapMirror 정책의 유형입니다.  ListSnapMirrorPolicies를 참조하세요.  예를 들면 "`async_mirror`" 또는 "`mirror_vault`"가 있습니다.
+ a| 
+끈
+
+
+
+ a| 
+관계 진행 상황
+ a| 
+관계 상태에서 반환된 관계의 현재 활동에 대해 지금까지 처리된 총 바이트 수입니다.  이는 "relationshipStatus" 멤버가 활동이 진행 중임을 나타내는 경우에만 설정됩니다.
+ a| 
+정수
+
+
+
+ a| 
+관계상태
+ a| 
+SnapMirror 관계의 상태입니다. 가능한 값:
+
+* 게으른
+* 전송 중
+* 확인 중
+* 정지 중
+* 침묵했다
+* 대기 중
+* 준비 중
+* 마무리 중
+* 낙태
+* 파괴
+
+ a| 
+끈
+
+
+
+ a| 
+관계 유형
+ a| 
+SnapMirror 관계의 유형입니다.  Element 소프트웨어를 실행하는 스토리지 클러스터에서 이 값은 항상 "`extended_data_protection`"입니다.
+ a| 
+끈
+
+
+
+ a| 
+일정 이름
+ a| 
+ONTAP 시스템에서 SnapMirror 관계를 업데이트하는 데 사용되는 기존 cron 일정의 이름입니다.  사용 가능한 일정 목록은 ListSnapMirrorSchedules를 사용하여 검색할 수 있습니다.
+ a| 
+끈
+
+
+
+ a| 
+건강에 해로운 이유
+ a| 
+관계가 건강하지 않은 이유.
+ a| 
+끈
+
+|===

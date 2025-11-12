@@ -1,0 +1,136 @@
+---
+permalink: try/task_use_demonode.html 
+sidebar: sidebar 
+keywords: element demo node, virtual machine, element software, element api, vmware deployment 
+summary: Element Demo Node는 Element 소프트웨어의 VMware 가상 머신 버전으로, NetApp HCI 및 SolidFire 제품의 주요 스토리지 기능 중 다수를 쉽게 시연할 수 있는 방법을 제공합니다. 
+---
+= Element Demo Node를 사용하여 저장 기능을 사용해 보세요.
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+https://mysupport.netapp.com/site/tools/tool-eula/element-demonode/download["Element 데모 노드"^]Element 소프트웨어의 VMware 가상 머신(VM) 버전으로, NetApp HCI 및 SolidFire 제품의 주요 스토리지 기능 중 다수를 쉽게 시연할 수 있는 방법을 제공합니다.  데모 노드를 사용하면 개발자는 물리적 하드웨어가 필요 없이 Element API에 대한 코드를 작성할 수 있습니다.  VMware에 쉽게 배포할 수 있도록 OVA 파일로 패키징되었습니다.
+
+
+
+== 지원되는 기능:
+
+Element Demo Node는 데모 및 개발 도구로만 사용하도록 의도되었습니다.  데모 노드를 사용하기 전에 다음과 같은 기능적 제한 사항을 알아두세요.
+
+* Element Demo Node는 클러스터링을 지원하지 않습니다.  단일 노드 클러스터로만 기능합니다.
+* Element 업그레이드를 지원하지 않습니다.  Element의 최신 버전을 데모하려면 새로운 데모 노드 VM을 설치해야 합니다.
+* 이는 저장 성능을 보여주기 위한 것이 아닙니다.  데모 노드에서 관찰된 성능은 물리적 클러스터의 성능을 나타내는 것은 아닙니다.
+* NetApp HCI 또는 SolidFire 클러스터에 데모 노드를 추가할 수 없습니다.
+* VRF VLAN은 지원되지 않습니다(표준 태그가 지정된 VLAN은 지원됨).
+* 다중 드라이브 슬라이스 서비스(MDSS)는 지원되지 않습니다.
+* Element Demo Node는 VMFS 데이터 저장소에서만 지원됩니다.  VVol은 지원되지 않습니다.
+* 하드웨어 기반 구성 및 모니터링 기능은 데모 노드에서 작동하지 않습니다.
+* 볼륨당 최대 10개의 스냅샷을 지원합니다.
+* 노드/클러스터당 최대 20개의 계정을 지원합니다.
+* 계정당 최대 100권까지 지원합니다.
+* 계정당 최대 200개의 vVols 지원합니다.
+* 최대 100GiB의 볼륨 크기를 지원합니다.
+* 3000 IOPS의 지속적인 클러스터 제한을 지원합니다.
+
+
+
+NOTE: 기타 모든 Element 소프트웨어 제한 사항이 적용됩니다.  자세한 내용은 최신 Element 소프트웨어 릴리스 노트를 참조하세요.
+
+
+
+== VM 요구 사항
+
+* 총 용량 240GB(VM의 가상 디스크 크기와 개수는 변경할 수 없습니다.  하이퍼바이저를 통해 제공되는 추가 저장 공간은 게스트 OS에서 무시됩니다.)
+* 60GB 루트 디스크
+* 두꺼운 프로비저닝/즉각적 제로화(30GB 메타데이터 드라이브 1개 또는 50GB 블록 드라이브 3개) 또는 씬 프로비저닝/즉각적 제로화(*권장*)(30GB 메타데이터 드라이브 1개 또는 50GB 블록 드라이브 3개)
+* 2개의 vCPU(완전 예약됨)
+* 16GB RAM(완전 예약됨)
+* 모든 디스크에 대한 단일 HBA, LSI Logic 병렬
+* 두 개의 vNIC(둘 다 vmxnet3, 하나는 관리용, 하나는 스토리지용)
+
+
+
+
+== 호스트 요구 사항
+
+* Element Demo Node 11.7 VM용 ESXI 6.0 또는 6.5
+* Element Demo Node 12.0 및 12.2 VM용 ESXi 6.5
+* Element Demo Node 12.3 및 12.5 VM용 ESXi 6.7 및 7.0
+* 멀티 코어 64비트 Intel® 아키텍처
+
+
+
+
+== Element 데모 노드 다운로드
+
+Element Demo Node 소프트웨어는 .ova 파일로 패키징된 VMware 파일 세트입니다.
+
+
+
+== VMware ESXi에 Element 데모 노드 설치
+
+VMware ESXi에 Element Demo Node를 설치하는 데는 다음 작업이 포함됩니다.
+
+* <<네트워크 인터페이스 구성>>
+* <<ESXi 서버에 데모 노드 등록>>
+* <<ESXi 서버에서 데모 노드 시작>>
+
+
+
+
+=== 네트워크 인터페이스 구성
+
+Element 데모 노드에는 두 개의 별도 가상 머신 네트워크가 필요합니다.  하나는 스토리지 트래픽을 위한 것이고 다른 하나는 관리 트래픽을 위한 것입니다.  점보 프레임을 지원하도록 스토리지 네트워크를 구성해야 합니다.
+
+
+
+=== ESXi 서버에 데모 노드 등록
+
+ESXi 서버에 Element Demo Node를 등록하려면 vSphere Client를 사용하여 데모 노드 .ova 파일을 배포해야 합니다.
+
+.단계
+. vSphere Client에 로그인하고 인벤토리 패널에서 ESXi 호스트를 선택합니다.
+. *파일* > *OVF 템플릿 배포*를 선택합니다.
++
+OVF 템플릿 배포 마법사가 시작됩니다.
+
+. *템플릿 선택* 페이지에서 다운로드한 OVA 파일을 찾아 *열기*를 선택합니다.
+. *다음*을 선택하세요.
+. *이름 및 위치* 페이지에서 배포된 템플릿의 이름과 위치를 지정한 후 *다음*을 선택합니다.
+. *리소스 선택* 페이지에서 템플릿을 실행할 위치를 찾아 *다음*을 선택합니다.
+. 세부 사항을 확인하고 *다음*을 선택하세요.
+. 저장소 선택 페이지에서 가상 머신 파일을 저장할 위치를 선택한 후 *다음*을 선택합니다.
+. *네트워크 선택* 페이지에서 OVA 파일에 사용된 네트워크를 인벤토리에 있는 두 개의 별도 가상 머신 네트워크에 매핑하고 *다음*을 선택합니다.
+. *완료 준비* 페이지에서 만들고 있는 가상 머신에 대한 세부 정보를 확인한 다음 *마침*을 선택합니다.
+
+
+
+NOTE: 데모 노드 배포를 완료하는 데 몇 분이 걸릴 수 있습니다.
+
+
+
+=== ESXi 서버에서 데모 노드 시작
+
+VMware ESXi 콘솔을 통해 Element에 액세스하려면 데모 노드 VM을 시작해야 합니다.
+
+.단계
+. vSphere Client에서 생성한 데모 노드 VM을 선택합니다.
+. 이 VM에 대한 세부 정보를 보려면 *요약* 탭을 선택하세요.
+. VM을 시작하려면 *전원 켜기*를 선택하세요.
+. *웹 콘솔 실행*을 선택하세요.
+. TUI를 사용하여 데모 노드를 구성합니다. 자세한 내용은 다음을 참조하세요. link:../setup/concept_setup_configure_a_storage_node.html["스토리지 노드 구성"^].
+
+
+
+
+== 지원을 받는 방법
+
+Element Demo Node는 최선을 다해 자원봉사하는 방식으로 제공됩니다.  지원을 받으려면 질문을 게시하세요. https://community.netapp.com/t5/Simulator-Discussions/bd-p/simulator-discussions["Element 데모 노드 포럼"^] .
+
+
+
+== 더 많은 정보를 찾아보세요
+
+https://mysupport.netapp.com/site/tools/tool-eula/element-demonode/download["Element Demo Node 다운로드 페이지(로그인 필요)"^]

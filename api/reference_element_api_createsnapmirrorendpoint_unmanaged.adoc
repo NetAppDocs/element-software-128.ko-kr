@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_createsnapmirrorendpoint_unmanaged.html 
+sidebar: sidebar 
+keywords: SnapMirror,endpoint,unmanaged,create,creating,CreateSnapMirrorEndpointUnmanaged 
+summary: Element 소프트웨어 스토리지 시스템은 CreateSnapMirrorEndpointUnmanaged 메서드를 사용하여 원격의 관리되지 않는 SnapMirror 엔드포인트가 Element 스토리지 클러스터와 통신할 수 있도록 합니다.  관리되지 않는 엔드포인트는 Element SnapMirror API를 사용하여 관리할 수 없습니다.  ONTAP 관리 소프트웨어나 API를 사용하여 관리해야 합니다. 
+---
+= CreateSnapMirrorEndpoint관리되지 않음
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 소프트웨어 저장 시스템은 다음을 사용합니다. `CreateSnapMirrorEndpointUnmanaged` 원격의 관리되지 않는 SnapMirror 엔드포인트가 Element 스토리지 클러스터와 통신할 수 있도록 하는 방법입니다.  관리되지 않는 엔드포인트는 Element SnapMirror API를 사용하여 관리할 수 없습니다.  ONTAP 관리 소프트웨어나 API를 사용하여 관리해야 합니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+클러스터 이름
+ a| 
+엔드포인트의 이름입니다.
+ a| 
+끈
+ a| 
+None
+ a| 
+예
+
+
+
+ a| 
+IP 주소
+ a| 
+이 Element 스토리지 클러스터와 통신해야 하는 ONTAP 스토리지 시스템 클러스터의 IP 주소 목록입니다.
+ a| 
+문자열 배열
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+스냅미러엔드포인트
+ a| 
+새로 생성된 SnapMirror 엔드포인트.
+ a| 
+xref:reference_element_api_snapmirrorendpoint.adoc[스냅미러엔드포인트]
+
+|===
+
+
+== 버전 이후 새로운
+
+10.3

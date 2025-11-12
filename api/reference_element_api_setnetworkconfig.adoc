@@ -1,0 +1,106 @@
+---
+permalink: api/reference_element_api_setnetworkconfig.html 
+sidebar: sidebar 
+keywords: network,config,configuration,set,setting,node,setnetworkconfig 
+summary: SetNetworkConfig 메서드를 사용하여 노드의 네트워크 구성을 설정할 수 있습니다.  노드의 현재 네트워크 설정을 표시하려면 GetNetworkConfig API 메서드를 실행합니다. 
+---
+= 네트워크 구성 설정
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `SetNetworkConfig` 노드에 대한 네트워크 구성을 설정하는 방법입니다.  노드의 현재 네트워크 설정을 표시하려면 다음을 실행하세요. `GetNetworkConfig` API 방식.
+
+
+
+== 매개변수
+
+주의:
+
+노드의 본드 모드를 변경하면 네트워크 연결이 일시적으로 끊어질 수 있습니다.
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+회로망
+ a| 
+수정할 노드 네트워크 설정을 포함하는 객체입니다.  이 매개변수에 속성으로 변경하려는 필드만 이 메서드에 추가하면 됩니다.
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[네트워크(모든 인터페이스)]
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+회로망
+ a| 
+노드에 대한 새롭고 현재 네트워크 구성입니다.
+ a| 
+xref:reference_element_api_network_all_interfaces.adoc[네트워크(모든 인터페이스)]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+	"method": "SetNetworkConfig",
+		"params": {
+			"network": {
+				"Bond10G": {
+					"bond-mode": "ALB"
+				},
+				"Bond1G": {
+					"netmask": "255.255.224.0"
+				},
+				"eth0": {
+					"method": "bond"
+				},
+				"lo": {
+					"method": "loopback"
+				}
+			}
+		}
+}
+----
+
+
+== 응답 예시
+
+이 메서드의 응답은 GetNetworkConfig 메서드의 응답과 동일합니다.  이 방법은 각 개체의 모든 멤버를 표시하고 변경된 멤버에 대한 새 값을 포함합니다.
+
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* xref:reference_element_api_getnetworkconfig.adoc[GetNetworkConfig]
+* xref:reference_element_api_response_example_getnetworkconfig.adoc[GetNetworkConfig]
+

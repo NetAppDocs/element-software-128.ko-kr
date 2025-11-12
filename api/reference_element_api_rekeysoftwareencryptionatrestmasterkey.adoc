@@ -1,0 +1,86 @@
+---
+permalink: api/reference_element_api_rekeysoftwareencryptionatrestmasterkey.html 
+sidebar: sidebar 
+keywords: system, api, element, security, rekey, software encryption at rest 
+summary: 'RekeySoftwareEncryptionAtRestMasterKey 메서드를 사용하면 DEK(데이터 암호화 키)를 암호화하는 데 사용되는 소프트웨어 암호화 저장 마스터 키를 다시 키로 지정할 수 있습니다.' 
+---
+= RekeySoftwareEncryptionAtRestMasterKey
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `RekeySoftwareEncryptionAtRestMasterKey` DEK(데이터 암호화 키)를 암호화하는 데 사용되는 소프트웨어 암호화 마스터 키를 다시 키로 사용하는 방법입니다.  클러스터 생성 중에 휴면 상태의 소프트웨어 암호화는 내부 키 관리(IKM)를 사용하도록 구성됩니다.  이 키 변경 방법은 클러스터 생성 후 IKM이나 외부 키 관리(EKM)를 사용하는 데 사용할 수 있습니다.
+
+
+
+== 매개변수
+
+이 방법에는 다음과 같은 입력 매개변수가 있습니다.  만약 `keyManagementType` 매개변수가 지정되지 않으면 기존 키 관리 구성을 사용하여 키 재지정 작업이 수행됩니다.  만약 `keyManagementType` 지정되어 있고 키 공급자가 외부인 경우 `keyProviderID` 매개변수도 사용해야 합니다.
+
+[cols="4*"]
+|===
+| 매개변수 | 설명 | 유형 | 선택 과목 
+
+
+| 키 관리 유형 | 마스터 키를 관리하는 데 사용되는 키 관리 유형입니다.  가능한 값은 다음과 같습니다.
+`Internal` : 내부 키 관리를 사용하여 키를 다시 지정합니다.
+`External` : 외부 키 관리를 사용하여 키를 다시 지정합니다.  이 매개변수가 지정되지 않으면 기존 키 관리 구성을 사용하여 키 재지정 작업이 수행됩니다. | 끈 | 진실 
+
+
+| 키 제공자 ID | 사용할 키 공급자의 ID입니다.  이는 다음 중 하나의 일부로 반환되는 고유한 값입니다. `CreateKeyProvider` 행동 양식.  신분증은 다음과 같은 경우에만 필요합니다. `keyManagementType` ~이다 `External` 그 외에는 무효입니다. | 정수 | 진실 
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+[cols="4*"]
+|===
+| 매개변수 | 설명 | 유형 | 선택 과목 
+
+
+| 비동기 핸들 | 이것을 사용하여 재키 작업의 상태를 확인하십시오. `asyncHandle` 가치와 함께 `GetAsyncResult` . `GetAsyncResult` 출력에는 다음이 포함됩니다. `newKey` 새 마스터 키에 대한 정보가 포함된 필드 `keyToDecommission` 이전 키에 대한 정보가 포함된 필드입니다. | 정수 | 거짓 
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+ "method": "rekeysoftwareencryptionatrestmasterkey",
+ "params": {
+   "keyManagementType": "external",
+   "keyProviderID": "<ID number>"
+ }
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+    "asyncHandle": 1
+}
+----
+
+
+== 버전 이후 새로운
+
+12.3
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

@@ -1,0 +1,36 @@
+---
+permalink: storage/concept_system_monitoring_and_troubleshooting.html 
+sidebar: sidebar 
+keywords: trouble, troubleshoot, monitor, element, alert, event 
+summary: 진단 목적으로 시스템을 모니터링하고 다양한 시스템 작업의 성능 추세와 상태에 대한 정보를 얻어야 합니다.  유지 관리를 위해 노드나 SSD를 교체해야 할 수도 있습니다. 
+---
+= 시스템 문제 해결
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+진단 목적으로 시스템을 모니터링하고 다양한 시스템 작업의 성능 추세와 상태에 대한 정보를 얻어야 합니다.  유지 관리를 위해 노드나 SSD를 교체해야 할 수도 있습니다.
+
+* link:task_monitor_information_about_system_events.html["시스템 이벤트에 대한 정보 보기"]
+* link:reference_monitor_status_of_running_tasks.html["실행 중인 작업의 상태 보기"]
+* link:task_monitor_system_alerts.html["시스템 알림 보기"]
+* link:task_monitor_node_performance_activity.html["노드 성능 활동 보기"]
+* link:task_monitor_volume_performance.html["볼륨 성능 보기"]
+* link:task_monitor_iscsi_sessions.html["iSCSI 세션 보기"]
+* link:task_monitor_fibre_channel_sessions.html["파이버 채널 세션 보기"]
+* link:concept_troubleshoot_drives.html["드라이브 문제 해결"]
+* link:concept_remove_nodes_from_cluster.html["노드 문제 해결"]
+* link:concept_per_node_work_with_utilities.html["스토리지 노드에 대한 노드별 유틸리티 사용"]
+* link:concept_mnode_work_with_the_management_node.html["관리 노드로 작업"]
+* link:concept_monitor_understand_cluster_fullness_levels.html["클러스터 충만도 수준 이해"]
+
+
+
+
+== 더 많은 정보를 원하시면
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+

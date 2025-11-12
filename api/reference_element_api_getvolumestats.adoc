@@ -1,0 +1,158 @@
+---
+permalink: api/reference_element_api_getvolumestats.html 
+sidebar: sidebar 
+keywords: volume,volumes,get,getting,stats,measurements,activity,getvolumestats 
+summary: GetVolumeStats 메서드를 사용하면 단일 볼륨에 대한 높은 수준의 활동 측정값을 얻을 수 있습니다.  볼륨이 생성된 이후부터 값이 누적됩니다. 
+---
+= 볼륨 통계 가져오기
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `GetVolumeStats` 단일 볼륨에 대한 높은 수준의 활동 측정을 얻는 방법입니다.  볼륨이 생성된 이후부터 값이 누적됩니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+볼륨ID
+ a| 
+통계를 수집하는 볼륨을 지정합니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+볼륨통계
+ a| 
+볼륨 활동 정보.
+ a| 
+xref:reference_element_api_volumestats.adoc[볼륨통계]
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "GetVolumeStats",
+   "params": {
+      "volumeID": 32
+   },
+   "id": 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 1,
+  "result": {
+    "volumeStats": [
+        {
+            "accountID": 1,
+            "actualIOPS": 4,
+            "asyncDelay": null,
+            "averageIOPSize": 5970,
+            "burstIOPSCredit": 0,
+            "clientQueueDepth": 0,
+            "desiredMetadataHosts": null,
+            "latencyUSec": 474,
+            "metadataHosts": {
+                "deadSecondaries": [],
+                "liveSecondaries": [
+                    13
+                ],
+                "primary": 25
+            },
+            "nonZeroBlocks": 34931222,
+            "normalizedIOPS": 4,
+            "readBytes": 1282491003392,
+            "readBytesLastSample": 0,
+            "readLatencyUSec": 0,
+            "readLatencyUSecTotal": 4581669750,
+            "readOps": 15592933,
+            "readOpsLastSample": 0,
+            "samplePeriodMSec": 500,
+            "sliceIopsStats": {
+                "largeStatistics": {
+                    "averageReadIops": 17,
+                    "averageTotalIops": 43,
+                    "averageWriteIops": 26,
+                    "nSamples": 24,
+                    "peakReadIops": 19,
+                    "peakTotalIops": 47,
+                    "peakWriteIops": 30,
+                    "sliceID": 1
+                },
+                "smallStatistics": {
+                    "averageReadIops": 17,
+                    "averageTotalIops": 42,
+                    "averageWriteIops": 25,
+                    "nSamples": 120,
+                    "peakReadIops": 173,
+                    "peakTotalIops": 249,
+                    "peakWriteIops": 77,
+                    "sliceID": 1
+            }
+        },
+        "throttle": 0,
+        "timestamp": "2025-02-03T21:18:38.880100Z",
+        "unalignedReads": 167319,
+        "unalignedWrites": 90836,
+        "volumeAccessGroups": [
+            1
+        ],
+        "volumeID": 1,
+        "volumeSize": 2147483648000,
+        "volumeUtilization": 0.0002666666666666667,
+        "writeBytes": 1385173585408,
+        "writeBytesLastSample": 12288,
+        "writeLatencyUSec": 474,
+        "writeLatencyUSecTotal": 11233350905,
+        "writeOps": 157060458,
+        "writeOpsLastSample": 2,
+        "zeroBlocks": 489356778
+    }
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6

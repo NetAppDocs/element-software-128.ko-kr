@@ -1,0 +1,155 @@
+---
+sidebar: sidebar 
+permalink: mnode/task_mnode_ssh_management.html 
+summary: NetApp Hybrid Cloud Control UI 또는 REST API UI를 사용하여 관리 노드에서 SSH 기능을 비활성화하거나 활성화할 수 있으며, REST API UI를 사용하여 SSH 지원 연결 기능의 상태를 확인할 수 있습니다. 
+keywords: netapp, mnode, management node, ssh, disable, enable, rest api, hybrid, cloud, control, hcc 
+---
+= 관리 노드에서 SSH 기능 관리
+:hardbreaks:
+:allow-uri-read: 
+:nofooter: 
+:icons: font
+:linkattrs: 
+:imagesdir: ../media/
+
+
+[role="lead"]
+REST API를 사용하여 관리 노드(mNode)에서 SSH 기능을 비활성화, 다시 활성화하거나 해당 기능을 사용하는지 여부를 확인할 수 있습니다.  제공하는 SSH 기능link:task_mnode_enable_remote_support_connections.html["NetApp 지원 원격 지원 터널(RST) 세션 액세스"] 관리 서비스 2.18 이상을 실행하는 관리 노드에서는 기본적으로 비활성화됩니다.
+
+Management Services 2.20.69부터 NetApp Hybrid Cloud Control UI를 사용하여 관리 노드에서 SSH 기능을 활성화하거나 비활성화할 수 있습니다.
+
+.필요한 것
+* * NetApp Hybrid Cloud Control 권한*: 관리자 권한이 있습니다.
+* *클러스터 관리자 권한*: 스토리지 클러스터에 대한 관리자 권한이 있습니다.
+* *Element 소프트웨어*: 클러스터에서 NetApp Element 소프트웨어 11.3 이상이 실행되고 있습니다.
+* *관리 노드*: 11.3 이상 버전을 실행하는 관리 노드를 배포했습니다.
+* *경영 서비스 업데이트*:
++
+** NetApp Hybrid Cloud Control UI를 사용하려면 다음을 업데이트해야 합니다. https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["관리 서비스 번들"^] 버전 2.20.69 이상.
+** REST API UI를 사용하려면 다음을 업데이트해야 합니다. https://mysupport.netapp.com/site/products/all/details/mgmtservices/downloads-tab["관리 서비스 번들"^] 버전 2.17로.
+
+
+
+
+.옵션
+* <<NetApp Hybrid Cloud Control UI를 사용하여 관리 노드에서 SSH 기능을 비활성화하거나 활성화합니다.>>
+
+
+다음 작업 중 하나를 수행할 수 있습니다.link:task_mnode_api_get_authorizationtouse.html["인증하다"] :
+
+* <<API를 사용하여 관리 노드에서 SSH 기능을 비활성화하거나 활성화합니다.>>
+* <<API를 사용하여 관리 노드의 SSH 기능 상태를 확인합니다.>>
+
+
+
+
+== NetApp Hybrid Cloud Control UI를 사용하여 관리 노드에서 SSH 기능을 비활성화하거나 활성화합니다.
+
+관리 노드에서 SSH 기능을 비활성화하거나 다시 활성화할 수 있습니다.  제공하는 SSH 기능link:task_mnode_enable_remote_support_connections.html["NetApp 지원 원격 지원 터널(RST) 세션 액세스"] 관리 서비스 2.18 이상을 실행하는 관리 노드에서는 기본적으로 비활성화됩니다.  SSH를 비활성화해도 관리 노드에 대한 기존 SSH 클라이언트 세션은 종료되거나 연결이 끊어지지 않습니다.  SSH를 비활성화한 후 나중에 다시 활성화하려면 NetApp Hybrid Cloud Control UI를 사용하면 됩니다.
+
+
+NOTE: 스토리지 클러스터에 대한 SSH를 사용하여 지원 액세스를 활성화하거나 비활성화하려면 다음을 사용해야 합니다.link:../storage/task_system_manage_cluster_enable_and_disable_support_access.html["Element UI 클러스터 설정 페이지"] .
+
+.단계
+. 대시보드에서 오른쪽 상단의 옵션 메뉴를 선택하고 *구성*을 선택합니다.
+. *관리 노드에 대한 지원 액세스* 화면에서 스위치를 전환하여 관리 노드 SSH를 활성화합니다.
+. 문제 해결을 완료한 후 *관리 노드에 대한 지원 액세스* 화면에서 스위치를 전환하여 관리 노드 SSH를 비활성화합니다.
+
+
+
+
+== API를 사용하여 관리 노드에서 SSH 기능을 비활성화하거나 활성화합니다.
+
+관리 노드에서 SSH 기능을 비활성화하거나 다시 활성화할 수 있습니다.  제공하는 SSH 기능link:task_mnode_enable_remote_support_connections.html["NetApp 지원 원격 지원 터널(RST) 세션 액세스"] 관리 서비스 2.18 이상을 실행하는 관리 노드에서는 기본적으로 비활성화됩니다.  SSH를 비활성화해도 관리 노드에 대한 기존 SSH 클라이언트 세션은 종료되거나 연결이 끊어지지 않습니다.  SSH를 비활성화한 후 나중에 다시 활성화하려면 동일한 API를 사용하면 됩니다.
+
+.API 명령
+관리 서비스 2.18 이상의 경우:
+
+[listing]
+----
+curl -k -X PUT "https://<<ManagementNodeIP>/mnode/2/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+관리 서비스 2.17 이하 버전의 경우:
+
+[listing]
+----
+curl -X PUT "https://<ManagementNodeIP>/mnode/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+
+NOTE: 당신은 운반자를 찾을 수 있습니다 `${TOKEN}` API 명령에서 사용됨link:task_mnode_api_get_authorizationtouse.html["허가하다"] .  운반자 `${TOKEN}` curl 응답에 있습니다.
+
+.REST API UI 단계
+. 관리 노드 IP 주소를 입력한 다음 관리 노드 API 서비스에 대한 REST API UI에 액세스합니다. `/mnode/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. *승인*을 선택하고 다음을 완료하세요.
++
+.. 클러스터 사용자 이름과 비밀번호를 입력하세요.
+.. 클라이언트 ID를 다음과 같이 입력하세요. `mnode-client` .
+.. 세션을 시작하려면 *승인*을 선택하세요.
+.. 창을 닫으세요.
+
+
+. REST API UI에서 *PUT /settings​/ssh*를 선택합니다.
++
+.. *시도해보기*를 선택하세요.
+.. *활성화* 매개변수를 다음으로 설정합니다. `false` SSH를 비활성화하거나 `true` 이전에 비활성화되었던 SSH 기능을 다시 활성화합니다.
+.. *실행*을 선택하세요.
+
+
+
+
+
+
+== API를 사용하여 관리 노드의 SSH 기능 상태를 확인합니다.
+
+관리 노드 서비스 API를 사용하여 관리 노드에서 SSH 기능이 활성화되어 있는지 여부를 확인할 수 있습니다.  관리 서비스 2.18 이상을 실행하는 관리 노드에서는 SSH가 기본적으로 비활성화되어 있습니다.
+
+.API 명령
+관리 서비스 2.18 이상의 경우:
+
+[listing]
+----
+curl -k -X PUT "https://<<ManagementNodeIP>/mnode/2/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+관리 서비스 2.17 이하 버전의 경우:
+
+[listing]
+----
+curl -X PUT "https://<ManagementNodeIP>/mnode/settings/ssh?enabled=<false/true>" -H  "accept: application/json" -H  "Authorization: Bearer ${TOKEN}"
+----
+
+NOTE: 당신은 운반자를 찾을 수 있습니다 `${TOKEN}` API 명령에서 사용됨link:task_mnode_api_get_authorizationtouse.html["허가하다"] .  운반자 `${TOKEN}` curl 응답에 있습니다.
+
+.REST API UI 단계
+. 관리 노드 IP 주소를 입력한 다음 관리 노드 API 서비스에 대한 REST API UI에 액세스합니다. `/mnode/` :
++
+[listing]
+----
+https://<ManagementNodeIP>/mnode/
+----
+. *승인*을 선택하고 다음을 완료하세요.
++
+.. 클러스터 사용자 이름과 비밀번호를 입력하세요.
+.. 클라이언트 ID를 다음과 같이 입력하세요. `mnode-client` .
+.. 세션을 시작하려면 *승인*을 선택하세요.
+.. 창을 닫으세요.
+
+
+. REST API UI에서 *GET /settings​/ssh*를 선택합니다.
++
+.. *시도해보기*를 선택하세요.
+.. *실행*을 선택하세요.
+
+
+
+
+[discrete]
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/vcp/index.html["vCenter Server용 NetApp Element 플러그인"^]
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+

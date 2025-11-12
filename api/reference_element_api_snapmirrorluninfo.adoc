@@ -1,0 +1,112 @@
+---
+permalink: api/reference_element_api_snapmirrorluninfo.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorLunInfo 
+summary: snapMirrorLunInfo 개체에는 ONTAP LUN 개체에 대한 정보가 포함되어 있습니다. 
+---
+= 스냅미러LunInfo
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorLunInfo 개체에는 ONTAP LUN 개체에 대한 정보가 포함되어 있습니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+스냅미러엔드포인트ID
+ a| 
+대상 ONTAP 시스템의 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+생성타임스탬프
+ a| 
+LUN 생성 시간.
+ a| 
+ISO 8601 날짜 문자열
+
+
+
+ a| 
+lunName
+ a| 
+LUN의 이름.
+ a| 
+끈
+
+
+
+ a| 
+길
+ a| 
+LUN의 경로.
+ a| 
+끈
+
+
+
+ a| 
+크기
+ a| 
+LUN의 크기(바이트)입니다.
+ a| 
+정수
+
+
+
+ a| 
+크기사용됨
+ a| 
+LUN에서 사용된 바이트 수입니다.
+ a| 
+정수
+
+
+
+ a| 
+상태
+ a| 
+LUN의 현재 액세스 상태입니다. 가능한 값:
+
+* 온라인
+* 오프라인
+* 외국_lun_오류
+* nvfail
+* 공간_오류
+
+ a| 
+끈
+
+
+
+ a| 
+용량
+ a| 
+LUN이 포함된 볼륨의 이름입니다.
+ a| 
+끈
+
+
+
+ a| 
+v서버
+ a| 
+LUN이 포함된 Vserver입니다.
+ a| 
+끈
+
+|===

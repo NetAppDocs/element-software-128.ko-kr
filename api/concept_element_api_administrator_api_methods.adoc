@@ -1,0 +1,31 @@
+---
+permalink: api/concept_element_api_administrator_api_methods.html 
+sidebar: sidebar 
+keywords: API,administration,method,administrator 
+summary: 관리자 API 메서드를 사용하여 스토리지 클러스터 관리자를 생성, 수정, 보고 제거하고 스토리지 클러스터에 액세스할 수 있는 사용자에게 액세스 수준과 권한을 할당할 수 있습니다. 
+---
+= 관리자 API 메서드
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+관리자 API 메서드를 사용하여 스토리지 클러스터 관리자를 생성, 수정, 보고 제거하고 스토리지 클러스터에 액세스할 수 있는 사용자에게 액세스 수준과 권한을 할당할 수 있습니다.
+
+* xref:reference_element_api_addclusteradmin.adoc[클러스터 관리자 추가]
+* xref:reference_element_api_getcurrentclusteradmin.adoc[GetCurrentClusterAdmin]
+* xref:reference_element_api_getloginbanner.adoc[로그인 배너 받기]
+* xref:reference_element_api_listclusteradmins.adoc[클러스터 관리자 목록]
+* xref:reference_element_api_modifyclusteradmin.adoc[클러스터 관리자 수정]
+* xref:reference_element_api_removeclusteradmin.adoc[클러스터 관리자 제거]
+* xref:reference_element_api_setloginbanner.adoc[로그인 배너 설정]
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

@@ -1,0 +1,75 @@
+---
+permalink: api/reference_element_api_purgedeletedvolume.html 
+sidebar: sidebar 
+keywords: volume,volumes,purging,purge,deleted,purgedeletedvolume 
+summary: PurgeDeletedVolume 메서드를 사용하면 삭제된 볼륨을 즉시 영구적으로 제거할 수 있습니다.  볼륨을 정리하려면 DeleteVolume을 사용하여 볼륨을 삭제해야 합니다. 
+---
+= 삭제된 볼륨 제거
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+당신은 사용할 수 있습니다 `PurgeDeletedVolume` 삭제된 볼륨을 즉시 영구적으로 정리하는 방법입니다.  볼륨을 삭제하려면 다음을 사용해야 합니다. `DeleteVolume` 정화되기 전에.
+
+볼륨은 일정 시간이 지나면 자동으로 정리되므로 일반적으로 이 방법을 사용할 필요가 없습니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+| 볼륨ID | 제거할 볼륨의 volumeID입니다. | 정수 | 아니요 | 예 
+|===
+
+
+== 반환 값
+
+이 메서드에는 반환 값이 없습니다.
+
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+   "method": "PurgeDeletedVolume",
+   "params": {
+      "volumeID"  : 5
+   },
+   "id" : 1
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id" : 1,
+  "result": {}
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_deletevolume.adoc[볼륨 삭제]

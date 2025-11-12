@@ -1,0 +1,62 @@
+---
+permalink: api/reference_element_api_listsnapmirroraggregates.html 
+sidebar: sidebar 
+keywords: snapmirror,aggregate,aggregates,list,listing,listsnapmirroraggregates 
+summary: Element 소프트웨어 웹 UI는 ListSnapMirrorAggregates 메서드를 사용하여 원격 ONTAP 시스템에서 사용 가능한 모든 SnapMirror 집계를 나열합니다.  집계는 물리적 저장 리소스의 집합을 설명합니다. 
+---
+= ListSnapMirror 집계
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+Element 소프트웨어 웹 UI는 다음을 사용합니다. `ListSnapMirrorAggregates` 원격 ONTAP 시스템에서 사용 가능한 모든 SnapMirror 집계를 나열하는 방법입니다.  집계는 물리적 저장 리소스의 집합을 설명합니다.
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+스냅미러엔드포인트ID
+ a| 
+지정된 엔드포인트 ID와 연관된 집계만 반환합니다.  엔드포인트 ID가 제공되지 않으면 시스템은 알려진 모든 SnapMirror 엔드포인트의 집계를 나열합니다.
+ a| 
+정수
+ a| 
+None
+ a| 
+아니요
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+snapMirrorAggregates
+ a| 
+ONTAP 스토리지 시스템에서 사용할 수 있는 집계 목록입니다.
+ a| 
+xref:reference_element_api_snapmirroraggregate.adoc[스냅미러 집계]정렬
+
+|===
+
+
+== 버전 이후 새로운
+
+10.1

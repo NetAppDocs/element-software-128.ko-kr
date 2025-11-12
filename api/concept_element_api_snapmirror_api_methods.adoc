@@ -1,0 +1,53 @@
+---
+permalink: api/concept_element_api_snapmirror_api_methods.html 
+sidebar: sidebar 
+keywords: SnapMirror,API,method 
+summary: SnapMirror API 메서드는 Element 웹 UI에서 원격 ONTAP 시스템에 미러링된 스냅샷을 관리하는 데 사용됩니다.  이러한 방법은 Element 웹 UI에서만 사용하도록 되어 있습니다.  SnapMirror 기능에 API 액세스가 필요한 경우 ONTAP API를 사용하세요.  SnapMirror API 메서드에 대한 요청 및 반환 예는 제공되지 않습니다. 
+---
+= SnapMirror API 메서드
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+SnapMirror API 메서드는 Element 웹 UI에서 원격 ONTAP 시스템에 미러링된 스냅샷을 관리하는 데 사용됩니다.  이러한 방법은 Element 웹 UI에서만 사용하도록 되어 있습니다.  SnapMirror 기능에 API 액세스가 필요한 경우 ONTAP API를 사용하세요.  SnapMirror API 메서드에 대한 요청 및 반환 예는 제공되지 않습니다.
+
+* xref:reference_element_api_abortsnapmirrorrelationship.adoc[스냅미러 관계 중단]
+* xref:reference_element_api_breaksnapmirrorrelationship.adoc[BreakSnapMirror관계]
+* xref:reference_element_api_breaksnapmirrorvolume.adoc[브레이크스냅미러볼륨]
+* xref:reference_element_api_createsnapmirrorendpoint.adoc[CreateSnapMirrorEndpoint]
+* xref:reference_element_api_createsnapmirrorendpoint_unmanaged.adoc[CreateSnapMirrorEndpoint관리되지 않음]
+* xref:reference_element_api_createsnapmirrorrelationship.adoc[CreateSnapMirrorRelationship]
+* xref:reference_element_api_createsnapmirrorvolume.adoc[CreateSnapMirrorVolume]
+* xref:reference_element_api_deletesnapmirrorendpoints.adoc[DeleteSnapMirrorEndpoints]
+* xref:reference_element_api_deletesnapmirrorrelationships.adoc[스냅미러 관계 삭제]
+* xref:reference_element_api_getontapversioninfo.adoc[GetOntapVersionInfo]
+* xref:reference_element_api_getsnapmirrorclusteridentity.adoc[GetSnapMirrorClusterIdentity]
+* xref:reference_element_api_initializesnapmirrorrelationship.adoc[스냅미러 관계 초기화]
+* xref:reference_element_api_listsnapmirroraggregates.adoc[ListSnapMirror 집계]
+* xref:reference_element_api_listsnapmirrorendpoints.adoc[ListSnapMirrorEndpoints]
+* xref:reference_element_api_listsnapmirrorluns.adoc[ListSnapMirrorLuns]
+* xref:reference_element_api_listsnapmirrornetworkinterfaces.adoc[ListSnapMirrorNetworkInterfaces]
+* xref:reference_element_api_listsnapmirrornodes.adoc[ListSnapMirrorNodes]
+* xref:reference_element_api_listsnapmirrorpolicies.adoc[ListSnapMirror정책]
+* xref:reference_element_api_listsnapmirrorschedules.adoc[ListSnapMirrorSchedules]
+* xref:reference_element_api_listsnapmirrorrelationships.adoc[ListSnapMirror관계]
+* xref:reference_element_api_listsnapmirrorvolumes.adoc[ListSnapMirrorVolumes]
+* xref:reference_element_api_listsnapmirrorvservers.adoc[ListSnapMirrorVservers]
+* xref:reference_element_api_modifysnapmirrorendpoint.adoc[ModifySnapMirrorEndpoint]
+* xref:reference_element_api_modifysnapmirrorendpoint_unmanaged.adoc[ModifySnapMirrorEndpoint(관리되지 않음)]
+* xref:reference_element_api_modifysnapmirrorrelationship.adoc[스냅미러 관계 수정]
+* xref:reference_element_api_updatesnapmirrorrelationship.adoc[UpdateSnapMirror관계]
+* xref:reference_element_api_quiescesnapmirrorrelationship.adoc[QuiesceSnapMirror관계]
+* xref:reference_element_api_resumesnapmirrorrelationship.adoc[ResumeSnapMirror관계]
+* xref:reference_element_api_resyncsnapmirrorrelationship.adoc[ResyncSnapMirror관계]
+
+
+
+
+== 더 많은 정보를 찾아보세요
+
+* https://docs.netapp.com/us-en/element-software/index.html["SolidFire 및 Element 소프트웨어 문서"]
+* https://docs.netapp.com/sfe-122/topic/com.netapp.ndc.sfe-vers/GUID-B1944B0E-B335-4E0B-B9F1-E960BF32AE56.html["NetApp SolidFire 및 Element 제품의 이전 버전에 대한 설명서"^]
+

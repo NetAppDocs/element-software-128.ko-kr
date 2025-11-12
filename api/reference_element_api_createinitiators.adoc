@@ -1,0 +1,154 @@
+---
+permalink: api/reference_element_api_createinitiators.html 
+sidebar: sidebar 
+keywords: create,creating,initiator,CreateInitiators,WWPN,IQN,initiators 
+summary: 'CreateInitiators를 사용하면 여러 개의 새로운 이니시에이터 IQN 또는 World Wide Port Names(WWPN)을 생성하고 선택적으로 별칭과 속성을 할당할 수 있습니다.  CreateInitiators를 사용하여 새로운 이니시에이터를 생성하면 볼륨 액세스 그룹에 추가할 수도 있습니다.' 
+---
+= CreateInitiators
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+사용할 수 있습니다 `CreateInitiators` 여러 개의 새로운 이니시에이터 IQN 또는 WWPN(World Wide Port Name)을 만들고 선택적으로 별칭과 속성을 할당합니다.  사용할 때 `CreateInitiators` 새로운 시작자를 생성하려면 볼륨 액세스 그룹에 추가할 수도 있습니다.
+
+매개변수에 제공된 시작자 중 하나를 만드는 데 실패하면 메서드는 오류를 반환하고 시작자를 만들지 않습니다(부분 완료는 불가능합니다).
+
+
+
+== 매개변수
+
+이 메서드에는 다음과 같은 입력 매개변수가 있습니다.
+
+|===
+| 이름 | 설명 | 유형 | 기본값 | 필수의 
+
+
+ a| 
+개시자들
+ a| 
+각 새로운 개시자의 특성을 담고 있는 객체 목록입니다.  사물:
+
+* `alias`: (선택 사항) 이 개시자에게 지정할 친근한 이름입니다.  (끈)
+* `attributes`: (선택 사항) 이 개시자에게 할당할 JSON 속성 세트입니다.  (JSON 객체)
+* `chapUsername`: (선택 사항) 이 개시자에 대한 고유한 CHAP 사용자 이름입니다.  생성 중에 지정하지 않고 requireChap이 true이면 기본적으로 시작자 이름(IQN)이 사용됩니다.  (끈)
+* `initiatorSecret`: (선택 사항) 개시자를 인증하는 데 사용되는 CHAP 비밀번호입니다.  생성 중에 지정하지 않고 requireChap이 true이면 기본적으로 무작위로 생성된 비밀이 사용됩니다.  (끈)
+* `name`: (필수) 생성할 개시자의 이름(IQN 또는 WWPN)입니다.  (끈)
+* `requireChap`: (선택 사항) 이 개시자에 대한 세션 로그인 중에 CHAP가 필요한 경우 True입니다.  (부울)
+* `targetSecret`: (선택 사항) 대상을 인증하는 데 사용되는 CHAP 비밀번호(상호 CHAP 인증을 사용하는 경우).  생성 중에 지정하지 않고 requireChap이 true이면 기본적으로 무작위로 생성된 비밀이 사용됩니다.  (끈)
+* `virtualNetworkIDs`: (선택 사항) 이 개시자와 연결된 가상 네트워크 식별자 목록입니다.  하나 이상의 가상 네트워크를 정의하는 경우, 이 개시자는 해당 가상 네트워크에만 로그인할 수 있습니다.  가상 네트워크를 정의하지 않으면 이 개시자는 모든 네트워크에 로그인할 수 있습니다.
+* `volumeAccessGroupID`: (선택 사항) 새로 생성된 개시자가 추가될 볼륨 액세스 그룹의 ID입니다.  (정수)
+
+ a| 
+JSON 객체 배열
+ a| 
+None
+ a| 
+예
+
+|===
+
+
+== 반환 값
+
+이 메서드는 다음과 같은 반환 값을 갖습니다.
+
+|===
+
+
+| 이름 | 설명 | 유형 
+
+
+ a| 
+개시자들
+ a| 
+새로 생성된 개시자를 설명하는 객체 목록입니다.
+ a| 
+xref:reference_element_api_initiator.adoc[창시자]정렬
+
+|===
+
+
+== 오류
+
+이 메서드는 다음과 같은 오류를 반환할 수 있습니다.
+
+|===
+
+
+| 이름 | 설명 
+
+
+ a| 
+xInitiatorExists
+ a| 
+선택한 개시자 이름이 이미 존재하는 경우 반환됩니다.
+
+|===
+
+
+== 요청 예시
+
+이 방법에 대한 요청은 다음 예와 유사합니다.
+
+[listing]
+----
+{
+  "id": 3291,
+  "method": "CreateInitiators",
+  "params": {
+    "initiators": [
+      {
+        "name": "iqn.1993-08.org.debian:01:288170452",
+        "alias": "example1"
+      },
+      {
+        "name": "iqn.1993-08.org.debian:01:297817012",
+        "alias": "example2"
+      }
+    ]
+  }
+}
+----
+
+
+== 응답 예시
+
+이 메서드는 다음 예와 유사한 응답을 반환합니다.
+
+[listing]
+----
+{
+  "id": 3291,
+  "result": {
+    "initiators": [
+      {
+        "alias": "example1",
+        "attributes": {},
+        "initiatorID": 145,
+        "initiatorName": "iqn.1993-08.org.debian:01:288170452",
+        "volumeAccessGroups": []
+      },
+      {
+        "alias": "example2",
+        "attributes": {},
+        "initiatorID": 146,
+        "initiatorName": "iqn.1993-08.org.debian:01:297817012",
+        "volumeAccessGroups": []
+      }
+    ]
+  }
+}
+----
+
+
+== 버전 이후 새로운
+
+9.6
+
+
+
+== 더 많은 정보를 찾아보세요
+
+xref:reference_element_api_listinitiators.adoc[리스트이니시에이터]

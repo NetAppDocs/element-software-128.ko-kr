@@ -1,0 +1,87 @@
+---
+permalink: api/reference_element_api_snapmirroraggregate.html 
+sidebar: sidebar 
+keywords: object,objects,snapMirrorAggregate 
+summary: snapMirrorAggregate 개체에는 볼륨에 저장소로 사용할 수 있는 디스크 모음인 사용 가능한 ONTAP 집계에 대한 정보가 포함되어 있습니다.  ListSnapMirrorAggregates API 메서드를 사용하여 이 정보를 얻을 수 있습니다. 
+---
+= 스냅미러 집계
+:allow-uri-read: 
+:icons: font
+:imagesdir: ../media/
+
+
+[role="lead"]
+snapMirrorAggregate 개체에는 볼륨에 저장소로 사용할 수 있는 디스크 모음인 사용 가능한 ONTAP 집계에 대한 정보가 포함되어 있습니다.  ListSnapMirrorAggregates API 메서드를 사용하여 이 정보를 얻을 수 있습니다.
+
+
+
+== 객체 멤버
+
+이 개체에는 다음과 같은 멤버가 포함되어 있습니다.
+
+|===
+| 이름 | 설명 | 유형 
+
+
+ a| 
+스냅미러엔드포인트ID
+ a| 
+대상 ONTAP 시스템의 ID입니다.
+ a| 
+정수
+
+
+
+ a| 
+집계 이름
+ a| 
+집계의 이름입니다.
+ a| 
+끈
+
+
+
+ a| 
+노드 이름
+ a| 
+이 집계를 소유한 ONTAP 노드의 이름입니다.
+ a| 
+끈
+
+
+
+ a| 
+크기사용 가능
+ a| 
+집계된 값 중 남은 사용 가능한 바이트 수입니다.
+ a| 
+정수
+
+
+
+ a| 
+크기전체
+ a| 
+집계의 총 크기(바이트)입니다.
+ a| 
+정수
+
+
+
+ a| 
+사용 용량 백분율
+ a| 
+현재 사용 중인 디스크 공간의 비율입니다.
+ a| 
+정수
+
+
+
+ a| 
+볼륨 개수
+ a| 
+전체 볼륨의 수입니다.
+ a| 
+정수
+
+|===
