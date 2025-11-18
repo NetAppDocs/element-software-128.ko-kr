@@ -2834,10 +2834,8 @@
   <block id="56bb1086d311276932b932008551faad" category="paragraph">당신은 사용할 수 있습니다<block ref="7f3b1babd1f170f73cb0ff4719c65294" prefix=" " category="inline-code"></block> 클러스터에 이전에 적용된 암호화를 제거하는 방법<block ref="b0a869229fda0716942c6afbaa26ba2a" prefix=" " category="inline-code"></block> 방법.  이 비활성화 방법은 비동기적이며 암호화가 비활성화되기 전에 응답을 반환합니다.  당신은 사용할 수 있습니다<block ref="8edcd7780c99fc7a69b6f53d8748b0af" prefix=" " category="inline-code"></block> 프로세스가 완료되었는지 확인하기 위해 시스템을 폴링하는 방법입니다.</block>
   <block id="b6da302462725db65b08725e21534c35" category="inline-link-macro">클러스터 정보 가져오기 방법</block>
   <block id="df55ce8d5994202037ca7f6b8add22fc" category="inline-link-macro">클러스터가 저장 중인 데이터를 암호화하는 데 사용하는 정보를 얻는 방법</block>
-  <block id="86a3fd1d57afd97d844a89fbf1e29622" category="admonition">클러스터에서 암호화의 현재 상태 및/또는 소프트웨어 암호화의 현재 상태를 보려면 다음을 사용하십시오.<block ref="2bef0ec70d57052e77ae0a5c3f56c732" category="inline-link-macro-rx"></block> . 당신은 사용할 수 있습니다<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>.</block>
   <block id="f706c2c9f764a1928af56503f593ce7c" category="inline-link-macro">새로운 클러스터를 생성하다</block>
   <block id="03c723d3c658548008f592aa302e8409" category="admonition">이 방법을 사용하면 휴면 상태의 소프트웨어 암호화를 비활성화할 수 없습니다.  휴면 상태에서 소프트웨어 암호화를 비활성화하려면 다음이 필요합니다.<block ref="dd0348ec8bd8a2d5cdfad96177d0413b" category="inline-link-macro-rx"></block> 휴면 상태에서 소프트웨어 암호화가 비활성화된 상태입니다.</block>
-  <block id="ed098de7c85d42c63667264da460dda3" category="list-text"><block ref="ed098de7c85d42c63667264da460dda3" category="inline-link-macro-rx"></block></block>
   <block id="41f5226364942217920c4da7dac4fdef" category="summary">DisableIdpAuthentication 메서드를 사용하면 클러스터에 대한 타사 IdP를 사용한 인증 지원을 비활성화할 수 있습니다.  비활성화되면 타사 IdP에서 인증한 사용자는 더 이상 클러스터에 액세스할 수 없으며, 모든 활성 인증 세션은 무효화되거나 연결이 끊어집니다.  LDAP 및 클러스터 관리자는 지원되는 UI를 통해 클러스터에 액세스할 수 있습니다.</block>
   <block id="f7782cee0150831210cb8b1d663487e5" category="paragraph">당신은 사용할 수 있습니다<block ref="19212cd9e0ef02383305a27bb4236251" prefix=" " category="inline-code"></block> 클러스터에 대한 타사 IdP를 사용한 인증 지원을 비활성화하는 방법입니다.  비활성화되면 타사 IdP에서 인증한 사용자는 더 이상 클러스터에 액세스할 수 없으며, 모든 활성 인증 세션은 무효화되거나 연결이 끊어집니다.  LDAP 및 클러스터 관리자는 지원되는 UI를 통해 클러스터에 액세스할 수 있습니다.</block>
   <block id="bfd29fa5d21f9a9583846d6e7975aa03" category="summary">DisableLdapAuthentication 메서드를 사용하면 LDAP 인증을 비활성화하고 모든 LDAP 구성 설정을 제거할 수 있습니다.  이 방법을 사용해도 사용자나 그룹에 대해 구성된 클러스터 관리자 계정은 제거되지 않습니다.  LDAP 인증이 비활성화되면 LDAP 인증을 사용하도록 구성된 클러스터 관리자는 더 이상 클러스터에 액세스할 수 없습니다.</block>
@@ -8443,12 +8441,6 @@
   <block id="b192e422c8f0ec986ad4daabba6ad856" category="list-text"><block ref="b192e422c8f0ec986ad4daabba6ad856" category="inline-link-macro-rx"></block></block>
   <block id="94d480649ef42bd92d3854f04aa2aab9" category="list-text"><block ref="94d480649ef42bd92d3854f04aa2aab9" category="inline-link-macro-rx"></block></block>
   <block id="469eaba8a7048afa0ba6f8eb91801de9" category="doc">SolidFire Active IQ 로 스토리지 모니터링</block>
-  <block id="b56253bf92505bda20b38657c778bccf" category="doc">페이지 제목은 여기에 있습니다</block>
-  <block id="5d9328ee3f628e51f1a4f871ccff7313" category="paragraph">이 템플릿을 기사, 주제 등 원하는 대로 명명할 때 사용하세요. index.adoc 파일에는 기사 페이지에 대한 올바른 키워드가 없으며, 이를 템플릿으로 사용하면 나중에 게시 문제가 발생할 수 있습니다.</block>
-  <block id="26739de98ff2a207a5c145caf27c2508" category="admonition">사이드바에 링크되지 않은 경우에도 파일이 게시되므로 최초 게시 전에 이 파일을 삭제하세요. 몇 개의 기사를 작성한 후에는 그것을 시작점으로 사용할 수 있습니다.</block>
-  <block id="38b255c5af258b1f086fb7c9aa4f252c" category="paragraph">기사가 콘텐츠 하위 폴더에 있는 경우 위에 표시된 표기법에 두 가지 조정을 해야 합니다.</block>
-  <block id="df25e29acec650a07b41041946158355" category="list-text"><block ref="abc9d0bfc8d5688ddd4babf6a5402ee4" prefix="" category="inline-code"></block></block>
-  <block id="97df5ffadc97296dc727ffddf2d2e1fe" category="list-text"><block ref="ff695bd1637208b4929c7ae2085cd551" prefix="" category="inline-code"></block></block>
   <block id="8db92719c4d9f37b39025b1a2a231511" category="summary">시작하기 전에 전제 조건을 검토해야 합니다.</block>
   <block id="5a2ebfb8baa378cfcfcba58bbb1380c2" category="doc">요구 사항</block>
   <block id="0d4f5f9dd0b25c466de7756fec34503e" category="paragraph">시작하기 전에 네트워킹 및 포트 요구 사항을 포함하여 NetApp Element 소프트웨어를 배포하기 위한 전제 조건을 검토해야 합니다.</block>
@@ -9488,7 +9480,6 @@
   <block id="be4ce5f5b863230b071a1e9bbc6b526f" category="paragraph">SVM DR 구성의 ONTAP 볼륨은 지원되지 않습니다.</block>
   <block id="1749d12df3df2319d3eee218a277ff83" category="paragraph">MetroCluster</block>
   <block id="a3bcdc002e42a770c83a4edb29da0f53" category="paragraph">MetroCluster 구성의 ONTAP 볼륨은 지원되지 않습니다.</block>
-  <block id="b4de17ead867a3cf0b9d11e57e562672" category="doc">기계 번역</block>
   <block id="bfe7c7a765c1b0371de30f5fd4765eaf" category="paragraph">Element 소프트웨어를 사용하여 SolidFire 스토리지를 설정하고, 클러스터 용량과 성능을 모니터링하고, 멀티 테넌트 인프라 전반에서 스토리지 활동을 관리하세요.</block>
   <block id="d54074f88b0164ba9c4afe3077e869dc" category="paragraph">Element는 SolidFire 클러스터의 핵심인 스토리지 운영 체제입니다.  Element 소프트웨어는 클러스터의 모든 노드에서 독립적으로 실행되며, 클러스터의 노드가 리소스를 결합하고 외부 클라이언트에 단일 스토리지 시스템으로 제공할 수 있도록 합니다.  Element 소프트웨어는 시스템 전체의 모든 클러스터 조정, 규모 및 관리를 담당합니다.</block>
   <block id="250f00e8767222db89298f946f97e517" category="paragraph">소프트웨어 인터페이스는 Element API를 기반으로 구축되었습니다.</block>
@@ -9502,14 +9493,6 @@
   <block id="b1d9f91038721e8f8e298ac364db6778" category="list-text"><block ref="b1d9f91038721e8f8e298ac364db6778" category="inline-link-macro-rx"></block></block>
   <block id="58a3460b6f080dc34224f11288e2e013" category="list-text"><block ref="58a3460b6f080dc34224f11288e2e013" category="inline-link-macro-rx"></block></block>
   <block id="a2d14fa572c5c0a4fbc8457f2a28d53a" category="list-text"><block ref="a2d14fa572c5c0a4fbc8457f2a28d53a" category="inline-link-macro-rx"></block></block>
-  <block id="e10b5b38785c3a24ec75723ab75b4360" category="paragraph">Copyright © 2021 NetApp, Inc. All rights reserved. 미국에서 인쇄됨</block>
-  <block id="2275e007ee598cef266c877f9c52ee25" category="paragraph">저작권으로 보호되는 이 문서의 어떠한 부분도 저작권 소유자의 사전 서면 허가 없이는 어떠한 형태나 수단(복사, 녹음, 녹음 또는 전자 검색 시스템에 저장하는 것을 포함한 그래픽, 전자 또는 기계적 수단 포함)으로 복제할 수 없습니다.</block>
-  <block id="ce4ad2236c56cc11a838f29c8c261bf7" category="paragraph">NetApp이 저작권을 가진 자료에 있는 소프트웨어에는 아래의 라이센스와 고지 사항이 적용됩니다.</block>
-  <block id="b110bc9db113b3149cb9e2ed905d4c6c" category="paragraph">본 소프트웨어는 NETAPP에서 "있는 그대로" 제공되며 상품성 및 특정 목적에의 적합성에 대한 묵시적 보증을 포함하되 이에 국한되지 않는 명시적 또는 묵시적 보증 없이 제공됩니다. 본 계약에 따라 이러한 보증은 부인됩니다. NetApp은 대체품 또는 대체 서비스의 조달, 사용 불능, 데이터 손실, 이익 손실, 영업 중단을 포함하고 이에 국한되지 않으며, 이 소프트웨어의 사용으로 인해 발생하는 모든 직접 및 간접 손해, 우발적 손해, 특별 손해, 징벌적 손해, 결과적 손해의 발생에 대하여 그 발생 이유, 책임론, 계약 여부, 엄격한 책임, 불법 행위(과실 또는 그렇지 않은 경우)에 관계없이 어떠한 책임도 지지 않으며, 이와 같은 손실의 발생 가능성이 통지되었다 하더라도 마찬가지입니다.</block>
-  <block id="4fc9b260d15698bbd988f76ca839c5b6" category="paragraph">NetApp은 본 문서에 설명된 제품을 언제든지 예고 없이 변경할 권리를 보유합니다. NetApp은 NetApp의 명시적인 서면 동의를 받은 경우를 제외하고 본 문서에 설명된 제품을 사용하여 발생하는 어떠한 문제에도 책임을 지지 않습니다. 본 제품의 사용 또는 구입의 경우 NetApp에서는 어떠한 특허권, 상표권 또는 기타 지적 재산권이 적용되는 라이센스도 제공하지 않습니다.</block>
-  <block id="87bfcb691f34a9e3fdda83480f0acf78" category="paragraph">본 매뉴얼에 설명된 제품은 하나 이상의 미국 특허, 기타 국가의 특허 또는 출원 중인 특허에 의해 보호될 수 있습니다.</block>
-  <block id="464821ce353b86f770de0d09b5f5aabe" category="paragraph">여기에 포함된 데이터는 상업용 품목(FAR 2.101에 정의됨)과 관련이 있으며 NetApp, Inc.의 독점 자산입니다. 미국 정부는 미국 정부와의 계약과 관련하여 데이터를 사용하고 지원하기 위해서만 데이터를 사용할 수 있는 비독점적, 양도 불가능, 하위 라이선스 불가능, 전 세계적, 제한적, 취소 불가능 라이선스를 보유하고 있습니다.  여기에 규정된 경우를 제외하고, NetApp, Inc.의 사전 서면 승인 없이는 데이터를 사용, 공개, 복제, 수정, 수행 또는 표시할 수 없습니다. 국방부에 대한 미국 정부 라이선스 권리는 DFARS 조항 252.227-7015(b)에 명시된 권리로 제한됩니다.</block>
-  <block id="e9f56eb126455869bdb213c6b8827217" category="doc">저작권, 상표 및 기계 번역</block>
   <block id="b2bbf180648d021cfbf74f62ccf04949" category="summary">관리 탭의 계정 페이지는 각 계정에 할당된 볼륨의 ID, 사용자 이름, 효율성 세부 정보 등 시스템의 각 계정에 대한 정보를 제공합니다.</block>
   <block id="8bc212f48680748479bbd322d4d73d3f" category="doc">계정 세부 정보</block>
   <block id="5bf592d3c6ab0296f3e1392898bf6db8" category="list-text">*ID*</block>
@@ -12446,4 +12429,6 @@
   <block id="5a4bef238f8c68aedf2579a9018edb5a" category="sidebar">노드별 유틸리티 작업에 대해 알아보기</block>
   <block id="909a1c829d29d09da00949e5c8b87a0e" category="sidebar">NetApp SolidFire 올플래시 스토리지 시스템 업그레이드</block>
   <block id="b837bae0f441ebacd86887d737939282" category="sidebar">시스템 업그레이드 절차</block>
+  <block id="0aa7fde71cfb5413015e45fa45075fd0" category="admonition">클러스터에서 암호화의 현재 상태 및/또는 소프트웨어 암호화의 현재 상태를 보려면 다음을 사용하십시오.<block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block> . 당신은 사용할 수 있습니다<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>.</block>
+  <block id="4ba6dd2d59030fb9ee4b6523df69086c" category="list-text"><block ref="4ba6dd2d59030fb9ee4b6523df69086c" category="inline-link-macro-rx"></block></block>
 </blocks>
