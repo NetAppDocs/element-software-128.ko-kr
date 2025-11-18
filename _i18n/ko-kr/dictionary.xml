@@ -755,8 +755,6 @@
   <block id="00ae1f75b0c9cec52e9827d766f2a9f0" category="paragraph"><block ref="00ae1f75b0c9cec52e9827d766f2a9f0" category="inline-link-macro-rx"></block></block>
   <block id="a0ccd69fa0bf592109e0896c3f9257e9" category="section-title">클러스터 생성 API 메서드</block>
   <block id="df40a0d48604ceb446509f54dd53d965" category="paragraph">이러한 API 메서드를 사용하여 스토리지 클러스터를 만들 수 있습니다.  이러한 모든 방법은 단일 노드의 API 엔드포인트에 대해 사용되어야 합니다.</block>
-  <block id="0308f0d51b4ba54593f1e96114c69c11" category="inline-link-macro">클러스터 생성 API 메서드에 대해 알아보세요</block>
-  <block id="1bed70a38ca13f48bede345dc001e2c9" category="paragraph"><block ref="1bed70a38ca13f48bede345dc001e2c9" category="inline-link-macro-rx"></block></block>
   <block id="6a67229ead1343c9647798cef324176a" category="section-title">드라이브 API 메서드</block>
   <block id="81edb4223e14439aae2b852f3ff5fa9b" category="paragraph">드라이브 API 메서드를 사용하면 스토리지 클러스터에서 사용할 수 있는 드라이브를 추가하고 관리할 수 있습니다.  스토리지 클러스터에 스토리지 노드를 추가하거나 기존 스토리지 노드에 새 드라이브를 설치하면 드라이브를 스토리지 클러스터에 추가할 수 있습니다.</block>
   <block id="d9d1e170360eff3d6edce6bc5ac15a96" category="inline-link-macro">드라이브 API 메서드에 대해 알아보세요</block>
@@ -12429,6 +12427,9 @@
   <block id="5a4bef238f8c68aedf2579a9018edb5a" category="sidebar">노드별 유틸리티 작업에 대해 알아보기</block>
   <block id="909a1c829d29d09da00949e5c8b87a0e" category="sidebar">NetApp SolidFire 올플래시 스토리지 시스템 업그레이드</block>
   <block id="b837bae0f441ebacd86887d737939282" category="sidebar">시스템 업그레이드 절차</block>
-  <block id="0aa7fde71cfb5413015e45fa45075fd0" category="admonition">클러스터에서 암호화의 현재 상태 및/또는 소프트웨어 암호화의 현재 상태를 보려면 다음을 사용하십시오.<block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block> . 당신은 사용할 수 있습니다<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>.</block>
   <block id="4ba6dd2d59030fb9ee4b6523df69086c" category="list-text"><block ref="4ba6dd2d59030fb9ee4b6523df69086c" category="inline-link-macro-rx"></block></block>
+  <block id="57a0b277e5bc33fa133ed50fee2e39c7" category="section-title">클러스터 생성 API 메서드</block>
+  <block id="ed23ae983fdf44661032ebde203dc482" category="inline-link-macro">클러스터 생성 API 메서드에 대해 알아보세요</block>
+  <block id="124da988a52d4207ceb89c16326011cd" category="paragraph"><block ref="124da988a52d4207ceb89c16326011cd" category="inline-link-macro-rx"></block></block>
+  <block id="e7d0e70ab185af3096a889f5850e7526" category="list-text">클러스터에서 암호화의 현재 상태, 소프트웨어 암호화의 현재 상태 또는 둘 다를 보려면 다음을 사용하세요. <block ref="d274ae55f8f22fd98ab9b057453f6128" category="inline-link-macro-rx"></block>. 당신은 사용할 수 있습니다<block ref="2132cae62c1d77dfa3dd7c3447c77cf5" prefix=" " category="inline-code"></block> <block ref="bd5bc3e1755ad5880958398f3551c67d" category="inline-link-macro-rx"></block>.</block>
 </blocks>
