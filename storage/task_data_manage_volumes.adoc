@@ -287,7 +287,7 @@ IMPORTANT: 관리 서비스와 연관된 영구 볼륨은 설치 또는 업그�
 클러스터는 볼륨당 동시에 최대 2개의 실행 중인 복제 요청을 지원하고, 동시에 최대 8개의 활성 볼륨 복제 작업을 지원합니다.  이러한 제한을 초과하는 요청은 나중에 처리하기 위해 대기합니다.
 
 
-NOTE: 운영 체제마다 복제된 볼륨을 처리하는 방식이 다릅니다.  VMware ESXi는 복제된 볼륨을 볼륨 복사본이나 스냅샷 볼륨으로 처리합니다.  볼륨은 새로운 데이터 저장소를 만드는 데 사용할 수 있는 장치입니다.  클론 볼륨 마운트 및 스냅샷 LUN 처리에 대한 자세한 내용은 VMware 설명서를 참조하세요. https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.storage.doc/GUID-EEFEB765-A41F-4B6D-917C-BB9ABB80FC80.html["VMFS 데이터 저장소 복사본 마운트"] 그리고 https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.storage.doc/GUID-EBAB0D5A-3C77-4A9B-9884-3D4AD69E28DC.html["중복된 VMFS 데이터 저장소 관리"] .
+NOTE: 운영 체제마다 복제된 볼륨을 처리하는 방식이 다릅니다. VMware ESXi는 복제된 볼륨을 볼륨 복사본 또는 스냅샷 볼륨으로 처리합니다. 이 볼륨은 새 데이터스토어를 생성하는 데 사용할 수 있는 장치입니다. 복제 볼륨 마운트 및 스냅샷 LUN 처리에 대한 자세한 내용은 link:https://techdocs.broadcom.com/["VMware 문서"^] VMFS 데이터스토어 복사본 마운트 및 중복 VMFS 데이터스토어 관리를 참조하십시오.
 
 
 IMPORTANT: 더 작은 크기로 복제하여 복제된 볼륨을 잘라내기 전에 해당 파티션이 더 작은 볼륨에 맞도록 준비해야 합니다.

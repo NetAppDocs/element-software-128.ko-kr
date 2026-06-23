@@ -19,7 +19,7 @@ VMware vSphere 구성 요소를 업그레이드하는 경우 추가 단계를 �
 .단계
 . vCSA 업그레이드의 경우 https://docs.netapp.com/us-en/vcp/vcp_task_qossioc.html#clear-qossioc-settings["분명한"^] 플러그인의 QoSSIOC 설정(* NetApp Element 구성 > QoSSIOC 설정*).  *QoSSIOC 상태* 필드가 표시됩니다. `Not Configured` 프로세스가 완료된 후.
 . vCSA 및 Windows 업그레이드의 경우 https://docs.netapp.com/us-en/vcp/task_vcp_unregister.html["등록 취소"^] 등록 유틸리티를 사용하여 연결된 vCenter Server의 플러그인입니다.
-. https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vcenter.upgrade.doc/GUID-7AFB6672-0B0B-4902-B254-EE6AE81993B2.html["vCenter Server, ESXi, VM 및 기타 VMware 구성 요소를 포함한 vSphere 업그레이드"^].
+. https://techdocs.broadcom.com/["vCenter Server, ESXi, VM 및 기타 VMware 구성 요소를 포함한 vSphere 업그레이드"^].
 +
 [IMPORTANT]
 ====

@@ -15,7 +15,7 @@ summary: '외부 키 관리(EKM)는 클러스터 외부 키 서버(EKS)와 함�
 
 * link:task_system_manage_key_set_up_external_key_management.html["외부 관리 설정"]
 * link:task_system_manage_rekey_software_ear_master_key.html["휴면 마스터 키에서 소프트웨어 암호화 재키"]
-* link:concept_system_manage_key_recover_inaccessible_or_invalid_authentication_keys["접근 불가능하거나 잘못된 인증 키 복구"]
+* link:concept_system_manage_key_recover_inaccessible_or_invalid_authentication_keys.html["접근 불가능하거나 잘못된 인증 키 복구"]
 * link:concept_system_manage_key_external_key_management_api_commands.html["외부 키 관리 API 명령"]
 
 

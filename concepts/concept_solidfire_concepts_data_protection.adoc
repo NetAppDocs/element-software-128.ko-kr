@@ -35,7 +35,7 @@ summary: 데이터 보호 기능에는 원격 복제, 볼륨 스냅샷, 볼륨 �
 * <<SnapMirror 사용한 Element와 ONTAP 클러스터 간 복제>>
 
 
-자세한 내용은 다음을 참조하세요. https://www.netapp.com/pdf.html?item=/media/10607-tr4741pdf.pdf["TR-4741: NetApp Element 소프트웨어 원격 복제"^] .
+자세한 내용은 https://www.netapp.com/pdf.html?item=/media/10607-tr4741.pdf["TR-4741: NetApp Element 소프트웨어 원격 복제"^]를 참조하십시오.
 
 
 
@@ -93,7 +93,7 @@ SnapMirror 는 재해 복구를 용이하게 하는 NetApp 스냅샷 복제 기�
 
 SnapMirror NetApp ONTAP 컨트롤러에서 기본적으로 실행되며 NetApp HCI 및 SolidFire 클러스터에서 실행되는 Element에 통합되어 있습니다.  SnapMirror 제어하는 ​​논리는 ONTAP 소프트웨어에 있습니다. 따라서 모든 SnapMirror 관계에는 조정 작업을 수행하기 위해 최소한 하나의 ONTAP 시스템이 포함되어야 합니다.  사용자는 주로 Element UI를 통해 Element와 ONTAP 클러스터 간의 관계를 관리합니다. 하지만 일부 관리 작업은 NetApp ONTAP System Manager에 있습니다.  사용자는 ONTAP 과 Element에서 모두 사용 가능한 CLI와 API를 통해 SnapMirror 관리할 수도 있습니다.
 
-보다 https://fieldportal.netapp.com/content/616239["TR-4651: NetApp SolidFire SnapMirror 아키텍처 및 구성"^] (로그인 필요)
+참조 https://www.netapp.com/pdf.html?item=/media/19771-tr-4651.pdf["TR-4651: NetApp SolidFire SnapMirror 아키텍처 및 구성"^]
 
 Element 소프트웨어를 사용하여 클러스터 수준에서 SnapMirror 기능을 수동으로 활성화해야 합니다.  SnapMirror 기능은 기본적으로 비활성화되어 있으며, 새로 설치하거나 업그레이드해도 자동으로 활성화되지 않습니다.
 

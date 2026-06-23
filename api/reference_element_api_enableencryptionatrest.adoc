@@ -15,7 +15,7 @@ summary: 'EnableEncryptionAtRest 메서드를 사용하면 클러스터에서 �
 
 [NOTE]
 ====
-* 클러스터에서 암호화의 현재 상태 및/또는 소프트웨어 암호화의 현재 상태를 보려면 다음을 사용하십시오.link:../api/reference_element_api_getclusterinfo["클러스터 정보 가져오기 방법"^] . 당신은 사용할 수 있습니다 `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo["클러스터가 저장 중인 데이터를 암호화하는 데 사용하는 정보를 얻는 방법"^].
+* 클러스터에서 저장 데이터 암호화 및/또는 저장 데이터 소프트웨어 암호화의 현재 상태를 확인하려면 link:../api/reference_element_api_getclusterinfo.html["클러스터 정보 가져오기 방법"]을 사용하십시오.  `GetSoftwareEncryptionAtRestInfo` link:../api/reference_element_api_getsoftwareencryptionatrestinfo.html["클러스터가 저장 중인 데이터를 암호화하는 데 사용하는 정보를 얻는 방법"]을 사용할 수도 있습니다.
 * 이 방법을 사용하면 소프트웨어 암호화가 활성화되지 않습니다.  이것은 다음을 사용해서만 수행할 수 있습니다.link:../api/reference_element_api_createcluster.html["클러스터 생성 방법"^] ~와 함께 `enableSoftwareEncryptionAtRest` 로 설정 `true` .
 
 
